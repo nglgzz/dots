@@ -8,22 +8,22 @@ The status bar is generated using i3blocks, currently I have it to show (startin
 date&time, CPU usage, eth0 status, wlan0 status, mic volume (it's not present in some screenshots 
 as I added it later) and audio volume.
 
-![img](http://imgur.com/ONSzoEz)
+![img](http://i.imgur.com/ONSzoEz.png)
 
 ## Dirty
 Here, I'm using Sublime Text, Terminator and Thunar. The theme I'm using in Sublime is [Material Theme](https://github.com/equinusocio/material-theme) as for GTK I set [Arc Theme](https://github.com/horst3180/arc-theme) with [Paper Icons](https://snwh.org/paper).
 
-![img](http://imgur.com/s1yISwT)
+![img](http://i.imgur.com/s1yISwT.png)
 
 ## Chromium
 Nothing special going on here.
 
-![img](http://imgur.com/5TJcTIn)
+![img](http://i.imgur.com/5TJcTIn.png)
 
 ## Rofi
 My choice for program launcher is [Rofi](https://github.com/DaveDavenport/rofi), I haven't done too much customization here, just tried to keep it simple. 
 
-![img](http://imgur.com/fHOta2v)
+![img](http://i.imgur.com/fHOta2v.png)
 
 ## Installation
 Just clone this repo and run the `first_setup.sh` script from your home in a fresh Debian installation, it may take a while since it will install all the basic programs, and their dependencies.
