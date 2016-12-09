@@ -3,7 +3,7 @@ Here are the dot files for my Debian environment.
 I also made a script to bring a fresh Debian installation to look like my current desktop.
 
 ## Clean 
-I'm using the Roboto Mono font for the top bar text and ont Awesome for the icons. 
+I'm using the Roboto Mono font for the top bar text and font Awesome for the icons. 
 The status bar is generated using i3blocks, currently I have it to show (starting from right) 
 date&time, CPU usage, eth0 status, wlan0 status, mic volume (it's not present in some screenshots 
 as I added it later) and audio volume.
@@ -44,6 +44,7 @@ Most of the shotcuts are the standard i3 shortcuts, others come from AwesomeWM, 
 - `mod+l` container layout, tabbed
 - `mod+shift+x` lock screen (i3lock)
 - `mod+shift+q` exit i3
+- `mod+Tab` back and forth between last two workspaces
 
 ## Notes
 At launching are executed Chromium, Sublime and two Terminator instances. Chromium is binded to workspace 1, Sublime to workspace 2 and Terminator to workspace 3. I tried to bind Spotify to workspace 9 but there seem to be an [issue](https://github.com/i3/i3/issues/2060) with that.

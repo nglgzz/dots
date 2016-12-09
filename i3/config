@@ -12,7 +12,7 @@
 	# Gaps
 	set $default_gaps_inner	20
 	set $default_gaps_outer	0
-	set $border_width	2 
+	set $border_width	2
 
 	# Colors
 	set $red		#F44336
@@ -46,6 +46,7 @@
 	#smart_borders	on
 
 	# Font
+	#font pango:Monoid, Icons 10
 	font pango:roboto-mono 10
 
 	# Disable Titlebar
@@ -55,7 +56,7 @@
 
 # Key Bindings
 # [
-	# Use mouse+$mod to drag floating windows+
+	# Use mouse+$mod to drag floating windows
 	floating_modifier $mod
 
 	# Start terminal
@@ -63,7 +64,7 @@
 
 	# Start browser
 	bindsym $mod+b exec $browser
-	
+
 	# Start editor
 	bindsym $mod+e exec $editor
 
@@ -100,6 +101,10 @@
 	bindsym $mod+Shift+Up move up
 	bindsym $mod+Shift+Right move right
 
+	# Back and forth between last two workspaces
+	bindsym $mod+Tab workspace back_and_forth
+	workspace_auto_back_and_forth yes
+
 	# Split in horizontal orientation
 	bindsym $mod+h split h
 
@@ -113,7 +118,7 @@
 	bindsym $mod+p layout toggle split
 	bindsym $mod+o layout tabbed
 	bindsym $mod+l layout stacking
-	
+
 	# Toggle tiling / floating
 	bindsym $mod+Shift+p floating toggle
 
@@ -155,8 +160,9 @@
 	assign [instance="chromium-browser"] $ws1
 	assign [class="Sublime_text"] $ws2
 	assign [class="Terminator"] $ws3
+	assign [instance="crx_hmjkmjkepdijhoojdojkdfohbdgmmhki"] $ws8
 	assign [title="Soundnode"] $ws9
-	
+
 	# https://github.com/i3/i3/issues/2060
 	assign [class="Spotify"] $ws9
 
@@ -201,7 +207,7 @@
 		position top
 		id bar-1
 		mode dock
-		#status_command i3status 
+		#status_command i3status
 		status_command i3blocks -c ~/.i3/i3blocks.conf
 
 		colors {
@@ -234,6 +240,6 @@
 
 exec_always feh --bg-scale $HOME/.i3/bg.png
 exec chromium
-exec subl
+exec subl 
 exec terminator
 exec terminator

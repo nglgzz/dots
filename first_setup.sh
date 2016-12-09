@@ -106,6 +106,7 @@ echo '>			Reload .bashrc'
 source .bashrc
 
 echo '>			Styling i3, i3blocks and Rofi.'
+mkdir .i3/
 cp ./dots/i3/* .i3/
 
 echo '>			Styling terminator.'
