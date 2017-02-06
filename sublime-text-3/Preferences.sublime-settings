@@ -1,0 +1,16 @@
+{
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"disable_formatted_linebreak": true,
+	"font_size": 8,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"material_theme_accent_blue": true,
+	"material_theme_small_statusbar": true,
+	"material_theme_tabs_separator": true,
+	"tab_size": 2,
+	"theme": "Material-Theme-Darker.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}

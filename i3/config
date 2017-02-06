@@ -1,245 +1,204 @@
 # Variables
-# [
-	# Mod Keys
-	set $mod	Mod4
-	set $alt	Mod1
+# Mod Keys
+set $mod Mod4
+set $alt Mod1
 
-	# Programs
-	set $terminal	terminator
-	set $browser	chromium
-	set $editor		subl
+# Programs
+set $terminal terminator
+set $browser chromium
+set $editor subl
 
-	# Gaps
-	set $default_gaps_inner	20
-	set $default_gaps_outer	0
-	set $border_width	2
+# Colors
+set $black #212121
+set $gray #424242
+set $accent #2979FF
+set $urgent #FF3D00
 
-	# Colors
-	set $red		#F44336
-	set $blue		#2979FF
-	set $black		#212121
-	set $grey		#424242
+# Layout
+set $border_width 2
 
-	set $dim_red	#AF5F5F
-	set $dim_grey	#1C1C1C
-	set $dim_blue	#2979FF
-	set $dim_cyan	#5F8787
-	set $dim_green	#5F875F
-	set $dim_yellow	#87875F
-	set $dim_magenta#5F5F87
+# Workspaces
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 "
+set $ws8 "8 "
+set $ws9 "9 "
+set $ws0 "10 "
 
-	# Layout
-	set $col_width		155px
-	set $col_height		225px
-	set $drop_width		900px
-	set $drop_height	200px
-	set $scratch_width	700px
-	set $scratch_height	700px
-# ]
 
-# Settings
-# [
-	# Gaps
-	#gaps inner	$default_gaps_inner
-	#gaps outer	$default_gaps_outer
-	#smart_gaps	on
-	#smart_borders	on
-
-	# Font
-	#font pango:Monoid, Icons 10
-	font pango:roboto-mono 10
-
-	# Disable Titlebar
-	new_window pixel
-# ]
 
 
 # Key Bindings
-# [
-	# Use mouse+$mod to drag floating windows
-	floating_modifier $mod
+# i3
+# Restart (preserves layout/session, can be used when upgrading i3)
+bindsym $mod+Shift+r restart
 
-	# Start terminal
-	bindsym $mod+Return exec $terminal
+# Lock screen
+bindsym $mod+Shift+x exec i3lock --color "$black"
 
-	# Start browser
-	bindsym $mod+b exec $browser
+# Exit (logs out of your X session)
+bindsym $mod+Shift+q exec i3-msg exit # "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-	# Start editor
-	bindsym $mod+e exec $editor
+# Toggle bar
+bindsym $mod+y exec i3 bar mode toggle
 
-	# Kill focused window
-	bindsym $mod+Shift+c kill
 
-	# Start dmenu (a program launcher)
-	bindsym $mod+r exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "run" -config "$HOME/.i3/rofi.conf"'
+# System
+# Audio control
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle
 
-	# Audio and Mic Keys
-	bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
-	bindsym XF86AudioLowerVolume exec amixer set Master 5%-
-	bindsym XF86AudioMute exec amixer set Master toggle
-	bindsym Shift+XF86AudioRaiseVolume exec amixer set Capture 9%+
-	bindsym Shift+XF86AudioLowerVolume exec amixer set Capture 9%-
-	bindsym XF86AudioMicMute exec amixer set Capture toggle
+# Mic control
+bindsym Shift+XF86AudioRaiseVolume exec amixer set Capture 9%+
+bindsym Shift+XF86AudioLowerVolume exec amixer set Capture 9%-
+bindsym XF86AudioMicMute exec amixer set Capture toggle
 
-	# Media player controls (doesn't work for me)
-	bindsym XF86AudioStop exec playerctl stop
-	bindsym XF86AudioStart exec playerctl start
-	bindsym XF86AudioPause exec playerctl pause
-	bindsym XF86AudioNext exec playerctl next
-	bindsym XF86AudioPrev exec playerctl previous
+# Print screen: full | select window or rectangle
+bindsym Print exec scrot -e 'mv $f ~/tmp/'
+bindsym $alt+Print exec scrot -s -e 'mv $f ~/tmp/'
 
-	# Change focus
-	bindsym $mod+Left focus left
-	bindsym $mod+Down focus down
-	bindsym $mod+Up focus up
-	bindsym $mod+Right focus right
 
-	# Move focused window
-	bindsym $mod+Shift+Left move left
-	bindsym $mod+Shift+Down move down
-	bindsym $mod+Shift+Up move up
-	bindsym $mod+Shift+Right move right
+# Workspace
+# Go to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
 
-	# Back and forth between last two workspaces
-	bindsym $mod+Tab workspace back_and_forth
-	workspace_auto_back_and_forth yes
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
 
-	# Split in horizontal orientation
-	bindsym $mod+h split h
+# Back and forth between last two workspaces
+bindsym $mod+Tab workspace back_and_forth
+workspace_auto_back_and_forth yes
 
-	# Split in vertical orientation
-	bindsym $mod+v split v
+# Change container layout to stacked | tabbed | toggle split
+bindsym $mod+l layout stacking
+bindsym $mod+o layout tabbed
+bindsym $mod+p layout toggle split
 
-	# Enter fullscreen mode for the focused container
-	bindsym $mod+f fullscreen
+# Split in horizontal | vertical orientation
+bindsym $mod+h split h
+bindsym $mod+v split v
 
-	# Change container layout (stacked, tabbed, toggle split)
-	bindsym $mod+p layout toggle split
-	bindsym $mod+o layout tabbed
-	bindsym $mod+l layout stacking
+# Toggle tiling | floating
+bindsym $mod+Shift+p floating toggle
+# Mouse + $mod to drag floating windows
+floating_modifier $mod
 
-	# Toggle tiling / floating
-	bindsym $mod+Shift+p floating toggle
 
-	set $ws1 "1 "
-	set $ws2 "2 "
-	set $ws3 "3 "
-	set $ws4 "4 "
-	set $ws5 "5 "
-	set $ws6 "6 "
-	set $ws7 "7 "
-	set $ws8 "8 "
-	set $ws9 "9 "
-	set $ws0 "10 "
+# Window
+# Move focus
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Down focus down
+bindsym $mod+Left focus left
 
-	# Switch to workspace
-	bindsym $mod+1 workspace $ws1
-	bindsym $mod+2 workspace $ws2
-	bindsym $mod+3 workspace $ws3
-	bindsym $mod+4 workspace $ws4
-	bindsym $mod+5 workspace $ws5
-	bindsym $mod+6 workspace $ws6
-	bindsym $mod+7 workspace $ws7
-	bindsym $mod+8 workspace $ws8
-	bindsym $mod+9 workspace $ws9
-	bindsym $mod+0 workspace $ws0
+# Move focused window
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Left move left
 
-	# Move focused container to workspace
-	bindsym $mod+Shift+1 move container to workspace $ws1
-	bindsym $mod+Shift+2 move container to workspace $ws2
-	bindsym $mod+Shift+3 move container to workspace $ws3
-	bindsym $mod+Shift+4 move container to workspace $ws4
-	bindsym $mod+Shift+5 move container to workspace $ws5
-	bindsym $mod+Shift+6 move container to workspace $ws6
-	bindsym $mod+Shift+7 move container to workspace $ws7
-	bindsym $mod+Shift+8 move container to workspace $ws8
-	bindsym $mod+Shift+9 move container to workspace $ws9
-	bindsym $mod+Shift+0 move container to workspace $ws0
+# Toggle fullscreen for focused container
+bindsym $mod+f fullscreen
 
-	assign [instance="chromium-browser"] $ws1
-	assign [class="Sublime_text"] $ws2
-	assign [class="Terminator"] $ws3
-	assign [instance="crx_hmjkmjkepdijhoojdojkdfohbdgmmhki"] $ws8
-	assign [title="Soundnode"] $ws9
+# Open Rofi (program launcher)
+bindsym $mod+r exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "run" -config "$HOME/.i3/rofi.conf"'
 
-	# https://github.com/i3/i3/issues/2060
-	assign [class="Spotify"] $ws9
+# Open terminal | browser | editor
+bindsym $mod+Return exec $terminal
+bindsym $mod+b exec $browser
+bindsym $mod+e exec $editor
 
-	# Restart i3 (preserves your layout/session, can be used to upgrade i3)
-	bindsym $mod+Shift+r restart
+# Kill focused window
+bindsym $mod+Shift+c kill
 
-	# Print Screen
-	bindsym Print exec scrot -e 'mv $f ~/tmp/'
-	# Print Screen - select window or rectangle
-	bindsym Mod1+Print exec scrot -s -e 'mv $f ~/tmp/'
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+	# these bindings trigger as soon as you enter "resize" mode
+	# up: height--, down: height++, left:  width--, right: width++
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
 
-	# Lock pc
-	bindsym $mod+Shift+x exec i3lock --color "$black"
+	# back to default mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+d mode "resize"
 
-	# Exit i3 (logs you out of your X session)
-	bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-	# Resize window (you can also use the mouse for that)
-	mode "resize" {
-		# These bindings trigger as soon as you enter the resize mode
 
-		# Pressing left will shrink the window’s width.
-		# Pressing right will grow the window’s width.
-		# Pressing up will shrink the window’s height.
-		# Pressing down will grow the window’s height.
-		bindsym Left resize shrink width 10 px or 10 ppt
-		bindsym Down resize grow height 10 px or 10 ppt
-		bindsym Up resize shrink height 10 px or 10 ppt
-		bindsym Right resize grow width 10 px or 10 ppt
 
-		# Back to normal: Enter or Escape
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
+# Settings
+bar {
+	font pango:roboto-mono 9
+	position top
+	mode hide
+
+	# Command for showing status info
+	status_command i3blocks -c ~/.i3/i3blocks.conf
+
+	colors {
+		background $black
+		statusline $accent
+		separator $accent
+
+		# ---| border | bg | fg |---
+		focused_workspace $accent $accent $black
+		active_workspace $black $black $accent
+		inactive_workspace $black $black $accent
+		urgent_workspace $black $black $urgent
 	}
-	bindsym $mod+d mode "resize"
-# ]
+}
 
-# Bar
-# [
-	bar {
-		font pango:roboto-mono 8
-		position top
-		id bar-1
-		mode dock
-		#status_command i3status
-		status_command i3blocks -c ~/.i3/i3blocks.conf
+# System font
+font pango:roboto-mono 10
 
-		colors {
-			separator  $green
-			background $black
-			statusline $dim_blue
-			# --------------------|  BORDER  |   BG   |   FG    |------
-			# ----------------------------------------------------------
-			focused_workspace  $blue 		$blue 		$black
-			active_workspace   $black		$black		$blue
-			inactive_workspace $black		$black		$blue
-			urgent_workspace   $black		$black		$red
-		}
-	}
-# ]
+# Window colors
+client.focused $black $black $accent $gray
+client.focused_inactive $black $black $gray $gray
+client.unfocused $black $black $gray $gray
+client.urgent $black $black $urgent $gray
 
-# Window Settings
-# [
-	# Remove titlebar unless in stacking or tabbed mode
-	for_window [class="^.*"] border pixel $border_width
+# Remove titlebar and hide window edges
+for_window [class="^.*"] border pixel $border_width
+hide_edge_borders both
 
-	#Colors
-	client.focused 			$black $black $blue $grey
-	client.focused_inactive 	$black $black $grey $grey
-	client.unfocused 		$black $black $grey $grey
-	client.urgent 			$black $black $red  $grey
 
-	hide_edge_borders both
-# ]
 
+
+# Assign programs to workspaces
+assign [instance="chromium-browser"] $ws1
+assign [class="Sublime_text"] $ws2
+assign [class="Terminator"] $ws3
+assign [class="Spotify"] $ws9  # https://github.com/i3/i3/issues/2060
+
+
+
+
+# Prepare background and start browser
 exec_always feh --bg-scale $HOME/.i3/bg.png
-exec chromium
-exec subl 
-exec terminator
-exec terminator
+exec $browser

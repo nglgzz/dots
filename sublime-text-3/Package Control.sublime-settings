@@ -1,0 +1,17 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Autoprefixer",
+		"Emmet",
+		"JSX",
+		"Markdown Preview",
+		"Material Theme",
+		"Package Control",
+		"Pretty JSON",
+		"Sass"
+	]
+}
