@@ -8,6 +8,7 @@
 	],
 	"material_theme_accent_blue": true,
 	"material_theme_small_statusbar": true,
+	"material_theme_small_tab": true,
 	"material_theme_tabs_separator": true,
 	"tab_size": 2,
 	"theme": "Material-Theme-Darker.sublime-theme",

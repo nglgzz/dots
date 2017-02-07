@@ -200,5 +200,5 @@ assign [class="Spotify"] $ws9  # https://github.com/i3/i3/issues/2060
 
 
 # Prepare background and start browser
-exec_always feh --bg-scale $HOME/.i3/bg.png
+exec_always feh --bg-center $HOME/.i3/bg.png
 exec $browser
