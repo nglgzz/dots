@@ -67,6 +67,7 @@ apt-get install libpango1.0-dev libpangocairo-1.0-0 libcairo2-dev libglib2.0-dev
 apt-get install libxcb1-dev xutils-dev libtool libxcb-util0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-randr0-dev -qq
 apt-get install libstartup-notification0-dev -qq
 apt-get install libxkbcommon-dev libxkbcommon-x11-dev --force-yes -qq
+apt-get install bison flex byacc
 
 echo '#  Installing printscreen, wallpaper application and theme customization tool.'
 apt-get install scrot feh toilet lxappearance software-properties-common --force-yes -qq
