@@ -124,32 +124,8 @@ echo '#  Reload .bashrc'
 source $home/.bashrc
 
 
-# link src dst [name]
-_link() {
-  if [[ -d $2 ]]; then
-    echo "#  Backing up existing $3 to $2.back.zip"
-    zip $2.back.zip $2 -r
-    rm -r $2
-  fi
-
-  if [[ -f $2 ]]; then
-    echo "#  Backing up existing $3 to $2.back"
-    mv $2 $2.back
-  fi
-
-  echo "#  Linking $3"
-  ln -s $1 $2
-  chown -Rh $user:$user $2
-}
-
-# link dot files
-_link $dots/i3 $home/.i3 'i3 dots'
-_link $dots/terminator/config $home/.config/terminator/config 'terminator config'
-_link $dots/gtk-3.0/settings.ini $home/.config/gtk-3.0/settings.ini 'GTK styling'
-_link "$dots/sublime-text-3/Package Control.sublime-settings"\
- "$home/.config/sublime-text-3/Packages/User/Package Control.sublime-settings" 'sublime packages'
-_link $dots/sublime-text-3/Preferences.sublime-settings\
- $home/.config/sublime-text-3/Packages/User/Preferences.sublime-settings 'sublime preferences'
+# Link dots
+$dots/links.sh $home $user
 
 
 # https://snwh.org/paper/download
@@ -165,20 +141,10 @@ rm paper-icon.deb
 rm paper-gtk.deb
 
 
-echo '#  Done, here is a couple of things you may want to do now:'
-echo '#  - select arc-theme on lxappearance'
-echo '#  - select paper icons on lxappearance'
-echo '#  - install following packages for Sublime Text:'
-echo '#     -Package Control'
-echo '#     -Material Theme (blue accent)'
-echo '#     -Emmet'
-echo '#     -JSX'
-echo '#  - install firmware-iwlwifi if on laptop'
-echo '#  - run `adduser [username] sudo` to add user to sudoers.'
+echo '#  Done'
 # Todo:
-#  - test and update end message
-#  - add .vimrc
+#  - test
 #  - set up projects folder
-#  - update update.sh
+#  - update README
 #  - fix keypub
 #  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <PUBKEY>
