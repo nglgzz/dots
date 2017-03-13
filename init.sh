@@ -123,28 +123,35 @@ echo '#  Reload .bashrc'
 source $home/.bashrc
 
 
-# if there's an existing i3 configuration, back it up and delete the folder
-if [ -d "$home/.i3" ]; then
-  echo '#  Backing up  previous i3 configuration to $HOME/i3.back.zip'
-  zip $home/i3.back.zip $home/.i3 -r
-  rm -r $home/.i3
-fi
+# link src dst [name]
+_link() {
+  if [[ -d $2 ]]; then
+    echo "#  Backing up existing $3 to $2.back.zip"
+    zip $2.back.zip $2 -r
+    rm -r $2
+  fi
 
-echo '#  Linking i3 dots.'
-ln -s  $dots/i3 $home/.i3
+  if [[ -f $2 ]]; then
+    echo "#  Backing up existing $3 to $2.back"
+    mv $2 $2.back
+  fi
 
-# if there's an existing terminator config, back it up.
-if [ -d "$home/.config/terminator/config" ]; then
-  echo '#  Backing up  previous terminator config to $HOME/.config/terminator/config.back'
-  mv $home/.config/terminator/config $home/.config/terminator/config.back
-fi
+  echo "#  Linking $3"
+  ln -s $1 $2
+}
 
-echo '# Linking terminator config.'
-mkdir -p $home/.config/terminator
-ln -s  $dots/terminator/config $home/.config/terminator/config
+# link dot files
+_link $dots/i3 $home/.i3 'i3 dots'
+_link $dots/terminator/config $home/.config/terminator/config 'terminator config'
+_link $dots/gtk-3.0/settings.ini $home/.config/gtk-3.0/settings.ini 'GTK styling'
+_link "$dots/sublime-text-3/Package Control.sublime-settings"\
+ "$home/.config/sublime-text-3/Packages/User/Package Control.sublime-settings" 'sublime packages'
+_link $dots/sublime-text-3/Preferences.sublime-settings\
+ $home/.config/sublime-text-3/Packages/User/Preferences.sublime-settings 'sublime preferences'
+
 
 # https://snwh.org/paper/download
-echo '#  Installing Paper icons.'
+echo '#  Installing Paper icons and Paper GTK theme.'
 wget -q 'https://snwh.org/paper/download.php?owner=snwh&ppa=pulp&pkg=paper-icon-theme,16.04'\
  -O paper-icon.deb
 wget -q 'https://snwh.org/paper/download.php?owner=snwh&ppa=pulp&pkg=paper-gtk-theme,16.04'\
@@ -166,11 +173,10 @@ echo '#     -Emmet'
 echo '#     -JSX'
 echo '#  - install firmware-iwlwifi if on laptop'
 echo '#  - run `adduser [username] sudo` to add user to sudoers.'
-unset home user dots
 # Todo:
-#  - add sublime and GTK config linking
 #  - test and update end message
+#  - add .vimrc
 #  - set up projects folder
-#  - remove update.sh
+#  - update update.sh
 #  - fix keypub
 #  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <PUBKEY>
