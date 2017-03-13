@@ -70,7 +70,7 @@ unzip fontawesome.zip -d fontawesome
 echo '#  Installing fonts.'
 mkdir -p /usr/share/fonts/truetype
 mkdir -p $home/.fonts/
-chown -R $user $home/.fonts/
+chown -R $user:$user $home/.fonts/
 
 mv roboto-mono raleway /usr/share/fonts/truetype/
 mv fontawesome/font-awesome-4.7.0/fonts/* $home/.fonts/
@@ -98,7 +98,7 @@ mkdir build
 ../configure
 make
 make install
-chown -R $user $home/xcb-util-xrm/
+chown -R $user:$user $home/xcb-util-xrm/
 
 
 # Install Rofi
@@ -114,6 +114,7 @@ cd build
 ../configure
 make
 make install
+chown -R $user:$user $home/rofi
 
 echo '#  Adding LIBDIR and LD_LIBRARY_PATH export in .bashrc'
 echo "export LIBDIR='/usr/local/lib:$LIBDIR'" >> .bashrc
@@ -138,6 +139,7 @@ _link() {
 
   echo "#  Linking $3"
   ln -s $1 $2
+  chown -Rh $user:$user $2
 }
 
 # link dot files
