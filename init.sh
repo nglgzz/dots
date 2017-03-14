@@ -26,9 +26,9 @@ sed -r 's/deb http:\/\/debian.jpleau.ca\/ jessie-backports main contrib non-free
 echo 'deb http://debian.jpleau.ca/ jessie-backports main contrib non-free'\
  >> /etc/apt/sources.list
 
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED45C181B540212D 
 echo '#  Updating packages list.'
-apt-get update -qq
-
+apt-get update -q
 
 # Install packages. May take long.
 essential=(sudo zip xinit i3 i3blocks i3lock build-essential autoconf automake \
@@ -41,13 +41,13 @@ recommended=(git vim alsa-utils scrot feh software-properties-common)
 additional=(chromium pavucontrol vlc nautilus terminator wicd-gtk lxappearance)
 
 echo '#  Installing essential packages (may take long).'
-apt-get install ${essential[@]}
+apt-get install ${essential[@]} -y -q
 
 echo '#  Installing recommended packages (may take long).'
-apt-get install ${recommended[@]}
+apt-get install ${recommended[@]} -y -q
 
 echo '#  Installing additional packages (may take long).'
-apt-get install ${additional[@]}
+apt-get install ${additional[@]} -y -q
 
 unset essential
 unset recommended
@@ -95,6 +95,7 @@ echo '# Installing xcb-util-xrm.'
 cd $home/xcb-util-xrm
 autoreconf -i
 mkdir build
+cd build
 ../configure
 make
 make install
@@ -125,7 +126,7 @@ source $home/.bashrc
 
 
 # Link dots
-$dots/links.sh $home $user
+$dots/link.sh $home $user
 
 
 # https://snwh.org/paper/download
@@ -136,15 +137,11 @@ wget -q 'https://snwh.org/paper/download.php?owner=snwh&ppa=pulp&pkg=paper-gtk-t
  -O paper-gtk.deb
 dpkg -i paper-icon.deb
 dpkg -i paper-gtk.deb
-apt-get install -f --force-yes -qq
+apt-get install -f -y -qq
 rm paper-icon.deb
 rm paper-gtk.deb
 
 
 echo '#  Done'
 # Todo:
-#  - test
-#  - set up projects folder
 #  - update README
-#  - fix keypub
-#  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <PUBKEY>
