@@ -26,7 +26,7 @@ sed -r 's/deb http:\/\/debian.jpleau.ca\/ jessie-backports main contrib non-free
 echo 'deb http://debian.jpleau.ca/ jessie-backports main contrib non-free'\
  >> /etc/apt/sources.list
 
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED45C181B540212D 
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED45C181B540212D
 echo '#  Updating packages list.'
 apt-get update -q
 
@@ -143,5 +143,3 @@ rm paper-gtk.deb
 
 
 echo '#  Done'
-# Todo:
-#  - update README
