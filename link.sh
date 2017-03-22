@@ -35,6 +35,8 @@ _link $dots/vim/autoload $home/.vim/autoload
 mkdir -p $home/.vim/bundle
 git clone https://github.com/jiangmiao/auto-pairs.git $home/.vim/bundle/auto-pairs
 git clone https://github.com/pangloss/vim-javascript.git $home/.vim/bundle/vim-javascript
+git clone https://github.com/hdima/python-syntax $home/.vim/bundle/python-syntax
+git clone https://github.com/mattn/emmet-vim
 
 # Sublime
 _link "$dots/sublime-text-3/Package Control.sublime-settings"\
