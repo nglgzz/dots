@@ -118,8 +118,8 @@ make install
 chown -R $user:$user $home/rofi
 
 echo '#  Adding LIBDIR and LD_LIBRARY_PATH export in .bashrc'
-echo "export LIBDIR='/usr/local/lib:$LIBDIR'" >> .bashrc
-echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LIBDIR" >> .bashrc
+echo "export LIBDIR='/usr/local/lib:\$LIBDIR'" >> $home/.bashrc
+echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$LIBDIR" >> $home/.bashrc
 
 echo '#  Reload .bashrc'
 source $home/.bashrc
@@ -141,5 +141,6 @@ apt-get install -f -y -qq
 rm paper-icon.deb
 rm paper-gtk.deb
 
+chown $user . -R
 
 echo '#  Done'
