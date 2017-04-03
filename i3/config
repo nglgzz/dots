@@ -124,7 +124,7 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+f fullscreen
 
 # Open Rofi (program launcher)
-bindsym $mod+r exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "run" -config "$HOME/.i3/rofi.conf"'
+bindsym $mod+r exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "run " -config "$HOME/.i3/rofi.conf"'
 
 # Open terminal | browser | editor
 bindsym $mod+Return exec $terminal

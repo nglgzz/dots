@@ -35,7 +35,7 @@ essential=(sudo zip xinit i3 i3blocks i3lock build-essential autoconf automake \
 pkg-config libpango1.0-dev libpangocairo-1.0-0 libcairo2-dev libglib2.0-dev \
 libxcb-xkb-dev libxcb-xinerama0-dev libxcb1-dev xutils-dev libtool libxcb-util0-dev \
 libxcb-ewmh-dev libxcb-icccm4-dev libxcb-randr0-dev libstartup-notification0-dev \
-libxkbcommon-dev libxkbcommon-x11-dev bison flex byacc)
+libxkbcommon-dev libxkbcommon-x11-dev bison flex byacc feh)
 
 recommended=(git vim alsa-utils scrot feh software-properties-common)
 additional=(chromium pavucontrol vlc nautilus terminator wicd-gtk lxappearance)

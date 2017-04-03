@@ -39,7 +39,7 @@ git clone https://github.com/hdima/python-syntax $home/.vim/bundle/python-syntax
 git clone https://github.com/mattn/emmet-vim
 
 # Sublime
-_link "$dots/sublime-text-3/Package Control.sublime-settings"\
- "$home/.config/sublime-text-3/Packages/User/Package Control.sublime-settings" 'sublime packages'
+_link $dots/sublime-text-3/Package\ Control.sublime-settings\
+ $home/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings 'sublime packages'
 _link $dots/sublime-text-3/Preferences.sublime-settings\
  $home/.config/sublime-text-3/Packages/User/Preferences.sublime-settings 'sublime preferences'
