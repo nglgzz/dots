@@ -37,7 +37,7 @@ libxcb-xkb-dev libxcb-xinerama0-dev libxcb1-dev xutils-dev libtool libxcb-util0-
 libxcb-ewmh-dev libxcb-icccm4-dev libxcb-randr0-dev libstartup-notification0-dev \
 libxkbcommon-dev libxkbcommon-x11-dev bison flex byacc feh)
 
-recommended=(git vim-nox alsa-utils scrot feh software-properties-common)
+recommended=(git vim-nox alsa-utils scrot feh software-properties-common curl)
 additional=(chromium pavucontrol vlc nautilus terminator wicd-gtk lxappearance)
 
 echo '#  Installing essential packages (may take long).'
