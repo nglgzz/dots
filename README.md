@@ -1,6 +1,6 @@
 # Dots
 These are the dot files for my Debian environment.
-I added two scripts, one for bringing a fresh Debian installation to look like this, and a second one to update from another i3 ricing (creates symlinks from configs in this repo to the the actual config paths). The update script may not affect your ricing if you're missing some programs, in case you have problems you can check out the `init.sh` script, and see what you're missing (there a variable called `essential` with all the needed packages).
+I added two scripts, one for bringing a fresh Debian installation to look like this, and a second one to update from another i3 ricing (creates symlinks from configs in this repo to the the actual config paths). The update script may not affect your ricing if you're missing some programs, in case you have problems you can check out the `init.sh` script, and see what you're missing (there's a variable called `essential` with all the needed packages).
 
 
 ## Clean
