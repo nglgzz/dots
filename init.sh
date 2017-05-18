@@ -29,6 +29,7 @@ echo 'deb http://debian.jpleau.ca/ jessie-backports main contrib non-free'\
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED45C181B540212D
 echo '#  Updating packages list.'
 apt-get update -q
+apt-get dist-upgrade
 
 # Install packages. May take long.
 essential=(sudo zip xinit i3 i3blocks i3lock build-essential autoconf automake \
@@ -101,6 +102,19 @@ make
 make install
 chown -R $user:$user $home/xcb-util-xrm/
 
+# Another i3/Rofi dependency
+echo '# Cloning libcheck repository from https://github.com/libcheck/check.'
+git clone --recursive https://github.com/libcheck/check.git $home/check --quiet
+
+echo '# Installing check.'
+cd $home/check
+autoreconf -i
+mkdir build
+cd build
+../configure
+make
+make install
+chown -R $user:$user $home/check/
 
 # Install Rofi
 echo '#  Cloning Rofi repository from https://github.com/DaveDavenport/rofi.'
