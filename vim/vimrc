@@ -2,7 +2,7 @@ set tabstop=2
 set expandtab
 set shiftwidth=2
 set number
-set foldmethod=syntax
+" set foldmethod=syntax
 
 execute pathogen#infect()
 syntax on
@@ -10,7 +10,8 @@ colorscheme PaperColor
 filetype plugin indent on
 
 let g:AutoPairsShortcutFastWrap = 'æ'
-
+let g:user_emmet_mode='a'
+let g:user_emmet_leader_key='<C-E>'
 " auto remove trailing whitespace
 " on save
 autocmd BufWritePre * %s/\s\+$//e
