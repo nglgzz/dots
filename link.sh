@@ -36,7 +36,12 @@ mkdir -p $home/.vim/bundle
 git clone https://github.com/jiangmiao/auto-pairs.git $home/.vim/bundle/auto-pairs
 git clone https://github.com/pangloss/vim-javascript.git $home/.vim/bundle/vim-javascript
 git clone https://github.com/hdima/python-syntax $home/.vim/bundle/python-syntax
-git clone https://github.com/mattn/emmet-vim
+git clone https://github.com/mattn/emmet-vim $home/.vim/bundle/emmet-vim
+git clone https://github.com/valloric/youcompleteme $home/.vim/bundle/youcompleteme
+git clone https://github.com/marijnh/tern_for_vim $home/.vim/bundle/tern_for_vim
+mkdir -p $home/.vim/colors
+cd $home/.vim/colors/
+wget https://raw.githubusercontent.com/nlknguyen/papercolor-theme/master/colors/PaperColor.vim
 
 # Sublime
 _link $dots/sublime-text-3/Package\ Control.sublime-settings\
