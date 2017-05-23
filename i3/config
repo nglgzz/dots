@@ -126,10 +126,11 @@ bindsym $mod+f fullscreen
 # Open Rofi (program launcher)
 bindsym $mod+r exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "run " -config "$HOME/.i3/rofi.conf"'
 
-# Open terminal | browser | editor
+# Open terminal | browser | editor | spotify
 bindsym $mod+Return exec $terminal
 bindsym $mod+b exec $browser
 bindsym $mod+e exec $editor
+bindsym $mod+s exec spotify
 
 # Kill focused window
 bindsym $mod+Shift+c kill

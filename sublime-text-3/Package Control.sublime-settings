@@ -10,9 +10,11 @@
 		"Emmet",
 		"JSX",
 		"Markdown Preview",
+		"MarkdownLivePreview",
 		"Material Theme",
 		"Package Control",
 		"Pretty JSON",
-		"Sass"
+		"Sass",
+		"WakaTime"
 	]
 }
