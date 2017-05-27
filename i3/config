@@ -131,6 +131,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+b exec $browser
 bindsym $mod+e exec $editor
 bindsym $mod+s exec spotify
+bindsym $mod+k exec slack
 
 # Kill focused window
 bindsym $mod+Shift+c kill
