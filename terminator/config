@@ -3,8 +3,9 @@
 [profiles]
   [[default]]
     scrollbar_position = hidden
-    use_system_font = False
+    palette = "#2e3436:#fb8c00:#7cb342:#ffb300:#5c6bc0:#ab47bc:#26a69a:#e0e0e0:#555753:#ffa726:#d4e157:#ffee58:#42a5f5:#ec407a:#26c6da:#f5f5f5"
     background_image = None
+    use_system_font = False
     foreground_color = "#c6ff00"
     icon_bell = False
     show_titlebar = False
