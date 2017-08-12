@@ -6,6 +6,7 @@ set number
 
 execute pathogen#infect()
 syntax on
+set background=dark
 colorscheme PaperColor
 filetype plugin indent on
 
