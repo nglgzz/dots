@@ -14,13 +14,16 @@ _link() {
     rm -r "$2"
   fi
 
+  echo "linking $1"
   ln -s "$1" "$2"
 }
 
 # Clone a repo from Github
 # _clone user/repo [path]
 _clone() {
-  git clone https://github.com/$1.git $2
+  if [[ ! -d $2 ]]; then
+    git clone https://github.com/$1.git $2
+  fi
 }
 
 # Path variables

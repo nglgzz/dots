@@ -4,9 +4,9 @@ set $mod Mod4
 set $alt Mod1
 
 # Programs
-set $terminal terminator
+set $terminal termite
 set $browser chromium
-set $editor subl
+set $editor subl3
 
 # Colors
 set $black #212121
@@ -124,7 +124,7 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+f fullscreen
 
 # Open Rofi (program launcher)
-bindsym $mod+r exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "run " -config "$HOME/.i3/rofi.conf"'
+#bindsym $mod+r exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "run " -config "$HOME/.i3/rofi.conf"'
 
 # Open terminal | browser | editor | spotify
 bindsym $mod+Return exec $terminal
@@ -161,7 +161,7 @@ bar {
 	mode hide
 
 	# Command for showing status info
-	status_command i3blocks -c ~/.i3/i3blocks.conf
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 
 	colors {
 		background $black
@@ -195,7 +195,7 @@ hide_edge_borders both
 # Assign programs to workspaces
 assign [instance="chromium-browser"] $ws1
 assign [class="Sublime_text"] $ws2
-assign [class="Terminator"] $ws3
+assign [class="Termite"] $ws3
 assign [class="Slack"] $ws4
 assign [class="Spotify"] $ws9  # https://github.com/i3/i3/issues/2060
 
@@ -203,4 +203,5 @@ assign [class="Spotify"] $ws9  # https://github.com/i3/i3/issues/2060
 
 # Prepare background and start browser
 exec_always feh --bg-center $HOME/.i3/bg.png
+exec albert
 exec $browser
