@@ -28,6 +28,10 @@ chsh -s /bin/zsh
 cd ~/tmp
 rm -r ~/tmp/pacaur_install
 
+# Install packages
+cat ~/packages.list |\
+  sed 's/# aur//' |\
+  xargs pacaur -S --noconfirm
 
 # Download key for Raspberry.
 read -p "${bold}SSH cert URL: ${normal}" key_url
