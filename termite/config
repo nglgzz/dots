@@ -1,0 +1,6 @@
+[options]
+font = RobotoMono 10
+
+[colors]
+background = #212121
+foreground = #c6ff00
