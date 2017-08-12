@@ -1,9 +1,7 @@
 [
-  { "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
-  { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
-
-  { "keys": ["ctrl+shift+o"], "command": "prompt_open_folder" },
-
   { "keys": ["ctrl+."], "command": "toggle_comment", "args": { "block": false } },
-  { "keys": ["ctrl+shift+."], "command": "toggle_comment", "args": { "block": true } }
+  { "keys": ["ctrl+shift+."], "command": "toggle_comment", "args": { "block": true } },
+  { "keys": ["ctrl+shift+o"], "command": "prompt_open_folder" },
+  { "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
+  { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} }
 ]

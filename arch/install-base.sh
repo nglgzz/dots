@@ -37,9 +37,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # Network configuration.
 echo $hostname > /etc/hostname
-pacman -S --noconfirm networkmanager
-systemctl enable NetworkManager.service
-nmtui-connect
+pacman -S --noconfirm wicd
+systemctl enable wicd
 
 # Change root password.
 passwd

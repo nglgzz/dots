@@ -1,50 +1,54 @@
-home=${1:-"$HOME"}
-user=${2:-"$(whoami)"}
-dots=$(dirname $(realpath $0))
+#!/bin/bash
 
-# link src dst [name]
+# Link source to destination
+# _link src dst
 _link() {
-  if [[ ! -d $(dirname $2) ]]; then
+  # If destination folder doesn't exist,
+  # create the folder.
+  if [[ ! -d "$(dirname $2)" ]]; then
     mkdir -p "$(dirname $2)"
-    chown -R $user:$user "$(dirname $2)"
   fi
-  if [[ -d $2 ]]; then
-    echo "#  Backing up existing $3 to $2.back.zip"
-    zip "$2.back.zip" "$2" -r
+
+  # If destination exists remove it.
+  if [[ -e "$2" ]]; then
     rm -r "$2"
   fi
 
-  if [[ -f $2 ]]; then
-    echo "#  Backing up existing $3 to $2.back"
-    mv "$2" "$2.back"
-  fi
-
-  echo "#  Linking $3"
   ln -s "$1" "$2"
-  chown -Rh $user:$user "$2"
 }
 
-# link dot files
-_link $dots/i3 $home/.i3 'i3 dots'
-_link $dots/terminator/config $home/.config/terminator/config 'terminator config'
-_link $dots/gtk-3.0/settings.ini $home/.config/gtk-3.0/settings.ini 'GTK styling'
-_link $dots/vim/vimrc $home/.vimrc 'vimrc'
-_link $dots/vim/autoload $home/.vim/autoload
+# Clone a repo from Github
+# _clone user/repo [path]
+_clone() {
+  git clone https://github.com/$1.git $2
+}
 
-# Vim
-mkdir -p $home/.vim/bundle
-git clone https://github.com/jiangmiao/auto-pairs.git $home/.vim/bundle/auto-pairs
-git clone https://github.com/pangloss/vim-javascript.git $home/.vim/bundle/vim-javascript
-git clone https://github.com/hdima/python-syntax $home/.vim/bundle/python-syntax
-git clone https://github.com/mattn/emmet-vim $home/.vim/bundle/emmet-vim
-git clone https://github.com/valloric/youcompleteme $home/.vim/bundle/youcompleteme
-git clone https://github.com/marijnh/tern_for_vim $home/.vim/bundle/tern_for_vim
-mkdir -p $home/.vim/colors
-cd $home/.vim/colors/
+# Path variables
+dots=~/projects/.dots
+config=~/.config
+vim_bundle=~/.vim/bundle
+vim_colors=~/.vim/colors
+
+_link ~/projects/.gitconfig ~/.gitconfig
+_link ~/projects/.zshrc ~/.zshrc
+_link $dots/i3 $config/i3
+_link $dots/gtk-3.0 $config/gtk-3.0
+
+# .vimrc and vim plugins
+_link $dots/vim/vimrc ~/.vimrc
+_link $dots/vim/autoload ~/.vim/autoload
+mkdir -p $vim_bundle
+_clone jiangmiao/auto-pairs $vim_bundle/auto-pairs
+_clone pangloss/vim-javascript $vim_bundle/vim-javascript
+_clone valloric/youcompleteme $vim_bundle/youcompleteme
+mkdir -p $vim_colors
+cd $vim_colors
 wget https://raw.githubusercontent.com/nlknguyen/papercolor-theme/master/colors/PaperColor.vim
 
 # Sublime
-_link $dots/sublime-text-3/Package\ Control.sublime-settings\
- $home/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings 'sublime packages'
-_link $dots/sublime-text-3/Preferences.sublime-settings\
- $home/.config/sublime-text-3/Packages/User/Preferences.sublime-settings 'sublime preferences'
+_link "$dots/sublime-text-3/Package Control.sublime-settings" \
+  "$config/sublime-text-3/Packages/User/Package Control.sublime-settings"
+_link "$dots/sublime-text-3/Preferences.sublime-settings" \
+  "$config/sublime-text-3/Packages/User/Preferences.sublime-settings"
+_link "$dots/sublime-text-3/Default (Linux).sublime-keymap" \
+  "$config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
