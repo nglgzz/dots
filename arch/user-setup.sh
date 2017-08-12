@@ -33,6 +33,9 @@ cat ~/packages.list |\
   sed 's/# aur//' |\
   xargs pacaur -S --noconfirm
 
+# Set default X11 keymap
+echo -e 'setxkbmap it\nexec i3' > ~/.xinitrc
+
 # Download key for Raspberry.
 read -p "${bold}SSH cert URL: ${normal}" key_url
 wget $key_url -o pi

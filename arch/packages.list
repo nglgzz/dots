@@ -1,12 +1,20 @@
 openssh
 python
+
 xorg-server
-xorg-winit
+xorg-xinit
 i3-wm
-albert # aur
-termite
+i3blocks
+
+wicd-gtk
+pavucontrol
+alsa-utils
+feh
+
 ttf-roboto-mono # aur
+ttf-font-awesome # aur
+termite
 chromium
 sublime-text-dev # aur
-wicd-gtk
+albert # aur
 
