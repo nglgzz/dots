@@ -32,7 +32,8 @@ vim_colors=~/.vim/colors
 _link ~/projects/.gitconfig ~/.gitconfig
 _link ~/projects/.zshrc ~/.zshrc
 _link $dots/i3 $config/i3
-_link $dots/gtk-3.0 $config/gtk-3.0
+_link $dots/termite $config/termite
+# _link $dots/gtk-3.0 $config/gtk-3.0
 
 # .vimrc and vim plugins
 _link $dots/vim/vimrc ~/.vimrc
