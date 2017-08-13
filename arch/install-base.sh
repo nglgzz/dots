@@ -18,6 +18,7 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=it" > /etc/vconsole.conf
 
 # Select timezone and set clock to UTC.
+rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 hwclock --systohc --utc
 
