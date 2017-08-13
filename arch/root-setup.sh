@@ -32,6 +32,9 @@ rm ~/.bash_profile
 
 # Add the configuration script for the user on its .bash_profile.
 cp ~/user-setup.sh /home/$username
+cp ~/packages.list /home/$username
+chown $username /home/$username/user-setup.sh
+chown $username /home/$username/packages.list
 chown $username /home/$username/.bash_profile
 echo "exec ~/user-setup.sh" > /home/$username/.bash_profile
 
