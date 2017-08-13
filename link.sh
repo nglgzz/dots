@@ -31,16 +31,21 @@ dots=~/projects/.dots/config
 config=~/.config
 vim_bundle=~/.vim/bundle
 vim_colors=~/.vim/colors
+ignore=(vim sublime-text-3)
 
 _link ~/projects/.gitconfig ~/.gitconfig
 _link ~/projects/.zshrc ~/.zshrc
-_link $dots/i3 $config/i3
-_link $dots/termite $config/termite
-_link $dots/gtk-3.0 $config/gtk-3.0
-_link $dots/albert $config/albert
 _link $dots/albert/albert.conf $config/albert.conf
-_link $dots/dunst $config/dunst
 
+# Walk dirs in dots/config folder, and link them
+# in ~/.config folder.
+for dir in $(find $dots -type d -not -wholename $dots)
+do
+  dir=$(basename "$dir")
+  if [[ ! " ${ignore[@]} " =~ " ${dir} " ]]; then
+    _link $dots/$dir $config/$dir
+  fi
+done
 
 # .vimrc and vim plugins
 _link $dots/vim/vimrc ~/.vimrc
