@@ -5,7 +5,7 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 # Create tmp folder to download packages.
-mkdir ~/tmp/pacaur_install
+mkdir -p ~/tmp/pacaur_install
 cd ~/tmp/pacaur_install
 
 
@@ -29,9 +29,7 @@ cd ~/tmp
 rm -r ~/tmp/pacaur_install
 
 # Install packages
-cat ~/packages.list |\
-  sed 's/# aur//' |\
-  xargs pacaur -S --noconfirm
+cat ~/packages.list | sed 's/# aur//' | xargs pacaur -S --noconfirm
 
 # Set default X11 keymap
 echo -e 'setxkbmap it\nexec i3' > ~/.xinitrc
