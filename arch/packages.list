@@ -10,6 +10,8 @@ wicd-gtk
 pavucontrol
 alsa-utils
 feh
+scrot
+xclip
 
 ttf-roboto-mono # aur
 ttf-roboto-mono-powerline-git # aur

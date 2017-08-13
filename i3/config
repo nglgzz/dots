@@ -59,8 +59,11 @@ bindsym Shift+XF86AudioLowerVolume exec amixer set Capture 9%-
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 
 # Print screen: full | select window or rectangle
-bindsym Print exec scrot -e 'mv $f ~/tmp/'
-bindsym $alt+Print exec scrot -s -e 'mv $f ~/tmp/'
+bindsym $mod+s exec scrot ~/tmp/screenshot.png &&\
+ xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
+bindsym --release $mod+Shift+s exec scrot -s ~/tmp/screenshot.png &&\
+ xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
+
 
 
 # Workspace
@@ -130,7 +133,6 @@ bindsym $mod+f fullscreen
 bindsym $mod+Return exec $terminal
 bindsym $mod+b exec $browser
 bindsym $mod+e exec $editor
-bindsym $mod+s exec spotify
 bindsym $mod+k exec slack
 
 # Kill focused window
