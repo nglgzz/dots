@@ -22,7 +22,7 @@ _link() {
 # _clone user/repo [path]
 _clone() {
   if [[ ! -d $2 ]]; then
-    git clone https://github.com/$1.git $2
+    git clone https://github.com/$1.git $2 --recursive
   fi
 }
 
@@ -36,18 +36,24 @@ _link ~/projects/.gitconfig ~/.gitconfig
 _link ~/projects/.zshrc ~/.zshrc
 _link $dots/i3 $config/i3
 _link $dots/termite $config/termite
-# _link $dots/gtk-3.0 $config/gtk-3.0
+_link $dots/gtk-3.0 $config/gtk-3.0
+
 
 # .vimrc and vim plugins
 _link $dots/vim/vimrc ~/.vimrc
 _link $dots/vim/autoload ~/.vim/autoload
+
 mkdir -p $vim_bundle
 _clone jiangmiao/auto-pairs $vim_bundle/auto-pairs
 _clone pangloss/vim-javascript $vim_bundle/vim-javascript
 _clone valloric/youcompleteme $vim_bundle/youcompleteme
+cd youcompleteme
+./install.py --all
+
 mkdir -p $vim_colors
 cd $vim_colors
 wget https://raw.githubusercontent.com/nlknguyen/papercolor-theme/master/colors/PaperColor.vim
+
 
 # Sublime
 _link "$dots/sublime-text-3/Package Control.sublime-settings" \

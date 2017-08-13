@@ -12,9 +12,16 @@ alsa-utils
 feh
 
 ttf-roboto-mono # aur
+ttf-roboto-mono-powerline-git # aur
 ttf-font-awesome # aur
+paper-gtk-theme-git # aur
+paper-icon-theme-git # aur
 termite
 chromium
 sublime-text-dev # aur
 albert # aur
+
+slack-desktop # aur
+spotify # aur
+oh-my-zsh-git # aur
 
