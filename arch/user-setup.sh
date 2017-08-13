@@ -56,3 +56,6 @@ git remote add origin-r $piremote:/mnt/data/projects.git
 # Remove .bash_profile so setup isn't executed again.
 rm ~/.bash_profile
 
+# Create .zprofile so graphical interface is 
+# started automatically on login.
+echo "startx" > ~/.zprofile
