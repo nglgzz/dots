@@ -101,6 +101,7 @@ arch-chroot /mnt /root/install-base.sh
 # Set .bash_profile to execute configuration script on next login
 cp root-setup.sh /mnt/root/
 cp user-setup.sh /mnt/root/
+cp package.list /mnt/root/
 echo "exec ~/root-setup.sh" > /mnt/root/.bash_profile
 
 # Reboot
