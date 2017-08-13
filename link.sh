@@ -5,16 +5,16 @@
 _link() {
   # If destination folder doesn't exist,
   # create the folder.
-  if [[ ! -d "$(dirname $2)" ]]; then
-    mkdir -p "$(dirname $2)"
+  if [[ ! -d $(dirname "$2") ]]; then
+    mkdir -p $(dirname "$2")
   fi
 
   # If destination exists remove it.
-  if [[ -e "$2" ]]; then
+  if [[ -e "$2" ]] || [[ -L "$2" ]]; then
     rm -r "$2"
   fi
 
-  echo "linking $1"
+  echo "linking $2"
   ln -s "$1" "$2"
 }
 
@@ -27,7 +27,7 @@ _clone() {
 }
 
 # Path variables
-dots=~/projects/.dots
+dots=~/projects/.dots/config
 config=~/.config
 vim_bundle=~/.vim/bundle
 vim_colors=~/.vim/colors
@@ -39,6 +39,7 @@ _link $dots/termite $config/termite
 _link $dots/gtk-3.0 $config/gtk-3.0
 _link $dots/albert $config/albert
 _link $dots/albert/albert.conf $config/albert.conf
+_link $dots/dunst $config/dunst
 
 
 # .vimrc and vim plugins
@@ -49,18 +50,21 @@ mkdir -p $vim_bundle
 _clone jiangmiao/auto-pairs $vim_bundle/auto-pairs
 _clone pangloss/vim-javascript $vim_bundle/vim-javascript
 _clone valloric/youcompleteme $vim_bundle/youcompleteme
-cd youcompleteme
+cd $vim_bundle/youcompleteme
 ./install.py --all
 
 mkdir -p $vim_colors
 cd $vim_colors
-wget https://raw.githubusercontent.com/nlknguyen/papercolor-theme/master/colors/PaperColor.vim
 
+if [[ ! -f PaperColor.vim ]]; then
+  wget https://raw.githubusercontent.com/nlknguyen/papercolor-theme/master/colors/PaperColor.vim
+fi
 
 # Sublime
-_link "$dots/sublime-text-3/Package Control.sublime-settings" \
+_link "$dots/sublime-text-3/Package Control.sublime-settings"\
   "$config/sublime-text-3/Packages/User/Package Control.sublime-settings"
-_link "$dots/sublime-text-3/Preferences.sublime-settings" \
+_link "$dots/sublime-text-3/Preferences.sublime-settings"\
   "$config/sublime-text-3/Packages/User/Preferences.sublime-settings"
-_link "$dots/sublime-text-3/Default (Linux).sublime-keymap" \
+_link "$dots/sublime-text-3/Default (Linux).sublime-keymap"\
   "$config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
+

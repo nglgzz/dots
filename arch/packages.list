@@ -12,6 +12,7 @@ alsa-utils
 feh
 scrot
 xclip
+dunst
 
 ttf-roboto-mono # aur
 ttf-roboto-mono-powerline-git # aur
