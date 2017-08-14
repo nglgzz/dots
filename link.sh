@@ -34,6 +34,7 @@ vim_colors=~/.vim/colors
 ignore=(vim sublime-text-3)
 
 _link ~/projects/.gitconfig ~/.gitconfig
+_link ~/projects/.ssh ~/.ssh
 _link ~/projects/.zshrc ~/.zshrc
 _link $dots/albert/albert.conf $config/albert.conf
 
