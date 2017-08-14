@@ -36,7 +36,7 @@ echo -e 'setxkbmap it\nexec i3' > ~/.xinitrc
 
 # Download key for Raspberry.
 read -p "${bold}SSH cert URL: ${normal}" key_url
-wget $key_url -o pi
+wget $key_url -O pi
 eval $(ssh-agent)
 chmod 600 pi
 ssh-add pi
