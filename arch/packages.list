@@ -10,6 +10,8 @@ i3lock
 wicd-gtk
 pavucontrol
 alsa-utils
+pulseaudio
+sysstat
 feh
 scrot
 xclip
