@@ -23,7 +23,7 @@
     {
       "class": "grid_layout_control",
       "border_size": 1,
-      "border_color": [27, 27, 27]
+      "border_color": [02, 02, 02]
     },
 
   // @TITLE BAR
@@ -155,6 +155,7 @@
     // Command Panel
      {
         "class": "overlay_control",
+        "layer0.tint": [02, 02, 02],
         "layer0.texture": "Material Theme/assets/darker/overlay-bg.png",
         "layer0.inner_margin": [16, 4, 16, 33],
         "layer0.opacity": 1.0,
@@ -926,11 +927,7 @@
       "class": "scroll_bar_control",
       "layer0.tint": [02, 02, 02],
       "layer0.inner_margin": [0, 6],
-      "layer0.opacity": 1.0,
-      "layer1.texture": "Material Theme/assets/darker/normal_bar_vertical.png",
-      "layer1.opacity": 1.0,
-      "layer1.inner_margin": [0, 6],
-      "blur": false
+      "layer0.opacity": 1.0
     },
 
       // Normal Vertical scrollbar track inside overlay panel
@@ -951,11 +948,7 @@
       "attributes": ["horizontal"],
       "layer0.tint": [02, 02, 02],
       "layer0.inner_margin": [0, 6],
-      "layer0.opacity": 1.0,
-      "layer1.texture": "Material Theme/assets/darker/normal_bar_horizontal.png",
-      "layer1.opacity": 1.0,
-      "layer1.inner_margin": [6, 0],
-      "blur": false
+      "layer0.opacity": 1.0
     },
 
       // Normal horizontal scrollbar track inside overlay panel
@@ -1222,7 +1215,7 @@
 
     {
       "class": "text_line_control",
-      "layer0.texture": "Material Theme/assets/darker/input_field_border.png",
+      "layer0.tint": [02, 02, 02],
       "layer0.opacity": 1.0,
       "layer0.inner_margin": [20, 5, 20, 5],
       "tint_index": 1,

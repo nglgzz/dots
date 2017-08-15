@@ -1,91 +1,130 @@
 # Dots
-These are the dot files for my Debian environment.
-I added two scripts, one for bringing a fresh Debian installation to look like this, and a second one to update from another i3 ricing (creates symlinks from configs in this repo to the the actual config paths). The update script may not affect your ricing if you're missing some programs, in case you have problems you can check out the `init.sh` script, and see what you're missing (there's a variable called `essential` with all the needed packages).
+These are the dots files for my Arch environment.
+The `arch` folder contains some scripts for installing Arch and configure it to
+look like this.
+
+The `link.sh` script links all configuration files to where they need to be.
+**Do not run that script** without backing up your configs first. The script will
+overwrite all files that already exist. Also, before running it be sure to read it
+and make the necessary changes (eg. change the path from which the configs are linked).
 
 
-## Clean
-Right now on a clean workspace all you can see is the background. This is because the i3bar mode is set to hide, which means it won't show unless you're pressing `mod`. That mode can be changed with `mod+y` and it rotates between hide and dock (always showing).
+## Clean | Background
+This is a clean workspace, all you see is the background. This is because by
+default the i3bar mode is set to hide (shows only while pressing `mod`). You can
+rotate between hide and dock (always showing) mokdes by pressing `mod+y`. I usually
+keep the bar docked on my desktop, while hide it on my laptop.
 
-![img](https://i.imgur.com/dAMMwdO.png)
+![Clean | Background](http://i.imgur.com/Cjg9aym.png)
 
-This is how it looks when I'm pressing `mod` or when I change the i3bar mode to dock.
-I'm using the Roboto Mono font for text and font Awesome for icons.
-The status bar is generated using i3blocks, currently I have it to show (starting from right) date & time, CPU usage, eth0 status (it's not present in the screenshots, but it's there on the config), wlan0 status, mic volume and audio volume.
+This is with the i3bar showing. I'm using the Fira font for text and Font Awesome
+for icons. The status bar is generated using i3blocks, and it shows (starting from right)
+date & time, my local IP, CPU usage, mic and speaker volume. On my laptop I also
+have the battery status in there.
 
-![img](https://i.imgur.com/PnwzE5c.png)
+![Clean + Mod4](http://i.imgur.com/K6oLP9z.png)
 
 
-## Rofi
-[Rofi](https://github.com/DaveDavenport/rofi) is my choice for program launcher, I haven't done a lot of customization here. Also in this screenshot seems like it's running fullscreen, but that's just cause it has the same color of my background and it's covering the text on it.
+## Screenfetch
+I switched from Terminator to Termite cause it should be lighter and I wasn't
+using any of the cool features Terminator has.
 
-![img](https://i.imgur.com/Xy2D54h.png)
+![Screenfetch](http://i.imgur.com/L4t2oWR.png)
+
+
+## Albert
+Another change I made is going from Rofi to Albert. The reason for this is that I
+plan to write my own plugins and Albert seems easier to extend.
+
+![Albert](http://i.imgur.com/eyMpMTr.png)
+
 
 ## Dirty
-Here I'm using Sublime Text, Terminator and Thunar (I now switched to Nautilus). The theme I'm using in Sublime is [Material Theme](https://github.com/equinusocio/material-theme), as for GTK I set [Arc Theme](https://github.com/horst3180/arc-theme) (now switched to [Paper GTK Theme](https://snwh.org/paper)) with [Paper Icons](https://snwh.org/paper).
+Here I have Sublime Text, Termite and Vim. On Sublime I'm using [Material Theme](https://github.com/equinusocio/material-theme)
+with a few changes on the color scheme.
 
-![img](https://i.imgur.com/wmLXCMx.png)
+![Sublime + Vim + Termite](http://i.imgur.com/lxv0tGK.png)
 
 
 ## Chromium
-Mandatory [/r/unixporn](https://reddit.com/r/unixporn) for Reddit.
+Mandatory [/r/unixporn](https://reddit.com/r/unixporn) for Reddit. Also there's
+a Dunst notification. I'm using [Paper Icons](https://snwh.org/paper) for the notification
+icons, but in this case it's an image from Spotify.
 
-![img](https://i.imgur.com/4TWud1c.png)
+![Unixporn + Dunst notification](http://i.imgur.com/YStFSNC.png)
 
 
-## Installation & Update
-To install just run the following the commands.
+## Scripts
+`install.sh`, `install-base.sh` and `root-setup.sh` on the `arch` folder are generic scripts
+to install Arch, and they're an implementation of [Arch linux for dummies](https://github.com/jieverson/dotfiles/wiki/arch-linux-for-dummies).
 
-    git clone https://github.com/nglgzz/dots
-    cd dots
-    ./init.sh
+`user-setup.sh` is the script that installs pacaur, all the other packages I need (which are listed
+on `packages.list`), clones my local repo with all my projects and then calls the `link.sh` script.
+This script is very specific to my system, so if you want to use it you should edit it.
 
-It may take a while specially if on slow internet connections. It will install all basic programs, their dependencies, and towards the end it will create symlinks of the config files for i3, Sublime Text, Terminator, GTK and Vim.
+It takes a while for all the scripts to run, especially if on a slow internet connection.
+The way this scripts are supposed to be executed is by booting an Arch installation
+media with UEFI mode enabled, and then run the one liner in [this gist](https://gist.github.com/nglgzz/4bf8bc1a53a126ecf555f942dc05102f).
 
-**Important: do not execute the script as superuser or the dots will go to `/root/` instead of your `$HOME`.** The script will request superuser permission after being executed. The owner of all the folders that will be created, is the user who executed the script, and all configs will be in its `$HOME`.
+The script will show you the available devices and ask you in which one you want
+to install Arch. Once you choose it will delete everything on it, and create 3 partitions:
+boot, swap (double the size of your ram), and primary (all the remaining space).
+Later it will ask for hostname and root password.
 
-For updating from an existing ricing same as installation but run `./link.sh`. This one will create symlinks of the configs. If it finds existing files (or directories) where the symlink should be, it'll back them up and tell you their new name (which is either [name].back or [name].back.zip).
+After rebooting log in as root, `root-setup.sh` will be executed automatically and
+when done it will log out. This script will ask information for creating a new user.
 
-For next updates a `git pull` should suffice.
+Finally log in as the new created user and the `user-setup.sh` script is executed.
 
 
 ## Shortcuts
-Most shotcuts are standard i3 shortcuts, others come from AwesomeWM. Below the complete list of all configured shortcuts, grouped by category.
+Here's the complete list of all configured shortcuts, grouped by category.
 
 **System**
-- `[VolumeUp|VolumeDown]` turn speaker volume up or down
-- `Mute` mute speaker
-- `Shift+[VolumeUp|VolumeDown]` turn mic volume up or down
-- `MuteMic` mute mic
-- `Print` screenshot (saved on '~/tmp/')
-- `alt+Print` screenshot, select window or draw rectangle
+- **[VolumeUp|VolumeDown]**: turn speaker volume up or down
+- **Mute**: mute speaker
+- **Shift+[VolumeUp|VolumeDown]**: turn mic volume up or down
+- **MuteMic**: mute mic
+- **alt+Shift+s**: screenshot (saved on '~/tmp/screenshot.png' and copied to clipboard)
+- **alt+s**: screenshot, draw rectangle
 
 **i3**
-- `mod+y` toggle i3bar mode (hide | dock)
-- `mod+shift+x` lock screen (i3lock)
-- `mod+shift+r` reload i3
-- `mod+shift+q` exit i3
+- **mod+y**: toggle i3bar mode (hide | dock)
+- **mod+shift+x**: lock screen (i3lock)
+- **mod+shift+r**: reload i3
+- **mod+shift+q**: exit i3
 
 **Workspace**
-- `mod+[1-0]` go to workspace 1 to 10
-- `mod+Shift+[1-0]` move focused window to workspace 1 to 10
-- `mod+Tab` back and forth between last two workspaces
-- `mod+l` container layout, tabbed
-- `mod+o` container layout, stacking
-- `mod+p` container layout, toggle split
-- `mod+h` split in horizontal orientation
-- `mod+v` split in vertical orientation
-- `mod+shift+p` toggle between tiling and floating
-- `mod+Mouse` to drag floating windows
+- **mod+[1-0]**: go to workspace 1 to 10
+- **mod+Shift+[1-0]**: move focused window to workspace 1 to 10
+- **mod+Tab**: back and forth between last two workspaces
+- **mod+l**: container layout, tabbed
+- **mod+o**: container layout, stacking
+- **mod+p**: container layout, toggle split
+- **mod+h**: split in horizontal orientation
+- **mod+v**: split in vertical orientation
+- **mod+shift+p**: toggle between tiling and floating
+- **mod+LeftClick**: to drag floating windows
+- **mod+RigthClick**: to resize floating windows
 
 **Window**
-- `mod+[Left|Right|Up|Down]` move focus
-- `mod+Shift+[Left|Right|Up|Down]` move focused window
-- `mod+r` run rofi
-- `mod+b` start browser (chromium)
-- `mod+e` start editor (sublime)
-- `mod+f` toggle fullscreen for focused window
-- `mod+shift+c` kill focused window
-- `mod+d` enter resize mode (use arrows or mouse to resize, enter or escape to exit)
+- **mod+[Left|Right|Up|Down]**: move focus
+- **mod+Shift+[Left|Right|Up|Down]**: move focused window
+- **mod+Enter**: start terminal (termite)
+- **mod+r**: start albert
+- **mod+b**: start browser (chromium)
+- **mod+e**: start editor (sublime)
+- **mod+k**: start slack
+- **mod+f**: toggle fullscreen for focused window
+- **mod+shift+c**: kill focused window
+- **mod+d**: enter resize mode (use arrows or mouse to resize, enter or escape to exit)
 
 ## Notes
-At launch an instance of Chromium is executed. Chromium is binded to workspace 1, Sublime to workspace 2, and Terminator to workspace 3. I tried to bind Spotify to workspace 9, but there seem to be an [issue](https://github.com/i3/i3/issues/2060) with that.
+At launch an instance of Chromium is executed.
+
+**Workspace bindings**
+- **workspace 1**: Chromium
+- **workspace 2**: Sublime
+- **workspace 3**: Termite
+- **workspace 4**: Slack
+- **workspace 9**: Spotify
