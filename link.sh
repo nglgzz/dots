@@ -73,4 +73,4 @@ _link "$dots/sublime-text-3/Preferences.sublime-settings"\
   "$config/sublime-text-3/Packages/User/Preferences.sublime-settings"
 _link "$dots/sublime-text-3/Default (Linux).sublime-keymap"\
   "$config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
-
+cp $dots/Even-Darker.* $config/sublime-text-3/

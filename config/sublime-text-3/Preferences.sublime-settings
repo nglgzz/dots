@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"color_scheme": "Packages/User/Even-Darker.tmTheme",
 	"disable_formatted_linebreak": true,
 	"font_face": "hack",
 	"font_size": 10,
@@ -7,7 +7,7 @@
 	[
 		"Vintage"
 	],
-	"material_theme_accent_blue": true,
+	"material_theme_accent_acid-lime": true,
 	"material_theme_small_statusbar": true,
 	"material_theme_small_tab": true,
 	"material_theme_tabs_separator": true,
@@ -17,7 +17,7 @@
 		100
 	],
 	"tab_size": 2,
-	"theme": "Material-Theme-Darker.sublime-theme",
+	"theme": "Even-Darker.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true
 }
