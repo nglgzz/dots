@@ -18,8 +18,8 @@ xclip
 dunst
 acpi
 
-ttf-roboto-mono # aur
-ttf-roboto-mono-powerline-git # aur
+ttf-hack-powerline-git # aur
+ttf-fira-sans # aur
 ttf-font-awesome # aur
 paper-gtk-theme-git # aur
 paper-icon-theme-git # aur
@@ -31,4 +31,3 @@ albert # aur
 slack-desktop # aur
 spotify # aur
 oh-my-zsh-git # aur
-

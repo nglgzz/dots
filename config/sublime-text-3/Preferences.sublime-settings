@@ -1,7 +1,8 @@
 {
 	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 	"disable_formatted_linebreak": true,
-	"font_size": 12,
+	"font_face": "hack",
+	"font_size": 10,
 	"ignored_packages":
 	[
 		"Vintage"

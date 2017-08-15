@@ -9,10 +9,13 @@ set $browser chromium
 set $editor subl3
 
 # Colors
-set $black #212121
-set $gray #424242
-set $accent #2979FF
-set $urgent #FF3D00
+set $black #010101
+# gray - 424242
+# accent - 2979ff
+# urgent - ff3d00
+set $gray #585756
+set $accent #d9ae38
+set $urgent #DF6418
 
 # Layout
 set $border_width 2
@@ -158,9 +161,12 @@ bindsym $mod+d mode "resize"
 
 # Settings
 bar {
-	font pango:roboto-mono 9
+	font pango:fira 10
 	position top
-	mode hide
+	#mode hide
+
+	strip_workspace_numbers yes
+	tray_output none
 
 	# Command for showing status info
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
@@ -174,12 +180,12 @@ bar {
 		focused_workspace $accent $accent $black
 		active_workspace $black $black $accent
 		inactive_workspace $black $black $accent
-		urgent_workspace $black $black $urgent
+		urgent_workspace $urgent $urgent $black
 	}
 }
 
 # System font
-font pango:roboto-mono 10
+font pango:fira 10
 
 # Window colors
 client.focused $black $black $accent $gray
@@ -192,19 +198,16 @@ for_window [class="^.*"] border pixel $border_width
 hide_edge_borders both
 
 
-
-
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
 assign [class="Subl3"] $ws2
 assign [class="Termite"] $ws3
 assign [class="Slack"] $ws4
-assign [class="Spotify"] $ws9  # https://github.com/i3/i3/issues/2060
-
+for_window [class="Spotify"] move to workspace $ws9 # https://github.com/i3/i3/issues/2060
 
 
 # Prepare background and start browser
-exec_always feh --bg-center $HOME/.config/i3/bg.png
+exec_always feh --bg-scale $HOME/.config/i3/bg.png
 exec dunst
 exec albert
 exec $browser
