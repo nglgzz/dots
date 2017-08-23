@@ -64,6 +64,9 @@ bindsym --release $alt+s exec scrot -s ~/tmp/screenshot.png &&\
 bindsym --release $alt+Shift+s exec scrot ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
 
+# Brightness
+bindsym $mod+Next exec xrandr --output DVI-I-1 --brightness 0.3
+bindsym $mod+Prior exec xrandr --output DVI-I-1 --brightness 1
 
 
 # Workspace
