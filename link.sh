@@ -36,7 +36,7 @@ ignore=(vim sublime-text-3)
 _link ~/projects/.gitconfig ~/.gitconfig
 _link ~/projects/.ssh ~/.ssh
 _link ~/projects/.zshrc ~/.zshrc
-_link $dots/albert/albert.conf $config/albert.conf
+cp $dots/albert/albert.conf $config/albert.conf
 
 # Walk dirs in dots/config folder, and link them
 # in ~/.config folder.

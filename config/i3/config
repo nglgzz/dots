@@ -207,4 +207,5 @@ for_window [class="Spotify"] move to workspace $ws9 # https://github.com/i3/i3/i
 exec_always feh --bg-scale $HOME/.config/i3/bg.png
 exec dunst
 exec albert
+exec copyq
 exec $browser

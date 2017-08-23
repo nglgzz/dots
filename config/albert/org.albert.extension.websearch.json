@@ -1,24 +1,24 @@
 [
     {
-        "iconPath": ":google",
+        "iconPath": "/home/mnbv/.local/share/albert/org.albert.extension.websearch/{22971111-5316-4a9b-a079-439620f8bf76}.png",
         "name": "Google",
-        "trigger": "gg ",
+        "trigger": "g",
         "url": "https://www.google.com/search?q=%s"
     },
     {
-        "iconPath": ":youtube",
+        "iconPath": "/home/mnbv/.local/share/albert/org.albert.extension.websearch/{7161785a-4342-4ef5-b455-16ee1f62a5f6}.png",
         "name": "Youtube",
-        "trigger": "yt ",
+        "trigger": "you",
         "url": "https://www.youtube.com/results?search_query=%s"
     },
     {
-        "iconPath": ":amazon",
+        "iconPath": "/home/mnbv/.local/share/albert/org.albert.extension.websearch/{90300361-a827-4106-b58b-10ad5707ed1b}.png",
         "name": "Amazon",
         "trigger": "ama ",
         "url": "http://www.amazon.com/s/?field-keywords=%s"
     },
     {
-        "iconPath": ":ebay",
+        "iconPath": "/home/mnbv/.local/share/albert/org.albert.extension.websearch/{6edf66d0-db0d-47f0-ae85-e9675a7eed57}.",
         "name": "Ebay",
         "trigger": "eb ",
         "url": "http://www.ebay.com/sch/i.html?_nkw=%s"
