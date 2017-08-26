@@ -58,6 +58,11 @@ bindsym Shift+XF86AudioRaiseVolume exec amixer -D pulse set Capture 9%+
 bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
 bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
+# Media keys
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl prev
+bindsym XF86AudioNext exec playerctl next
+
 # Print screen: full | select window or rectangle
 bindsym --release $alt+s exec scrot -s ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
