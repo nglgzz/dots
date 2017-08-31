@@ -24,7 +24,7 @@ npm
 ttf-hack-powerline-git # aur
 ttf-fira-sans # aur
 ttf-font-awesome # aur
-paper-gtk-theme-git # aur
+adapta-gtk-theme # aur
 paper-icon-theme-git # aur
 termite
 chromium
@@ -34,3 +34,4 @@ albert # aur
 slack-desktop # aur
 spotify # aur
 oh-my-zsh-git # aur
+feedreader # aur
