@@ -7,7 +7,7 @@ set number
 execute pathogen#infect()
 syntax on
 set background=dark
-" colorscheme PaperColor
+colorscheme PaperColor
 filetype plugin indent on
 
 let g:AutoPairsShortcutFastWrap = 'æ'

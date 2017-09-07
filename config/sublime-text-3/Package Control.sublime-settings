@@ -7,6 +7,7 @@
 	[
 		"A File Icon",
 		"Autoprefixer",
+		"Django",
 		"Emmet",
 		"JSX",
 		"Markdown Preview",
@@ -14,6 +15,8 @@
 		"Material Theme",
 		"Package Control",
 		"Pretty JSON",
-		"Sass"
+		"Sass",
+		"SublimeLinter",
+		"SublimeLinter-pylint"
 	]
 }
