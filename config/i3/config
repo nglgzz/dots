@@ -49,14 +49,14 @@ bindsym $mod+y exec i3 bar mode toggle
 
 # System
 # Audio control
-bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%-
-bindsym XF86AudioMute exec amixer -D pulse set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer -D default set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D default set Master 5%-
+bindsym XF86AudioMute exec amixer -D default set Master toggle
 
 # Mic control
-bindsym Shift+XF86AudioRaiseVolume exec amixer -D pulse set Capture 9%+
-bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
-bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
+bindsym Shift+XF86AudioRaiseVolume exec amixer -D default set Capture 9%+
+bindsym Shift+XF86AudioLowerVolume exec amixer -D default set Capture 9%-
+bindsym XF86AudioMicMute exec amixer -D default set Capture toggle
 
 # Media keys
 bindsym XF86AudioPlay exec playerctl play-pause

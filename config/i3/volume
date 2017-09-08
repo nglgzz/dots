@@ -1,5 +1,5 @@
 #!/bin/bash
-MIXER="pulse"
+MIXER="default"
 
 # The instance option sets the control to report and configure
 # This defaults to the first control of your selected mixer
