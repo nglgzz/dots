@@ -16,3 +16,8 @@ let g:user_emmet_leader_key='<C-E>'
 " auto remove trailing whitespace
 " on save
 autocmd BufWritePre * %s/\s\+$//e
+
+let mapleader=" "
+map <Leader>w :w<Enter>
+map <Leader>q :q<Enter>
+
