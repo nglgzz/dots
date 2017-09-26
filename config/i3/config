@@ -6,7 +6,7 @@ set $alt Mod1
 # Programs
 set $terminal termite
 set $browser chromium
-set $editor subl3
+set $editor subl
 
 # Colors
 set $black #010101
@@ -205,7 +205,7 @@ hide_edge_borders both
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
-assign [class="Subl3"] $ws2
+assign [class="Subl"] $ws2
 assign [class="Termite"] $ws3
 assign [class="Slack"] $ws4
 for_window [class="Spotify"] move to workspace $ws9 # https://github.com/i3/i3/issues/2060
