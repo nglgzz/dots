@@ -168,7 +168,7 @@ bindsym $mod+d mode "resize"
 bar {
 	font pango:fira 10
 	position top
-	mode hide
+	#mode hide
 
 	strip_workspace_numbers yes
 	tray_output none
@@ -202,6 +202,12 @@ client.urgent $black $black $urgent $gray
 for_window [class="^.*"] border pixel $border_width
 hide_edge_borders both
 
+# Albert keybindings (_magic)
+bindsym Mod3+g exec $HOME/projects/.albert_trigger.sh "gg "
+bindsym Mod3+h exec $HOME/projects/.albert_trigger.sh "gh "
+bindsym Mod3+y exec $HOME/projects/.albert_trigger.sh "yt "
+bindsym Mod3+a exec $HOME/projects/.albert_trigger.sh "la "
+bindsym Mod3+e exec $HOME/projects/.albert_trigger.sh "enit "
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
