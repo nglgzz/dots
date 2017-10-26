@@ -203,6 +203,7 @@ for_window [class="^.*"] border pixel $border_width
 hide_edge_borders both
 
 # Albert keybindings (_magic)
+bindsym Mod3+b exec albert toggle
 bindsym Mod3+g exec $HOME/projects/.albert_trigger.sh "gg "
 bindsym Mod3+h exec $HOME/projects/.albert_trigger.sh "gh "
 bindsym Mod3+y exec $HOME/projects/.albert_trigger.sh "yt "
