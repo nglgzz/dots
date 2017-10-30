@@ -206,8 +206,11 @@ hide_edge_borders both
 bindsym Mod3+b exec albert toggle
 bindsym Mod3+g exec $HOME/projects/.albert_trigger.sh "gg "
 bindsym Mod3+h exec $HOME/projects/.albert_trigger.sh "gh "
+bindsym Mod3+p exec $HOME/projects/.albert_trigger.sh "py "
 bindsym Mod3+y exec $HOME/projects/.albert_trigger.sh "yt "
+bindsym Mod3+t exec $HOME/projects/.albert_trigger.sh "tr "
 bindsym Mod3+a exec $HOME/projects/.albert_trigger.sh "la "
+bindsym Mod3+z exec $HOME/projects/.albert_trigger.sh "zl "
 bindsym Mod3+e exec $HOME/projects/.albert_trigger.sh "enit "
 
 # Assign programs to workspaces
@@ -220,6 +223,7 @@ for_window [class="Spotify"] move to workspace $ws9 # https://github.com/i3/i3/i
 
 # Prepare background and start browser
 exec_always feh --bg-scale $HOME/.config/i3/bg.png
+exec systemctl --user restart albert
 exec dunst
 exec copyq
 exec $browser
