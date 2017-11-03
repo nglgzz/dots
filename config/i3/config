@@ -213,10 +213,10 @@ bindsym Mod3+a exec $HOME/projects/.albert_trigger.sh "la "
 bindsym Mod3+z exec $HOME/projects/.albert_trigger.sh "zl "
 bindsym Mod3+e exec $HOME/projects/.albert_trigger.sh "enit "
 
-bindsym Mod3+h exec xdotool key Left
-bindsym Mod3+l exec xdotool key Right
-bindsym Mod3+j exec xdotool key Down
-bindsym Mod3+k exec xdotool key Up
+bindsym --release Mod3+h exec xdotool key --clearmodifiers Left
+bindsym --release Mod3+l exec xdotool key --clearmodifiers Right
+bindsym --release Mod3+j exec xdotool key --clearmodifiers Down
+bindsym --release Mod3+k exec xdotool key --clearmodifiers Up
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
