@@ -25,8 +25,8 @@ set $ws4 "4 "
 set $ws5 "5 "
 set $ws6 "6 "
 set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
+set $ws8 "8 "
+set $ws9 "9 "
 set $ws0 "10 "
 
 
@@ -44,7 +44,7 @@ bindsym $mod+Shift+x exec i3lock --color "$black"
 bindsym $mod+Shift+q exec i3-msg exit # "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Toggle bar
-bindsym $mod+y exec i3 bar mode toggle
+#bindsym $mod+y exec i3 bar mode toggle
 
 
 # System
@@ -104,12 +104,12 @@ bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth yes
 
 # Change container layout to stacked | tabbed | toggle split
-# bindsym $mod+l layout stacking
+bindsym $mod+l layout stacking
 bindsym $mod+o layout tabbed
 bindsym $mod+p layout toggle split
 
 # Split in horizontal | vertical orientation
-# bindsym $mod+h split h
+#bindsym $mod+h split h
 bindsym $mod+v split v
 
 # Toggle tiling | floating
@@ -125,16 +125,21 @@ bindsym $mod+Right focus right
 bindsym $mod+Down focus down
 bindsym $mod+Left focus left
 
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+j focus down
-bindsym $mod+h focus left
+bindsym $mod+w focus up
+bindsym $mod+d focus right
+bindsym $mod+s focus down
+bindsym $mod+a focus left
 
 # Move focused window
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Left move left
+
+bindsym $mod+Shift+w move up
+bindsym $mod+Shift+d move right
+bindsym $mod+Shift+s move down
+bindsym $mod+Shift+a move left
 
 # Toggle fullscreen for focused container
 bindsym $mod+f fullscreen
@@ -164,7 +169,7 @@ mode "resize" {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-bindsym $mod+d mode "resize"
+#bindsym $mod+d mode "resize"
 
 
 
@@ -176,7 +181,7 @@ bar {
 	#mode hide
 
 	strip_workspace_numbers yes
-	tray_output none
+	#tray_output none
 
 	# Command for showing status info
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
@@ -208,25 +213,25 @@ for_window [class="^.*"] border pixel $border_width
 hide_edge_borders both
 
 # Albert keybindings (_magic)
-bindsym Mod3+s exec albert toggle
-bindsym Mod3+g exec $HOME/projects/.albert_trigger.sh "gg "
-#bindsym Mod3+h exec $HOME/projects/.albert_trigger.sh "gh "
+bindsym $mod+r exec albert toggle
+bindsym $mod+g exec $HOME/projects/.albert_trigger.sh "gg "
+bindsym $mod+h exec $HOME/projects/.albert_trigger.sh "gh "
 bindsym Mod3+p exec $HOME/projects/.albert_trigger.sh "py "
-bindsym Mod3+y exec $HOME/projects/.albert_trigger.sh "yt "
+bindsym $mod+y exec $HOME/projects/.albert_trigger.sh "yt "
 bindsym Mod3+t exec $HOME/projects/.albert_trigger.sh "tr "
-bindsym Mod3+a exec $HOME/projects/.albert_trigger.sh "la "
+bindsym Mod3+l exec $HOME/projects/.albert_trigger.sh "la "
 bindsym Mod3+z exec $HOME/projects/.albert_trigger.sh "zl "
 bindsym Mod3+e exec $HOME/projects/.albert_trigger.sh "enit "
 
-bindsym --release Mod3+h exec xdotool key --clearmodifiers Left
-bindsym --release Mod3+l exec xdotool key --clearmodifiers Right
-bindsym --release Mod3+j exec xdotool key --clearmodifiers Down
-bindsym --release Mod3+k exec xdotool key --clearmodifiers Up
+bindsym --release Mod3+a exec xdotool key --clearmodifiers Left
+bindsym --release Mod3+d exec xdotool key --clearmodifiers Right
+bindsym --release Mod3+s exec xdotool key --clearmodifiers Down
+bindsym --release Mod3+w exec xdotool key --clearmodifiers Up
 
-bindsym --release Mod3+Shift+h exec xdotool key --clearmodifiers Home
-bindsym --release Mod3+Shift+l exec xdotool key --clearmodifiers End
-bindsym --release Mod3+Shift+j exec xdotool key --clearmodifiers Page_Down
-bindsym --release Mod3+Shift+k exec xdotool key --clearmodifiers Page_Up
+bindsym --release Mod3+Shift+a exec xdotool key --clearmodifiers Home
+bindsym --release Mod3+Shift+d exec xdotool key --clearmodifiers End
+bindsym --release Mod3+Shift+s exec xdotool key --clearmodifiers Page_Down
+bindsym --release Mod3+Shift+w exec xdotool key --clearmodifiers Page_Up
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
