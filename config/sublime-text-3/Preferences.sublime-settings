@@ -1,8 +1,14 @@
 {
 	"color_scheme": "Packages/User/Even-Darker.tmTheme",
 	"disable_formatted_linebreak": true,
+	"folder_exclude_patterns":
+	[
+		".git",
+		"node_modules",
+		"__pycache__"
+	],
 	"font_face": "hack",
-	"font_size": 10,
+	"font_size": 9,
 	"ignored_packages":
 	[
 	],

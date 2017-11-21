@@ -2,6 +2,7 @@
 # Mod Keys
 set $mod Mod4
 set $alt Mod1
+set $hyper Mod3
 
 # Programs
 set $terminal termite
@@ -110,7 +111,7 @@ bindsym $mod+p layout toggle split
 
 # Split in horizontal | vertical orientation
 #bindsym $mod+h split h
-bindsym $mod+v split v
+#bindsym $mod+v split v
 
 # Toggle tiling | floating
 bindsym $mod+Shift+p floating toggle
@@ -150,8 +151,8 @@ bindsym $mod+f fullscreen
 # Open terminal | browser | editor | spotify
 bindsym $mod+Return exec $terminal
 bindsym $mod+b exec $browser
-bindsym $mod+e exec $editor
-# bindsym $mod+k exec slack
+bindsym $mod+c exec $editor
+bindsym $mod+k exec slack
 
 # Kill focused window
 bindsym $mod+Shift+c kill
@@ -216,22 +217,22 @@ hide_edge_borders both
 bindsym $mod+r exec albert toggle
 bindsym $mod+g exec $HOME/projects/.albert_trigger.sh "gg "
 bindsym $mod+h exec $HOME/projects/.albert_trigger.sh "gh "
-bindsym Mod3+p exec $HOME/projects/.albert_trigger.sh "py "
+bindsym $mod+v exec $HOME/projects/.albert_trigger.sh "sed "
 bindsym $mod+y exec $HOME/projects/.albert_trigger.sh "yt "
-bindsym Mod3+t exec $HOME/projects/.albert_trigger.sh "tr "
-bindsym Mod3+l exec $HOME/projects/.albert_trigger.sh "la "
-bindsym Mod3+z exec $HOME/projects/.albert_trigger.sh "zl "
-bindsym Mod3+e exec $HOME/projects/.albert_trigger.sh "enit "
+bindsym $mod+t exec $HOME/projects/.albert_trigger.sh "tr "
+bindsym $mod+x exec $HOME/projects/.albert_trigger.sh "la "
+bindsym $mod+z exec $HOME/projects/.albert_trigger.sh "zl "
+bindsym $mod+e exec $HOME/projects/.albert_trigger.sh "enit "
 
-bindsym --release Mod3+a exec xdotool key --clearmodifiers Left
-bindsym --release Mod3+d exec xdotool key --clearmodifiers Right
-bindsym --release Mod3+s exec xdotool key --clearmodifiers Down
-bindsym --release Mod3+w exec xdotool key --clearmodifiers Up
 
-bindsym --release Mod3+Shift+a exec xdotool key --clearmodifiers Home
-bindsym --release Mod3+Shift+d exec xdotool key --clearmodifiers End
-bindsym --release Mod3+Shift+s exec xdotool key --clearmodifiers Page_Down
-bindsym --release Mod3+Shift+w exec xdotool key --clearmodifiers Page_Up
+bindsym $mod+Shift+i exec xdotool mousemove_relative -- 0 -50
+bindsym $mod+Shift+k exec xdotool mousemove_relative -- 0 50
+bindsym $mod+Shift+j exec xdotool mousemove_relative -- -50 0
+bindsym $mod+Shift+l exec xdotool mousemove_relative -- 50 0
+bindsym $mod+Shift+u exec xdotool click 1
+bindsym $mod+Shift+o exec xdotool click 3
+bindsym $mod+Shift+y exec xdotool click 4
+bindsym $mod+Shift+h exec xdotool click 5
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1

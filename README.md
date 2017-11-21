@@ -128,3 +128,13 @@ At launch an instance of Chromium is executed.
 - **workspace 3**: Termite
 - **workspace 4**: Slack
 - **workspace 9**: Spotify
+
+
+**New Keybindings**
+The format is the following:
+- **physical key name**: <key when pressed on it's own> | <key when pressed together with some other key>
+
+
+- **space**: <space> | <alt>
+- **caps_lock**: <esc> | <ctr_l>
+- **tab**: <tab> | <mode_switch>
