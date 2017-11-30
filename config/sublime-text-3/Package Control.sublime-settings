@@ -7,6 +7,7 @@
 	[
 		"A File Icon",
 		"Autoprefixer",
+		"Comments Aware Enter",
 		"Django",
 		"Emmet",
 		"Git blame",
@@ -17,7 +18,6 @@
 		"Material Theme",
 		"Package Control",
 		"Pretty JSON",
-		"Sass",
-		"URLEncode"
+		"Sass"
 	]
 }

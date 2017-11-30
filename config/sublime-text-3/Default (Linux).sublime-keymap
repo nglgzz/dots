@@ -2,13 +2,14 @@
   { "keys": ["ctrl+."], "command": "toggle_comment", "args": { "block": false } },
   { "keys": ["ctrl+shift+."], "command": "toggle_comment", "args": { "block": true } },
   { "keys": ["ctrl+shift+o"], "command": "prompt_open_folder" },
-  { "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
-  { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
+  { "keys": ["alt+shift+up"], "command": "select_lines", "args": { "forward": false } },
+  { "keys": ["alt+shift+down"], "command": "select_lines", "args": { "forward": true } },
 
   { "keys": ["ctrl+shift+a"], "command": "fold" },
   { "keys": ["ctrl+shift+c"], "command": "unfold" },
 
-  { "keys": ["ctrl+k", "ctrl+e"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
-  { "keys": ["ctrl+k", "ctrl+n"], "command": "expand_selection", "args": {"to": "word"} },
-  { "keys": ["ctrl+k", "ctrl+s"], "command": "goto_definition" }
+  { "keys": ["ctrl+k", "ctrl+e"], "command": "show_panel", "args": { "panel": "console", "toggle": true } },
+  { "keys": ["ctrl+k", "ctrl+n"], "command": "expand_selection", "args": { "to": "word" } },
+  { "keys": ["ctrl+k", "ctrl+s"], "command": "goto_definition" },
+  { "keys": ["ctrl+k", "ctrl+w"], "command": "wrap_lines", "args": { "width": 80 } }
 ]
