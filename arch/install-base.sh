@@ -15,11 +15,11 @@ read -p "${bold}Hostname: ${normal}" hostname
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "KEYMAP=it" > /etc/vconsole.conf
+echo "KEYMAP=us" > /etc/vconsole.conf
 
 # Select timezone and set clock to UTC.
 rm /etc/localtime
-ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+ln -s /usr/share/zoneinfo/Europe/Rome /etc/localtime
 hwclock --systohc --utc
 
 # Install bootloader.
@@ -43,4 +43,3 @@ systemctl enable wicd
 
 # Change root password.
 passwd
-

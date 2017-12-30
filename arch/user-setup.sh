@@ -29,7 +29,7 @@ cd ~/tmp
 rm -r ~/tmp/pacaur_install
 
 # Install packages
-cat ~/packages.list | sed 's/# aur//' | xargs pacaur -S --noconfirm
+cat ~/packages.list | sed 's/#.*//' | xargs pacaur -S --noconfirm
 
 # Set default X11 keymap
 echo -e 'setxkbmap it\nexec i3' > ~/.xinitrc
@@ -56,6 +56,6 @@ git remote add origin-r $piremote:/mnt/data/projects.git
 # Remove .bash_profile so setup isn't executed again.
 rm ~/.bash_profile
 
-# Create .zprofile so graphical interface is 
+# Create .zprofile so graphical interface is
 # started automatically on login.
 echo "startx" > ~/.zprofile

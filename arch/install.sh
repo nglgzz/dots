@@ -26,10 +26,10 @@ ram=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 ram=$(expr $ram / 1000 / 1000)
 
 # Set keyboard layout.
-loadkeys it
+loadkeys us
 
 # Set timezone and NTP, and print time.
-timedatectl set-timezone Europe/Amsterdam
+timedatectl set-timezone Europe/Rome
 timedatectl set-ntp true
 timedatectl status
 
@@ -67,7 +67,7 @@ while true; do
 done
 
 # Format and create boot, swap, and primary partitions.
-# Boot will be 512Mb, swap double the RAM size, and primary the rest.
+# Boot will be 512MiB, swap double the RAM size, and primary the rest.
 parted $device -s mklabel gpt
 parted $device -s mkpart ESP fat32 1MiB 513MiB
 parted $device set 1 boot on
@@ -108,4 +108,3 @@ echo "exec ~/root-setup.sh" > /mnt/root/.bash_profile
 clear
 read -p "${bold}Installation almost completed, press enter to reboot.${normal}"
 reboot
-

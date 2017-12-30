@@ -1,37 +1,47 @@
 openssh
 python
+sshfs
 
+# Monitoring
+strace
+htop
+sysstat
+acpi
+
+# WM dependencies
 xorg-server
 xorg-xinit
 i3-wm
 i3blocks
 i3lock
+albert # aur
+xcape-git # aur
 
+# Network & Audio
 wicd-gtk
 pavucontrol
 alsa-utils
 pulseaudio
-sysstat
+
 feh
 scrot
 xclip
-copyq # aur
 dunst
-acpi
 
-npm
-
+# Styling
 ttf-hack-powerline-git # aur
 ttf-fira-sans # aur
 ttf-font-awesome # aur
 adapta-gtk-theme # aur
 paper-icon-theme-git # aur
+
+# Terminal
 termite
+tmux
+oh-my-zsh-git # aur
+
+# Dev tools
 chromium
 sublime-text-dev # aur
-albert # aur
-
 slack-desktop # aur
-spotify # aur
-oh-my-zsh-git # aur
-feedreader # aur
+npm

@@ -15,8 +15,7 @@ passwd $username
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
 # Customize pacman
-sed -i -e 's/#Color/Color/g' /etc/pacman.conf
-sed -i -e 's/#TotalDownload/TotalDownload/g' /etc/pacman.conf
+sed -i -r 's/#(Color|TotalDownload)/\1/g' /etc/pacman.conf
 
 # Install zsh and set it as default shell.
 pacman -S --noconfirm zsh
@@ -31,13 +30,12 @@ pacman -S --noconfirm --needed expac yajl
 rm ~/.bash_profile
 
 # Add the configuration script for the user on its .bash_profile.
-cp ~/user-setup.sh /home/$username
-cp ~/packages.list /home/$username
-chown $username /home/$username/user-setup.sh
-chown $username /home/$username/packages.list
-chown $username /home/$username/.bash_profile
-echo "exec ~/user-setup.sh" > /home/$username/.bash_profile
+cp "~/user-setup.sh" "/home/$username"
+cp "~/packages.list" "/home/$username"
+chown $username "/home/$username/user-setup.sh"
+chown $username "/home/$username/packages.list"
+chown $username "/home/$username/.bash_profile"
+echo "exec ~/user-setup.sh" > "/home/$username/.bash_profile"
 
 # Check for updates
 pacman -Syu --noconfirm
-
