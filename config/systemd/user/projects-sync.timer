@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync projects
+After=network.target
+Wants=network.target
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=10min
+

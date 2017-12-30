@@ -1,0 +1,8 @@
+[Unit]
+Description=Sync projects
+After=network.target
+Wants=network.target
+
+[Service]
+ExecStart=%h/bin/sync-projects.sh
+
