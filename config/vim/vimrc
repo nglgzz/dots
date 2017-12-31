@@ -2,25 +2,24 @@ set tabstop=2
 set expandtab
 set shiftwidth=2
 set number
-" set foldmethod=syntax
 
 execute pathogen#infect()
 syntax on
-set background=dark
-colorscheme PaperColor
+hi EndOfBuffer ctermfg=black ctermbg=NONE
 filetype plugin indent on
 
 let g:AutoPairsShortcutFastWrap = 'æ'
 let g:user_emmet_mode='a'
 let g:user_emmet_leader_key='<C-E>'
-" auto remove trailing whitespace
-" on save
+
+" auto remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
 let mapleader=" "
 map <Leader>w :w<Enter>
 map <Leader>q :q<Enter>
 
+" move between tabs with <leader>+tab_index
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
