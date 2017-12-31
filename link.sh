@@ -19,22 +19,24 @@ _link() {
 }
 
 # Path variables
-dots=~/dots/config
-config=~/.config
-ignore=(vim sublime-text-3)
+dots="~/dots/dots"
+config_source="$dots/.config"
+config_target="~/.config"
+ignore=(.config sublime-text-3)
 
 #_link ~/projects/.gitconfig ~/.gitconfig
 #_link ~/projects/.ssh ~/.ssh
 #_link ~/projects/.zshrc ~/.zshrc
 #cp $dots/albert/albert.conf $config/albert.conf
 
-# Walk dirs in dots/config folder, and link them
-# in ~/.config folder.
-for dir in $(find $dots -type d -not -wholename $dots)
+# Link all folders in the $config_source folder to ~/.config
+for dir in $(find $config_source -type d -not -wholename $config_source)
 do
   dir=$(basename "$dir")
+  # Make sure that the current folder is not on the list of folders to
+  # be ignored
   if [[ ! " ${ignore[@]} " =~ " ${dir} " ]]; then
-    _link $dots/$dir $config/$dir
+    _link $dots/$dir $config_target/$dir
   fi
 done
 
@@ -44,9 +46,9 @@ _link $dots/vim ~/.vim
 
 # Sublime
 _link "$dots/sublime-text-3/Package Control.sublime-settings"\
-  "$config/sublime-text-3/Packages/User/Package Control.sublime-settings"
+  "$config_target/sublime-text-3/Packages/User/Package Control.sublime-settings"
 _link "$dots/sublime-text-3/Preferences.sublime-settings"\
-  "$config/sublime-text-3/Packages/User/Preferences.sublime-settings"
+  "$config_target/sublime-text-3/Packages/User/Preferences.sublime-settings"
 _link "$dots/sublime-text-3/Default (Linux).sublime-keymap"\
-  "$config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
-cp $dots/Even-Darker.* $config/sublime-text-3/
+  "$config_target/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
+cp $dots/Even-Darker.* $config_target/sublime-text-3/

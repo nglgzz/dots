@@ -1,6 +1,6 @@
 [submodule "config/vim/bundle/auto-pairs"]
-	path = config/vim/bundle/auto-pairs
+	path = dots/.vim/bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
 [submodule "config/vim/bundle/vim-javascript"]
-	path = config/vim/bundle/vim-javascript
+	path = dots/.vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript

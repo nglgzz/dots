@@ -1,0 +1,11 @@
+[user]
+	name = Angelo Gazzola
+	email = angelo@nglgzz.com
+[push]
+	default = simple
+[alias]
+	ls = log --pretty=format:\"[%h]%d%Cblue%an%Creset:~$ %s %C(bold green)(%ar)%Creset\" --graph
+[core]
+	editor = vim
+[credential]
+  helper = cache --timeout 3600

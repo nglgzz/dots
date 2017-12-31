@@ -1,0 +1,34 @@
+! Set Caps_Lock to Escape
+! I tried to clear Lock and add Control_L everywhere in this
+! file, but no way that caps stopped being caps. So annoying...
+! but in the end I managed to make it work by calling xmodmap
+! on the .xinitrc file.
+keycode 66 = Control_L
+
+! Space to Super_L (mod4)
+remove mod4 = Super_L
+keycode 65 = Super_L
+keycode 250 = space
+add mod4 = Super_L
+
+! Tab to Mode_switch
+keycode 23 = Mode_switch
+keycode 252 = Tab
+add mod3 = Mode_switch
+
+! wasd to arrow keys
+keycode 25 = w W Up Up ae AE ae
+keycode 38 = a A Left Left ae AE ae
+keycode 39 = s S Down Down ssharp section ssharp
+keycode 40 = d D Right Right eth ETH eth
+
+! qe to Home|End
+keycode 24 = q Q Home Q at Greek_OMEGA at
+keycode 26 = e E End E EuroSign cent EuroSign
+
+! gh to Delete|BackSpace
+keycode 42 = g G Delete Delete eng ENG eng
+keycode 43 = h H BackSpace BackSpace hstroke Hstroke hstroke
+
+! b to enter
+keycode 56 = b B Return Return rightdoublequotemark rightsinglequotemark rightdoublequotemark
