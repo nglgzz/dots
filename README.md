@@ -67,7 +67,7 @@ The way this scripts are supposed to be executed is by booting an Arch installat
 media with UEFI mode enabled, and then run the one liner in [this gist](https://gist.github.com/nglgzz/4bf8bc1a53a126ecf555f942dc05102f).
 
 The script will show you the available devices and ask you in which one you want
-to install Arch. Once you choose it will delete everything on it, and create 3 partitions:
+to install Arch. **Once you choose it will delete everything on it**, and create 3 partitions:
 boot, swap (double the size of your ram), and primary (all the remaining space).
 Later it will ask for hostname and root password.
 
