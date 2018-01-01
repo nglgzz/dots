@@ -41,7 +41,7 @@ git clone https://github.com/deajan/osync ~/bin/osync
 sed -i 's/IS_STABLE=no/IS_STABLE=yes/' ~/bin/osync/osync.sh
 
 # Clone dots and link them to the right config paths.
-git clone https://github.com/nglgzz/dots ~/dots
+git clone --recursive https://github.com/nglgzz/dots ~/dots
 ~/dots/link.sh
 
 # Start timer that syncs the projects folder.
