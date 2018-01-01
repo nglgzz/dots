@@ -31,27 +31,22 @@ rm -r ~/tmp/pacaur_install
 # Install packages
 cat ~/packages.list | sed 's/#.*//' | xargs pacaur -S --noconfirm
 
-# Set default X11 keymap
-echo -e 'setxkbmap it\nexec i3' > ~/.xinitrc
+# Install osync
+mkdir ~/bin
+# TODO - eventually the stable branch will contain the fix to issue #126,
+# when that happens this line can be uncommented, and the following two
+# can be deleted.
+# git clone -b "stable" https://github.com/deajan/osync ~/bin/osync
+git clone https://github.com/deajan/osync ~/bin/osync
+sed -i 's/IS_STABLE=no/IS_STABLE=yes/' ~/bin/osync/osync.sh
 
-# Download key for Raspberry.
-read -p "${bold}SSH cert URL: ${normal}" key_url
-wget $key_url -O pi
-eval $(ssh-agent)
-chmod 600 pi
-ssh-add pi
+# Clone dots and link them to the right config paths.
+git clone https://github.com/nglgzz/dots ~/dots
+~/dots/link.sh
 
-# Clone projects folder
-read -p "${bold}Raspberry URL: ${normal}" pi_url
-git clone --recursive $pi_url:/mnt/data/projects.git ~/projects
-cd ~/projects
-
-# Link dots to config folder
-~/projects/.dots/link.sh
-
-# Source .zshrc and add remote for Raspberry
-source ~/.zshrc
-git remote add origin-r $piremote:/mnt/data/projects.git
+# Start timer that syncs the projects folder.
+systemctl --user daemon-reload
+systemctl --user start projects-sync.timer
 
 # Remove .bash_profile so setup isn't executed again.
 rm ~/.bash_profile
