@@ -39,6 +39,7 @@ paper-icon-theme-git # aur
 termite
 tmux
 oh-my-zsh-git # aur
+fzf # aur
 
 # Dev tools
 chromium
