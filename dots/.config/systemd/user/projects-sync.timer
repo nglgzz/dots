@@ -7,3 +7,5 @@ Wants=network.target
 OnBootSec=5min
 OnUnitActiveSec=10min
 
+[Install]
+WantedBy=timers.target
