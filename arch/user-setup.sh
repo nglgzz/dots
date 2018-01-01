@@ -31,6 +31,9 @@ rm -r ~/tmp/pacaur_install
 # Install packages
 cat ~/packages.list | sed 's/#.*//' | xargs pacaur -S --noconfirm
 
+# Install pip dependencies for Albert
+sudo pip install lxml clipboard requests
+
 # Install osync
 mkdir ~/bin
 # TODO - eventually the stable branch will contain the fix to issue #126,

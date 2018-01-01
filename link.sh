@@ -62,3 +62,9 @@ _link "$config_source/sublime-text-3/Default (Linux).sublime-keymap"\
   "$config_target/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
 cp $config_source/sublime-text-3/Even-Darker.* \
   "$config_target/sublime-text-3/Packages/User"
+
+# Clone albert plugins
+mkdir -p "~/.local/share/albert/org.albert.extension.python"
+cd "~/.local/share/albert/org.albert.extension.python"
+git clone https://github.com/nglgzz/albert-plugins modules
+

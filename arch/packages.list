@@ -42,6 +42,9 @@ tmux
 oh-my-zsh-git # aur
 fzf # aur
 
+# Albert
+python-pip
+
 # Dev tools
 chromium
 sublime-text-dev # aur

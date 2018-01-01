@@ -1,0 +1,11 @@
+[Unit]
+Description=Albert launcher
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/albert
+Environment="DISPLAY=:0"
+
+[Install]
+WantedBy=default.target
+
