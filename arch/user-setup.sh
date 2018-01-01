@@ -50,6 +50,7 @@ systemctl --user start projects-sync.timer
 
 # Remove .bash_profile so setup isn't executed again.
 rm ~/.bash_profile
+rm packages.list
 
 # Create .zprofile so graphical interface is
 # started automatically on login.

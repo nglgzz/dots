@@ -31,7 +31,8 @@ dunst
 # Styling
 ttf-hack-powerline-git # aur
 ttf-fira-sans # aur
-ttf-font-awesome # aur
+ttf-font-awesome-4 # aur
+noto-fonts-emoji # aur
 adapta-gtk-theme # aur
 paper-icon-theme-git # aur
 

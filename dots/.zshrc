@@ -46,7 +46,7 @@ v() {
 
 # _shell
 alias q='exit'
-alias l='ls'
+alias l='ls -la'
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
