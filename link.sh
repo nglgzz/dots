@@ -70,3 +70,6 @@ cd ~/.local/share/albert/org.albert.extension.python
 rm -rf modules
 git clone https://github.com/nglgzz/albert-plugins modules
 
+# Create empty folder for syncing.
+mkdir ~/projects
+
