@@ -1,6 +1,7 @@
 openssh
 python
 sshfs
+rsync
 
 # Monitoring
 strace
