@@ -64,8 +64,8 @@ cp $config_source/sublime-text-3/Even-Darker.* \
   "$config_target/sublime-text-3/Packages/User"
 
 # Clone albert plugins
-mkdir -p "~/.local/share/albert/org.albert.extension.python"
-cd "~/.local/share/albert/org.albert.extension.python"
+mkdir -p ~/.local/share/albert/org.albert.extension.python
+cd ~/.local/share/albert/org.albert.extension.python
 # Remove the modules folder if already there
 rm -rf modules
 git clone https://github.com/nglgzz/albert-plugins modules
