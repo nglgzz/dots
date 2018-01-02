@@ -17,6 +17,7 @@ i3blocks
 i3lock
 albert # aur
 xcape-git # aur
+xdotool
 
 # Network & Audio
 wicd-gtk
