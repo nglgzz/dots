@@ -50,6 +50,5 @@ python-pip
 
 # Dev tools
 chromium
-sublime-text-dev # aur
 slack-desktop # aur
 npm
