@@ -195,7 +195,7 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#010101"
+    background = "#000000"
     foreground = "#dbdad4"
     timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
@@ -203,7 +203,7 @@
 
 
 [urgency_normal]
-    background = "#010101"
+    background = "#000000"
     foreground = "#dbdad4"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
@@ -212,7 +212,7 @@
 
 [urgency_critical]
     background = "#dbdad4"
-    foreground = "#010101"
+    foreground = "#000000"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     # icon = error

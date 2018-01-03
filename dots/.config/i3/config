@@ -10,7 +10,7 @@ set $browser chromium
 set $editor subl
 
 # Colors
-set $black #010101
+set $black #000000
 set $gray #585756
 set $accent #c6ff00
 set $urgent #DF6418
@@ -243,7 +243,7 @@ for_window [class="Spotify"] move to workspace $ws9 # https://github.com/i3/i3/i
 
 
 # Prepare background and start browser
-exec_always feh --bg-scale $HOME/.config/i3/bg.png
+exec_always xsetroot -solid '#000000'
 exec systemctl --user restart albert
 exec dunst
 exec copyq

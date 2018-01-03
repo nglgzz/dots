@@ -12,6 +12,7 @@ acpi
 # WM dependencies
 xorg-server
 xorg-xinit
+xorg-xsetroot
 i3-wm
 i3blocks
 i3lock
