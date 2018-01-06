@@ -105,8 +105,8 @@ alias learn='cd $(pfind learn-anything)/learn-anything'
 # _launchers
 # TODO - should just add ~/bin to path and link the executables
 # to launch these programs there
-alias dynamo='cd ~/dynamo && java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb'
-alias elasticsearch='~/.elasticsearch/bin/elasticsearch'
+alias dynamodb='cd ~/bin/dynamodb && java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb'
+alias elasticsearch='~/bin/elasticsearch/bin/elasticsearch'
 alias kibana='~/.kibana/bin/kibana'
 alias twitch='java -jar ~/chatty/Chatty.jar'
 alias memcached='systemctl restart memcached && journalctl -u memcached -f'
