@@ -46,13 +46,15 @@ v() {
 
 # _shell
 alias q='exit'
-alias l='ls -la'
-alias la='ls -a'
-alias ll='ls -l'
-alias lla='ls -la'
+alias l='ls -lah'
+alias la='ls -ah'
+alias ll='ls -lh'
+alias lla='ls -lah'
 alias copy='xclip -selection clipboard'
 alias f='find . -name'
 
+# _navigation
+alias b='popd 1>/dev/null'
 
 # _tmux
 function tm() {
@@ -96,6 +98,9 @@ function gc() {
   arg="$*"
   git commit -m "$arg"
 }
+
+# _docker
+alias d='docker'
 
 
 # _learn-anything
