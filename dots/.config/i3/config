@@ -243,7 +243,8 @@ for_window [class="Spotify"] move to workspace $ws9 # https://github.com/i3/i3/i
 
 
 # Prepare background and start browser
-exec_always xsetroot -solid '#000000'
+# exec_always xsetroot -solid '#000000'
+exec_always feh --bg-scale $HOME/.config/i3/bg.png
 exec systemctl --user restart albert
 exec dunst
 exec copyq
