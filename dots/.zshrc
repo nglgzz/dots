@@ -147,8 +147,12 @@ alias s='systemctl'
 alias sstart='systemctl start'
 alias sstop='systemctl stop'
 alias srestart='systemctl restart'
+alias sstatus='systemctl status'
 alias slog='journalctl -f -u'
 alias sreload='systemctl daemon-reload'
+
+# _testing
+alias memc='telnet localhost 11211'
 
 # _random
 # In case there's no WiFi and I have internet access via cable, I can create an
