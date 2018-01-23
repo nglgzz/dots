@@ -59,7 +59,8 @@ _link "$config_source/sublime-text-3/Package Control.sublime-settings"\
 _link "$config_source/sublime-text-3/Preferences.sublime-settings"\
   "$config_target/sublime-text-3/Packages/User/Preferences.sublime-settings"
 _link "$config_source/sublime-text-3/Default (Linux).sublime-keymap"\
-  "$config_target/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
+_link "$config_source/sublime-text-3/javascript.sublime-completions"\
+  "$config_target/sublime-text-3/Packages/javascript.sublime-completions"
 cp $config_source/sublime-text-3/Even-Darker.* \
   "$config_target/sublime-text-3/Packages/User"
 
