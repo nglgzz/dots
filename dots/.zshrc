@@ -25,6 +25,7 @@ export EDITOR='vim'
 # _configs
 alias zource='source ~/.zshrc'
 alias zedit='vim ~/.zshrc'
+alias kbsource='make all && teensy_loader_cli --mcu at90usb1286 gh60_lufa.hex && xev-clean'
 
 
 # _bookmarks
@@ -34,7 +35,7 @@ alias tmp='cd ~/tmp'
 
 # _dev utils
 alias serve='python -m http.server'
-alias s='subl .'
+alias e='subl .'
 
 v() {
   # find in folder and open on vim
@@ -52,6 +53,10 @@ alias ll='ls -lh'
 alias lla='ls -lah'
 alias copy='xclip -selection clipboard'
 alias f='find . -name'
+function md() {
+  mkdir -p "$1"
+  cd "$1"
+}
 
 # _navigation
 alias b='popd 1>/dev/null'
@@ -81,6 +86,10 @@ alias nr='npm run'
 alias nt='npm test'
 alias ntw='npm run test:watch'
 
+export PATH=~/.npm-global/bin:$PATH
+# NPM Path (there's probably a better way to do this)
+export PATH=$PATH:./node_modules/.bin/
+
 
 # _git
 alias g='git'
@@ -99,8 +108,10 @@ function gc() {
   git commit -m "$arg"
 }
 
+
 # _docker
 alias d='docker'
+alias dc='docker-compose'
 
 
 # _learn-anything
@@ -115,6 +126,7 @@ alias elasticsearch='~/bin/elasticsearch/bin/elasticsearch'
 alias kibana='~/bin/kibana/bin/kibana'
 alias chatty='java -jar ~/bin/chatty/Chatty.jar'
 alias memcached='systemctl restart memcached && journalctl -u memcached -f'
+alias neo4j='/home/mnbv/bin/neo4j/bin/neo4j'
 
 
 # _albert
@@ -130,10 +142,29 @@ function cheat() {
 alias weather='curl wttr.in/..'
 
 
+# _systemd
+alias s='systemctl'
+alias sstart='systemctl start'
+alias sstop='systemctl stop'
+alias srestart='systemctl restart'
+alias slog='journalctl -f -u'
+alias sreload='systemctl daemon-reload'
+
 # _random
 # In case there's no WiFi and I have internet access via cable, I can create an
 # access point so I can share the connection with my phone.
 alias lettherebewifi="sudo create_ap wlp3s0 enp0s25 'Gluten-Free Fair Trade WiFi' ALLLOWERCASEWITHSPACES"
+
+alias xev-clean='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
+
+# Assumes that chromix-too-server is running, and prints the link of all YouTube tabs open.
+alias tune='chromix-too ls | grep youtube | cut -f 1 -d '\'' '\'' --complement | sed '\''s/ - YouTube//'\'' | sed '\''s/ /\n🔊 /'\'' | sort -r'
+
+function play() {
+  tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
+
+  chromix-too raw 'chrome.tabs.update' $tab '{"url": "'$1'"}'
+}
 
 # 10 most used commands, can show more or less appending "-n15" for example
 alias topten='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'\'' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
@@ -153,9 +184,6 @@ function journal() {
 }
 HISTORY_IGNORE='journal *'
 ## End Aliases
-
-# NPM Path (there's probably a better way to do this)
-export PATH=$PATH:~/.npm-global/bin/:./node_modules/.bin/
 
 # Projects
 export PROJECTS=$HOME/projects/.utils

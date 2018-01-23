@@ -50,14 +50,14 @@ bindsym $mod+Shift+q exec i3-msg exit # "i3-nagbar -t warning -m 'You pressed th
 
 # System
 # Audio control
-bindsym XF86AudioRaiseVolume exec amixer -D default set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -D default set Master 5%-
-bindsym XF86AudioMute exec amixer -D default set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%-
+bindsym XF86AudioMute exec amixer -D pulse set Master toggle
 
 # Mic control
-bindsym Shift+XF86AudioRaiseVolume exec amixer -D default set Capture 9%+
-bindsym Shift+XF86AudioLowerVolume exec amixer -D default set Capture 9%-
-bindsym XF86AudioMicMute exec amixer -D default set Capture toggle
+bindsym Shift+XF86AudioRaiseVolume exec amixer -D pulse set Capture 9%+
+bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
+bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
 # Media keys
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -221,7 +221,7 @@ bindsym $mod+v exec $HOME/projects/.albert_trigger.sh "sed "
 bindsym $mod+y exec $HOME/projects/.albert_trigger.sh "yt "
 bindsym $mod+t exec $HOME/projects/.albert_trigger.sh "tr "
 bindsym $mod+x exec $HOME/projects/.albert_trigger.sh "la "
-bindsym $mod+z exec $HOME/projects/.albert_trigger.sh "zl "
+bindsym $mod+z exec $HOME/projects/.albert_trigger.sh "ch "
 bindsym $mod+e exec $HOME/projects/.albert_trigger.sh "enit "
 
 
