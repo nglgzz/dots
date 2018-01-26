@@ -4,3 +4,6 @@
 [submodule "config/vim/bundle/vim-javascript"]
 	path = dots/.vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
+[submodule "dots/.vim/bundle/fzf.vim"]
+	path = dots/.vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
