@@ -225,10 +225,8 @@ bindsym $mod+z exec $HOME/projects/.albert_trigger.sh "ch "
 bindsym $mod+e exec $HOME/projects/.albert_trigger.sh "enit "
 
 
-bindsym $mod+Shift+i exec xdotool mousemove_relative -- 0 -50
-bindsym $mod+Shift+k exec xdotool mousemove_relative -- 0 50
-bindsym $mod+Shift+j exec xdotool mousemove_relative -- -50 0
-bindsym $mod+Shift+l exec xdotool mousemove_relative -- 50 0
+bindsym $mod+Shift+f exec echo "console.log(eval($(xclip -selection primary -out)))" | node | xargs echo -n | xclip -selection clipboard
+
 bindsym $mod+Shift+u exec xdotool click 1
 bindsym $mod+Shift+o exec xdotool click 3
 bindsym $mod+Shift+y exec xdotool click 4

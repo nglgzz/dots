@@ -53,6 +53,10 @@ alias ll='ls -lh'
 alias lla='ls -lah'
 alias copy='xclip -selection clipboard'
 alias f='find . -name'
+function c() {
+  cf_path=$(find . -name "$1" | head  -n1)
+  cd $cf_path
+}
 function md() {
   mkdir -p "$1"
   cd "$1"
