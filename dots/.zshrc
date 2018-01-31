@@ -162,6 +162,23 @@ alias memc='telnet localhost 11211'
 alias twitch='systemctl start --user twitch-local-commands'
 alias twitch-stop='systemctl stop --user twitch-local-commands'
 
+# Assumes that chromix-too-server is running, and prints the link of all YouTube tabs open.
+alias tune='chromix-too ls | grep youtube | cut -f 1 -d '\'' '\'' --complement | sed '\''s/ - YouTube//'\'' | sed '\''s/ /\n🔊 /'\'' | sort -r'
+
+# Change the url of the first tab playing music on  Youtube.
+function play() {
+  tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
+
+  chromix-too raw 'chrome.tabs.update' $tab '{"url": "'$1'"}'
+}
+
+# Skip to the next song on the first tab playing music on Youtube.
+function skip() {
+  tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
+
+  chromix-too raw 'chrome.tabs.executeScript' $tab '{"code": "document.querySelector(\".ytp-next-button\").click();"}'
+}
+
 # _random
 # In case there's no WiFi and I have internet access via cable, I can create an
 # access point so I can share the connection with my phone.
@@ -169,14 +186,6 @@ alias lettherebewifi="sudo create_ap wlp3s0 enp0s25 'Gluten-Free Fair Trade WiFi
 
 alias xev-clean='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
 
-# Assumes that chromix-too-server is running, and prints the link of all YouTube tabs open.
-alias tune='chromix-too ls | grep youtube | cut -f 1 -d '\'' '\'' --complement | sed '\''s/ - YouTube//'\'' | sed '\''s/ /\n🔊 /'\'' | sort -r'
-
-function play() {
-  tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
-
-  chromix-too raw 'chrome.tabs.update' $tab '{"url": "'$1'"}'
-}
 
 # 10 most used commands, can show more or less appending "-n15" for example
 alias topten='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'\'' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
