@@ -1,0 +1,10 @@
+[Unit]
+Description=Chromix too server
+Requires=chromix-too.service
+
+[Service]
+Environment="PATH=/usr/bin:/home/mnbv/.npm-global/bin/"
+WorkingDirectory=%h/projects/nglgzz/twitch
+ExecStart=/usr/bin/node index.js
+ExecStop=/usr/bin/systemctl stop --user chromix-too.service
+

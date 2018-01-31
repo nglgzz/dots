@@ -1,0 +1,6 @@
+[Unit]
+Description=Chromix too server
+
+[Service]
+ExecStart=/home/mnbv/.npm-global/bin/chromix-too-server
+
