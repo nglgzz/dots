@@ -158,6 +158,10 @@ alias sreload='systemctl daemon-reload'
 # _testing
 alias memc='telnet localhost 11211'
 
+# _streaming
+alias twitch='systemctl start --user twitch-local-commands'
+alias twitch-stop='systemctl stop --user twitch-local-commands'
+
 # _random
 # In case there's no WiFi and I have internet access via cable, I can create an
 # access point so I can share the connection with my phone.
