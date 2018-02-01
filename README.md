@@ -86,55 +86,81 @@ Here's the complete list of all configured shortcuts, grouped by category.
 - **Shift+[VolumeUp|VolumeDown]**: turn mic volume up or down
 - **MuteMic**: mute mic
 - **alt+Shift+s**: screenshot (saved on '~/tmp/screenshot.png' and copied to clipboard)
-- **alt+s**: screenshot, draw rectangle
+- **alt+s**: screenshot, draw rectangle (same as above, but lets you choose which portion of the screen to capture)
 
 **i3**
-- **mod+y**: toggle i3bar mode (hide | dock)
 - **mod+shift+x**: lock screen (i3lock)
-- **mod+shift+r**: reload i3
+- **mod+shift+r**: restart i3
 - **mod+shift+q**: exit i3
 
 **Workspace**
 - **mod+[1-0]**: go to workspace 1 to 10
 - **mod+Shift+[1-0]**: move focused window to workspace 1 to 10
 - **mod+Tab**: back and forth between last two workspaces
-- **mod+l**: container layout, tabbed
-- **mod+o**: container layout, stacking
-- **mod+p**: container layout, toggle split
-- **mod+h**: split in horizontal orientation
-- **mod+v**: split in vertical orientation
+- **mod+o**: container layout, tabbed
+- **mod+p**: container layout, toggle split (vertical|horizontal)
 - **mod+shift+p**: toggle between tiling and floating
 - **mod+LeftClick**: to drag floating windows
 - **mod+RigthClick**: to resize floating windows
 
 **Window**
 - **mod+[Left|Right|Up|Down]**: move focus
+- **mod+[w|a|s|d]**: move focus
 - **mod+Shift+[Left|Right|Up|Down]**: move focused window
+- **mod+Shift+[w|a|s|d]**: move focused window
+- **mod+f**: toggle fullscreen for focused window
+- **mod+shift+c**: kill focused window
 - **mod+Enter**: start terminal (termite)
 - **mod+r**: start albert
 - **mod+b**: start browser (chromium)
-- **mod+e**: start editor (sublime)
+- **mod+c**: start code editor (sublime)
 - **mod+k**: start slack
-- **mod+f**: toggle fullscreen for focused window
-- **mod+shift+c**: kill focused window
-- **mod+d**: enter resize mode (use arrows or mouse to resize, enter or escape to exit)
+
+**Albert Plugins**
+- **mod+r**: toggle albert
+- **mod+g**: google search
+- **mod+h**: github search
+- **mod+y**: youtube search
+- **mod+v**: transform clipboard content with regex
+- **mod+t**: google translate
+- **mod+x**: learn anything search
+- **mod+z**: cheat.sh search
+- **mod+e**: wordreference (english/italian)
+
+**Random**
+- **mod+Shift+f**: execute the content of primary selection (selected text) in JS, and copy output on clipboard buffer
+- **mod+Shift+u**: simulate left click
+- **mod+Shift+i**: simulate right click
+
+
+## Mappings
+| Physical key | Key pressed alone | Key pressed as modifier (together with another key) |
+|--------------|-------------------|-----------------------------------------------------|
+| space        | space             | GUI key (mod)                                            |
+| caps lock    | escape            | left control                                        |
+| tab          | tab               | mode switch                                         |
+
+### Mode Switch mappings
+| Physical key | Key pressed with mode switch |
+|--------------|------------------------------|
+| w            | arrow up                     |
+| a            | arrow left                   |
+| s            | arrow down                   |
+| d            | arrow right                  |
+| q            | home                         |
+| e            | end                          |
+| g            | delete                       |
+| h            | backspace                    |
+| b            | enter                        |
+
 
 ## Notes
-At launch an instance of Chromium is executed.
+- At launch an instance of Chromium is executed.
+- Workspaces 1,2, and 3 are bound to my primary screen, while 4 and 8 are bound to my secondary screen.
 
 **Workspace bindings**
 - **workspace 1**: Chromium
 - **workspace 2**: Sublime
 - **workspace 3**: Termite
 - **workspace 4**: Slack
-- **workspace 9**: Spotify
-
-
-**New Keybindings**
-The format is the following:
-- **physical key name**: <key when pressed on it's own> | <key when pressed together with some other key>
-
-
-- **space**: <space> | <alt>
-- **caps_lock**: <esc> | <ctr_l>
-- **tab**: <tab> | <mode_switch>
+- **workspace 8**: OBS, Chatty

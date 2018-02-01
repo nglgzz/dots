@@ -30,7 +30,15 @@ set $ws8 "8 "
 set $ws9 "9 "
 set $ws0 "10 "
 
+# Screens
+set $screen1 "DVI-I-1"
+set $screen2 "HDMI-0"
 
+workspace $ws1 output $screen1
+workspace $ws2 output $screen1
+workspace $ws3 output $screen1
+workspace $ws4 output $screen2
+workspace $ws8 output $screen2
 
 
 # Key Bindings
@@ -70,11 +78,6 @@ bindsym --release $alt+s exec scrot -s ~/tmp/screenshot.png &&\
 bindsym --release $alt+Shift+s exec scrot ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
 
-# Brightness
-bindsym $mod+Next exec xrandr --output DVI-I-1 --brightness 0.3
-bindsym $mod+Prior exec xrandr --output DVI-I-1 --brightness 1
-
-
 # Workspace
 # Go to workspace
 bindsym $mod+1 workspace $ws1
@@ -105,13 +108,8 @@ bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth yes
 
 # Change container layout to stacked | tabbed | toggle split
-bindsym $mod+l layout stacking
 bindsym $mod+o layout tabbed
 bindsym $mod+p layout toggle split
-
-# Split in horizontal | vertical orientation
-#bindsym $mod+h split h
-#bindsym $mod+v split v
 
 # Toggle tiling | floating
 bindsym $mod+Shift+p floating toggle
@@ -145,10 +143,7 @@ bindsym $mod+Shift+a move left
 # Toggle fullscreen for focused container
 bindsym $mod+f fullscreen
 
-# Open Rofi (program launcher)
-#bindsym $mod+r exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "run " -config "$HOME/.i3/rofi.conf"'
-
-# Open terminal | browser | editor | spotify
+# Open terminal | browser | editor | slack
 bindsym $mod+Return exec $terminal
 bindsym $mod+b exec $browser
 bindsym $mod+c exec $editor
@@ -228,17 +223,15 @@ bindsym $mod+e exec $HOME/projects/.albert_trigger.sh "enit "
 bindsym $mod+Shift+f exec echo "console.log(eval($(xclip -selection primary -out)))" | node | xargs echo -n | xclip -selection clipboard
 
 bindsym $mod+Shift+u exec xdotool click 1
-bindsym $mod+Shift+o exec xdotool click 3
-bindsym $mod+Shift+y exec xdotool click 4
-bindsym $mod+Shift+h exec xdotool click 5
+bindsym $mod+Shift+i exec xdotool click 3
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
 assign [class="Subl"] $ws2
 assign [class="Termite"] $ws3
 assign [class="Slack"] $ws4
-for_window [class="Spotify"] move to workspace $ws9 # https://github.com/i3/i3/issues/2060
-
+assign [class="obs"] $ws8
+assign [class="chatty-Chatty"] $ws8
 
 # Prepare background and start browser
 # exec_always xsetroot -solid '#000000'
