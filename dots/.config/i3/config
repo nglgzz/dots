@@ -67,11 +67,6 @@ bindsym Shift+XF86AudioRaiseVolume exec amixer -D pulse set Capture 9%+
 bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
 bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
-# Media keys
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPrev exec playerctl prev
-bindsym XF86AudioNext exec playerctl next
-
 # Print screen: full | select window or rectangle
 bindsym --release $alt+s exec scrot -s ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
@@ -172,7 +167,7 @@ mode "resize" {
 
 # Settings
 bar {
-	font pango:fira 10
+	font pango:fira 18
 	position top
 	#mode hide
 
@@ -220,6 +215,13 @@ bindsym $mod+z exec $HOME/projects/.albert_trigger.sh "ch "
 bindsym $mod+e exec $HOME/projects/.albert_trigger.sh "enit "
 
 
+# Streaming
+# bindsym XF86AudioPlay
+bindsym XF86AudioPlay exec curl localhost:8268/playpause
+bindsym XF86AudioNext exec curl localhost:8268/next
+bindsym XF86AudioPrev exec curl localhost:8268/random
+
+# Random
 bindsym $mod+Shift+f exec echo "console.log(eval($(xclip -selection primary -out)))" | node | xargs echo -n | xclip -selection clipboard
 
 bindsym $mod+Shift+u exec xdotool click 1
