@@ -158,12 +158,26 @@ alias sreload='systemctl daemon-reload'
 # _testing
 alias memc='telnet localhost 11211'
 
+function loc() {
+  if [[ -z "$1" ]]; then
+    chromium "http://localhost:3000"
+    exit
+  fi
+
+  if [[ 1 == "${#1}" ]]; then
+    chromium "http://localhost:${1}000"
+    exit
+  fi
+
+  chromium "http://localhost:$1"
+}
+
 # _streaming
 alias twitch='systemctl start --user twitch-local-commands'
 alias twitch-stop='systemctl stop --user twitch-local-commands'
 
 # Assumes that chromix-too-server is running, and prints the link of all YouTube tabs open.
-alias tune='chromix-too ls | grep youtube | cut -f 1 -d '\'' '\'' --complement | sed '\''s/ - YouTube//'\'' | sed '\''s/ /\n🔊 /'\'' | sort -r'
+alias song='chromix-too ls | grep youtube | cut -f 1 -d '\'' '\'' --complement | sed '\''s/ - YouTube//'\'' | sed '\''s/ /\n🔊 /'\'' | sort -r'
 
 # Change the url of the first tab playing music on  Youtube.
 function play() {
@@ -173,10 +187,16 @@ function play() {
 }
 
 # Skip to the next song on the first tab playing music on Youtube.
-function skip() {
+function nextsong() {
   tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
 
   chromix-too raw 'chrome.tabs.executeScript' $tab '{"code": "document.querySelector(\".ytp-next-button\").click();"}'
+}
+
+function playpause() {
+  tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
+
+  chromix-too raw 'chrome.tabs.executeScript' $tab '{"code": "document.querySelector(\".ytp-play-button\").click();"}'
 }
 
 # _random
@@ -186,6 +206,8 @@ alias lettherebewifi="sudo create_ap wlp3s0 enp0s25 'Gluten-Free Fair Trade WiFi
 
 alias xev-clean='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
 
+alias random-word='cat /usr/share/dict/cracklib-small | grep -Pv '\''[^a-z]|([a-z])\1'\'' | shuf -n1'
+alias random-song='curl "http://musicbrainz.org/ws/2/work?query=$(random-word | cut -c1-4)&fmt=json" -s | node tmp/random/index.js'
 
 # 10 most used commands, can show more or less appending "-n15" for example
 alias topten='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'\'' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
