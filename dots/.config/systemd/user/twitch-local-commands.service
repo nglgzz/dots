@@ -4,7 +4,8 @@ Requires=chromix-too.service
 
 [Service]
 Environment="PATH=/usr/bin:/home/mnbv/.npm-global/bin/"
+EnvironmentFile=%h/.private/google
 WorkingDirectory=%h/projects/nglgzz/twitch
-ExecStart=/usr/bin/node index.js
+ExecStart=/usr/bin/node server.js
 ExecStop=/usr/bin/systemctl stop --user chromix-too.service
 
