@@ -2,8 +2,9 @@
   "scope": "source.js - source.jsx",
   "completions": [
     { "trigger": "__\tarrow function", "contents": "($1) => {$2}" },
-    { "trigger": ">>\tNeo4j relatioship", "contents": "($1)-[$2]->($3)" },
-    { "trigger": "<<\tNeo4j relatioship", "contents": "($1)<-[$2]-($3)" },
-    { "trigger": "<>\tNeo4j relatioship", "contents": "($1)-[$2]-($3)" }
+    { "trigger": "import", "contents": "const $1 = require('$1');" },
+    { "trigger": "router.get", "contents": "router.get('/$1', (req, res) => {$2});" },
+    { "trigger": "module.exports", "contents": "module.exports = {$1};" }
+
   ]
 }

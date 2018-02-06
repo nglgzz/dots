@@ -26,10 +26,10 @@ export EDITOR='vim'
 alias zource='source ~/.zshrc'
 alias zedit='vim ~/.zshrc'
 alias kbsource='make all && teensy_loader_cli --mcu at90usb1286 gh60_lufa.hex && xev-clean'
+alias scompletions='vim ~/dots/dots/.config/sublime-text-3/javascript.sublime-completions'
 
 
 # _bookmarks
-alias down='cd ~/downloads'
 alias tmp='cd ~/tmp'
 
 
