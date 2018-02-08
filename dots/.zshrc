@@ -175,6 +175,7 @@ function loc() {
 # _streaming
 alias twitch='systemctl start --user twitch-local-commands'
 alias twitch-stop='systemctl stop --user twitch-local-commands'
+alias twitch-local='systemctl --user set-environment TWITCH_HOST=localhost && twitch && systemctl --user unset-environment TWITCH_HOST'
 
 # Assumes that chromix-too-server is running, and prints the link of all YouTube tabs open.
 alias song='chromix-too ls | grep youtube | cut -f 1 -d '\'' '\'' --complement | sed '\''s/ - YouTube//'\'' | sed '\''s/ /\n🔊 /'\'' | sort -r'
