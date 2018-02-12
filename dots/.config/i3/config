@@ -217,9 +217,10 @@ bindsym $mod+e exec $HOME/projects/.albert_trigger.sh "enit "
 
 # Streaming
 # bindsym XF86AudioPlay
-bindsym XF86AudioPlay exec curl localhost:8268/track/pause
-bindsym XF86AudioNext exec curl localhost:8268/track/next
-bindsym XF86AudioPrev exec curl localhost:8268/track/random
+bindsym XF86AudioPlay exec curl localhost:8268/pause
+bindsym XF86AudioNext exec curl localhost:8268/next
+bindsym XF86AudioPrev exec curl localhost:8268/back
+bindsym XF86AudioStop exec curl localhost:8268/random
 
 # Random
 bindsym $mod+Shift+f exec echo "console.log(eval($(xclip -selection primary -out)))" | node | xargs echo -n | xclip -selection clipboard
