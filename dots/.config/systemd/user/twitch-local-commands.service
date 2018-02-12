@@ -3,7 +3,7 @@ Description=Chromix too server
 Requires=chromix-too.service
 
 [Service]
-Environment="PATH=/usr/bin:/home/mnbv/.npm-global/bin/"
+Environment="PATH=/usr/bin:%h/.npm-global/bin/"
 EnvironmentFile=%h/.private/google
 WorkingDirectory=%h/projects/nglgzz/twitch
 ExecStart=/usr/bin/node server.js
