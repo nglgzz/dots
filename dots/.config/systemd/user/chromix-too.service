@@ -2,5 +2,5 @@
 Description=Chromix too server
 
 [Service]
-ExecStart=/home/mnbv/.npm-global/bin/chromix-too-server
+ExecStart=/%h/.npm-global/bin/chromix-too-server
 
