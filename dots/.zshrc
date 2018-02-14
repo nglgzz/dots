@@ -61,6 +61,9 @@ function md() {
   mkdir -p "$1"
   cd "$1"
 }
+function tousb() {
+  dd bs=4M if=$1 of=$2
+}
 
 # _navigation
 alias b='popd 1>/dev/null'
