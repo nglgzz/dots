@@ -182,9 +182,7 @@ alias song='chromix-too ls | grep youtube | cut -f 1 -d '\'' '\'' --complement |
 
 # Change the url of the first tab playing music on  Youtube.
 function play() {
-  tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
-
-  chromix-too raw 'chrome.tabs.update' $tab '{"url": "'$1'"}'
+  curl "http://localhost:8268/change?url=$1"
 }
 
 # Skip to the next song on the first tab playing music on Youtube.
@@ -212,6 +210,44 @@ alias random-song='curl "http://musicbrainz.org/ws/2/work?query=$(random-word | 
 
 # 10 most used commands, can show more or less appending "-n15" for example
 alias topten='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'\'' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
+
+function share() {
+  if [ $# -eq 0 ]; then
+    echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+    return 1
+  fi
+
+  tmpfile=$( mktemp -t transferXXX )
+
+  if tty -s; then
+    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile
+  else
+    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile
+  fi
+
+  cat $tmpfile
+  cat $tmpfile | copy
+  rm -f $tmpfile
+}
+
+function it() {
+  setxkbmap it
+  xmodmap ~/.xmodmaprc
+  pkill xcape
+  xcape -e "Super_L=space"
+  xcape -e "Control_L=Escape"
+  xcape -e "Mode_switch=Tab"
+}
+
+function en() {
+  setxkbmap us
+  xmodmap ~/.xmodmaprc
+  pkill xcape
+  xcape -e "Super_L=space"
+  xcape -e "Control_L=Escape"
+  xcape -e "Mode_switch=Tab"
+}
 
 function journal() {
   # create journal entries
