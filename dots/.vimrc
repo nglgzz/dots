@@ -31,7 +31,7 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-noremap <leader>p :Files<Enter>
+noremap <C-p> :Files<Enter>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-k> :tabnext<CR>
 
