@@ -25,13 +25,19 @@ export EDITOR='vim'
 # _configs
 alias zource='source ~/.zshrc'
 alias zedit='vim ~/.zshrc'
-alias kbsource='make all && teensy_loader_cli --mcu atmega32u4 42.hex && xev-clean'
 alias scompletions='vim ~/dots/dots/.config/sublime-text-3/javascript.sublime-completions'
 
+# _keyboards
+alias 42source='cd ~/projects/nglgzz/42/firmware && make all && teensy_loader_cli --mcu atmega32u4 42.hex && xev-clean'
+alias 42edit='vim ~/projects/nglgzz/42/firmware/keymap_42.c'
+alias 42='cd ~/projects/nglgzz/42'
+
+alias 9source='cd ~/projects/nglgzz/9/firmware && make all && teensy_loader_cli --mcu at90usb1286 9.hex && xev-clean'
+alias 9edit='vim ~/projects/nglgzz/9/firmware/keymap_9.c'
+alias 9='cd ~/projects/nglgzz/9'
 
 # _bookmarks
 alias tmp='cd ~/tmp'
-alias 42='cd ~/projects/nglgzz/42'
 
 
 # _dev utils
@@ -130,7 +136,7 @@ alias learn='cd $(pfind learn-anything)/learn-anything'
 # TODO - should just add ~/bin to path and link the executables
 # to launch these programs there
 alias dynamodb='cd ~/bin/dynamodb && java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb'
-alias elasticsearch='~/bin/elasticsearch/bin/elasticsearch'
+alias elasticsearch='~/bin/elasticsearch-5.5.2/bin/elasticsearch'
 alias kibana='~/bin/kibana/bin/kibana'
 alias chatty='java -jar ~/bin/chatty/Chatty.jar'
 alias memcached='systemctl restart memcached && journalctl -u memcached -f'
