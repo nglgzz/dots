@@ -140,7 +140,7 @@ alias elasticsearch='~/bin/elasticsearch-5.5.2/bin/elasticsearch'
 alias kibana='~/bin/kibana/bin/kibana'
 alias chatty='java -jar ~/bin/chatty/Chatty.jar'
 alias memcached='systemctl restart memcached && journalctl -u memcached -f'
-alias neo4j='/home/mnbv/bin/neo4j/bin/neo4j'
+alias neo4j='~/bin/neo4j/bin/neo4j'
 
 
 # _albert
