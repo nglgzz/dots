@@ -18,8 +18,8 @@ set $urgent #DF6418
 
 # Layout
 set $border_width 2
-gaps inner 10
-gaps outer 5
+gaps inner 20
+gaps outer 20
 #smart_gaps on
 smart_borders on
 
@@ -159,8 +159,8 @@ bindsym $mod+Shift+o exec i3 gaps inner all set 0 &&\
   pkill polybar &&\
   polybar low_profile
 # Enable gaps and default bar
-bindsym $mod+Shift+i exec i3 gaps inner all set 10 &&\
-  i3 gaps outer all set 5 &&\
+bindsym $mod+Shift+i exec i3 gaps inner all set 20 &&\
+  i3 gaps outer all set 20 &&\
   pkill polybar &&\
   polybar default
 
@@ -208,8 +208,8 @@ assign [class="obs"] $ws8
 assign [class="chatty-Chatty"] $ws8
 
 # Prepare background and start browser
-exec_always hsetroot -solid '#222222'
-# exec_always feh --bg-scale $HOME/.config/i3/bg.png
+# exec_always hsetroot -solid '#222222'
+exec_always feh --bg-scale $HOME/.config/i3/bg.png
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always compton -bc

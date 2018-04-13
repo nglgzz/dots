@@ -24,63 +24,53 @@ border-bottom-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 3
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin = 1
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Wuncon Siji:pixelsize=10;1"
-font-3 = FontAwesome:pixelsize=14
+font-0 = Hack:pixelsize=10;2
+font-1 = FontAwesome:pixelsize=14;3
+font-2 = NotoColorEmoji:size=10;2
 
 modules-left = i3
-modules-center =
-modules-right = volume cpu wlan eth battery date
-
-tray-position = right
-tray-padding = 2
+modules-center = xmwindow
+modules-right = volume cpu network battery date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 
 [bar/default]
-width = 100%
-#width = 1350
-height = 30
-#offset-x = 8
-#offset-y = 8
+monitor = ${env:MONITOR:HDMI-0}
+width = ${env:POLYBAR_WIDTH:100%}
+height = 25
+offset-x = 40
+offset-y = 0
 radius = 0
 fixed-center = true
+
+override-redirect = true
+wm-restack = i3
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
-line-color = #f00
+line-size = 1
+line-color = #f000
 
-border-size = 15
-border-bottom-size = 0
-border-color = #00000000
+border-size = 0
+border-color = #0000
 
 padding-left = 0
-padding-right = 2
+padding-right = 3
+module-margin = 1
 
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Wuncon Siji:pixelsize=10;1"
-font-3 = FontAwesome:pixelsize=14
+font-0 = Hack:pixelsize=10;2
+font-1 = FontAwesome:pixelsize=14;3
 
 modules-left = i3
-modules-center =
-modules-right = volume cpu wlan eth battery date
-
-tray-position = right
-tray-padding = 2
+modules-center = xwindow
+modules-right = volume network battery cpu date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -99,59 +89,36 @@ label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %icon%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %icon%
-label-occupied-padding = 2
-
-label-urgent = %icon%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %icon%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
 [module/i3]
+type = internal/i3
+
 ws-icon-1 = 1;
 ws-icon-2 = 2;
 ws-icon-3 = 3;
-ws-icon-4 = 4;
-ws-icon-5 = 5;
-ws-icon-6 = 6;
-ws-icon-7 = 7;
+ws-icon-4 = 
+ws-icon-5 = 
+ws-icon-6 = 
+ws-icon-7 = 
 ws-icon-8 = 8;
 ws-icon-9 = 9;
 ws-icon-0 = 10;
 ws-icon-default = 
 
-type = internal/i3
-format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+pin-workspaces = true
 
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+label-focused-background = ${colors.background}
+label-focused-underline = ${colors.foreground}
+label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %icon%
@@ -161,106 +128,79 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 2
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
 label = %percentage:2%%
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
-
-[module/wlan]
+[module/network]
 type = internal/network
-interface = wlp3s0
+interface = ${env:NETWORK_IFACE:wlp3s0}
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %local_ip%
+format-connected = <label-connected>
+label-connected = ▲%upspeed%  ▼%downspeed%  %local_ip%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = enp0s25
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected = <label-disconnected>
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.alert}
 
 [module/date]
 type = internal/date
 interval = 5
 
 date =
-date-alt = " %d-%m"
+date-alt = %d/%m
 
 time = %H:%M
 time-alt = %H:%M
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
 
 label = %date% %time%
 
 [module/volume]
 type = internal/volume
 
-format-volume = <label-volume>
-label-volume-foreground = ${root.foreground}
+format-volume = <label-volume> <bar-volume>
+label-volume = 
+label-volume-foreground = ${colors.foreground}
 
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = no sound
+label-muted = sound muted
+
+bar-volume-width = 15
+bar-volume-foreground-0 = ${colors.foreground}
+bar-volume-foreground-1 = ${colors.foreground}
+bar-volume-foreground-2 = ${colors.foreground}
+bar-volume-foreground-3 = ${colors.foreground}
+bar-volume-foreground-4 = ${colors.foreground}
+bar-volume-foreground-5 = ${colors.foreground}
+bar-volume-foreground-6 = ${colors.alert}
+bar-volume-gradient = false
+bar-volume-indicator = ━
+bar-volume-indicator-font = 1
+bar-volume-fill = ━
+bar-volume-fill-font = 1
+bar-volume-empty = ━
+bar-volume-empty-font = 1
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+#type = internal/volume
+
+#format-volume = <label-volume>
+#label-volume-foreground = ${root.foreground}
+
+#format-muted-foreground = ${colors.foreground-alt}
+#label-muted = no sound
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 98
+full-at = 99
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
@@ -268,8 +208,6 @@ format-charging-underline = #ffb52a
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
@@ -285,10 +223,6 @@ animation-charging-framerate = 750
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
 
 [global/wm]
 margin-bottom = 0

@@ -21,6 +21,7 @@ compton
 albert # aur
 xcape-git # aur
 xdotool
+xrandr
 
 # Network & Audio
 wicd-gtk
