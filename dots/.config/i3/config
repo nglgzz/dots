@@ -11,24 +11,30 @@ set $editor subl
 
 # Colors
 set $black #000000
+set $dark_gray #222222
 set $gray #585756
 set $accent #c6ff00
 set $urgent #DF6418
 
 # Layout
 set $border_width 2
+gaps inner 10
+gaps outer 5
+#smart_gaps on
+smart_borders on
+
 
 # Workspaces
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
-set $ws0 "10 "
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws0 "10"
 
 # Screens
 set $screen1 "DVI-I-1"
@@ -47,7 +53,7 @@ workspace $ws8 output $screen2
 bindsym $mod+Shift+r restart
 
 # Lock screen
-bindsym $mod+Shift+x exec i3lock --color "$black"
+bindsym $mod+Shift+x exec i3lock --color "#000000"
 
 # Exit (logs out of your X session)
 bindsym $mod+Shift+q exec i3-msg exit # "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -147,51 +153,19 @@ bindsym $mod+k exec slack
 # Kill focused window
 bindsym $mod+Shift+c kill
 
-# Resize window (you can also use the mouse for that)
-mode "resize" {
-	# these bindings trigger as soon as you enter "resize" mode
-	# up: height--, down: height++, left:  width--, right: width++
-	bindsym Up resize shrink height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
-	bindsym Left resize shrink width 10 px or 10 ppt
-	bindsym Down resize grow height 10 px or 10 ppt
-
-	# back to default mode
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
-#bindsym $mod+d mode "resize"
-
-
-
-
-# Settings
-bar {
-	font pango:fira 18
-	position top
-	#mode hide
-
-	strip_workspace_numbers yes
-	#tray_output none
-
-	# Command for showing status info
-	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-
-	colors {
-		background $black
-		statusline $accent
-		separator $accent
-
-		# ---| border | bg | fg |---
-		focused_workspace $accent $accent $black
-		active_workspace $black $black $accent
-		inactive_workspace $black $black $accent
-		urgent_workspace $urgent $urgent $black
-	}
-}
+# Disable gaps and enable low profile bar
+bindsym $mod+Shift+o exec i3 gaps inner all set 0 &&\
+  i3 gaps outer all set 0 &&\
+  pkill polybar &&\
+  polybar low_profile
+# Enable gaps and default bar
+bindsym $mod+Shift+i exec i3 gaps inner all set 10 &&\
+  i3 gaps outer all set 5 &&\
+  pkill polybar &&\
+  polybar default
 
 # System font
-font pango:fira 10
+font pango:fira 8
 
 # Window colors
 client.focused $black $black $accent $gray
@@ -201,7 +175,7 @@ client.urgent $black $black $urgent $gray
 
 # Remove titlebar and hide window edges
 for_window [class="^.*"] border pixel $border_width
-hide_edge_borders both
+# hide_edge_borders both
 
 # Albert keybindings (_magic)
 bindsym $mod+r exec albert toggle
@@ -225,9 +199,6 @@ bindsym XF86AudioStop exec curl localhost:8268/random
 # Random
 bindsym $mod+Shift+f exec echo "console.log(eval($(xclip -selection primary -out)))" | node | xargs echo -n | xclip -selection clipboard
 
-bindsym $mod+Shift+u exec xdotool click 1
-bindsym $mod+Shift+i exec xdotool click 3
-
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
 assign [class="Subl"] $ws2
@@ -237,8 +208,12 @@ assign [class="obs"] $ws8
 assign [class="chatty-Chatty"] $ws8
 
 # Prepare background and start browser
-# exec_always xsetroot -solid '#000000'
-exec_always feh --bg-scale $HOME/.config/i3/bg.png
+exec_always hsetroot -solid '#222222'
+# exec_always feh --bg-scale $HOME/.config/i3/bg.png
+
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always compton -bc
+
 exec systemctl --user restart albert
 exec dunst
 exec copyq

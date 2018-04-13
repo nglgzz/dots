@@ -4,7 +4,9 @@ export ZSH=/usr/share/oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="gallois"
+ZSH_THEME="minimal"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -13,7 +15,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,8 +56,8 @@ v() {
 
 # _shell
 alias q='exit'
-alias l='ls -lah'
-alias la='ls -ah'
+alias l='ls -ah'
+alias la='ls -lah'
 alias ll='ls -lh'
 alias lla='ls -lah'
 alias copy='xclip -selection clipboard'
