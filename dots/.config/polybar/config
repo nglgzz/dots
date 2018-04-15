@@ -33,7 +33,7 @@ font-1 = FontAwesome:pixelsize=14;3
 font-2 = NotoColorEmoji:size=10;2
 
 modules-left = i3
-modules-center = xmwindow
+modules-center = song
 modules-right = volume cpu network battery date
 
 cursor-click = pointer
@@ -69,25 +69,15 @@ font-0 = Hack:pixelsize=10;2
 font-1 = FontAwesome:pixelsize=14;3
 
 modules-left = i3
-modules-center = xwindow
+modules-center = song
 modules-right = volume network battery cpu date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+[module/song]
+type = custom/script
+exec = /usr/bin/curl -s localhost:8268/info | /usr/bin/grep -v youtube | sed 's/\t/  /'
 
 [module/i3]
 type = internal/i3
