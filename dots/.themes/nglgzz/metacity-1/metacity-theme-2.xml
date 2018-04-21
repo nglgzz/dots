@@ -11,14 +11,14 @@
 
 <!-- meaningful constants -->
 
-<constant name="C_titlebar" value="#c6ff00"/>
+<constant name="C_titlebar" value="#add586"/>
 <constant name="C_titlebar_alt" value="gtk:bg[NORMAL]"/>
 
-<constant name="C_highlight" value="blend/#c6ff00/#111111/0.4"/>
+<constant name="C_highlight" value="blend/#add586/#111111/0.4"/>
 <constant name="C_highlight_alt" value="blend/gtk:bg[NORMAL]/#111111/0.4"/>
 
 <constant name="C_title_focused" value="gtk:fg[NORMAL]"/>
-<constant name="C_title_unfocused" value="blend/#c6ff00/gtk:fg[NORMAL]/0.7"/>
+<constant name="C_title_unfocused" value="blend/#add586/gtk:fg[NORMAL]/0.7"/>
 <constant name="C_title_alt_focused" value="gtk:fg[NORMAL]"/>
 <constant name="C_title_alt_unfocused" value="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.7"/>
 

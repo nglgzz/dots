@@ -16,11 +16,11 @@ gtk-color-scheme = "text_color:#dddddd\nbase_color:#111111"
 # Foreground/background
 gtk-color-scheme = "fg_color:#dddddd\nbg_color:#000000"
 # Selected foreground/background
-gtk-color-scheme = "selected_fg_color:#111111\nselected_bg_color:#c6ff00"
+gtk-color-scheme = "selected_fg_color:#111111\nselected_bg_color:#add586"
 # Titlebar foreground/background
-gtk-color-scheme = "titlebar_fg_color:#dddddd\ntitlebar_bg_color:#c6ff00"
+gtk-color-scheme = "titlebar_fg_color:#dddddd\ntitlebar_bg_color:#add586"
 # Links
-gtk-color-scheme = "link_color:#c6ff00\nvisited_link_color:#E040FB"
+gtk-color-scheme = "link_color:#add586\nvisited_link_color:#E040FB"
 
 # Set GTK settings
 gtk-auto-mnemonics              = 1
