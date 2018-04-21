@@ -5688,20 +5688,20 @@
     {
       "class": "tool_tip_control",
       "settings": ["material_theme_accent_acid-lime"],
-      "layer0.tint": [198, 255, 0],
+      "layer0.tint": [173, 213, 134],
     },
 
     {
       "class": "progress_gauge_control",
       "settings": ["material_theme_accent_acid-lime"],
-      "layer0.tint": [198, 255, 0],
+      "layer0.tint": [173, 213, 134],
     },
 
     {
       "class": "auto_complete_label",
       "settings": ["material_theme_accent_acid-lime"],
-      "match_fg": [198, 255, 0],
-      "selected_match_fg": [198, 255, 0]
+      "match_fg": [173, 213, 134],
+      "selected_match_fg": [173, 213, 134]
     },
 
     {
@@ -5763,14 +5763,14 @@
       "class": "sidebar_label",
       "settings": ["material_theme_accent_acid-lime"],
       "parents": [{"class": "tree_row", "attributes": ["selected"]}],
-      "color": [198, 255, 0]
+      "color": [173, 213, 134]
     },
 
     {
       "class": "sidebar_label",
       "settings": ["material_theme_accent_acid-lime"],
       "parents": [{"class": "tree_row", "attributes": ["expanded"]}],
-      "color": [198, 255, 0]
+      "color": [173, 213, 134]
     },
 
     {
@@ -5923,9 +5923,9 @@
     {
       "class": "quick_panel_label",
       "settings": ["material_theme_accent_acid-lime"],
-      "match_fg": [198, 255, 0],
+      "match_fg": [173, 213, 134],
       "selected_fg": [255, 255, 255, 255],
-      "selected_match_fg": [198, 255, 0]
+      "selected_match_fg": [173, 213, 134]
     },
 
       // Panel labels
@@ -5934,9 +5934,9 @@
       "class": "quick_panel_label",
       "settings": ["material_theme_accent_acid-lime"],
       "parents": [{"class": "overlay_control"}],
-      "match_fg": [198, 255, 0],
+      "match_fg": [173, 213, 134],
       "selected_fg": [255, 255, 255, 255],
-      "selected_match_fg": [198, 255, 0]
+      "selected_match_fg": [173, 213, 134]
     },
 
       // Panels sublabels
@@ -5944,9 +5944,9 @@
     {
       "class": "quick_panel_path_label",
       "settings": ["material_theme_accent_acid-lime"],
-      "match_fg": [198, 255, 0],
+      "match_fg": [173, 213, 134],
       "selected_fg": [255, 255, 255, 255],
-      "selected_match_fg": [198, 255, 0]
+      "selected_match_fg": [173, 213, 134]
     },
 
       // Panels data / score
@@ -6053,7 +6053,7 @@
     {
       "class": "minimap_control",
       "settings": ["material_theme_accent_acid-lime"],
-      "viewport_color": [198, 255, 0, 60]
+      "viewport_color": [173, 213, 134, 60]
     },
 
       // Scrollbars
