@@ -157,12 +157,12 @@ bindsym $mod+Shift+c kill
 bindsym $mod+Shift+o exec i3 gaps inner all set 0 &&\
   i3 gaps outer all set 0 &&\
   pkill polybar &&\
-  polybar low_profile
+  ~/.config/polybar/launch.sh low_profile
 # Enable gaps and default bar
 bindsym $mod+Shift+i exec i3 gaps inner all set 20 &&\
   i3 gaps outer all set 20 &&\
   pkill polybar &&\
-  polybar default
+  ~/.config/polybar/launch.sh default
 
 # System font
 font pango:fira 8
@@ -211,7 +211,7 @@ assign [class="chatty-Chatty"] $ws8
 # exec_always hsetroot -solid '#222222'
 exec_always feh --bg-scale $HOME/.config/i3/bg.png
 
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh default
 exec_always compton -bc
 
 exec systemctl --user restart albert

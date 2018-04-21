@@ -1,125 +1,25 @@
 [colors]
-background = #000
-background-alt = #222
-foreground = #c6ff00
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+include-file = ~/.config/polybar/colors
 
 [bar/low_profile]
+include-file = ~/.config/polybar/bar
+monitor = ${env:MONITOR:HDMI-0}
 width = 100%
-height = 30
-radius = 0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-size = 0
-border-bottom-size = 0
-border-color = #00000000
-
-padding-left = 0
-padding-right = 3
-
-module-margin = 1
-
-font-0 = Hack:pixelsize=10;2
-font-1 = FontAwesome:pixelsize=14;3
-font-2 = NotoColorEmoji:size=10;2
-
-modules-left = i3
-modules-center = song
-modules-right = volume cpu network battery date
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
 
 [bar/default]
+include-file = ~/.config/polybar/bar
 monitor = ${env:MONITOR:HDMI-0}
 width = ${env:POLYBAR_WIDTH:100%}
-height = 25
+override-redirect = true
 offset-x = 40
 offset-y = 0
-radius = 0
-fixed-center = true
-
-override-redirect = true
-wm-restack = i3
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 1
-line-color = #f000
-
-border-size = 0
-border-color = #0000
-
-padding-left = 0
-padding-right = 3
-module-margin = 1
-
-font-0 = Hack:pixelsize=10;2
-font-1 = FontAwesome:pixelsize=14;3
-
-modules-left = i3
-modules-center = song
-modules-right = volume network battery cpu date
-
-cursor-click = pointer
-cursor-scroll = ns-resize
 
 [module/song]
 type = custom/script
 exec = /usr/bin/curl -s localhost:8268/info | /usr/bin/grep -v youtube | sed 's/\t/  /'
 
 [module/i3]
-type = internal/i3
-
-ws-icon-1 = 1;
-ws-icon-2 = 2;
-ws-icon-3 = 3;
-ws-icon-4 = 
-ws-icon-5 = 
-ws-icon-6 = 
-ws-icon-7 = 
-ws-icon-8 = 8;
-ws-icon-9 = 9;
-ws-icon-0 = 10;
-ws-icon-default = 
-
-index-sort = true
-wrapping-scroll = false
-
-; Only show workspaces on the same output as the bar
-pin-workspaces = true
-
-; focused = Active workspace on focused monitor
-label-focused = %icon%
-label-focused-background = ${colors.background}
-label-focused-underline = ${colors.foreground}
-label-focused-padding = 2
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %icon%
-label-unfocused-padding = 2
-
-; visible = Active workspace on unfocused monitor
-label-visible = %icon%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace with urgency hint set
-label-urgent = %icon%
-label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 2
+include-file = ~/.config/polybar/i3
 
 [module/cpu]
 type = internal/cpu
@@ -155,18 +55,18 @@ type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
-label-volume-foreground = ${colors.foreground}
+label-volume-foreground = ${colors.accent}
 
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.gray}
 label-muted = sound muted
 
 bar-volume-width = 15
-bar-volume-foreground-0 = ${colors.foreground}
-bar-volume-foreground-1 = ${colors.foreground}
-bar-volume-foreground-2 = ${colors.foreground}
-bar-volume-foreground-3 = ${colors.foreground}
-bar-volume-foreground-4 = ${colors.foreground}
-bar-volume-foreground-5 = ${colors.foreground}
+bar-volume-foreground-0 = ${colors.accent}
+bar-volume-foreground-1 = ${colors.accent}
+bar-volume-foreground-2 = ${colors.accent}
+bar-volume-foreground-3 = ${colors.accent}
+bar-volume-foreground-4 = ${colors.accent}
+bar-volume-foreground-5 = ${colors.accent}
 bar-volume-foreground-6 = ${colors.alert}
 bar-volume-gradient = false
 bar-volume-indicator = ━
@@ -175,7 +75,7 @@ bar-volume-fill = ━
 bar-volume-fill-font = 1
 bar-volume-empty = ━
 bar-volume-empty-font = 1
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${colors.gray}
 
 
 #type = internal/volume
@@ -183,7 +83,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 #format-volume = <label-volume>
 #label-volume-foreground = ${root.foreground}
 
-#format-muted-foreground = ${colors.foreground-alt}
+#format-muted-foreground = ${colors.gray}
 #label-muted = no sound
 
 [module/battery]
@@ -203,12 +103,12 @@ format-full-underline = ${self.format-charging-underline}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.gray}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.gray}
 animation-charging-framerate = 750
 
 [settings]

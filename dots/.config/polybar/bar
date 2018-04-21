@@ -1,0 +1,29 @@
+height = 25
+radius = 0
+fixed-center = true
+
+background = ${colors.black}
+foreground = ${colors.accent}
+
+wm-restack = i3
+
+line-size = 1
+line-color = #f000
+
+border-size = 0
+border-color #0000
+
+padding-left = 0
+padding-right = 3
+module-margin = 1
+
+font-0 = Hack:pixelsize=10;2
+font-1 = FontAwesome:pixelsize=14;3
+
+modules-left = i3
+modules-center = song
+modules-right = volume network battery cpu date
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
