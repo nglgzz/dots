@@ -13,7 +13,7 @@ set $editor subl
 set $black #000000
 set $dark_gray #222222
 set $gray #585756
-set $accent #c6ff00
+set $accent #add586
 set $urgent #DF6418
 
 # Layout
