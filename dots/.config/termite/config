@@ -4,9 +4,9 @@ font = Hack 11
 [colors]
 
 # special
-foreground      = #add586
-foreground_bold = #add586
-cursor          = #add586
+foreground      = #4ef4ca
+foreground_bold = #4ef4ca
+cursor          = #4ef4ca
 background      = #000000
 
 # black
@@ -38,5 +38,5 @@ color6  = #56b6c2
 color14 = #3c909b
 
 # white
-color7  = #add586
+color7  = #4ef4ca
 color15 = #828997
