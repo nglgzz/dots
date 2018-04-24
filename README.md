@@ -6,52 +6,50 @@ look like this.
 The `link.sh` script links all configuration files to where they need to be.
 **Do not run that script** without backing up your configs first. The script will
 overwrite all files that already exist. Also, before running it be sure to read it
-and make the necessary changes (eg. change the path from which the configs are linked).
+and make the necessary changes (eg. change the path to which the configs are linked).
 
+There is a `remap.sh` script that can be used to remap colors on images (for example
+to change the color of icons). This script will take a source color and a destination
+color, then for each pixel of the image it will calculate the distance between the
+actual color and the source color, and apply that to the destination color. It works
+well with images that have similar colors, gives interesting results on other kinds
+of images.
 
-## Clean | Background
-This is a clean workspace, all you see is the background. This is because by
-default the i3bar mode is set to hide (shows only while pressing `mod`). You can
-rotate between hide and dock (always showing) mokdes by pressing `mod+y`. I usually
-keep the bar docked on my desktop, while hide it on my laptop.
-
-![Clean | Background](http://i.imgur.com/Cjg9aym.png)
-
-This is with the i3bar showing. I'm using the Fira font for text and Font Awesome
-for icons. The status bar is generated using i3blocks, and it shows (starting from right)
-date & time, my local IP, CPU usage, mic and speaker volume. On my laptop I also
-have the battery status in there.
-
-![Clean + Mod4](http://i.imgur.com/K6oLP9z.png)
-
+## Clean
+I have two modes for polybar, the one you see here, and one where the bar takes the
+whole length of the screen. I can change between them using `mod+shift+o` and `mod+shift+i`.
+When I change to the other mode, windows have no gaps, and compton is killed, this is to
+save space and resources when I'm on my laptop. I'm using the Hack font for text and Font
+Awesome for icons. The widgets from left to right are i3 workspaces, current song playing (not
+showing in this screenshot), volume, network, battery (not showing when I'm on desktop), CPU
+usage, and date.
+![Clean](http://i.imgur.com/6GoyrrX.png)
 
 ## Screenfetch
-I switched from Terminator to Termite cause it should be lighter and I wasn't
-using any of the cool features Terminator has.
-
-![Screenfetch](http://i.imgur.com/L4t2oWR.png)
+![Screenfetch](http://i.imgur.com/x84Fk09.png)
 
 
 ## Albert
-Another change I made is going from Rofi to Albert. The reason for this is that I
-plan to write my own plugins and Albert seems easier to extend.
+The results you see here are all plugins I wrote, everything is available in my [albert-plugins repo](https://github.com/nglgzz/albert-plugins).
 
-![Albert](http://i.imgur.com/eyMpMTr.png)
+![Albert](http://i.imgur.com/cKn8JNS.png)
 
 
 ## Dirty
-Here I have Sublime Text, Termite and Vim. On Sublime I'm using [Material Theme](https://github.com/equinusocio/material-theme)
-with a few changes on the color scheme.
+Changing the icons color on Sublime was a bit tricky, I ended up creating a script to
+remap colors in an image using python-opencv (there's no way I'm going through each icon manually).
+The theme I'm using on Sublime is [Material Theme](https://github.com/equinusocio/material-theme)
+with a custom color scheme.
+Here you can also see the current song script I mentioned above. This script shows the name
+of the song I'm currently playing on YouTube.
 
-![Sublime + Vim + Termite](http://i.imgur.com/lxv0tGK.png)
+![Sublime + Tmux](http://i.imgur.com/RIojD0p.png)
 
 
 ## Chromium
-Mandatory [/r/unixporn](https://reddit.com/r/unixporn) for Reddit. Also there's
-a Dunst notification. I'm using [Paper Icons](https://snwh.org/paper) for the notification
-icons, but in this case it's an image from Spotify.
+Mandatory [/r/unixporn](https://reddit.com/r/unixporn) for Reddit.
 
-![Unixporn + Dunst notification](http://i.imgur.com/YStFSNC.png)
+![Unixporn](http://i.imgur.com/1RYs49l.png)
 
 
 ## Scripts
@@ -92,6 +90,8 @@ Here's the complete list of all configured shortcuts, grouped by category.
 - **mod+shift+x**: lock screen (i3lock)
 - **mod+shift+r**: restart i3
 - **mod+shift+q**: exit i3
+- **mod+shift+o**: disable gaps and kill compton (used for shadows)
+- **mod+shift+i**: enable gaps and start compton (used for shadows)
 
 **Workspace**
 - **mod+[1-0]**: go to workspace 1 to 10
@@ -119,7 +119,6 @@ Here's the complete list of all configured shortcuts, grouped by category.
 **Albert Plugins**
 - **mod+r**: toggle albert
 - **mod+g**: google search
-- **mod+h**: github search
 - **mod+y**: youtube search
 - **mod+v**: transform clipboard content with regex
 - **mod+t**: google translate
@@ -129,8 +128,6 @@ Here's the complete list of all configured shortcuts, grouped by category.
 
 **Random**
 - **mod+Shift+f**: execute the content of primary selection (selected text) in JS, and copy output on clipboard buffer
-- **mod+Shift+u**: simulate left click
-- **mod+Shift+i**: simulate right click
 
 
 ## Mappings
@@ -162,5 +159,4 @@ Here's the complete list of all configured shortcuts, grouped by category.
 - **workspace 1**: Chromium
 - **workspace 2**: Sublime
 - **workspace 3**: Termite
-- **workspace 4**: Slack
 - **workspace 8**: OBS, Chatty

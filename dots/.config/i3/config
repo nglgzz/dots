@@ -157,12 +157,15 @@ bindsym $mod+Shift+c kill
 bindsym $mod+Shift+o exec i3 gaps inner all set 0 &&\
   i3 gaps outer all set 0 &&\
   pkill polybar &&\
-  ~/.config/polybar/launch.sh low_profile
+  ~/.config/polybar/launch.sh low_profile &&\
+  pkill compton
+
 # Enable gaps and default bar
 bindsym $mod+Shift+i exec i3 gaps inner all set 20 &&\
   i3 gaps outer all set 20 &&\
   pkill polybar &&\
-  ~/.config/polybar/launch.sh default
+  ~/.config/polybar/launch.sh default &&\
+  compton -cb
 
 # System font
 font pango:fira 8
@@ -180,7 +183,6 @@ for_window [class="^.*"] border pixel $border_width
 # Albert keybindings (_magic)
 bindsym $mod+r exec albert toggle
 bindsym $mod+g exec $HOME/projects/.albert_trigger.sh "gg "
-bindsym $mod+h exec $HOME/projects/.albert_trigger.sh "gh "
 bindsym $mod+v exec $HOME/projects/.albert_trigger.sh "sed "
 bindsym $mod+y exec $HOME/projects/.albert_trigger.sh "yt "
 bindsym $mod+t exec $HOME/projects/.albert_trigger.sh "tr "
