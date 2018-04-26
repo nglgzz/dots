@@ -200,6 +200,7 @@ bindsym XF86AudioStop exec curl localhost:8268/random
 
 # Random
 bindsym $mod+Shift+f exec echo "console.log(eval($(xclip -selection primary -out)))" | node | xargs echo -n | xclip -selection clipboard
+bindsym $mod+h exec feh $HOME/.config/i3/42.png
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1

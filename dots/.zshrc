@@ -133,7 +133,6 @@ alias dc='docker-compose'
 
 # _learn-anything
 alias learn='cd $(pfind learn-anything)/learn-anything'
-alias la2='cd $(pfind learn-anything)/la-2.0'
 
 
 # _launchers
