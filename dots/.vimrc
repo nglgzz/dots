@@ -35,3 +35,16 @@ noremap <C-p> :Files<Enter>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-k> :tabnext<CR>
 
+nnoremap k j
+nnoremap i k
+nnoremap j h
+nnoremap l l
+nnoremap h i
+
+vnoremap k j
+vnoremap i k
+vnoremap j h
+vnoremap l l
+vnoremap h i
+
+

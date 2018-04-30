@@ -28,10 +28,11 @@ export EDITOR='vim'
 # _configs
 alias zource='source ~/.zshrc'
 alias zedit='vim ~/.zshrc'
+alias i3edit='vim ~/.config/i3/config'
 alias scompletions='vim ~/dots/dots/.config/sublime-text-3/javascript.sublime-completions'
 
 # _keyboards
-alias 42source='cd ~/projects/nglgzz/42/firmware && make all && teensy_loader_cli --mcu atmega32u4 42.hex && xev-clean'
+alias 42source='sleep 3 && cd ~/projects/nglgzz/42/firmware && make all && teensy_loader_cli --mcu atmega32u4 42.hex && xev-clean'
 alias 42edit='vim ~/projects/nglgzz/42/firmware/keymap_42.c'
 alias 42='cd ~/projects/nglgzz/42'
 
