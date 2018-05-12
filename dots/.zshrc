@@ -20,6 +20,9 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 unalias gc
 
+# https://github.com/zsh-users/zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Preferred terminal and editor for local and remote sessions
 export TERM='xterm-256color'
 export EDITOR='vim'
@@ -245,23 +248,8 @@ function share() {
   rm -f $tmpfile
 }
 
-function it() {
-  setxkbmap it
-  xmodmap ~/.xmodmaprc
-  pkill xcape
-  xcape -e "Super_L=space"
-  xcape -e "Control_L=Escape"
-  xcape -e "Mode_switch=Tab"
-}
-
-function en() {
-  setxkbmap us
-  xmodmap ~/.xmodmaprc
-  pkill xcape
-  xcape -e "Super_L=space"
-  xcape -e "Control_L=Escape"
-  xcape -e "Mode_switch=Tab"
-}
+alias it="setxkbmap it"
+alias en="setxkbmap us"
 
 function journal() {
   # create journal entries

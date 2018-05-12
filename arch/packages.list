@@ -14,12 +14,10 @@ xorg-server
 xorg-xinit
 xorg-xsetroot
 i3-gaps
-i3blocks
 i3lock
 polybar
 compton
 albert # aur
-xcape-git # aur
 xdotool
 xrandr
 
@@ -38,7 +36,6 @@ ttf-hack-powerline-git # aur
 ttf-fira-sans # aur
 ttf-font-awesome-4 # aur
 noto-fonts-emoji # aur
-adapta-gtk-theme # aur
 paper-icon-theme-git # aur
 
 # Terminal
@@ -52,5 +49,4 @@ python-pip
 
 # Dev tools
 chromium
-slack-desktop # aur
 npm
