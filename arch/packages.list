@@ -47,6 +47,11 @@ fzf # aur
 # Albert
 python-pip
 
+# Keyboard
+avr-gcc
+avr-libc
+xorg-xev
+
 # Dev tools
 chromium
 npm

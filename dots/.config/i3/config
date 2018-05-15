@@ -177,8 +177,8 @@ bindsym $mod+a exec feh $HOME/.config/i3/42.png
 assign [class="Chromium"] $ws1
 assign [class="Subl"] $ws2
 assign [class="Termite"] $ws3
-assign [class="obs"] $ws8
-assign [class="chatty-Chatty"] $ws8
+assign [class="obs"] $ws6
+assign [class="chatty-Chatty"] $ws6
 
 # Prepare background and start browser
 # exec_always hsetroot -solid '#222222'
