@@ -2,7 +2,6 @@
 # Mod Keys
 set $mod Mod4
 set $alt Mod1
-set $hyper Mod3
 
 # Programs
 set $terminal termite
@@ -48,10 +47,10 @@ workspace $ws6 output $screen2
 bindsym $mod+Ctrl+r restart
 
 # Lock screen
-bindsym $mod+Shift+x exec i3lock --color "#000000"
+bindsym $mod+Ctrl+x exec i3lock --color "#000000"
 
 # Exit (logs out of your X session)
-bindsym $mod+Shift+q exec i3-msg exit # "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+q exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
 
 
 # System
@@ -66,75 +65,73 @@ bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
 bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
 # Print screen: full | select window or rectangle
-bindsym --release $alt+s exec scrot -s ~/tmp/screenshot.png &&\
+bindsym --release $mod+s exec scrot -s ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
-bindsym --release $alt+Shift+s exec scrot ~/tmp/screenshot.png &&\
+bindsym --release $mod+Shift+s exec scrot ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
 
 # Workspace
 # Go to workspace
-bindsym $mod+r workspace $ws1
-bindsym $mod+t workspace $ws2
-bindsym $mod+g workspace $ws3
-bindsym $mod+h workspace $ws4
-bindsym $mod+y workspace $ws5
-bindsym $mod+u workspace $ws6
+bindsym $mod+q workspace $ws1
+bindsym $mod+w workspace $ws2
+bindsym $mod+e workspace $ws3
+bindsym $mod+i workspace $ws4
+bindsym $mod+o workspace $ws5
+bindsym $mod+p workspace $ws6
 
 # Move focused container to workspace
-bindsym $mod+Shift+r move container to workspace $ws1
-bindsym $mod+Shift+t move container to workspace $ws2
-bindsym $mod+Shift+g move container to workspace $ws3
-bindsym $mod+Shift+h move container to workspace $ws4
-bindsym $mod+Shift+y move container to workspace $ws5
-bindsym $mod+Shift+u move container to workspace $ws6
+bindsym $mod+Shift+q move container to workspace $ws1
+bindsym $mod+Shift+w move container to workspace $ws2
+bindsym $mod+Shift+e move container to workspace $ws3
+bindsym $mod+Shift+i move container to workspace $ws4
+bindsym $mod+Shift+o move container to workspace $ws5
+bindsym $mod+Shift+p move container to workspace $ws6
 
 # Back and forth between last two workspaces
 bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth yes
 
-# Change container layout to stacked | tabbed | toggle split
-bindsym $mod+o layout tabbed
-bindsym $mod+p layout toggle split
+# Change container layout to tabbed | toggle split
+bindsym $mod+t layout tabbed
+bindsym $mod+y layout toggle split
+bindsym $mod+Shift+y floating toggle
 
-# Toggle tiling | floating
-bindsym $mod+Shift+p floating toggle
 # Mouse + $mod to drag floating windows
 floating_modifier $mod
 
 
 # Window
 # Move focus
-bindsym $mod+i focus up
 bindsym $mod+l focus right
 bindsym $mod+k focus down
 bindsym $mod+j focus left
 
 # Move focused window
-bindsym $mod+Shift+i move up
 bindsym $mod+Shift+l move right
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+j move left
 
 # Toggle fullscreen for focused container
-bindsym $mod+s fullscreen
+bindsym $mod+Ctrl+d fullscreen
 
 # Open terminal | browser | editor | slack
-bindsym $mod+Return exec $terminal
-bindsym $mod+b exec $browser
-bindsym $mod+c exec $editor
+bindsym $mod+Ctrl+t exec $terminal
+bindsym $mod+Ctrl+g exec $editor
+bindsym $mod+Ctrl+b exec $browser
 
 # Kill focused window
 bindsym $mod+Ctrl+f kill
 
-# Disable gaps and enable low profile bar
-bindsym $mod+Shift+n exec i3 gaps inner all set 0 &&\
+# save-real-estate mode
+bindsym $mod+Shift+comma exec i3 gaps inner all set 0 &&\
   i3 gaps outer all set 0 &&\
   pkill polybar &&\
   ~/.config/polybar/launch.sh low_profile &&\
   pkill compton
 
-# Enable gaps and default bar
-bindsym $mod+Shift+m exec i3 gaps inner all set 20 &&\
+# free-real-estate mode
+# http://i0.kym-cdn.com/entries/icons/original/000/021/311/free.jpg
+bindsym $mod+Shift+period exec i3 gaps inner all set 20 &&\
   i3 gaps outer all set 20 &&\
   pkill polybar &&\
   ~/.config/polybar/launch.sh default &&\
@@ -155,12 +152,10 @@ for_window [class="^.*"] border pixel $border_width
 
 # Albert keybindings (_magic)
 bindsym $mod+f exec albert toggle
-bindsym $mod+d exec $HOME/projects/.albert_trigger.sh "gg "
+bindsym $mod+g exec $HOME/projects/.albert_trigger.sh "gg "
 bindsym $mod+v exec $HOME/projects/.albert_trigger.sh "sed "
-bindsym $mod+m exec $HOME/projects/.albert_trigger.sh "yt "
-bindsym $mod+x exec $HOME/projects/.albert_trigger.sh "la "
-bindsym $mod+z exec $HOME/projects/.albert_trigger.sh "ch "
-bindsym $mod+w exec $HOME/projects/.albert_trigger.sh "enit "
+bindsym $mod+h exec $HOME/projects/.albert_trigger.sh "yt "
+bindsym $mod+m exec $HOME/projects/.albert_trigger.sh "enit "
 
 
 # Streaming
@@ -172,6 +167,7 @@ bindsym XF86AudioStop exec curl localhost:8268/random
 
 # Random
 bindsym $mod+a exec feh $HOME/.config/i3/42.png
+bindsym $mod+z exec feh $HOME/.config/i3/i3.png
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
