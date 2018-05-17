@@ -92,8 +92,8 @@ bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth yes
 
 # Change container layout to tabbed | toggle split
-bindsym $mod+t layout tabbed
-bindsym $mod+y layout toggle split
+bindsym $mod+Ctrl+t layout tabbed
+bindsym $mod+Ctrl+y layout toggle split
 bindsym $mod+Shift+y floating toggle
 
 # Mouse + $mod to drag floating windows
@@ -115,9 +115,9 @@ bindsym $mod+Shift+j move left
 bindsym $mod+Ctrl+d fullscreen
 
 # Open terminal | browser | editor | slack
-bindsym $mod+Ctrl+t exec $terminal
-bindsym $mod+Ctrl+g exec $editor
-bindsym $mod+Ctrl+b exec $browser
+bindsym $mod+t exec $terminal
+bindsym $mod+g exec $editor
+bindsym $mod+b exec $browser
 
 # Kill focused window
 bindsym $mod+Ctrl+f kill
@@ -152,9 +152,9 @@ for_window [class="^.*"] border pixel $border_width
 
 # Albert keybindings (_magic)
 bindsym $mod+f exec albert toggle
-bindsym $mod+g exec $HOME/projects/.albert_trigger.sh "gg "
+bindsym $mod+r exec $HOME/projects/.albert_trigger.sh "gg "
 bindsym $mod+v exec $HOME/projects/.albert_trigger.sh "sed "
-bindsym $mod+h exec $HOME/projects/.albert_trigger.sh "yt "
+bindsym $mod+u exec $HOME/projects/.albert_trigger.sh "yt "
 bindsym $mod+m exec $HOME/projects/.albert_trigger.sh "enit "
 
 
