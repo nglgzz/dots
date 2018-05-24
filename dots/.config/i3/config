@@ -115,6 +115,7 @@ bindsym $mod+Shift+j move left
 bindsym $mod+Ctrl+d fullscreen
 
 # Open terminal | browser | editor | slack
+bindsym $mod+Return exec $terminal
 bindsym $mod+t exec $terminal
 bindsym $mod+g exec $editor
 bindsym $mod+b exec $browser
