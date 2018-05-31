@@ -67,6 +67,7 @@ alias ll='ls -lh'
 alias lla='ls -lah'
 alias copy='xclip -selection clipboard'
 alias f='find . -name'
+alias umount='sudo umount /mnt'
 function c() {
   cf_path=$(find . -name "$1" | head  -n1)
   cd $cf_path
@@ -76,7 +77,7 @@ function md() {
   cd "$1"
 }
 function tousb() {
-  dd bs=4M if=$1 of=$2
+  sudo dd bs=4M if=$1 of=$2
 }
 
 # _navigation
@@ -222,12 +223,10 @@ alias lettherebewifi="sudo create_ap wlp3s0 enp0s25 'Gluten-Free Fair Trade WiFi
 
 alias xev-clean='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
 
-alias random-word='cat /usr/share/dict/cracklib-small | grep -Pv '\''[^a-z]|([a-z])\1'\'' | shuf -n1'
-alias random-song='curl "http://musicbrainz.org/ws/2/work?query=$(random-word | cut -c1-4)&fmt=json" -s | node tmp/random/index.js'
-
 # 10 most used commands, can show more or less appending "-n15" for example
 alias topten='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'\'' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
 
+# Upload a file on transfer.sh and copy link to that file on the clipboard
 function share() {
   if [ $# -eq 0 ]; then
     echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
