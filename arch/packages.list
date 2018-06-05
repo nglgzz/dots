@@ -19,7 +19,7 @@ polybar
 compton
 albert # aur
 xdotool
-xrandr
+xorg-xrandr
 
 # Network & Audio
 wicd-gtk
