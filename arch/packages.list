@@ -51,6 +51,7 @@ python-pip
 avr-gcc
 avr-libc
 xorg-xev
+teensy-loader-cli-git # aur
 
 # Dev tools
 chromium
