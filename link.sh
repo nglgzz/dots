@@ -53,20 +53,6 @@ do
   fi
 done
 
-# Sublime
-_link "$config_source/sublime-text-3/Package Control.sublime-settings"\
-  "$config_target/sublime-text-3/Packages/User/Package Control.sublime-settings"
-_link "$config_source/sublime-text-3/Preferences.sublime-settings"\
-  "$config_target/sublime-text-3/Packages/User/Preferences.sublime-settings"
-_link "$config_source/sublime-text-3/Default (Linux).sublime-keymap"\
-  "$config_target/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
-_link "$config_source/sublime-text-3/javascript.sublime-completions"\
-  "$config_target/sublime-text-3/Packages/javascript.sublime-completions"
-_link "$config_source/sublime-text-3/assets"\
-  "$config_target/sublime-text-3/Packages/User/assets"
-cp $config_source/sublime-text-3/Even-Darker.* \
-  "$config_target/sublime-text-3/Packages/User"
-
 # Clone albert plugins
 mkdir -p ~/.local/share/albert/org.albert.extension.python
 cd ~/.local/share/albert/org.albert.extension.python
@@ -76,4 +62,7 @@ git clone https://github.com/nglgzz/albert-plugins modules
 
 # Create empty folder for syncing.
 mkdir ~/projects
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
 

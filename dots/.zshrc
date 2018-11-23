@@ -32,7 +32,6 @@ export EDITOR='vim'
 alias zource='source ~/.zshrc'
 alias zedit='vim ~/.zshrc'
 alias i3edit='vim ~/.config/i3/config'
-alias scompletions='vim ~/dots/dots/.config/sublime-text-3/javascript.sublime-completions'
 
 # _keyboards
 alias 42source='sleep 3 && cd ~/projects/nglgzz/42/firmware && make all && teensy_loader_cli --mcu atmega32u4 42.hex && xev-clean'
@@ -49,7 +48,7 @@ alias tmp='cd ~/tmp'
 
 # _dev utils
 alias serve='python -m http.server'
-alias e='subl .'
+alias e='code .'
 
 v() {
   # find in folder and open on vim
@@ -110,7 +109,7 @@ alias ntw='npm run test:watch'
 
 export PATH=~/.npm-global/bin:$PATH
 # NPM Path (there's probably a better way to do this)
-export PATH=$PATH:./node_modules/.bin/
+# export PATH=$PATH:./node_modules/.bin/
 
 
 # _git
@@ -267,5 +266,5 @@ HISTORY_IGNORE='journal *'
 ## End Aliases
 
 # Projects
-export PROJECTS=$HOME/projects/.utils
-source $PROJECTS/config
+#export PROJECTS=$HOME/projects/.utils
+#source $PROJECTS/config
