@@ -47,22 +47,9 @@ pacaur -Syu sublime-text
 # Install pip dependencies for Albert
 sudo pip install lxml clipboard requests
 
-# Install osync
-mkdir ~/bin
-# TODO - eventually the stable branch will contain the fix to issue #126,
-# when that happens this line can be uncommented, and the following two
-# can be deleted.
-# git clone -b "stable" https://github.com/deajan/osync ~/bin/osync
-git clone https://github.com/deajan/osync ~/bin/osync
-sed -i 's/IS_STABLE=no/IS_STABLE=yes/' ~/bin/osync/osync.sh
-
 # Clone dots and link them to the right config paths.
 git clone --recursive https://github.com/nglgzz/dots ~/dots
 ~/dots/link.sh
-
-# Start timer that syncs the projects folder.
-systemctl --user daemon-reload
-systemctl --user start projects-sync.timer
 
 # Remove .bash_profile so setup isn't executed again.
 rm ~/.bash_profile
