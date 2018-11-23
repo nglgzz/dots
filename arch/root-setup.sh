@@ -25,10 +25,6 @@ chsh -s /bin/zsh
 pacman -S --noconfirm wget tar git unzip vim base-devel
 pacman -S --noconfirm --needed expac yajl
 
-# Remove .bash_profile, so the configuration script is not
-# executed again.
-rm ~/.bash_profile
-
 # Add the configuration script for the user on its .bash_profile.
 cp ~/user-setup.sh "/home/$username"
 cp ~/packages.list "/home/$username"

@@ -93,16 +93,13 @@ mount $device"1" /mnt/boot
 pacstrap /mnt
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# Chroot and setup
-cp install-base.sh /mnt/root/
-chmod +x /mnt/root/install-base.sh
-arch-chroot /mnt /root/install-base.sh
-
-# Set .bash_profile to execute configuration script on next login
-cp root-setup.sh /mnt/root/
-cp user-setup.sh /mnt/root/
+cp install-base.sh root-setup.sh user-setup.sh /mnt/root/
 cp packages.list /mnt/root/
-echo "exec ~/root-setup.sh" > /mnt/root/.bash_profile
+chmod +x /mnt/root/*.sh
+
+# Chroot and setup
+arch-chroot /mnt /root/install-base.sh
+arch-chroot /mnt /root/root-setup.sh
 
 # Reboot
 clear
