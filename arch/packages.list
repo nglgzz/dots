@@ -17,7 +17,7 @@ i3-gaps
 i3lock
 polybar
 compton
-albert # aur
+albert-lite # aur
 xdotool
 xorg-xrandr
 
@@ -36,7 +36,6 @@ ttf-hack-powerline-git # aur
 ttf-fira-sans # aur
 ttf-font-awesome-4 # aur
 noto-fonts-emoji # aur
-paper-icon-theme-git # aur
 
 # Terminal
 termite
@@ -56,4 +55,4 @@ teensy-loader-cli-git # aur
 # Dev tools
 chromium
 npm
-code-git
+code

@@ -32,7 +32,7 @@ rm -r ~/tmp/pacaur_install
 cat ~/packages.list | sed 's/#.*//' | xargs pacaur -S --noconfirm
 
 # Install pip dependencies for Albert
-sudo pip install lxml clipboard requests
+sudo pip install lxml clipboard requests cssselect
 
 # Clone dots and link them to the right config paths.
 git clone --recursive https://github.com/nglgzz/dots ~/dots
