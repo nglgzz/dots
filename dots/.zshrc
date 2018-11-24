@@ -4,8 +4,6 @@ export ZSH=/usr/share/oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="agnoster"
-#ZSH_THEME="gallois"
 ZSH_THEME="minimal"
 
 # Uncomment the following line to enable command auto-correction.
@@ -19,6 +17,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 unalias gc
+unalias gca
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -29,8 +28,7 @@ export EDITOR='vim'
 
 ## Aliases
 # _configs
-alias zource='source ~/.zshrc'
-alias zedit='vim ~/.zshrc'
+alias zedit='vim ~/.zshrc && source ~/.zshrc'
 alias i3edit='vim ~/.config/i3/config'
 
 # _keyboards
@@ -65,15 +63,11 @@ alias la='ls -lah'
 alias ll='ls -lh'
 alias lla='ls -lah'
 alias copy='xclip -selection clipboard'
-alias f='find . -name'
-alias umount='sudo umount /mnt'
+alias paste='xclip -out'
 function c() {
+  # Search for folder and cd into it
   cf_path=$(find . -name "$1" | head  -n1)
   cd $cf_path
-}
-function md() {
-  mkdir -p "$1"
-  cd "$1"
 }
 function tousb() {
   sudo dd bs=4M if=$1 of=$2
@@ -81,22 +75,6 @@ function tousb() {
 
 # _navigation
 alias b='popd 1>/dev/null'
-
-# _tmux
-function tm() {
-  # split window in 4 panes like below
-  #  ---------
-  # |    |    |
-  # |----|----|
-  # |    |    |
-  #  ---------
-  tmux new-session
-  tmux splitp -h
-  tmux splitp -v
-  tmux selectp -t 0
-  tmux splitp -v
-}
-
 
 # _npm
 alias n='npm'
@@ -123,31 +101,13 @@ alias go='git checkout'
 alias gb='git branch'
 alias gf='git fetch'
 alias gl='git ls'
+alias gca='git commit --amend'
+alias ggwp='git push --force-with-lease'
 
 function gc() {
   arg="$*"
   git commit -m "$arg"
 }
-
-
-# _docker
-alias d='docker'
-alias dc='docker-compose'
-
-
-# _learn-anything
-alias learn='cd $(pfind learn-anything)/learn-anything'
-
-
-# _launchers
-# TODO - should just add ~/bin to path and link the executables
-# to launch these programs there
-alias dynamodb='cd ~/bin/dynamodb && java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb'
-alias elasticsearch='~/bin/elasticsearch-5.5.2/bin/elasticsearch'
-alias kibana='~/bin/kibana/bin/kibana'
-alias chatty='java -jar ~/bin/chatty/Chatty.jar'
-alias memcached='systemctl restart memcached && journalctl -u memcached -f'
-alias neo4j='~/bin/neo4j/bin/neo4j'
 
 
 # _albert
@@ -246,8 +206,27 @@ function share() {
   rm -f $tmpfile
 }
 
-alias it="setxkbmap it"
-alias en="setxkbmap us"
+function en () {
+ setxkbmap us
+ xmodmap ~/.xmodmaprc
+ pkill xcape
+ xmodmap -e "clear Lock"
+ xmodmap -e "add Control = Control_L"
+ xcape -t 500 -e "Super_L=space"
+ xcape -e "Control_L=Escape"
+ xcape -e "Mode_switch=Tab"
+}
+
+function it () {
+ setxkbmap it
+ xmodmap ~/.xmodmaprc
+ pkill xcape
+ xmodmap -e "clear Lock"
+ xmodmap -e "add Control = Control_L"
+ xcape -t 500 -e "Super_L=space"
+ xcape -e "Control_L=Escape"
+ xcape -e "Mode_switch=Tab"
+}
 
 function journal() {
   # create journal entries
@@ -265,6 +244,3 @@ function journal() {
 HISTORY_IGNORE='journal *'
 ## End Aliases
 
-# Projects
-#export PROJECTS=$HOME/projects/.utils
-#source $PROJECTS/config

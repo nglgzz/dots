@@ -166,6 +166,10 @@ bindsym XF86AudioNext exec curl localhost:8268/next
 bindsym XF86AudioPrev exec curl localhost:8268/back
 bindsym XF86AudioStop exec curl localhost:8268/random
 
+# Screen brightness
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
 # Random
 bindsym $mod+a exec feh $HOME/.config/i3/42.png
 bindsym $mod+z exec feh $HOME/.config/i3/i3.png
