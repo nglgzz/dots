@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Environment variables
-SCREEN_WIDTH=$(xrandr | grep " connected" | cut -d ' ' -f3 | sed 's/x.*//' | head -n1)
+SCREEN_WIDTH=$(xrandr | grep " connected" | cut -d ' ' -f4 | sed 's/x.*//' | head -n1)
 
 ## Bar settings
 export MONITOR=$(xrandr | grep " connected" | cut -d ' ' -f1 | head -n1)
