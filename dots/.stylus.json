@@ -70,7 +70,7 @@
 	},
 	{
 		"installDate": 1523633948955,
-		"enabled": true,
+		"enabled": false,
 		"updateUrl": "https://userstyles.org/styles/chrome/35345.json",
 		"md5Url": "https://update.userstyles.org/35345.md5",
 		"url": "http://userstyles.org/styles/35345",
@@ -515,7 +515,7 @@
 	},
 	{
 		"installDate": 1523518714405,
-		"enabled": true,
+		"enabled": false,
 		"updateUrl": "https://userstyles.org/styles/chrome/142096.json?ik-background=ik-bg1&ik-doodles=ik-doodle1&ik-blurcontacts=ik-noblur&ik-fullscreen=ik-notfullscreen&ik-tails=ik-on&ik-dark=%23272C35&ik-darker=%231F232A&ik-light=%23D1D1D1&ik-lighter=%23E9E9E9&ik-accent=%237289DA&ik-icon=%23E1E1E1&ik-emoji_opacity=0.6&ik-image=ik-bg1",
 		"md5Url": "https://update.userstyles.org/142096.md5",
 		"url": "http://userstyles.org/styles/142096",
@@ -558,7 +558,7 @@
 	},
 	{
 		"installDate": 1523529911096,
-		"enabled": true,
+		"enabled": false,
 		"updateUrl": "https://userstyles.org/styles/chrome/75410.json",
 		"md5Url": "https://update.userstyles.org/75410.md5",
 		"url": "http://userstyles.org/styles/75410",
@@ -640,28 +640,6 @@
 		"id": 19
 	},
 	{
-		"installDate": 1523648111865,
-		"enabled": true,
-		"updateUrl": "https://userstyles.org/styles/chrome/142449.json",
-		"md5Url": "https://update.userstyles.org/142449.md5",
-		"url": "http://userstyles.org/styles/142449",
-		"originalMd5": "59c2ad8f7a9ac0299d71acad10a1e891",
-		"sections": [
-			{
-				"code": "body,\nnav.extended-nav,\nimg:not(.vh-center__img),\nimg:not(.profile-image),\ndiv.ember-view[style*=\"background-image:\"],\ndiv.video-s-loader__video-container\n{\n\tfilter: invert(1);\n}\nsection.feed-ad__side\n{\n\tvisibility: hidden;\n\theight: 0;\n}\n\n.pv-profile-wrapper,\n#voyager-feed,\ndiv#me-content {\n  background-color: #fff !important;\n}\n",
-				"urls": [],
-				"urlPrefixes": [],
-				"domains": [
-					"www.linkedin.com"
-				],
-				"regexps": []
-			}
-		],
-		"name": "LinkedIn Inverted 201712",
-		"originalDigest": "36a9cbdb67050d469924260d41322fc63a2c7e32",
-		"id": 21
-	},
-	{
 		"installDate": 1523730078147,
 		"enabled": true,
 		"updateUrl": null,
@@ -671,7 +649,7 @@
 		"name": "listenonrepeat.com",
 		"sections": [
 			{
-				"code": ".main-area-offset,\n.hide-on-small-only.main-area-offset {\n    background: #000 !important;\n}\n\n/* Sidebar */\n#content > div:first-child > div {\n\tbackground: #000 !important;\n  border: 0 !important;\n}\n\n\n/* Header */\n#page-home > div + div > div > div {\n\tbackground: #000 !important;\n}\n\n::-webkit-scrollbar {\n\tdisplay: none;\n}",
+				"code": ".main-area-offset,\n.hide-on-small-only.main-area-offset {\n    background: #000 !important;\n}\n\n/* Sidebar */\n#content > div:first-child > div {\n\tbackground: #000 !important;\n  border: 0 !important;\n}\n\n\n/* Header */\n#page-home > div + div > div > div {\n\tbackground: #000 !important;\n}\n\n\n::-webkit-scrollbar {\n\tdisplay: none;\n}\n\n.hide-on-med-and-down.right-column {\n    display: none;\n}\n\n#content > [style^=\"display: flex\"],\n#content > div > [style*=\"/static/img/header-background.png\"],\n#content > div:last-child {\n    background: black !important;\n}",
 				"urls": [],
 				"urlPrefixes": [],
 				"domains": [
@@ -681,27 +659,6 @@
 			}
 		],
 		"id": 22
-	},
-	{
-		"enabled": true,
-		"updateUrl": null,
-		"md5Url": null,
-		"url": null,
-		"originalMd5": null,
-		"installDate": 1524039563746,
-		"name": "angel.co",
-		"sections": [
-			{
-				"code": " /* scroll bar */\n  ::-webkit-scrollbar {\n    max-width: 10px !important;\n    max-height: 10px !important;\n    background: #1d1d1d !important;\n  }\n  ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {\n    background: #1d1d1d !important;\n  }\n  ::-webkit-scrollbar-thumb {\n    background: rgba(175, 175, 175, .5) !important;\n  }\n  ::-webkit-scrollbar-thumb:hover {\n    background: rgba(65, 131, 196, .8) !important;\n  }",
-				"urls": [],
-				"urlPrefixes": [],
-				"domains": [
-					"angel.co"
-				],
-				"regexps": []
-			}
-		],
-		"id": 25
 	},
 	{
 		"installDate": 1524565021315,
@@ -721,5 +678,26 @@
 			}
 		],
 		"id": 31
+	},
+	{
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"installDate": 1535442804180,
+		"name": "localhost",
+		"sections": [
+			{
+				"code": ".CodeMirror-cursor {\n    width: 1px;\n    background: rgba(255, 255, 255, 0.6) !important;\n}",
+				"urls": [],
+				"urlPrefixes": [
+					"http://localhost:4000/"
+				],
+				"domains": [],
+				"regexps": []
+			}
+		],
+		"id": 33
 	}
 ]
