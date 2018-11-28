@@ -29,6 +29,7 @@ export EDITOR='vim'
 ## Aliases
 # _configs
 alias zedit='vim ~/.zshrc && source ~/.zshrc'
+alias zource='source ~/.zshrc'
 alias i3edit='vim ~/.config/i3/config'
 
 # _keyboards
@@ -42,9 +43,11 @@ alias 9='cd ~/projects/nglgzz/9'
 
 # _bookmarks
 alias tmp='cd ~/tmp'
+alias ww='pcd whitewalker'
 
 
 # _dev utils
+alias cat='bat'
 alias serve='python -m http.server'
 alias e='code .'
 
@@ -87,8 +90,14 @@ alias ntw='npm run test:watch'
 
 export PATH=~/.npm-global/bin:$PATH
 # NPM Path (there's probably a better way to do this)
-# export PATH=$PATH:./node_modules/.bin/
+export PATH=$PATH:./node_modules/.bin/
 
+# _yarn
+alias y='yarn'
+alias ys='yarn start'
+alias yd='yarn dev'
+alias yt='yarn test-ci'
+alias ya='yarn add'
 
 # _git
 alias g='git'
@@ -244,3 +253,8 @@ function journal() {
 HISTORY_IGNORE='journal *'
 ## End Aliases
 
+alias vpn='sudo openfortivpn'
+
+# Projects
+export PROJECTS=/home/nglgzz/projects/.utils
+source $PROJECTS/config
