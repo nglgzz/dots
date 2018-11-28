@@ -26,10 +26,7 @@ _link() {
 dots=~/dots/dots
 config_source="$dots/.config"
 config_target=~/.config
-ignore=(.config sublime-text-3)
-
-#_link ~/projects/.zshrc ~/.zshrc
-#cp $dots/albert/albert.conf $config/albert.conf
+ignore=(.config etc-systemd)
 
 # Link all folders in $config_source to ~/.config
 for dir in $(find "$config_source" -mindepth 1 -maxdepth 1 -type d)
@@ -53,16 +50,12 @@ do
   fi
 done
 
-# Clone albert plugins
-mkdir -p ~/.local/share/albert/org.albert.extension.python
-cd ~/.local/share/albert/org.albert.extension.python
-# Remove the modules folder if already there
-rm -rf modules
-git clone https://github.com/nglgzz/albert-plugins modules
-
 # Create empty folder for syncing.
 mkdir ~/projects
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
+sudo cp "${dots}/etc-systemd/suspend@.service" "/etc/systemd/system/suspend@.service"
+systemctl daemon-reload
+systemctl enable suspend@$USER
 

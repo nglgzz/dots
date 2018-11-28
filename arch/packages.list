@@ -17,7 +17,6 @@ i3-gaps
 i3lock
 polybar
 compton
-albert-lite # aur
 xdotool
 xorg-xrandr
 
@@ -42,9 +41,8 @@ termite
 tmux
 oh-my-zsh-git # aur
 fzf # aur
-
-# Albert
-python-pip
+bat
+diff-so-fancy
 
 # Keyboard
 avr-gcc

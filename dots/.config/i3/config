@@ -47,7 +47,7 @@ workspace $ws6 output $screen2
 bindsym $mod+Ctrl+r restart
 
 # Lock screen
-bindsym $mod+Ctrl+x exec i3lock --color "#000000"
+bindsym $mod+Ctrl+x exec i3lock --color '000000'
 
 # Exit (logs out of your X session)
 bindsym $mod+Ctrl+q exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
@@ -151,12 +151,9 @@ client.urgent $black $black $urgent $gray
 for_window [class="^.*"] border pixel $border_width
 # hide_edge_borders both
 
-# Albert keybindings (_magic)
-bindsym $mod+f exec albert toggle
-bindsym $mod+r exec $HOME/projects/.albert_trigger.sh "gg "
-bindsym $mod+v exec $HOME/projects/.albert_trigger.sh "sed "
-bindsym $mod+u exec $HOME/projects/.albert_trigger.sh "yt "
-bindsym $mod+m exec $HOME/projects/.albert_trigger.sh "enit "
+# Rofi (_rofi)
+bindsym $mod+f exec rofi -show run
+bindsym $mod+r exec rofi -show window
 
 
 # Streaming
@@ -176,7 +173,7 @@ bindsym $mod+z exec feh $HOME/.config/i3/i3.png
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
-assign [class="Subl"] $ws2
+assign [class="code"] $ws2
 assign [class="Termite"] $ws3
 assign [class="obs"] $ws6
 assign [class="chatty-Chatty"] $ws6
