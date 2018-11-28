@@ -22,7 +22,7 @@ font-1 = FontAwesome:pixelsize=14;3
 
 modules-left = i3
 modules-center = song
-modules-right = volume network battery cpu date
+modules-right = pulseaudio network battery cpu date
 
 cursor-click = pointer
 cursor-scroll = ns-resize

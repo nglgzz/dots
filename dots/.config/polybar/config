@@ -50,8 +50,9 @@ time-alt = %H:%M
 
 label = %date% %time%
 
-[module/volume]
-type = internal/volume
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = true
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
@@ -77,14 +78,6 @@ bar-volume-empty = ━
 bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${colors.gray}
 
-
-#type = internal/volume
-
-#format-volume = <label-volume>
-#label-volume-foreground = ${root.foreground}
-
-#format-muted-foreground = ${colors.gray}
-#label-muted = no sound
 
 [module/battery]
 type = internal/battery
