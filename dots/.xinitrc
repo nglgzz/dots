@@ -10,6 +10,7 @@ xmodmap -e "add Control = Control_L"
 xcape -e "Super_L=space"
 xcape -e "Control_L=Escape"
 xcape -e "Mode_switch=Tab"
+xcape -e "Shift_R=Delete"
 
 exec i3
 
