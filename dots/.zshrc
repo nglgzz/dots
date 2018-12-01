@@ -73,8 +73,9 @@ function c() {
   cd $cf_path
 }
 function tousb() {
-  sudo dd bs=4M if=$1 of=$2
+  sudo dd bs=4M if=$1 of=$2 status=progress
 }
+alias keychain='eval "$(ssh-agent -s)"'
 
 # _navigation
 alias b='popd 1>/dev/null'
@@ -224,6 +225,7 @@ function en () {
  xcape -t 500 -e "Super_L=space"
  xcape -e "Control_L=Escape"
  xcape -e "Mode_switch=Tab"
+ xcape -e "Shift_R=Delete"
 }
 
 function it () {
@@ -235,6 +237,7 @@ function it () {
  xcape -t 500 -e "Super_L=space"
  xcape -e "Control_L=Escape"
  xcape -e "Mode_switch=Tab"
+ xcape -e "Shift_R=Delete"
 }
 
 function journal() {

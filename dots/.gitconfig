@@ -7,5 +7,9 @@
 	ls = log --pretty=format:\"[%h]%d%Cblue%an%Creset:~$ %s %C(bold green)(%ar)%Creset\" --graph
 [core]
 	editor = vim
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [credential]
   helper = cache --timeout 3600
+
+[includeIf "gitdir:~/projects/kiwi/"]
+  path = .gitconfig-kiwi
