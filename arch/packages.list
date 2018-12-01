@@ -25,6 +25,7 @@ wicd-gtk
 pavucontrol
 alsa-utils
 pulseaudio
+pulseaudio-alsa
 
 feh
 scrot
@@ -54,3 +55,9 @@ teensy-loader-cli-git # aur
 chromium
 npm
 code
+
+# Bluetooth
+bluez
+bluez-utils
+pulseaudio-bluetooth
+
