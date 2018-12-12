@@ -4,3 +4,6 @@ Description=Chromix too server
 [Service]
 ExecStart=/%h/.npm-global/bin/chromix-too-server
 
+[Install]
+WantedBy=default.target
+

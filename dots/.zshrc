@@ -44,6 +44,8 @@ alias 9='cd ~/projects/nglgzz/9'
 # _bookmarks
 alias tmp='cd ~/tmp'
 alias ww='pcd whitewalker'
+alias bk='pcd balkan && cd frontend'
+alias wwt='pcd whitewalker && yarn generate && yarn build && yarn test-ci'
 
 
 # _dev utils
@@ -76,6 +78,7 @@ function tousb() {
   sudo dd bs=4M if=$1 of=$2 status=progress
 }
 alias keychain='eval "$(ssh-agent -s)"'
+alias bt=bluetoothctl
 
 # _navigation
 alias b='popd 1>/dev/null'
@@ -99,11 +102,13 @@ alias ys='yarn start'
 alias yd='yarn dev'
 alias yt='yarn test-ci'
 alias ya='yarn add'
+alias yb='yarn build'
 
 # _git
 alias g='git'
 alias gs='git status'
 alias gd='git diff'
+alias gdd='git diff HEAD'
 alias ga='git add'
 alias gp='git pull'
 alias gg='git push'
@@ -118,13 +123,6 @@ function gc() {
   arg="$*"
   git commit -m "$arg"
 }
-
-
-# _albert
-alias alog='journalctl -u albert --user -f'
-alias ares='systemctl --user restart albert'
-alias al='cd ~/.local/share/albert/org.albert.extension.python/modules'
-
 
 # _curl
 function cheat() {
