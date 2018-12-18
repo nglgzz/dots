@@ -1,0 +1,22 @@
+[
+    {
+      "key": "ctrl+shift+o",
+      "command": "workbench.action.files.openFolder"
+    },
+    {
+        "key": "ctrl+k ctrl+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+k ctrl+u",
+        "command": "editor.action.transformToUppercase"
+    },
+    {
+        "key": "ctrl+k ctrl+l",
+        "command": "editor.action.transformToLowercase"
+    },
+    {
+        "key": "ctrl+k ctrl+n",
+        "command": "editor.action.goToDeclaration"
+    }
+]

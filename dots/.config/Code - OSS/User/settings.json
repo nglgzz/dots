@@ -1,0 +1,40 @@
+{
+  "typescript.updateImportsOnFileMove.enabled": "never",
+
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "javascript.validate.enable": false,
+
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "reason": "javascriptreact"
+  },
+
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "all",
+
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "hack",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.rulers": [80, 100],
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "alt",
+
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.git": true,
+    "node_modules": true,
+    "**/*.bs.js": true
+  },
+
+  "workbench.colorTheme": "Pitch Black",
+  "workbench.statusBar.feedback.visible": false,
+
+  "window.menuBarVisibility": "toggle",
+  "todo.timekeeping.elapsed.format": "long",
+  "vim.useCtrlKeys": false,
+  "breadcrumbs.enabled": true,
+  "explorer.confirmDragAndDrop": false
+}

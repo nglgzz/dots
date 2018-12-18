@@ -23,10 +23,12 @@ _link() {
 }
 
 # Path variables
-dots=~/dots/dots
+dots=$HOME/dots/dots
 config_source="$dots/.config"
-config_target=~/.config
-ignore=(.config etc-systemd)
+config_target=$HOME/.config
+code_source="$config_source/Code - OSS/User"
+code_target="$config_target/Code - OSS/User"
+ignore=(.config etc-systemd 'Code - OSS')
 
 # Link all folders in $config_source to ~/.config
 for dir in $(find "$config_source" -mindepth 1 -maxdepth 1 -type d)
@@ -35,7 +37,7 @@ do
   # Make sure that the current folder is not on the list of folders to
   # be ignored
   if [[ ! " ${ignore[@]} " =~ " ${dir} " ]]; then
-    _link $config_source/$dir $config_target/$dir
+    _link "$config_source/$dir" "$config_target/$dir"
   fi
 done
 
@@ -46,7 +48,18 @@ do
   # Make sure that the current folder is not on the list of folders to
   # be ignored
   if [[ ! " ${ignore[@]} " =~ " ${file_or_dir} " ]]; then
-    _link $dots/$file_or_dir ~/$file_or_dir
+    _link "$dots/$file_or_dir" "$HOME/$file_or_dir"
+  fi
+done
+
+# Link all folders and files in $code to ~/.config/Code - OSS/User
+for file_or_dir in $(find "$code_source" -mindepth 1 -maxdepth 1)
+do
+  file_or_dir=$(basename "$file_or_dir")
+  # Make sure that the current folder is not on thest of folders to
+  # be ignored
+  if [[ ! " ${ignore[@]} " =~ " ${file_or_dir} " ]]; then
+    _link "$code_source/$file_or_dir" "$code_target/$file_or_dir"
   fi
 done
 
