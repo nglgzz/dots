@@ -1,6 +1,7 @@
 [Unit]
 Description=Chromix too server
 Requires=chromix-too.service
+After=chromix-too.service
 
 [Service]
 Environment="PATH=/usr/bin:%h/.npm-global/bin/"

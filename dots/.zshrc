@@ -18,6 +18,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 unalias gc
 unalias gca
+unalias d
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -111,18 +112,24 @@ alias gd='git diff'
 alias gdd='git diff HEAD'
 alias ga='git add'
 alias gp='git pull'
-alias gg='git push'
+alias gg='git push origin $(current_branch)'
 alias go='git checkout'
 alias gb='git branch'
 alias gf='git fetch'
 alias gl='git ls'
 alias gca='git commit --amend'
-alias ggwp='git push --force-with-lease'
+alias ggwp='git push --force-with-lease origin $(current_branch)'
 
 function gc() {
   arg="$*"
   git commit -m "$arg"
 }
+
+# _docker
+alias d='docker'
+alias db='docker build . -t'
+alias dc='docker container'
+alias de='docker exec -it'
 
 # _curl
 function cheat() {
