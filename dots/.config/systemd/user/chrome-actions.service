@@ -1,12 +1,12 @@
 [Unit]
-Description=Chromix too server
+Description=Chrome actions server
 Requires=chromix-too.service
 After=chromix-too.service
 
 [Service]
 Environment="PATH=/usr/bin:%h/.npm-global/bin/"
 EnvironmentFile=%h/.private/google
-WorkingDirectory=%h/projects/nglgzz/twitch
+WorkingDirectory=%h/projects/nglgzz/chrome-actions
 ExecStart=/usr/bin/node server.js
 
 [Install]

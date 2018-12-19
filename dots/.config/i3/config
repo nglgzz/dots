@@ -158,10 +158,11 @@ bindsym $mod+r exec rofi -dmenu -lines 0 -p 'song' | sed 's/ /%20/g' | sed 's/^/
 
 # Streaming
 # bindsym XF86AudioPlay
-bindsym XF86AudioPlay exec curl localhost:8268/pause
-bindsym XF86AudioNext exec curl localhost:8268/next
-bindsym XF86AudioPrev exec curl localhost:8268/back
-bindsym XF86AudioStop exec curl localhost:8268/random
+bindsym XF86AudioPlay exec curl localhost:8888/togglePlayPause
+bindsym XF86AudioNext exec curl localhost:8888/playNext
+bindsym XF86AudioPrev exec curl localhost:8888/playPrev
+bindsym XF86AudioStop exec curl localhost:8888/random
+bindsym Shift+XF86AudioPlay exec curl localhost:8888/toggleRepeat
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec light -A 10

@@ -16,7 +16,7 @@ offset-y = 0
 
 [module/song]
 type = custom/script
-exec = /usr/bin/curl -s localhost:8268/info | /usr/bin/grep -v youtube | sed 's/\t/  /'
+exec = /usr/bin/curl -s localhost:8888/getInfo | /usr/bin/grep -v youtube | sed 's/\t/  /'
 
 [module/i3]
 include-file = ~/.config/polybar/i3
