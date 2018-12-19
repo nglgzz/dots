@@ -163,6 +163,8 @@ bindsym XF86AudioNext exec curl localhost:8888/playNext
 bindsym XF86AudioPrev exec curl localhost:8888/playPrev
 bindsym XF86AudioStop exec curl localhost:8888/random
 bindsym Shift+XF86AudioPlay exec curl localhost:8888/toggleRepeat
+bindsym Shift+XF86AudioNext exec curl localhost:8888/goForward
+bindsym Shift+XF86AudioPrev exec curl localhost:8888/goBack
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec light -A 10
