@@ -1,5 +1,6 @@
 [Unit]
 Description=Chromix too server
+Before=chrome-actions.service
 
 [Service]
 ExecStart=/%h/.npm-global/bin/chromix-too-server
