@@ -6,22 +6,18 @@ export ZSH=/usr/share/oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="minimal"
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
-unalias gc
-unalias gca
-unalias d
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Reset aliases that will be overridden later.
+unalias gc gca d
 
 # Preferred terminal and editor for local and remote sessions
 export TERM='xterm-256color'
@@ -38,20 +34,19 @@ alias 42source='sleep 3 && cd ~/projects/nglgzz/42/firmware && make all && teens
 alias 42edit='vim ~/projects/nglgzz/42/firmware/keymap_42.c'
 alias 42='cd ~/projects/nglgzz/42'
 
-alias 9source='cd ~/projects/nglgzz/9/firmware && make all && teensy_loader_cli --mcu at90usb1286 9.hex && xev-clean'
-alias 9edit='vim ~/projects/nglgzz/9/firmware/keymap_9.c'
+alias 9source='cd ~/projects/nglgzz/qmk_firmware && make 9:default:avrdude && xev-clean'
+alias 9edit='vim ~/projects/nglgzz/9/keymaps/default/keymap.c'
 alias 9='cd ~/projects/nglgzz/9'
 
 # _bookmarks
 alias tmp='cd ~/tmp'
 alias ww='pcd whitewalker'
-alias bk='pcd balkan && cd frontend'
 alias wwt='pcd whitewalker && yarn generate && yarn build && yarn test-ci'
 alias ngl='pcd nglgzz nglgzz'
 
-
 # _dev utils
 alias cat='bat'
+alias _cat='command cat'
 alias serve='python -m http.server'
 alias e='code .'
 
@@ -62,25 +57,17 @@ v() {
   [[ -n "$files" ]] && vim "${files[@]}"
 }
 
-
 # _shell
 alias q='exit'
 alias l='ls -ah'
-alias la='ls -lah'
-alias ll='ls -lh'
-alias lla='ls -lah'
+alias ll='ls -lha'
 alias copy='xclip -selection clipboard'
 alias paste='xclip -out'
-function c() {
-  # Search for folder and cd into it
-  cf_path=$(find . -name "$1" | head  -n1)
-  cd $cf_path
-}
+
 function tousb() {
   sudo dd bs=4M if=$1 of=$2 status=progress
 }
 alias keychain='eval "$(ssh-agent -s)"'
-alias bt=bluetoothctl
 
 # _navigation
 alias b='popd 1>/dev/null'
@@ -139,7 +126,6 @@ function cheat() {
 }
 alias weather='curl wttr.in/..'
 
-
 # _systemd
 alias s='systemctl'
 alias sstart='systemctl start'
@@ -148,49 +134,6 @@ alias srestart='systemctl restart'
 alias sstatus='systemctl status'
 alias slog='journalctl -f -u'
 alias sreload='systemctl daemon-reload'
-
-# _testing
-alias memc='telnet localhost 11211'
-
-function loc() {
-  if [[ -z "$1" ]]; then
-    chromium "http://localhost:3000"
-    exit
-  fi
-
-  if [[ 1 == "${#1}" ]]; then
-    chromium "http://localhost:${1}000"
-    exit
-  fi
-
-  chromium "http://localhost:$1"
-}
-
-# _streaming
-alias twitch='systemctl start --user twitch-local-commands'
-alias twitch-stop='systemctl stop --user twitch-local-commands'
-alias twitch-local='systemctl --user set-environment TWITCH_HOST=localhost && twitch && systemctl --user unset-environment TWITCH_HOST'
-
-# Assumes that chromix-too-server is running, and prints the link of all YouTube tabs open.
-alias song='chromix-too ls | grep youtube | cut -f 1 -d '\'' '\'' --complement | sed '\''s/ - YouTube//'\'' | sed '\''s/ /\n🔊 /'\'' | sort -r'
-
-# Change the url of the first tab playing music on  Youtube.
-function play() {
-  curl "http://localhost:8268/change?url=$1"
-}
-
-# Skip to the next song on the first tab playing music on Youtube.
-function nextsong() {
-  tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
-
-  chromix-too raw 'chrome.tabs.executeScript' $tab '{"code": "document.querySelector(\".ytp-next-button\").click();"}'
-}
-
-function playpause() {
-  tab=$(chromix-too ls | grep youtube | head -n1 | cut -f 1 -d ' ')
-
-  chromix-too raw 'chrome.tabs.executeScript' $tab '{"code": "document.querySelector(\".ytp-play-button\").click();"}'
-}
 
 # _random
 # In case there's no WiFi and I have internet access via cable, I can create an
@@ -245,23 +188,10 @@ function it () {
  xcape -e "Shift_R=Delete"
 }
 
-function journal() {
-  # create journal entries
-  year=$(date | awk '{print $6}')
-  month=$(date | awk '{print $2}')
-  datetime=$(date | awk '{print $3 "\t" $4 "\t" $5}')
-  out="$(pfind journal)/$year/$month"
-
-  log="$*"
-
-  echo $datetime >> $out
-  echo $log >> $out
-  echo '' >> $out
-}
-HISTORY_IGNORE='journal *'
-## End Aliases
-
+# _aplications
 alias vpn='sudo openfortivpn'
+alias bt=bluetoothctl
+## End Aliases
 
 # Projects
 export PROJECTS=/home/nglgzz/projects/.utils
@@ -271,4 +201,3 @@ source $PROJECTS/config
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-
