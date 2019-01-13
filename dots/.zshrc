@@ -47,6 +47,7 @@ alias tmp='cd ~/tmp'
 alias ww='pcd whitewalker'
 alias bk='pcd balkan && cd frontend'
 alias wwt='pcd whitewalker && yarn generate && yarn build && yarn test-ci'
+alias ngl='pcd nglgzz nglgzz'
 
 
 # _dev utils
@@ -230,7 +231,6 @@ function en () {
  xmodmap -e "add Control = Control_L"
  xcape -t 500 -e "Super_L=space"
  xcape -e "Control_L=Escape"
- xcape -e "Mode_switch=Tab"
  xcape -e "Shift_R=Delete"
 }
 
@@ -242,7 +242,6 @@ function it () {
  xmodmap -e "add Control = Control_L"
  xcape -t 500 -e "Super_L=space"
  xcape -e "Control_L=Escape"
- xcape -e "Mode_switch=Tab"
  xcape -e "Shift_R=Delete"
 }
 
@@ -267,3 +266,9 @@ alias vpn='sudo openfortivpn'
 # Projects
 export PROJECTS=/home/nglgzz/projects/.utils
 source $PROJECTS/config
+
+# IBus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+

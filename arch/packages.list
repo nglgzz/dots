@@ -50,6 +50,7 @@ avr-gcc
 avr-libc
 xorg-xev
 teensy-loader-cli-git # aur
+ibus
 
 # Dev tools
 chromium
