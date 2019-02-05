@@ -30,9 +30,9 @@ alias zource='source ~/.zshrc'
 alias i3edit='vim ~/.config/i3/config'
 
 # _keyboards
-alias 42source='sleep 3 && cd ~/projects/nglgzz/42/firmware && make all && teensy_loader_cli --mcu atmega32u4 42.hex && xev-clean'
-alias 42edit='vim ~/projects/nglgzz/42/firmware/keymap_42.c'
-alias 42='cd ~/projects/nglgzz/42'
+alias 42source='cd ~/projects/nglgzz/42/firmware/ && make'
+alias 42edit='vim ~/projects/nglgzz/42/firmware/keymaps/default/keymap.c'
+alias 42='cd ~/projects/nglgzz/42/'
 
 alias 9source='cd ~/projects/nglgzz/qmk_firmware && make 9:default:avrdude && xev-clean'
 alias 9edit='vim ~/projects/nglgzz/9/keymaps/default/keymap.c'
