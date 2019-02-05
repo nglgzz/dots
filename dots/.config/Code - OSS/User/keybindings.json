@@ -1,5 +1,10 @@
 [
   {
+    "key": "ctrl+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
     "key": "ctrl+c",
     "command": "editor.action.clipboardCopyAction"
   },

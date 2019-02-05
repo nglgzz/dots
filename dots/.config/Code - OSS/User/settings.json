@@ -36,5 +36,6 @@
   "todo.timekeeping.elapsed.format": "long",
   "vim.useCtrlKeys": false,
   "breadcrumbs.enabled": true,
-  "explorer.confirmDragAndDrop": false
+  "explorer.confirmDragAndDrop": false,
+  "window.zoomLevel": 0
 }
