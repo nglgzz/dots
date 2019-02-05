@@ -1,10 +1,7 @@
 openssh
 python
-sshfs
-rsync
 
 # Monitoring
-strace
 htop
 sysstat
 acpi
@@ -17,7 +14,6 @@ i3-gaps
 i3lock
 polybar
 compton
-xdotool
 xorg-xrandr
 
 # Network & Audio
@@ -48,8 +44,8 @@ diff-so-fancy
 # Keyboard
 avr-gcc
 avr-libc
+avrdude
 xorg-xev
-teensy-loader-cli-git # aur
 ibus
 
 # Dev tools
