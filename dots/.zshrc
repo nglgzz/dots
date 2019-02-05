@@ -120,6 +120,16 @@ alias db='docker build . -t'
 alias dc='docker container'
 alias de='docker exec -it'
 
+# _kubernetes
+alias k='kubectl'
+alias kp='kubectl get pods --namespace=frontend'
+alias kd='kubectl get deployments --namespace=frontend'
+alias ks='kubectl get services --namespace=frontend'
+alias kdp='kubectl describe pods --namespace=frontend'
+alias kdd='kubectl describe deployments --namespace=frontend'
+alias kds='kubectl describe services --namespace=frontend'
+alias kl='kubectl logs -f'
+
 # _curl
 function cheat() {
   curl "cheat.sh/$1"
