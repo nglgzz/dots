@@ -15,6 +15,7 @@ i3lock
 polybar
 compton
 xorg-xrandr
+rofi
 
 # Network & Audio
 wicd-gtk
@@ -58,3 +59,6 @@ bluez
 bluez-utils
 pulseaudio-bluetooth
 
+# Twitch
+obs-studio
+chatty  # aur
