@@ -8,10 +8,11 @@ normal=$(tput sgr0)
 mkdir -p ~/tmp/pacaur_install
 cd ~/tmp/pacaur_install
 
+pacman -S meson gmock gtest
 
-# Install "cower" from AUR.
-if [ ! -n "$(pacman -Qs cower)" ]; then
-  curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower
+# Install "auracle-git" from AUR.
+if [ ! -n "$(pacman -Qs auracle-git)" ]; then
+  curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=auracle-git
   makepkg PKGBUILD --skippgpcheck --install --needed
 fi
 
@@ -32,13 +33,13 @@ rm -r ~/tmp/pacaur_install
 cat ~/packages.list | sed 's/#.*//' | xargs pacaur -S --noconfirm
 
 # Clone dots and link them to the right config paths.
-git clone --recursive git@github.com:nglgzz/dots.git ~/dots
+git clone --recursive https://github.com/nglgzz/dots ~/dots
 ~/dots/link.sh
+
+# Clone project utils
+git clone https://github.com/nglgzz/project-utils ~/projects/.utils
 
 # Remove .bash_profile so setup isn't executed again.
 rm ~/.bash_profile
 rm packages.list
 
-# Create .zprofile so graphical interface is
-# started automatically on login.
-echo "startx" > ~/.zprofile
