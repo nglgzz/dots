@@ -15,7 +15,11 @@ let g:user_emmet_mode='a'
 let g:user_emmet_leader_key='<C-E>'
 
 " auto remove trailing whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritePre * %s/\s\+$//e
+
+" Autoformat using Prettier
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.html Prettier
+
 
 let mapleader=" "
 map <Leader>w :w<Enter>

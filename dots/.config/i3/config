@@ -6,7 +6,7 @@ set $alt Mod1
 # Programs
 set $terminal termite
 set $browser chromium
-set $editor subl
+set $editor code
 
 # Colors
 set $black #000000
@@ -69,6 +69,14 @@ bindsym --release $mod+s exec scrot -s ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
 bindsym --release $mod+Shift+s exec scrot ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
+
+# Screen 
+# Change screen layout
+bindsym $mod+Ctrl+v exec ~/.screenlayout/one.sh
+bindsym $mod+Ctrl+m exec ~/.screenlayout/two-horizontal.sh
+
+# Move workspace between screens 
+bindsym $mod+Ctrl+g move workspace to output left
 
 # Workspace
 # Go to workspace
@@ -157,7 +165,6 @@ bindsym XF86Search exec rofi -dmenu -lines 0 -p 'song' | sed 's/ /%20/g' | sed '
 
 
 # Music
-# bindsym XF86AudioPlay
 bindsym XF86AudioPlay exec curl localhost:8888/togglePlayPause
 bindsym XF86AudioNext exec curl localhost:8888/playNext
 bindsym XF86AudioPrev exec curl localhost:8888/playPrev

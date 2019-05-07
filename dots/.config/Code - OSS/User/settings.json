@@ -10,12 +10,13 @@
     "reason": "javascriptreact"
   },
 
-  "prettier.singleQuote": true,
+  "prettier.singleQuote": false,
   "prettier.semi": true,
   "prettier.trailingComma": "all",
 
   "editor.formatOnSave": true,
-  "editor.fontFamily": "hack",
+  "editor.fontFamily": "Hack",
+  // "editor.fontFamily": "undefined medium",
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "editor.rulers": [80, 100],
@@ -26,6 +27,8 @@
   "files.exclude": {
     "**/.git": true,
     "node_modules": true,
+    "flow-definitions": true,
+    "flow-typed": true,
     "**/*.bs.js": true
   },
 
@@ -37,5 +40,21 @@
   "vim.useCtrlKeys": false,
   "breadcrumbs.enabled": true,
   "explorer.confirmDragAndDrop": false,
-  "window.zoomLevel": 0
+  "window.zoomLevel": 1,
+  "cSpell.language": "en",
+  "cSpell.userWords": [
+    "devs",
+    "okta",
+    "systemctl"
+  ],
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "go.useLanguageServer": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
