@@ -10,14 +10,14 @@ ZSH_THEME="minimal"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Reset aliases that will be overridden later.
-unalias gc gca d
+unalias gc gca d grb
 
 # Preferred terminal and editor for local and remote sessions
 export TERM='xterm-256color'
@@ -34,14 +34,13 @@ alias 42source='cd ~/projects/nglgzz/42/firmware/ && make'
 alias 42edit='vim ~/projects/nglgzz/42/firmware/keymaps/default/keymap.c'
 alias 42='cd ~/projects/nglgzz/42/'
 
-alias 9source='cd ~/projects/nglgzz/qmk_firmware && make 9:default:avrdude && xev-clean'
-alias 9edit='vim ~/projects/nglgzz/9/keymaps/default/keymap.c'
-alias 9='cd ~/projects/nglgzz/9'
+alias 16source='cd ~/projects/nglgzz/16/ && make'
+alias 16edit='vim ~/projects/nglgzz/16/keymaps/default/keymap.c'
+alias 16='cd ~/projects/nglgzz/16'
 
 # _bookmarks
 alias tmp='cd ~/tmp'
 alias ww='pcd whitewalker'
-alias wwt='pcd whitewalker && yarn generate && yarn build && yarn test-ci'
 alias ngl='pcd nglgzz nglgzz'
 
 # _dev utils
@@ -62,12 +61,11 @@ alias q='exit'
 alias l='ls -ah'
 alias ll='ls -lha'
 alias copy='xclip -selection clipboard'
-alias paste='xclip -out'
+alias paste='xclip -out -selection clipboard'
 
 function tousb() {
   sudo dd bs=4M if=$1 of=$2 status=progress
 }
-alias keychain='eval "$(ssh-agent -s)"'
 
 # _navigation
 alias b='popd 1>/dev/null'
@@ -82,9 +80,8 @@ alias nr='npm run'
 alias nt='npm test'
 alias ntw='npm run test:watch'
 
-export PATH=~/.npm-global/bin:$PATH
-# NPM Path (there's probably a better way to do this)
-export PATH=$PATH:./node_modules/.bin/
+export PATH=$PATH:~/.npm-global/bin
+source /usr/share/nvm/init-nvm.sh
 
 # _yarn
 alias y='yarn'
@@ -99,6 +96,7 @@ alias g='git'
 alias gs='git status'
 alias gd='git diff'
 alias gdd='git diff HEAD'
+alias gddd='git diff HEAD^1 HEAD'
 alias ga='git add'
 alias gp='git pull'
 alias gg='git push origin $(current_branch)'
@@ -107,7 +105,10 @@ alias gb='git branch'
 alias gf='git fetch'
 alias gl='git ls'
 alias gca='git commit --amend'
+alias gcaa='git commit --amend --no-edit'
 alias ggwp='git push --force-with-lease origin $(current_branch)'
+alias grb='git rebase origin/master'
+alias gu='git fetch origin && git rebase origin/master'
 
 function gc() {
   arg="$*"
@@ -119,6 +120,19 @@ alias d='docker'
 alias db='docker build . -t'
 alias dc='docker container'
 alias de='docker exec -it'
+alias drmi='docker rmi $(paste | awk '\''{print $3}'\'')'
+alias dlog='docker logs $(dfind)'
+alias dkill='docker kill $(dfind)'
+function dfind() {
+  if [ -z "$1" ]; then
+    docker ps | tail -n +2 | fzf | awk '{print $1}'
+  else
+    docker ps | grep $1 | awk '{print $1}' | head -n1
+  fi
+}
+function dsh() {
+  docker exec -it $(dfind $1) /bin/sh
+}
 
 # _kubernetes
 alias k='kubectl'
@@ -130,6 +144,11 @@ alias kdd='kubectl describe deployments --namespace=frontend'
 alias kds='kubectl describe services --namespace=frontend'
 alias kl='kubectl logs -f'
 
+# _go
+export PATH=$PATH:$HOME/go/bin/
+export GO111MODULE=on
+alias gol='/usr/bin/go'
+
 # _curl
 function cheat() {
   curl "cheat.sh/$1"
@@ -138,8 +157,8 @@ alias weather='curl wttr.in/..'
 
 # _systemd
 alias s='systemctl'
-alias sstart='systemctl start'
-alias sstop='systemctl stop'
+alias sstart='sudo systemctl start'
+alias sstop='sudo systemctl stop'
 alias srestart='systemctl restart'
 alias sstatus='systemctl status'
 alias slog='journalctl -f -u'
@@ -207,7 +226,12 @@ alias bt=bluetoothctl
 export PROJECTS=/home/nglgzz/projects/.utils
 source $PROJECTS/config
 
-# IBus
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+# Keychain for ssh keys
+eval "$(ssh-agent -s)" >> /dev/null
+
+# Android studio vars
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools

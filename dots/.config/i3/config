@@ -73,10 +73,10 @@ bindsym --release $mod+Shift+s exec scrot ~/tmp/screenshot.png &&\
 # Screen 
 # Change screen layout
 bindsym $mod+Ctrl+v exec ~/.screenlayout/one.sh
-bindsym $mod+Ctrl+m exec ~/.screenlayout/two-horizontal.sh
+bindsym $mod+Ctrl+m exec ~/.screenlayout/two-vertical.sh
 
 # Move workspace between screens 
-bindsym $mod+Ctrl+g move workspace to output left
+bindsym $mod+Ctrl+g move workspace to output up
 
 # Workspace
 # Go to workspace
