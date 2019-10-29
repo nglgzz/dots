@@ -68,7 +68,3 @@ mkdir ~/projects
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
-sudo cp "${dots}/etc-systemd/suspend@.service" "/etc/systemd/system/suspend@.service"
-systemctl daemon-reload
-systemctl enable suspend@$USER
-
