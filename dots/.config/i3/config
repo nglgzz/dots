@@ -65,9 +65,11 @@ bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
 bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
 # Print screen: full | select window or rectangle
-bindsym --release $mod+s exec scrot -s ~/tmp/screenshot.png &&\
+bindsym --release $mod+s exec rm -f ~/tmp/screenshot.png &&\
+ scrot -s ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
-bindsym --release $mod+Shift+s exec scrot ~/tmp/screenshot.png &&\
+bindsym --release $mod+Shift+s exec rm -f ~/tmp/screenshot.png &&\
+ scrot ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
 
 # Screen 

@@ -30,8 +30,8 @@ alias zource='source ~/.zshrc'
 alias i3edit='vim ~/.config/i3/config'
 
 # _keyboards
-alias 42source='cd ~/projects/nglgzz/42/firmware/ && make'
-alias 42edit='vim ~/projects/nglgzz/42/firmware/keymaps/default/keymap.c'
+alias 42source='cd ~/projects/nglgzz/qmk_fimwre/ && make handwired/42:default:avrdude'
+alias 42edit='vim ~/projects/nglgzz/qmk_firmware/keyboards/handwired/42/keymaps/default/keymap.c'
 alias 42='cd ~/projects/nglgzz/42/'
 
 alias 16source='cd ~/projects/nglgzz/16/ && make'
@@ -48,13 +48,6 @@ alias cat='bat'
 alias _cat='command cat'
 alias serve='python -m http.server'
 alias e='code .'
-
-v() {
-  # find in folder and open on vim
-  local files
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && vim "${files[@]}"
-}
 
 # _shell
 alias q='exit'
@@ -100,15 +93,20 @@ alias gddd='git diff HEAD^1 HEAD'
 alias ga='git add'
 alias gp='git pull'
 alias gg='git push origin $(current_branch)'
+alias ggwp='git push --force-with-lease origin $(current_branch)'
 alias go='git checkout'
 alias gb='git branch'
 alias gf='git fetch'
 alias gl='git ls'
+alias gls='git log --oneline | fzf'
+alias gcf='git commit --fixup'
+alias gcff='git rebase --interactive --autosquash --root'
 alias gca='git commit --amend'
 alias gcaa='git commit --amend --no-edit'
-alias ggwp='git push --force-with-lease origin $(current_branch)'
 alias grb='git rebase origin/master'
 alias gu='git fetch origin && git rebase origin/master'
+alias grls='git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- [%Cblue%h%Creset] %s"'
+alias grls-nochore='grls | grep -vwi "chore"'
 
 function gc() {
   arg="$*"
@@ -235,3 +233,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Add downloaded binaries to PATH
+export PATH=$PATH:$HOME/.bin
