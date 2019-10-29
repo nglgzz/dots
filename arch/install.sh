@@ -1,107 +1,86 @@
 #!/bin/bash
 
-# Check internet connection and exit
-# script if you're offline.
+# Any error or undefined variable will make the script exit immediately.
+set -eu
+
+
+# CHECK REQUIREMENTS
+## Internet connection
 wget -q --tries=10 --timeout=20 --spider http://google.com
 if [[ !$? -eq 0 ]]; then
   echo "ERROR: no internet connection."
-  echo "Check your connection and try again."
+  echo "Check that the cable is connected or run wifi-menu to connect to the WiFi."
   exit 1
 fi
 
-#Check if UEFI mode is enabled and exit if you're not.
+## UEFI mode
 if [[ ! -d /sys/firmware/efi/efivars ]]; then
-  echo "ERROR: UEFI mode not enabled."
+  echo "ERROR: UEFI mode is not enabled."
   echo "Reboot and make sure to have UEFI enabled."
   exit 1
 fi
 
+## No mounted partitions
+if [[ $(mount | grep -c "/mnt/boot") != 0 ]]; then
+  echo "ERROR: boot partition mounted"
+  echo "Unmounting /mnt/boot"
+  umount /mnt/boot || exit 1
+fi
+if [[ $(mount | grep -c "/mnt") != 0 ]]; then
+  echo "ERROR: root partition mounted"
+  echo "Unmounting /mnt"
+  umount /mnt || exit 1
+fi
+if [[ $(grep -c "/dev/" /proc/swaps) != 0 ]]; then
+  swap_device=$(grep "/dev/" /proc/swaps | awk '{print $1}')
+  echo "ERROR: swap partition mounted"
+  echo "Unmounting $swap_device"
+  swapoff $swap_device || exit 1
+fi
 
-# Variables used for formatting console output.
-bold=$(tput bold)
-normal=$(tput sgr0)
 
-# RAM size in GB
-ram=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-ram=$(expr $ram / 1000 / 1000)
-
-# Set keyboard layout.
+# PREPARE
+## Locale
 loadkeys us
-
-# Set timezone and NTP, and print time.
 timedatectl set-timezone Europe/Rome
 timedatectl set-ntp true
 timedatectl status
 
+## Generate variables used during installation.
+source ./variables.sh
 
-# Show available devices and partitions, and
-# ask for a device to install the system on.
-while true; do
-  clear
-  fdisk -l
-  echo -e "\n"
-  read -p "${bold}Choose a device to install the system on (eg. sdb):${normal} " device
-
-  # Check if device exists, show details of the
-  # selected device, and ask for confirmation.
-  device=/dev/$device
-
-  if [[ -b $device ]]; then
-    clear
-    fdisk -l $device
-    echo -e "\n${bold}Are you sure you want to overwrite this device?${normal}"
-
-    select yn in "Yes" "No"; do
-      case $yn in
-        Yes ) break;;
-        No ) break;;
-      esac
-    done
-
-    # If device exists and user confirmed that wants to use
-    # that device, then proceed.
-    if [[ $yn == "Yes" ]]; then
-      break
-    fi
-  fi
-done
-
-# Format and create boot, swap, and primary partitions.
-# Boot will be 512MiB, swap double the RAM size, and primary the rest.
+# INSTALL
+## Create partitions
 parted $device -s mklabel gpt
 parted $device -s mkpart ESP fat32 1MiB 513MiB
 parted $device set 1 boot on
 parted $device -s mkpart primary linux-swap 514MiB $(expr $ram \* 2)GB
 parted $device -s mkpart primary ext4 $(expr $ram \* 2)GB 100%
 
-# Format boot and primary partitions
-# and set up swap partition.
+## Format partitions
 mkfs.fat -F32 $device"1"
 mkswap $device"2"
-swapon $device"2"
 mkfs.ext4 $device"3"
-
-# Show updated device.
 fdisk -l $device
 
-# Mount partitions
+## Mount partition
+swapon $device"2"
 mount $device"3" /mnt
 mkdir /mnt/boot
 mount $device"1" /mnt/boot
 
-# Install base packages
+## Install base packages
 pacstrap /mnt
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cp install-base.sh root-setup.sh user-setup.sh /mnt/root/
-cp packages.list /mnt/root/
+## Chroot
+cp chroot.sh packages.list /mnt/root/
 chmod +x /mnt/root/*.sh
+arch-chroot /mnt env \
+  hostname=$hostname \
+  username=$username \
+  /root/chroot.sh
 
-# Chroot and setup
-arch-chroot /mnt /root/install-base.sh
-arch-chroot /mnt /root/root-setup.sh
-
-# Reboot
-clear
+# FINISH
 read -p "${bold}Installation almost completed, press enter to reboot.${normal}"
 reboot
