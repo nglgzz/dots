@@ -1,0 +1,77 @@
+## Essentials
+base
+base-devel
+linux
+linux-firmware
+
+## Pacaur dependencies
+meson
+gmock
+gtest
+expac
+yajl
+git
+
+## Networking
+wicd
+wget
+
+## Utilities
+zsh
+vim
+tar
+unzip
+jq
+
+# --------------------------
+## Xorg
+xorg-server
+xorg-xinit
+xorg-xsetroot
+
+## Networking
+wicd
+wicd-gtk
+openssh
+
+## Keyboard
+avr-gcc
+avr-libc
+avrdude
+xorg-xev
+xcape
+
+## Dev Tools
+chromium
+npm
+python
+code
+
+## Audio
+pavucontrol
+alsa-utils
+pulseaudio
+pulseaudio-alsa
+pulseaudio-bluetooth
+
+## Bluetooth
+bluez
+bluez-utils
+
+## i3
+i3-gaps
+i3lock
+compton
+xorg-xrandr
+rofi
+
+## i3 bindings
+htop
+feh
+scrot
+xclip
+
+## Shell
+termite
+bat
+diff-so-fancy

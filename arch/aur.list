@@ -1,0 +1,16 @@
+## i3
+polybar
+
+## Fonts
+ttf-hack-powerline-git
+ttf-fira-sans
+ttf-font-awesome-4
+noto-fonts-emoji
+
+## Shell
+oh-my-zsh-git
+fzf
+
+## Twitch
+obs-studio
+chatty

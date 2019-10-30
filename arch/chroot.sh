@@ -7,9 +7,7 @@ set -eu
 # Install bootloader.
 pacman -S --noconfirm grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot \
-  --bootloader-id=grub
-mkdir /boot/EFI/boot
-cp /boot/EFI/grub/grubx64.efi /boot/EFI/boot/bootx64.efi
+  --bootloader-id=grub --removable
 
 # If you have Intel CPU, install intel-ucode.
 cpu_vendor=$(grep vendor /proc/cpuinfo | uniq | awk '{print $3}')
@@ -32,12 +30,10 @@ hwclock --systohc --utc
 
 # Network configuration.
 echo $hostname > /etc/hostname
-pacman -S --noconfirm wicd
 systemctl enable wicd
 
 
 # Install sudo, create new user and add it to sudoers.
-pacman -S --noconfirm sudo
 useradd -m -G wheel $username
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
@@ -57,11 +53,7 @@ sudo -u nglgzz chsh -s /usr/bin/zsh
 # Check for updates
 pacman -Syu --noconfirm
 
-
-
 # Install pacaur and default packages.
-pacman -S --noconfirm meson gmock gtest
-
 ## Create tmp folder to download packages.
 function as_user () {
   sudo -u $username $*
@@ -89,7 +81,7 @@ cd $user_home/tmp
 rm -r $user_home/tmp/pacaur_install
 
 ## Install packages
-packages=$(cat ~/packages.list | sed 's/#.*//')
+packages=$(cat ~/aur.list | sed 's/#.*//')
 as_user EDITOR=vim pacaur -S --noconfirm --noedit $packages
 
 

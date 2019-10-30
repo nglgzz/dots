@@ -70,11 +70,11 @@ mkdir /mnt/boot
 mount $device"1" /mnt/boot
 
 ## Install base packages
-pacstrap /mnt
+pacstrap /mnt $(sed 's/#.*//' pacman.list)
 genfstab -U /mnt >> /mnt/etc/fstab
 
 ## Chroot
-cp chroot.sh packages.list /mnt/root/
+cp chroot.sh aur.list /mnt/root/
 chmod +x /mnt/root/*.sh
 arch-chroot /mnt env \
   hostname=$hostname \
