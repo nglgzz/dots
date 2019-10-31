@@ -1,16 +1,20 @@
 #!/bin/bash
 
+# Any error or undefined variable will make the script exit immediately.
+set -eu
+
 # This script should be safe to run multiple times. I always forget about this
 # and end up wasting time being overly cautious, so I'll write this here as a
 # reminder.
 
 # Link source to destination
 # _link src dst
-_link() {
+function _link() {
+  destination=$(dirname "$2")
   # If destination folder doesn't exist,
   # create the folder.
-  if [[ ! -d $(dirname "$2") ]]; then
-    mkdir -p $(dirname "$2")
+  if [[ ! -d "$destination" ]]; then
+    mkdir -p "$destination"
   fi
 
   # If destination exists remove it.
@@ -64,7 +68,8 @@ do
 done
 
 # Create empty folder for syncing.
-mkdir ~/projects
+mkdir -p ~/projects
 
+rm -rf ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
