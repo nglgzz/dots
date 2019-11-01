@@ -19,3 +19,7 @@ sh -c "$(curl -L https://git.io/nglgzz_arch)"
 - **variables.sh**: Used for setting variables and getting user input.
 - **chroot.sh**: Installs bootloader, creates user, installs default packages, and links dots to the user.
 - **packages.list**: List of default packages to include in the installation.
+
+During the installation you will be asked for which device you want to install
+Arch on, hostname and username, root and username passwords. Once the script has
+finished, you can reboot and you're good to go.
