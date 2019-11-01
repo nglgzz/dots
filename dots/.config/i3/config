@@ -192,7 +192,7 @@ assign [class="chatty-Chatty"] $ws6
 
 # Prepare background and start browser
 # exec_always hsetroot -solid '#222222'
-exec_always feh --bg-scale $HOME/.config/i3/bg.png
+exec_always feh --bg-scale $HOME/.config/i3/bg.jpg
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh default
 exec_always compton -bc
