@@ -22,7 +22,7 @@ font-1 = MaterialIcons:pixelsize=14;3
 
 modules-left = i3
 modules-center = song
-modules-right = pulseaudio network battery cpu date
+modules-right = pulseaudio network battery date
 
 cursor-click = pointer
 cursor-scroll = ns-resize

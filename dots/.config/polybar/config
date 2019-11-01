@@ -1,111 +1,83 @@
 [colors]
-include-file = ~/.config/polybar/colors
+  include-file = ~/.config/polybar/colors
 
 [bar/low_profile]
-include-file = ~/.config/polybar/bar
-monitor = ${env:MONITOR:HDMI-0}
-width = 100%
+  include-file = ~/.config/polybar/bar
+  monitor = ${env:MONITOR:HDMI-0}
+  width = 100%
 
 [bar/default]
-include-file = ~/.config/polybar/bar
-monitor = ${env:MONITOR:HDMI-0}
-width = ${env:POLYBAR_WIDTH:100%}
-override-redirect = true
-offset-x = 40
-offset-y = 0
+  include-file = ~/.config/polybar/bar
+  monitor = ${env:MONITOR:HDMI-0}
+  width = ${env:POLYBAR_WIDTH:100%}
+  override-redirect = true
+  offset-x = 40
+  offset-y = 0
 
 [module/song]
-type = custom/script
-exec = /usr/bin/curl -s localhost:8888/getInfo | /usr/bin/grep -v youtube | sed 's/\t/  /'
+  type = custom/script
+  exec = /usr/bin/curl -s localhost:8888/getInfo | /usr/bin/grep -v youtube | sed 's/\t/  /'
 
 [module/i3]
-include-file = ~/.config/polybar/i3
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-label = %percentage:2%%
+  include-file = ~/.config/polybar/i3
 
 [module/network]
-type = internal/network
-interface = ${env:NETWORK_IFACE:wlp3s0}
-interval = 3.0
+  type = internal/network
+  interface = ${env:NETWORK_IFACE:wlp3s0}
+  interval = 3.0
 
-format-connected = <label-connected>
-label-connected = ▲%upspeed%  ▼%downspeed%  %local_ip%
+  format-connected = %{A3:chromium 'speedtest.net':} <label-connected> %{A}
+  label-connected =  %local_ip%
+  label-disconnected = %ifname% disconnected
 
-format-disconnected = <label-disconnected>
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.alert}
+  label-disconnected-foreground = ${colors.alert}
 
 [module/date]
-type = internal/date
-interval = 5
+  type = internal/date
+  interval = 5
 
-date =
-date-alt = %d/%m
+  date = %d %b
+  time = %H:%M%
 
-time = %H:%M
-time-alt = %H:%M
+  label = %date% %time%
+  format = %{A3:chromium 'calendar.google.com':} <label> %{A}
 
-label = %date% %time%
 
 [module/pulseaudio]
-type = internal/pulseaudio
-use-ui-max = true
+  type = internal/pulseaudio
+  use-ui-max = true
 
-format-volume = <label-volume> <bar-volume>
-label-volume = 
-label-volume-foreground = ${colors.accent}
+  format-volume = %{A3:pavucontrol:} <bar-volume> %{A}
+  format-muted-foreground = ${colors.gray}
+  label-muted = sound muted
 
-format-muted-foreground = ${colors.gray}
-label-muted = sound muted
-
-bar-volume-width = 15
-bar-volume-foreground-0 = ${colors.accent}
-bar-volume-foreground-1 = ${colors.accent}
-bar-volume-foreground-2 = ${colors.accent}
-bar-volume-foreground-3 = ${colors.accent}
-bar-volume-foreground-4 = ${colors.accent}
-bar-volume-foreground-5 = ${colors.accent}
-bar-volume-foreground-6 = ${colors.alert}
-bar-volume-gradient = false
-bar-volume-indicator = ━
-bar-volume-indicator-font = 1
-bar-volume-fill = ━
-bar-volume-fill-font = 1
-bar-volume-empty = ━
-bar-volume-empty-font = 1
-bar-volume-empty-foreground = ${colors.gray}
+  bar-volume-width = 15
+  bar-volume-foreground-0 = ${colors.accent}
+  bar-volume-foreground-1 = ${colors.accent}
+  bar-volume-foreground-2 = ${colors.accent}
+  bar-volume-foreground-3 = ${colors.accent}
+  bar-volume-foreground-4 = ${colors.accent}
+  bar-volume-foreground-5 = ${colors.accent}
+  bar-volume-foreground-6 = ${colors.alert}
+  bar-volume-gradient = false
+  bar-volume-indicator = ━
+  bar-volume-fill = ━
+  bar-volume-empty = ━
+  bar-volume-empty-foreground = ${colors.gray}
 
 
 [module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 99
+  type = internal/battery
+  battery = BAT0
+  adapter = AC
+  full-at = 99
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.gray}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.gray}
-animation-charging-framerate = 750
+  label-charging =  %percentage%
+  label-discharging =  %percentage%
+  label-full =  full
 
 [settings]
-screenchange-reload = true
+  screenchange-reload = true
 
 [global/wm]
-margin-bottom = 0
+  margin-bottom = 0
