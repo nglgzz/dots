@@ -16,7 +16,7 @@ set $accent #4ef4ca
 set $urgent #DF6418
 
 # Layout
-set $border_width 2
+set $border_width 0
 gaps inner 20
 gaps outer 20
 #smart_gaps on
@@ -72,12 +72,12 @@ bindsym --release $mod+Shift+s exec rm -f ~/tmp/screenshot.png &&\
  scrot ~/tmp/screenshot.png &&\
  xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
 
-# Screen 
+# Screen
 # Change screen layout
 bindsym $mod+Ctrl+v exec ~/.screenlayout/one.sh
 bindsym $mod+Ctrl+m exec ~/.screenlayout/two-vertical.sh
 
-# Move workspace between screens 
+# Move workspace between screens
 bindsym $mod+Ctrl+g move workspace to output up
 
 # Workspace
@@ -152,10 +152,10 @@ bindsym $mod+Shift+period exec i3 gaps inner all set 20 &&\
 font pango:fira 8
 
 # Window colors
-client.focused $black $black $accent $gray
-client.focused_inactive $black $black $gray $gray
-client.unfocused $black $black $gray $gray
-client.urgent $black $black $urgent $gray
+client.focused          $black  $black $accent $gray $accent
+client.focused_inactive $black  $black $gray   $gray $dark_gray
+client.unfocused        $black  $black $gray   $gray $dark_gray
+client.urgent           $black  $black $urgent $gray $urgent
 
 # Remove titlebar and hide window edges
 for_window [class="^.*"] border pixel $border_width
@@ -197,6 +197,4 @@ exec_always feh --bg-scale $HOME/.config/i3/bg.png
 exec_always --no-startup-id ~/.config/polybar/launch.sh default
 exec_always compton -bc
 
-exec systemctl --user restart albert
-exec dunst
 exec $browser

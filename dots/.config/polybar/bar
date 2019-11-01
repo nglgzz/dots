@@ -18,7 +18,7 @@ padding-right = 3
 module-margin = 1
 
 font-0 = Hack:pixelsize=10;2
-font-1 = FontAwesome:pixelsize=14;3
+font-1 = MaterialIcons:pixelsize=14;3
 
 modules-left = i3
 modules-center = song

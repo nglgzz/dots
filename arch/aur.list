@@ -2,9 +2,9 @@
 polybar
 
 ## Fonts
+ttf-material-icons-git
 ttf-hack-powerline-git
 ttf-fira-sans
-ttf-font-awesome-4
 noto-fonts-emoji
 
 ## Shell

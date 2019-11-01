@@ -32,7 +32,7 @@ interface = ${env:NETWORK_IFACE:wlp3s0}
 interval = 3.0
 
 format-connected = <label-connected>
-label-connected = ▲%upspeed%  ▼%downspeed%  %local_ip%
+label-connected = ▲%upspeed%  ▼%downspeed%  %local_ip%
 
 format-disconnected = <label-disconnected>
 label-disconnected = %ifname% disconnected
@@ -55,7 +55,7 @@ type = internal/pulseaudio
 use-ui-max = true
 
 format-volume = <label-volume> <bar-volume>
-label-volume = 
+label-volume = 
 label-volume-foreground = ${colors.accent}
 
 format-muted-foreground = ${colors.gray}
