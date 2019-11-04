@@ -27,7 +27,7 @@
   interval = 3.0
 
   format-connected = %{A3:chromium 'speedtest.net':} <label-connected> %{A}
-  label-connected =  %local_ip%
+  label-connected = %local_ip%
   label-disconnected = %ifname% disconnected
 
   label-disconnected-foreground = ${colors.alert}

@@ -30,7 +30,7 @@ alias zource='source ~/.zshrc'
 alias i3edit='vim ~/.config/i3/config'
 
 # _keyboards
-alias 42source='cd ~/projects/nglgzz/qmk_fimwre/ && make handwired/42:default:avrdude'
+alias 42source='cd ~/projects/nglgzz/qmk_fimware/ && make handwired/42:default:avrdude'
 alias 42edit='vim ~/projects/nglgzz/qmk_firmware/keyboards/handwired/42/keymaps/default/keymap.c'
 alias 42='cd ~/projects/nglgzz/42/'
 
@@ -213,6 +213,18 @@ function it () {
  xcape -t 500 -e "Super_L=space"
  xcape -e "Control_L=Escape"
  xcape -e "Shift_R=Delete"
+}
+
+# Mount LUKS encrypted device
+function emnt () {
+  sudo cryptsetup open "/dev/$1" "crypt_$1"
+  sudo mount "/dev/mapper/crypt_$1" $2
+}
+
+# Unmount LUKS encrypted device
+function eumount () {
+  sudo umount $1
+  sudo cryptsetup close "crypt_$2"
 }
 
 # _aplications
