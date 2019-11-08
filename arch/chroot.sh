@@ -4,6 +4,10 @@
 set -eu
 
 
+# Add new hooks and rebuild linux image.
+sed -i -r 's/^(HOOKS=).*$/\1"base udev autodetect keyboard modconf block encrypt lvm2 filesystems fsck"/' /etc/mkinitcpio.conf
+mkinitcpio -p linux
+
 # Install bootloader.
 pacman -S --noconfirm grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot \
@@ -14,6 +18,10 @@ cpu_vendor=$(grep vendor /proc/cpuinfo | uniq | awk '{print $3}')
 if [[ $cpu_vendor == "GenuineIntel" ]]; then
   pacman -S --noconfirm intel-ucode
 fi
+
+# Add kernel parameter for unlocking the encrypted system partition during boot.
+sed -i -r 's/^(GRUB_CMDLINE_LINUX_DEFAULT=).*$/\1"quiet cryptdevice=UUID='"$UUID"':cryptlvm root=\/dev\/SystemVolGroup\/root"/' /etc/default/grub
+sed -i -r 's/^(GRUB_CMDLINE_LINUX=).*$/\1"cryptdevice=UUID='"$UUID"':cryptlvm root=\/dev\/SystemVolGroup\/root"/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Generate and set system locale and keymap.

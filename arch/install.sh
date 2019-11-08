@@ -4,7 +4,7 @@
 set -eu
 
 
-# CHECK REQUIREMENTS
+### CHECK REQUIREMENTS
 ## Internet connection
 wget -q --tries=10 --timeout=20 --spider http://google.com
 if [[ !$? -eq 0 ]]; then
@@ -24,22 +24,24 @@ fi
 if [[ $(mount | grep -c "/mnt/boot") != 0 ]]; then
   echo "ERROR: boot partition mounted"
   echo "Unmounting /mnt/boot"
-  umount /mnt/boot || exit 1
-fi
-if [[ $(mount | grep -c "/mnt") != 0 ]]; then
-  echo "ERROR: root partition mounted"
-  echo "Unmounting /mnt"
-  umount /mnt || exit 1
+  umount /mnt/boot
 fi
 if [[ $(grep -c "/dev/" /proc/swaps) != 0 ]]; then
   swap_device=$(grep "/dev/" /proc/swaps | awk '{print $1}')
   echo "ERROR: swap partition mounted"
   echo "Unmounting $swap_device"
-  swapoff $swap_device || exit 1
+  swapoff $swap_device
+fi
+if [[ $(mount | grep -c "/mnt") != 0 ]]; then
+  echo "ERROR: root partition mounted"
+  echo "Unmounting /mnt"
+  umount /mnt
+  lvchange -an SystemVolGroup
+  cryptsetup close cryptlvm
 fi
 
 
-# PREPARE
+### PREPARE
 ## Locale
 loadkeys us
 timedatectl set-timezone Europe/Rome
@@ -49,23 +51,38 @@ timedatectl status
 ## Generate variables used during installation.
 source ./variables.sh
 
-# INSTALL
-## Create partitions
+### INSTALL
+## Partition the disk
 parted $device -s mklabel gpt
+# Boot partition (EFI)
 parted $device -s mkpart ESP fat32 1MiB 513MiB
 parted $device set 1 boot on
-parted $device -s mkpart primary linux-swap 514MiB $(expr $ram \* 2)GB
-parted $device -s mkpart primary ext4 $(expr $ram \* 2)GB 100%
+# System partition (encrypted - will contain swap + root)
+parted $device -s mkpart primary ext4 514MiB 100%
 
-## Format partitions
+# Create and open LUKS encrypted container
+cryptsetup -y -q -v luksFormat $device"2"
+cryptsetup open $device"2" cryptlvm
+
+## Prepare logical volumes
+# Create a physical volume on the opened LUKS container.
+pvcreate /dev/mapper/cryptlvm
+# Create a volume group adding the previously created physical volume.
+vgcreate SystemVolGroup /dev/mapper/cryptlvm
+# Create all logical volumes on the volume group.
+lvcreate -L $swap_size SystemVolGroup -n swap
+lvcreate -l 100%FREE SystemVolGroup -n root
+
+## Format and mount each logical volume
+mkfs.ext4 /dev/SystemVolGroup/root
+mkswap /dev/SystemVolGroup/swap
+
+swapon /dev/SystemVolGroup/swap
+mount /dev/SystemVolGroup/root /mnt
+
+## Format and mount boot partition
 mkfs.fat -F32 $device"1"
-mkswap $device"2"
-mkfs.ext4 $device"3"
-fdisk -l $device
 
-## Mount partition
-swapon $device"2"
-mount $device"3" /mnt
 mkdir /mnt/boot
 mount $device"1" /mnt/boot
 
@@ -73,12 +90,16 @@ mount $device"1" /mnt/boot
 pacstrap /mnt $(sed 's/#.*//' pacman.list)
 genfstab -U /mnt >> /mnt/etc/fstab
 
+## Get UUID of system partition (used for grub.cfg)
+UUID=$(blkid -s UUID -o value $device"2")
+
 ## Chroot
 cp chroot.sh aur.list /mnt/root/
 chmod +x /mnt/root/*.sh
 arch-chroot /mnt env \
   hostname=$hostname \
   username=$username \
+  UUID=$UUID \
   /root/chroot.sh
 
 # FINISH

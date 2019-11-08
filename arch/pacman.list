@@ -3,6 +3,8 @@ base
 base-devel
 linux
 linux-firmware
+lvm2
+man-db
 
 ## Pacaur dependencies
 meson
@@ -46,6 +48,7 @@ chromium
 npm
 python
 code
+hub
 
 ## Audio
 pavucontrol

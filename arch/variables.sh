@@ -5,6 +5,7 @@ normal=$(tput sgr0)
 ## RAM size in GB
 ram=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 ram=$(expr $ram / 1000 / 1000)
+swap_size=$(expr $ram \* 2)G
 
 ## Helpers
 function read_confirm () {
