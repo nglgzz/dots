@@ -5,7 +5,7 @@ set -eu
 
 
 # Add new hooks and rebuild linux image.
-sed -i -r 's/^(HOOKS=).*$/\1"base udev autodetect keyboard modconf block encrypt lvm2 filesystems fsck"/' /etc/mkinitcpio.conf
+sed -i -r 's/^(HOOKS=).*$/\1"base udev keyboard autodetect modconf block encrypt lvm2 filesystems fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
 # Install bootloader.

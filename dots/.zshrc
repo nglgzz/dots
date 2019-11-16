@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Reset aliases that will be overridden later.
-unalias gc gca d grb
+unalias gc gca grb
 
 # Preferred terminal and editor for local and remote sessions
 export TERM='xterm-256color'
@@ -40,7 +40,6 @@ alias 16='cd ~/projects/nglgzz/16'
 
 # _bookmarks
 alias tmp='cd ~/tmp'
-alias ww='pcd whitewalker'
 alias ngl='pcd nglgzz nglgzz'
 
 # _dev utils
@@ -74,7 +73,6 @@ alias nt='npm test'
 alias ntw='npm run test:watch'
 
 export PATH=$PATH:~/.npm-global/bin
-source /usr/share/nvm/init-nvm.sh
 
 # _yarn
 alias y='yarn'
@@ -216,15 +214,15 @@ function it () {
 }
 
 # Mount LUKS encrypted device
-function emnt () {
+function emount () {
   sudo cryptsetup open "/dev/$1" "crypt_$1"
   sudo mount "/dev/mapper/crypt_$1" $2
 }
 
 # Unmount LUKS encrypted device
 function eumount () {
-  sudo umount $1
-  sudo cryptsetup close "crypt_$2"
+  sudo umount $2
+  sudo cryptsetup close "crypt_$1"
 }
 
 # _aplications
