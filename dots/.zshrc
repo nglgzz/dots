@@ -47,6 +47,7 @@ alias cat='bat'
 alias _cat='command cat'
 alias serve='python -m http.server'
 alias e='code .'
+alias eex='code --list-extensions > "$HOME/dots/dots/.config/Code - OSS/extensions.list"'
 
 # _shell
 alias q='exit'

@@ -66,6 +66,8 @@ do
     _link "$code_source/$file_or_dir" "$code_target/$file_or_dir"
   fi
 done
+# Install VS Code extensions
+cat "$code_source/../extensions.list" | xargs -L 1 code --force --install-extension
 
 # Create empty folder for syncing.
 mkdir -p ~/projects

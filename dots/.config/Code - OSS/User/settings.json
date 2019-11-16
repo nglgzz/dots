@@ -7,12 +7,8 @@
     "javascript": "javascriptreact",
     "reason": "javascriptreact"
   },
-  "prettier.singleQuote": false,
-  "prettier.semi": true,
-  "prettier.trailingComma": "all",
   "editor.formatOnSave": true,
   "editor.fontFamily": "'Hack', 'Material Icons'",
-  // "editor.fontFamily": "undefined medium",
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "editor.rulers": [
@@ -24,25 +20,14 @@
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
     "**/.git": true,
-    "node_modules": true,
-    "flow-definitions": true,
-    "flow-typed": true,
-    "**/*.bs.js": true
+    "node_modules": true
   },
   "workbench.colorTheme": "Pitch Black",
-  "workbench.statusBar.feedback.visible": false,
   "window.menuBarVisibility": "toggle",
   "todo.timekeeping.elapsed.format": "long",
   "vim.useCtrlKeys": false,
-  "breadcrumbs.enabled": true,
   "explorer.confirmDragAndDrop": false,
-  "window.zoomLevel": 1,
   "cSpell.language": "en",
-  "cSpell.userWords": [
-    "devs",
-    "okta",
-    "systemctl"
-  ],
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
