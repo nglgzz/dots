@@ -61,8 +61,8 @@ parted $device set 1 boot on
 parted $device -s mkpart primary ext4 514MiB 100%
 
 # Create and open LUKS encrypted container
-cryptsetup -y -q -v luksFormat $device"2"
-cryptsetup open $device"2" cryptlvm
+cryptsetup -y -q -v luksFormat $device"p2"
+cryptsetup open $device"p2" cryptlvm
 
 ## Prepare logical volumes
 # Create a physical volume on the opened LUKS container.
@@ -81,17 +81,17 @@ swapon /dev/SystemVolGroup/swap
 mount /dev/SystemVolGroup/root /mnt
 
 ## Format and mount boot partition
-mkfs.fat -F32 $device"1"
+mkfs.fat -F32 $device"p1"
 
 mkdir /mnt/boot
-mount $device"1" /mnt/boot
+mount $device"p1" /mnt/boot
 
 ## Install base packages
 pacstrap /mnt $(sed 's/#.*//' pacman.list)
 genfstab -U /mnt >> /mnt/etc/fstab
 
 ## Get UUID of system partition (used for grub.cfg)
-UUID=$(blkid -s UUID -o value $device"2")
+UUID=$(blkid -s UUID -o value $device"p2")
 
 ## Chroot
 cp chroot.sh aur.list /mnt/root/
