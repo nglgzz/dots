@@ -38,8 +38,9 @@ hwclock --systohc --utc
 
 # Network configuration.
 echo $hostname > /etc/hostname
-systemctl enable wicd
 
+# Power on bletooth module on startup.
+sed -i 's/#AutoEnable=.*$/AutoEnable=true/' /etc/bluetooth/main.conf
 
 # Install sudo, create new user and add it to sudoers.
 useradd -m -G wheel $username
@@ -92,6 +93,9 @@ rm -r $user_home/tmp/pacaur_install
 packages=$(cat ~/aur.list | sed 's/#.*//')
 as_user EDITOR=vim pacaur -S --noconfirm --noedit $packages
 
+## Enable services
+systemctl enable wicd
+systemctl enable bluetooth
 
 ## Link dots and project utils
 as_user git clone --recursive https://github.com/nglgzz/dots $user_home/dots

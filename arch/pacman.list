@@ -15,8 +15,8 @@ yajl
 git
 
 ## Networking
-wicd
 wget
+openssh
 
 ## Utilities
 zsh
@@ -31,11 +31,6 @@ usbutils
 xorg-server
 xorg-xinit
 xorg-xsetroot
-
-## Networking
-wicd
-wicd-gtk
-openssh
 
 ## Keyboard
 avr-gcc
