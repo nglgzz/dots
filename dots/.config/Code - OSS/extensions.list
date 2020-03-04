@@ -1,6 +1,5 @@
 esbenp.prettier-vscode
 fabiospampinato.vscode-todo-plus
-ms-vscode.Go
 pflannery.vscode-versionlens
 streetsidesoftware.code-spell-checker
 viktorqvarfordt.vscode-pitch-black-theme
@@ -8,4 +7,5 @@ vscodevim.vim
 eamodio.gitlens
 vsciot-vscode.vscode-arduino
 xaver.clang-format
+ms-vsliveshare.vsliveshare
 ms-vscode.cpptools

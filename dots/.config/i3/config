@@ -169,11 +169,11 @@ bindsym XF86Search exec rofi -dmenu -lines 0 -p 'song' -location 2 -width 450 | 
 # Music
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioStop exec curl localhost:8888/random
-bindsym XF86Reload exec curl localhost:8888/toggleRepeat
-bindsym Shift+XF86AudioNext exec curl localhost:8888/goForward
-bindsym Shift+XF86AudioPrev exec curl localhost:8888/goBack
+bindsym XF86AudioPrev exec playerctl previous 
+bindsym XF86AudioStop exec playerctl shuffle
+bindsym XF86Reload exec playerctl loop
+bindsym Shift+XF86AudioNext exec playerctl position +5
+bindsym Shift+XF86AudioPrev exec playerctl position -5
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec light -A 10
@@ -186,6 +186,7 @@ bindsym $mod+z exec feh $HOME/.config/i3/i3.png
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
 assign [class="code"] $ws2
+assign [class="Code"] $ws2
 assign [class="Termite"] $ws3
 assign [class="obs"] $ws6
 assign [class="chatty-Chatty"] $ws6

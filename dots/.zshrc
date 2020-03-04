@@ -38,6 +38,8 @@ alias 16source='cd ~/projects/nglgzz/16/ && make'
 alias 16edit='vim ~/projects/nglgzz/16/keymaps/default/keymap.c'
 alias 16='cd ~/projects/nglgzz/16'
 
+alias xev-clean='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
+
 # _bookmarks
 alias tmp='cd ~/tmp'
 alias ngl='pcd nglgzz nglgzz'
@@ -72,6 +74,9 @@ alias nd='npm run dev'
 alias nr='npm run'
 alias nt='npm test'
 alias ntw='npm run test:watch'
+function pj() {
+  cat package.json | jq .$1
+}
 
 export PATH=$PATH:~/.npm-global/bin
 
@@ -79,7 +84,7 @@ export PATH=$PATH:~/.npm-global/bin
 alias y='yarn'
 alias ys='yarn start'
 alias yd='yarn dev'
-alias yt='yarn test-ci'
+alias yt='yarn test'
 alias ya='yarn add'
 alias yb='yarn build'
 
@@ -102,7 +107,7 @@ alias gcf='git commit --fixup'
 alias gcff='git rebase --interactive --autosquash --root'
 alias gca='git commit --amend'
 alias gcaa='git commit --amend --no-edit'
-alias grb='git rebase origin/master'
+alias grb='git fetch upstream && git rebase upstream/master'
 alias gu='git fetch origin && git rebase origin/master'
 alias grls='git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- [%Cblue%h%Creset] %s"'
 alias grls-nochore='grls | grep -vwi "chore"'
@@ -128,7 +133,7 @@ function dfind() {
   fi
 }
 function dsh() {
-  docker exec -it $(dfind $1) /bin/sh
+  docker exec -it $(dfind $1) /bin/bash
 }
 
 # _kubernetes
@@ -165,46 +170,13 @@ alias sreload='systemctl daemon-reload'
 # In case there's no WiFi and I have internet access via cable, I can create an
 # access point so I can share the connection with my phone.
 alias lettherebewifi="sudo create_ap wlp3s0 enp0s25 'Gluten-Free Fair Trade WiFi' ALLLOWERCASEWITHSPACES"
-
-alias xev-clean='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
+alias kb='setxkbmap'
 
 # 10 most used commands, can show more or less appending "-n15" for example
 alias topten='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'\'' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
 
-# Upload a file on transfer.sh and copy link to that file on the clipboard
-function share() {
-  if [ $# -eq 0 ]; then
-    echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
-    return 1
-  fi
-
-  tmpfile=$( mktemp -t transferXXX )
-
-  if tty -s; then
-    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
-    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile
-  else
-    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile
-  fi
-
-  cat $tmpfile
-  cat $tmpfile | copy
-  rm -f $tmpfile
-}
-
 function en () {
  setxkbmap us
- xmodmap ~/.xmodmaprc
- pkill xcape
- xmodmap -e "clear Lock"
- xmodmap -e "add Control = Control_L"
- xcape -t 500 -e "Super_L=space"
- xcape -e "Control_L=Escape"
- xcape -e "Shift_R=Delete"
-}
-
-function it () {
- setxkbmap it
  xmodmap ~/.xmodmaprc
  pkill xcape
  xmodmap -e "clear Lock"
@@ -226,9 +198,26 @@ function eumount () {
   sudo cryptsetup close "crypt_$1"
 }
 
-# _aplications
-alias vpn='sudo openfortivpn'
+# _bluetooth 
 alias bt=bluetoothctl
+function bt-connect() {
+  bluetoothctl connect $(bluetoothctl devices | fzf | awk '{print $2}')
+}
+function bt-disconnect() {
+  bluetoothctl disconnect $(bluetoothctl devices | fzf | awk '{print $2}')
+}
+function bt-share() {
+  # Get bluetooth device MAC address
+  device=$(bluetoothctl devices | fzf | awk '{print $2}')
+  device_path="/org/bluez/hci0/dev_$(echo $device | sed 's/:/_/g')"
+
+  # Create bnep0 network interface
+  dbus-send --system --type=method_call --dest=org.bluez $device_path org.bluez.Network1.Connect string:'nap'
+
+  # Connect to new interface
+  sudo dhcpcd bnep0
+}
+
 ## End Aliases
 
 # Projects
@@ -247,3 +236,14 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Add downloaded binaries to PATH
 export PATH=$PATH:$HOME/.bin
+
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
+
+
+# daedalus
+export NEO4J_RELATE_CONFIG_HOME=~/projects/neo4j/daedalus/e2e/fixtures/config/neo4j-relate
+export NEO4J_RELATE_DATA_HOME=~/projects/neo4j/daedalus/e2e/fixtures/data/neo4j-relate
+DAEDALUS_AC_ZSH_SETUP_PATH=/home/nglgzz/.cache/@daedalus/cli/autocomplete/zsh_setup && test -f $DAEDALUS_AC_ZSH_SETUP_PATH && source $DAEDALUS_AC_ZSH_SETUP_PATH;

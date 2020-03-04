@@ -16,13 +16,13 @@ keycode 108 = Mode_switch
 keycode 252 = Alt_R
 add mod3 = Mode_switch
 
-! wasd to arrow keys
+! ijkl to arrow keys
 keycode 31 = i I Up Up
 keycode 44 = j J Left Left
 keycode 45 = k K Down Down
 keycode 46 = l L Right Right
 
-! qe to Home|End
+! sf to Home|End
 keycode 39 = s S Home Home
 keycode 41 = f F End End
 
