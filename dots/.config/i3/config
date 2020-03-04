@@ -167,9 +167,9 @@ bindsym XF86Search exec rofi -dmenu -lines 0 -p 'song' -location 2 -width 450 | 
 
 
 # Music
-bindsym XF86AudioPlay exec curl localhost:8888/togglePlayPause
-bindsym XF86AudioNext exec curl localhost:8888/playNext
-bindsym XF86AudioPrev exec curl localhost:8888/playPrev
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec curl localhost:8888/random
 bindsym XF86Reload exec curl localhost:8888/toggleRepeat
 bindsym Shift+XF86AudioNext exec curl localhost:8888/goForward
