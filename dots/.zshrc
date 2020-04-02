@@ -30,8 +30,8 @@ alias zource='source ~/.zshrc'
 alias i3edit='vim ~/.config/i3/config'
 
 # _keyboards
-alias 42source='cd ~/projects/nglgzz/qmk_fimware/ && make handwired/42:default:avrdude'
-alias 42edit='vim ~/projects/nglgzz/qmk_firmware/keyboards/handwired/42/keymaps/default/keymap.c'
+alias 42source='cd ~/projects/nglgzz/42/firmware && make' 
+alias 42edit='vim ~/projects/nglgzz/42/firmware/42/keymaps/default/keymap.c'
 alias 42='cd ~/projects/nglgzz/42/'
 
 alias 16source='cd ~/projects/nglgzz/16/ && make'
@@ -237,13 +237,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Add downloaded binaries to PATH
 export PATH=$PATH:$HOME/.bin
 
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/nvm.sh
-source /usr/share/nvm/bash_completion
-source /usr/share/nvm/install-nvm-exec
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-
-# daedalus
-export NEO4J_RELATE_CONFIG_HOME=~/projects/neo4j/daedalus/e2e/fixtures/config/neo4j-relate
-export NEO4J_RELATE_DATA_HOME=~/projects/neo4j/daedalus/e2e/fixtures/data/neo4j-relate
-DAEDALUS_AC_ZSH_SETUP_PATH=/home/nglgzz/.cache/@daedalus/cli/autocomplete/zsh_setup && test -f $DAEDALUS_AC_ZSH_SETUP_PATH && source $DAEDALUS_AC_ZSH_SETUP_PATH;
+# relate autocomplete setup
+RELATE_AC_ZSH_SETUP_PATH=/home/nglgzz/.cache/@relate/cli/autocomplete/zsh_setup && test -f $RELATE_AC_ZSH_SETUP_PATH && source $RELATE_AC_ZSH_SETUP_PATH;
