@@ -16,8 +16,12 @@ fzf
 obs-studio
 chatty
 
-## Apps
+## Development
 slack-desktop
+visual-studio-code-bin
+
+## Keyboard
+gcc-arm-none-eabi-bin-83
 
 ## Networking
 wicd-git

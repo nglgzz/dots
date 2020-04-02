@@ -30,9 +30,9 @@ function _link() {
 dots=$HOME/dots/dots
 config_source="$dots/.config"
 config_target=$HOME/.config
-code_source="$config_source/Code - OSS/User"
-code_target="$config_target/Code - OSS/User"
-ignore=(.config etc-systemd 'Code - OSS')
+code_source="$config_source/Code/User"
+code_target="$config_target/Code/User"
+ignore=(.config etc-systemd 'Code')
 
 # Link all folders in $config_source to ~/.config
 for dir in $(find "$config_source" -mindepth 1 -maxdepth 1 -type d)
