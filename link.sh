@@ -35,8 +35,7 @@ code_target="$config_target/Code/User"
 ignore=(.config etc-systemd 'Code')
 
 # Link all folders in $config_source to ~/.config
-for dir in $(find "$config_source" -mindepth 1 -maxdepth 1 -type d)
-do
+for dir in $(find "$config_source" -mindepth 1 -maxdepth 1 -type d); do
   dir=$(basename "$dir")
   # Make sure that the current folder is not on the list of folders to
   # be ignored
@@ -46,8 +45,7 @@ do
 done
 
 # Link all folders and files in $dots to ~
-for file_or_dir in $(find "$dots" -mindepth 1 -maxdepth 1)
-do
+for file_or_dir in $(find "$dots" -mindepth 1 -maxdepth 1); do
   file_or_dir=$(basename "$file_or_dir")
   # Make sure that the current folder is not on the list of folders to
   # be ignored
@@ -57,8 +55,7 @@ do
 done
 
 # Link all folders and files in $code to ~/.config/Code - OSS/User
-for file_or_dir in $(find "$code_source" -mindepth 1 -maxdepth 1)
-do
+for file_or_dir in $(find "$code_source" -mindepth 1 -maxdepth 1); do
   file_or_dir=$(basename "$file_or_dir")
   # Make sure that the current folder is not on thest of folders to
   # be ignored
@@ -75,3 +72,5 @@ mkdir -p ~/projects
 rm -rf ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
+mkdir ~/.cache/nvim
+nvim +PlugInstall

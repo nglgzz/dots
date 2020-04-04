@@ -20,7 +20,7 @@ openssh
 
 ## Utilities
 zsh
-vim
+neovim
 tar
 unzip
 jq

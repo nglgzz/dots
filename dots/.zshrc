@@ -21,21 +21,22 @@ unalias gc gca grb gcf
 
 # Preferred terminal and editor for local and remote sessions
 export TERM='xterm-256color'
-export EDITOR='vim'
+export EDITOR='nvim'
+alias vim='nvim'
 
 ## Aliases
 # _configs
-alias zedit='vim ~/.zshrc && source ~/.zshrc'
+alias zedit='nvim ~/.zshrc && source ~/.zshrc'
 alias zource='source ~/.zshrc'
-alias i3edit='vim ~/.config/i3/config'
+alias i3edit='nvim ~/.config/i3/config'
 
 # _keyboards
 alias 42source='cd ~/projects/nglgzz/42/firmware && make'
-alias 42edit='vim ~/projects/nglgzz/42/firmware/42/keymaps/default/keymap.c'
+alias 42edit='nvim ~/projects/nglgzz/42/firmware/42/keymaps/default/keymap.c'
 alias 42='cd ~/projects/nglgzz/42/'
 
 alias 16source='cd ~/projects/nglgzz/16/ && make'
-alias 16edit='vim ~/projects/nglgzz/16/keymaps/default/keymap.c'
+alias 16edit='nvim ~/projects/nglgzz/16/keymaps/default/keymap.c'
 alias 16='cd ~/projects/nglgzz/16'
 
 alias xev-clean='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
