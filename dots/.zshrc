@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Reset aliases that will be overridden later.
-unalias gc gca grb
+unalias gc gca grb gcf
 
 # Preferred terminal and editor for local and remote sessions
 export TERM='xterm-256color'
@@ -30,7 +30,7 @@ alias zource='source ~/.zshrc'
 alias i3edit='vim ~/.config/i3/config'
 
 # _keyboards
-alias 42source='cd ~/projects/nglgzz/42/firmware && make' 
+alias 42source='cd ~/projects/nglgzz/42/firmware && make'
 alias 42edit='vim ~/projects/nglgzz/42/firmware/42/keymaps/default/keymap.c'
 alias 42='cd ~/projects/nglgzz/42/'
 
@@ -103,8 +103,11 @@ alias gb='git branch'
 alias gf='git fetch'
 alias gl='git ls'
 alias gls='git log --oneline | fzf'
-alias gcf='git commit --fixup'
-alias gcff='git rebase --interactive --autosquash --root'
+function gcf() {
+  commit=$(git ls | head -n10 | fzf | grep -oP '\[\K\w{7}(?=])')
+  git commit --fixup $commit
+}
+alias gcff='git rebase --interactive --autosquash HEAD~10'
 alias gca='git commit --amend'
 alias gcaa='git commit --amend --no-edit'
 alias grb='git fetch upstream && git rebase upstream/master'
@@ -175,30 +178,30 @@ alias kb='setxkbmap'
 # 10 most used commands, can show more or less appending "-n15" for example
 alias topten='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'\'' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
 
-function en () {
- setxkbmap us
- xmodmap ~/.xmodmaprc
- pkill xcape
- xmodmap -e "clear Lock"
- xmodmap -e "add Control = Control_L"
- xcape -t 500 -e "Super_L=space"
- xcape -e "Control_L=Escape"
- xcape -e "Shift_R=Delete"
+function en() {
+  setxkbmap us
+  xmodmap ~/.xmodmaprc
+  pkill xcape
+  xmodmap -e "clear Lock"
+  xmodmap -e "add Control = Control_L"
+  xcape -t 500 -e "Super_L=space"
+  xcape -e "Control_L=Escape"
+  xcape -e "Shift_R=Delete"
 }
 
 # Mount LUKS encrypted device
-function emount () {
+function emount() {
   sudo cryptsetup open "/dev/$1" "crypt_$1"
   sudo mount "/dev/mapper/crypt_$1" $2
 }
 
 # Unmount LUKS encrypted device
-function eumount () {
+function eumount() {
   sudo umount $2
   sudo cryptsetup close "crypt_$1"
 }
 
-# _bluetooth 
+# _bluetooth
 alias bt=bluetoothctl
 function bt-connect() {
   bluetoothctl connect $(bluetoothctl devices | fzf | awk '{print $2}')
@@ -225,7 +228,7 @@ export PROJECTS=/home/nglgzz/projects/.utils
 source $PROJECTS/config
 
 # Keychain for ssh keys
-eval "$(ssh-agent -s)" >> /dev/null
+eval "$(ssh-agent -s)" >>/dev/null
 
 # Android studio vars
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -241,4 +244,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # relate autocomplete setup
-RELATE_AC_ZSH_SETUP_PATH=/home/nglgzz/.cache/@relate/cli/autocomplete/zsh_setup && test -f $RELATE_AC_ZSH_SETUP_PATH && source $RELATE_AC_ZSH_SETUP_PATH;
+RELATE_AC_ZSH_SETUP_PATH=/home/nglgzz/.cache/@relate/cli/autocomplete/zsh_setup && test -f $RELATE_AC_ZSH_SETUP_PATH && source $RELATE_AC_ZSH_SETUP_PATH

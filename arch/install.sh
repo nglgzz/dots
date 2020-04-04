@@ -3,7 +3,6 @@
 # Any error or undefined variable will make the script exit immediately.
 set -eu
 
-
 ### CHECK REQUIREMENTS
 ## Internet connection
 wget -q --tries=10 --timeout=20 --spider http://google.com
@@ -39,7 +38,6 @@ if [[ $(mount | grep -c "/mnt") != 0 ]]; then
   lvchange -an SystemVolGroup
   cryptsetup close cryptlvm
 fi
-
 
 ### PREPARE
 ## Locale
@@ -88,7 +86,7 @@ mount $device"p1" /mnt/boot
 
 ## Install base packages
 pacstrap /mnt $(sed 's/#.*//' pacman.list)
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >>/mnt/etc/fstab
 
 ## Get UUID of system partition (used for grub.cfg)
 UUID=$(blkid -s UUID -o value $device"p2")

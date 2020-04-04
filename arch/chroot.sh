@@ -3,7 +3,6 @@
 # Any error or undefined variable will make the script exit immediately.
 set -eu
 
-
 # Add new hooks and rebuild linux image.
 sed -i -r 's/^(HOOKS=).*$/\1"base udev keyboard autodetect modconf block encrypt lvm2 filesystems fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
@@ -25,11 +24,10 @@ sed -i -r 's/^(GRUB_CMDLINE_LINUX=).*$/\1"cryptdevice=UUID='"$UUID"':cryptlvm ro
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Generate and set system locale and keymap.
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen
 locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "KEYMAP=us" > /etc/vconsole.conf
-
+echo "LANG=en_US.UTF-8" >/etc/locale.conf
+echo "KEYMAP=us" >/etc/vconsole.conf
 
 # Select timezone and set clock to UTC.
 rm -f /etc/localtime
@@ -37,14 +35,14 @@ ln -s /usr/share/zoneinfo/Europe/Rome /etc/localtime
 hwclock --systohc --utc
 
 # Network configuration.
-echo $hostname > /etc/hostname
+echo $hostname >/etc/hostname
 
 # Power on bletooth module on startup.
 sed -i 's/#AutoEnable=.*$/AutoEnable=true/' /etc/bluetooth/main.conf
 
 # Install sudo, create new user and add it to sudoers.
 useradd -m -G wheel $username
-echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+echo "%wheel ALL=(ALL) ALL" >>/etc/sudoers
 
 # Set passwords for root and user.
 echo "Set root password."
@@ -64,7 +62,7 @@ pacman -Syu --noconfirm
 
 # Install pacaur and default packages.
 ## Create tmp folder to download packages.
-function as_user () {
+function as_user() {
   sudo -u $username $*
 }
 user_home="/home/$username"

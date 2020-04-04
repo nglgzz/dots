@@ -8,7 +8,7 @@ ram=$(expr $ram / 1000 / 1000)
 swap_size=$(expr $ram \* 2)G
 
 ## Helpers
-function read_confirm () {
+function read_confirm() {
   while true; do
     read -p "${bold}Enter $1:${normal} " value
     read -p "Entered ${bold}${value}${normal}, continue?[y/N] " -r
@@ -19,7 +19,7 @@ function read_confirm () {
     fi
   done
 
-  local  __resultvar=$1
+  local __resultvar=$1
   eval $__resultvar="'${value}'"
 }
 
@@ -41,8 +41,8 @@ while true; do
 
     select choice in "Yes" "No"; do
       case $choice in
-        Yes ) break;;
-        No  ) break;;
+      Yes) break ;;
+      No) break ;;
       esac
     done
 
