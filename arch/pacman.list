@@ -59,7 +59,7 @@ bluez-utils
 ## i3
 i3-gaps
 i3lock
-compton
+picom
 xorg-xrandr
 rofi
 

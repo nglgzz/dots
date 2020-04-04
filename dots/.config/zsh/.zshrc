@@ -14,7 +14,7 @@ plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
 
 # https://github.com/zsh-users/zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Reset aliases that will be overridden later.
 unalias gc gca grb gcf
@@ -181,7 +181,7 @@ alias topten='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CM
 
 function en() {
   setxkbmap us
-  xmodmap ~/.xmodmaprc
+  xmodmap ~/.config/xmodmap/xmodmaprc
   pkill xcape
   xmodmap -e "clear Lock"
   xmodmap -e "add Control = Control_L"

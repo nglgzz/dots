@@ -138,7 +138,7 @@ bindsym $mod+Shift+comma exec i3 gaps inner all set 0 &&\
   i3 gaps outer all set 0 &&\
   pkill polybar &&\
   ~/.config/polybar/launch.sh low_profile &&\
-  pkill compton
+  pkill picom
 
 # free-real-estate mode
 # http://i0.kym-cdn.com/entries/icons/original/000/021/311/free.jpg
@@ -146,7 +146,7 @@ bindsym $mod+Shift+period exec i3 gaps inner all set 20 &&\
   i3 gaps outer all set 20 &&\
   pkill polybar &&\
   ~/.config/polybar/launch.sh default &&\
-  compton -cb
+  picom -cb
 
 # System font
 font pango:fira 8
@@ -169,7 +169,7 @@ bindsym XF86Search exec rofi -dmenu -lines 0 -p 'song' -location 2 -width 450 | 
 # Music
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous 
+bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl shuffle
 bindsym XF86Reload exec playerctl loop
 bindsym Shift+XF86AudioNext exec playerctl position +5
@@ -196,6 +196,6 @@ assign [class="chatty-Chatty"] $ws6
 exec_always feh --bg-scale $HOME/.config/i3/bg.jpg
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh default
-exec_always compton -bc
+exec_always picom -bc
 
 exec $browser
