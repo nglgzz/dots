@@ -68,7 +68,8 @@ cat "$code_source/../extensions.list" | xargs -L 1 code --force --install-extens
 
 # Create empty folder for syncing.
 mkdir -p ~/projects
+mkdir -p ~/.cache/zsh
 
-rm -rf ~/.config/.zsh/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/.zsh/zsh-autosuggestions
-nvim +PlugInstall
+rm -rf ~/.config/zsh/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
+nvim +PlugInstall +qall

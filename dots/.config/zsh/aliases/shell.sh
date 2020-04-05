@@ -5,15 +5,15 @@ declare -A shell=(
   [_cat]='command cat'
   [e]='code .'
   [q]='exit'
-  [l]='ls -ah'
-  [ll]='ls -lha'
+  [l]='ls -ah --color=tty'
+  [ll]='ls -lha --color=tty'
   # Configs
   [zedit]='nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc'
   [zource]='source $ZDOTDIR/.zshrc'
   [i3edit]='nvim $XDG_CONFIG_HOME/i3/config && i3-msg restart'
   [codex]='code --list-extensions'
   # Navigation
-  [b]='popd 1>/dev/null'
+  [b]='cd -'
   [tmp]='cd ~/tmp'
   # Utils
   [copy]='xclip -selection clipboard'

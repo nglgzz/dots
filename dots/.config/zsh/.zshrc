@@ -1,24 +1,24 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/usr/share/oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="minimal"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
-source $ZSH/oh-my-zsh.sh
+############################
+# PROMPT
+# Set up the prompt (with git branch name)
+autoload -U colors && colors
+setopt PROMPT_SUBST
+PROMPT='%2~ $(git_prompt)»%b '
 
 # https://github.com/zsh-users/zsh-autosuggestions
-source ~/.config/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Preferred terminal and editor for local and remote sessions
-export TERM='xterm-256color'
-export PATH=$PATH:$HOME/.bin
+############################
+# BINDINGS
+bindkey -e
+bindkey "^H" backward-kill-word
+bindkey "\e[3;5~" kill-word
+bindkey "\e[3~" delete-char
+
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+bindkey "\e[1;5D" backward-word
+bindkey "\e[1;5C" forward-word
 
 ############################
 # ALIASES
@@ -78,9 +78,11 @@ set_aliases "bt_bluetoothctl"
 set_aliases "keyboard"
 set_aliases "projects"
 set_aliases "shell"
-#
-# END ALIASES
+
 ############################
+# MISC
+# Add custom binaries to path
+export PATH=$PATH:$HOME/.bin
 
 # Keychain for ssh keys
 eval "$(ssh-agent -s)" >>/dev/null
