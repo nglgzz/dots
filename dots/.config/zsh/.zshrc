@@ -5,6 +5,11 @@ autoload -U colors && colors
 setopt PROMPT_SUBST
 PROMPT='%2~ $(git_prompt)»%b '
 
+############################
+# COMPLETION
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
 # https://github.com/zsh-users/zsh-autosuggestions
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -86,9 +91,6 @@ export PATH=$PATH:$HOME/.bin
 
 # Keychain for ssh keys
 eval "$(ssh-agent -s)" >>/dev/null
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # relate autocomplete setup
 RELATE_AC_ZSH_SETUP_PATH=/home/nglgzz/.cache/@relate/cli/autocomplete/zsh_setup && test -f $RELATE_AC_ZSH_SETUP_PATH && source $RELATE_AC_ZSH_SETUP_PATH
