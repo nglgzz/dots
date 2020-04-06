@@ -7,8 +7,7 @@ PROMPT='%2~ $(git_prompt)»%b '
 
 ############################
 # COMPLETION
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}'
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -84,6 +83,7 @@ set_aliases "shell"
 export PATH=$PATH:$HOME/.bin
 
 # Keychain for ssh keys
+[[ ! -f ~/.ssh/config ]] && echo "AddKeysToAgent yes" >>$HOME/.ssh/config
 eval "$(ssh-agent -s)" >>/dev/null
 
 # relate autocomplete setup
