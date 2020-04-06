@@ -13,6 +13,24 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}'
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ############################
+# HISTORY
+export HISTFILE=$ZSH_CACHE_DIR/zsh_history # Where to save history to disk
+export HISTSIZE=5000                       # How many lines of history to keep in memory
+export SAVEHIST=5000                       # Number of history entries to save to disk
+
+# Don't save duplicate entries in history
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
+setopt appendhistory     # Append history to the history file (no overwriting)
+setopt sharehistory      # Share history across terminals
+setopt incappendhistory  # Immediately append to the history file, not just when a term is killed
+
+############################
 # BINDINGS
 bindkey -e
 bindkey "^H" backward-kill-word
