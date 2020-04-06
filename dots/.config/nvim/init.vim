@@ -28,7 +28,7 @@ hi EndOfBuffer ctermfg=black ctermbg=NONE
 autocmd BufWritePre * %s/\s\+$//e
 
 let mapleader=" "
-map <C-F> :q!<Enter>
+map <C-F> :wq<Enter>
 map <C-W> :q<Enter>
 map <C-S> :w<Enter>
 

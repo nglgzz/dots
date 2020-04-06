@@ -97,5 +97,4 @@ systemctl enable bluetooth
 
 ## Link dots and project utils
 as_user git clone --recursive https://github.com/nglgzz/dots $user_home/dots
-as_user $user_home/dots/link.sh
-as_user git clone https://github.com/nglgzz/project-utils $user_home/projects/.utils
+as_user make -C $user_home/dots
