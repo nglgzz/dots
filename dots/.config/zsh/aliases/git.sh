@@ -1,22 +1,22 @@
-declare -A g_git=(
-  [s]=status
-  [a]=add
-  [d]=diff
-  [dd]='diff HEAD'
-  [ddd]='diff HEAD^1 HEAD'
-  [p]=pull
-  [g]='push origin $(git_current_branch)'
-  [wp]='push --force-with-lease origin $(current_branch)'
-  [o]=checkout
-  [b]=branch
-  [f]=fetch
-  [l]=ls
-  [ls]='log --oneline | fzf'
-  [cff]='rebase --interactive --autosquash HEAD~10'
-  [ca]='commit --amend'
-  [caa]='commit --amend --no-edit'
-  [u]='fetch upstream && git rebase upstream/master'
-  [grls]='log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- [%Cblue%h%Creset] %s"'
+declare -A git=(
+  [g]='git'
+  [gs]='git status'
+  [ga]='git add'
+  [gd]='git diff'
+  [gdd]='git diff HEAD'
+  [gddd]='git diff HEAD^1 HEAD'
+  [gp]='git pull'
+  [gg]='git push origin $(git_current_branch)'
+  [ggwp]='git push --force-with-lease origin $(git_current_branch)'
+  [go]='git checkout'
+  [gb]='git branch'
+  [gf]='git fetch'
+  [gl]='git ls'
+  [gls]='git log --oneline | fzf'
+  [gcff]='git rebase --interactive --autosquash HEAD~10'
+  [gca]='git commit --amend'
+  [gcaa]='git commit --amend --no-edit'
+  [gu]='git fetch upstream && git rebase upstream/master'
 )
 
 function gcf() {

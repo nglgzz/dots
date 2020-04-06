@@ -1,9 +1,10 @@
-declare -A d_docker=(
-  [b]='build . -t'
-  [log]='logs $(dfind)'
-  [kill]='kill $(dfind)'
-  [sh]='exec -it $(dfind) /bin/bash'
-  [rmi]='rmi $(paste | awk '\''{print $3}'\'')'
+declare -A docker=(
+  [d]='docker'
+  [db]='docker build . -t'
+  [dlog]='docker logs $(dfind)'
+  [dkill]='docker kill $(dfind)'
+  [dsh]='docker exec -it $(dfind) /bin/bash'
+  [drmi]='docker rmi $(paste | awk '\''{print $3}'\'')'
 )
 
 function dfind() {

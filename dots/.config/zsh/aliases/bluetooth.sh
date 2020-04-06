@@ -1,6 +1,7 @@
-declare -A bt_bluetoothctl=(
-  ['-connect']='connect $(bluetoothctl devices | fzf | awk '\''{print $2}'\'')'
-  ['-disconnect']='disconnect $(bluetoothctl devices | fzf | awk '\''{print $2}'\'')'
+declare -A bluetoothctl=(
+  ['bt']='bluetoothctl'
+  ['bt-connect']='bluetoothctl connect $(bluetoothctl devices | fzf | awk '\''{print $2}'\'')'
+  ['bt-disconnect']='bluetoothctl disconnect $(bluetoothctl devices | fzf | awk '\''{print $2}'\'')'
 )
 
 # Connect to device sharing an internet connection via bluetooth

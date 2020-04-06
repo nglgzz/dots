@@ -1,17 +1,19 @@
-declare -A n_npm=(
-  [i]=install
-  [s]=start
-  [t]=test
-  [r]=run
-  [b]='run build'
+declare -A npm=(
+  [n]='npm'
+  [ni]='npm install'
+  [ns]='npm start'
+  [nt]='npm test'
+  [nr]='npm run'
+  [nb]='npm run build'
 )
 
-declare -A y_yarn=(
-  [s]=start
-  [d]=dev
-  [t]=test
-  [a]=add
-  [b]=build
+declare -A yarn=(
+  [y]='yarn'
+  [ys]='yarn start'
+  [yd]='yarn dev'
+  [yt]='yarn test'
+  [ya]='yarn add'
+  [yb]='yarn build'
 )
 
 function pj() {
