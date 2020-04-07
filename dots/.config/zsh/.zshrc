@@ -1,108 +1,14 @@
-############################
-# PROMPT
-# Set up the prompt (with git branch name)
-autoload -U colors && colors
-setopt PROMPT_SUBST
-PROMPT='%2~ $(git_prompt)»%b '
-
-############################
-# COMPLETION
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}'
-
-# https://github.com/zsh-users/zsh-autosuggestions
-source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-############################
-# HISTORY
-export HISTFILE=$ZSH_CACHE_DIR/zsh_history # Where to save history to disk
-export HISTSIZE=5000                       # How many lines of history to keep in memory
-export SAVEHIST=5000                       # Number of history entries to save to disk
-
-# Don't save duplicate entries in history
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-
-setopt appendhistory     # Append history to the history file (no overwriting)
-setopt sharehistory      # Share history across terminals
-setopt incappendhistory  # Immediately append to the history file, not just when a term is killed
-
-############################
-# BINDINGS
-bindkey -e
-bindkey "^H" backward-kill-word
-bindkey "\e[3;5~" kill-word
-bindkey "\e[3~" delete-char
-
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
-bindkey "\e[1;5D" backward-word
-bindkey "\e[1;5C" forward-word
-
-############################
-# ALIASES
-# Accepts the name of an associative array with names as keys and commands
-# as values.
-#
-# declare -A npm=([ns]=start [nt]=test)
-# set_aliases "npm"
-#
-# ns: aliased to npm
-# nt: aliased to npm
-function set_aliases() {
-  local arr=$(declare -p "$1")
-
-  # Arrays declared in functions are local by default
-  # https://stackoverflow.com/questions/10806357/associative-arrays-are-local-by-default
-  declare -A aliases
-  eval "aliases="${arr#*=}
-
-  if [[ -z "$aliases" ]]; then
-    return
-  fi
-
-  for k in "${(@k)aliases}"; do
-    unalias $k 2>/dev/null
-    alias $k="${aliases[$k]}"
-  done
-}
-function aliases() {
-  local arr=$(declare -p "$1")
-
-  declare -A aliases
-  eval "aliases="${arr#*=}
-
-  for k in "${(@k)aliases}"; do
-    echo "$(tput bold)$k$(tput sgr0) \t= $(tput dim)${aliases[$k]}$(tput sgr0)"
-  done | column -t -s $'\t'
-}
-
-# Source alias files and set the aliases defined in them
-for file in $ZDOTDIR/aliases/*; do
-  source "$file"
-done
-
-set_aliases "npm"
-set_aliases "yarn"
-set_aliases "git"
-set_aliases "docker"
-set_aliases "systemctl"
-set_aliases "bluetoothctl"
-set_aliases "keyboard"
-set_aliases "projects"
-set_aliases "shell"
+source $ZDOTDIR/theme.sh
+source $ZDOTDIR/aliases.sh
+export PATH=$PATH:$HOME/.bin
 
 ############################
 # MISC
-# Add custom binaries to path
-export PATH=$PATH:$HOME/.bin
-
 # Keychain for ssh keys
 [[ ! -f ~/.ssh/config ]] && echo "AddKeysToAgent yes" >>$HOME/.ssh/config
 eval "$(ssh-agent -s)" >>/dev/null
 
-# relate autocomplete setup
-RELATE_AC_ZSH_SETUP_PATH=/home/nglgzz/.cache/@relate/cli/autocomplete/zsh_setup && test -f $RELATE_AC_ZSH_SETUP_PATH && source $RELATE_AC_ZSH_SETUP_PATH
+# relate autocomplete
+RELATE_AC_ZSH_SETUP_PATH=$XDG_CACHE_HOME/@relate/cli/autocomplete/zsh_setup &&
+  test -f $RELATE_AC_ZSH_SETUP_PATH &&
+  source $RELATE_AC_ZSH_SETUP_PATH
