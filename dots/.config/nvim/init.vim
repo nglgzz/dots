@@ -28,9 +28,9 @@ hi EndOfBuffer ctermfg=black ctermbg=NONE
 autocmd BufWritePre * %s/\s\+$//e
 
 let mapleader=" "
-map <C-F> :wq<Enter>
-map <C-W> :q<Enter>
-map <C-S> :w<Enter>
+map <C-F> :wq<CR>
+map <C-W> :q<CR>
+map <C-S> :w<CR>
 
 
 """""""""""""""""""""""""""""""""""
@@ -53,12 +53,11 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 """""""""""""""""""""""""""""""""""
 " junegunn/fzf.vim
-let g:fzf_action = {
-  \ 'return': 'tab split',
-  \ 'ctrl-j': 'split',
-  \ 'ctrl-k': 'vsplit' }
-
-noremap <C-p> :Files<Enter>
+noremap <C-p> :call fzf#run({
+  \ "sink": "tabedit",
+  \ "source": "find * -type f",
+  \ "down": "30%"
+\ })<CR>
 nnoremap <C-j> :tabprevious<CR>
-noremap <C-i> :tablast<cr>
+nnoremap <C-i> :tablast<CR>
 nnoremap <C-l> :tabnext<CR>

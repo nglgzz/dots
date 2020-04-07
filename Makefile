@@ -15,6 +15,8 @@ all: links zsh-setup vscode-setup vim-setup
 
 links: links-HOME links-CONFIG links-CODE
 
+install-deps: install-pacman-deps install-aur-deps
+
 links-HOME links-CONFIG links-CODE: links-%:
 	@echo -e "\n$$(tput bold)$* files linked$$(tput sgr0)"
 	@$(foreach file, \
@@ -35,3 +37,12 @@ vscode-setup:
 vim-setup:
 	nvim +PlugInstall +qall
 
+install-aur-deps:
+	# The --needed flag will make pacaur skip reinstalling existing packages.
+	pacaur -S --noconfirm --needed --noedit \
+		$(shell cat "$$HOME/dots/arch/aur.list" | sed 's/#.*//')
+
+install-pacman-deps:
+	# The --needed flag will make pacman skip reinstalling existing packages.
+	sudo pacman -S --noconfirm --needed \
+		$(shell cat "$$HOME/dots/arch/pacman.list" | sed 's/#.*//')
