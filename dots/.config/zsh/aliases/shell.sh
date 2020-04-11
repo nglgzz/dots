@@ -8,7 +8,8 @@ declare -A shell=(
   [l]='ls -ah --color=tty'
   [ll]='ls -lha --color=tty'
   # Configs
-  [zedit]='nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc'
+  [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
+  [ale]='cd $ZDOTDIR/aliases && nvim $(fzf) && source $ZDOTDIR/.zshrc && cd -'
   [zource]='source $ZDOTDIR/.zshrc'
   [i3edit]='nvim $XDG_CONFIG_HOME/i3/config && i3-msg restart'
   [codex]='code --list-extensions'

@@ -55,7 +55,7 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " junegunn/fzf.vim
 noremap <C-p> :call fzf#run({
   \ "sink": "tabedit",
-  \ "source": "find * -type f",
+  \ "source": "find * -type f ! -path '**/.git/**'",
   \ "down": "30%"
 \ })<CR>
 nnoremap <C-j> :tabprevious<CR>
