@@ -17,6 +17,9 @@ declare -A shell=(
   [b]='cd -'
   [tmp]='cd ~/tmp'
   [..]='cd ..'
+  [...]='cd ...'
+  [....]='cd ....'
+  [.....]='cd .....'
   # Utils
   [copy]='xclip -selection clipboard'
   [paste]='xclip -out -selection clipboard'

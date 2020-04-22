@@ -1,6 +1,8 @@
 # This file depends on the .bin/find_project script.
 declare -A projects=(
   [pfind]=find_project
+  [ptest]=project_test
+  [pbuild]=project_build
 )
 
 function pcd() {
@@ -17,14 +19,14 @@ function pcd() {
   fi
 }
 
-function pt() {
+function project_test() {
   local prev_wd=$(pwd)
   pcd $1
   npm test
   source <(echo "cd $prev_wd")
 }
 
-function pb() {
+function project_build() {
   local prev_wd=$(pwd)
   pcd $1
   npm run build
