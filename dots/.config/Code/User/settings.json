@@ -24,9 +24,6 @@
   "workbench.colorTheme": "Pitch Black",
   "window.menuBarVisibility": "toggle",
   "todo.timekeeping.elapsed.format": "long",
-  "todo.symbols.box": "-",
-  "todo.symbols.done": "+",
-  "todo.symbols.cancelled": "x",
   "vim.useCtrlKeys": false,
   "vim.handleKeys": {
     "<C-d>": false

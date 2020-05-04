@@ -2,6 +2,9 @@ source $ZDOTDIR/theme.sh
 source $ZDOTDIR/aliases.sh
 export PATH=$PATH:$HOME/.bin
 
+## CD if a path is not an executable
+setopt AUTO_CD
+
 ############################
 # MISC
 # Keychain for ssh keys
@@ -12,3 +15,4 @@ eval "$(ssh-agent -s)" >>/dev/null
 RELATE_AC_ZSH_SETUP_PATH=$XDG_CACHE_HOME/@relate/cli/autocomplete/zsh_setup &&
   test -f $RELATE_AC_ZSH_SETUP_PATH &&
   source $RELATE_AC_ZSH_SETUP_PATH
+

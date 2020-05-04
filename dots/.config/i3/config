@@ -163,7 +163,8 @@ for_window [class="^.*"] border pixel $border_width
 
 # Rofi (_rofi)
 bindsym $mod+f exec rofi -show run -location 2 -width 450 -lines 5
-bindsym XF86Search exec rofi -dmenu -lines 0 -p 'song' -location 2 -width 450 | sed 's/ /%20/g' | sed 's/^/url http:\/localhost:8888\/change?url=/' | curl -K-
+bindsym XF86Search exec rofi -show drun -location 2 -width 450 -lines 5
+#bindsym XF86Search exec rofi -dmenu -lines 0 -p 'song' -location 2 -width 450 | sed 's/ /%20/g' | sed 's/^/url http:\/localhost:8888\/change?url=/' | curl -K-
 
 
 # Music

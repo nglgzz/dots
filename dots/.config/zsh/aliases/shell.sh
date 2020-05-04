@@ -16,10 +16,11 @@ declare -A shell=(
   # Navigation
   [b]='cd -'
   [tmp]='cd ~/tmp'
+  [dots]='cd ~/dots'
   [..]='cd ..'
-  [...]='cd ...'
-  [....]='cd ....'
-  [.....]='cd .....'
+  [...]='cd ../..'
+  [....]='cd ../../..'
+  [.....]='cd ../../../..'
   # Utils
   [copy]='xclip -selection clipboard'
   [paste]='xclip -out -selection clipboard'

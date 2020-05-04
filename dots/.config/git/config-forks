@@ -1,0 +1,5 @@
+[branch "master"]
+  remote = upstream
+  pushRemote = origin
+  merge = master
+
