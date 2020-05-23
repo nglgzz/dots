@@ -16,3 +16,4 @@ RELATE_AC_ZSH_SETUP_PATH=$XDG_CACHE_HOME/@relate/cli/autocomplete/zsh_setup &&
   test -f $RELATE_AC_ZSH_SETUP_PATH &&
   source $RELATE_AC_ZSH_SETUP_PATH
 
+export PATH="$HOME/.cargo/bin:$PATH"

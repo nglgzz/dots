@@ -1,6 +1,7 @@
 {
   // Window
   "window.menuBarVisibility": "hidden",
+  "window.zoomLevel": 2,
 
   // Workbench
   "workbench.colorTheme": "Pitch Black",
@@ -20,6 +21,13 @@
   },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.formatOnSave": false
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust"
   },
 
   // Files

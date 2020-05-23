@@ -1,7 +1,12 @@
 # Variables
 # Mod Keys
 set $mod Mod4
-set $alt Mod1
+
+# Paths
+set $screen_layouts ~/.config/i3/screens
+set $workspace_layouts ~/.config/i3/workspaces
+set $rofi_input ~/.config/i3/rofi_input.sh
+set $screenshot ~/tmp/screenshot.png
 
 # Programs
 set $terminal termite
@@ -9,19 +14,20 @@ set $browser chromium
 set $editor code
 
 # Colors
-set $black #000000
+set $black     #000000
 set $dark_gray #222222
-set $gray #585756
-set $accent #4ef4ca
-set $urgent #DF6418
+set $gray      #585756
+set $accent    #4ef4ca
+set $urgent    #DF6418
 
 # Layout
 set $border_width 0
 gaps inner 20
 gaps outer 20
-#smart_gaps on
-smart_borders on
-
+# Only enable gaps on a workspace when there is at least one container. Looks
+# nice but need to find a way to show polybar when there's only one window
+# inside a container.
+# smart_gaps on
 
 # Workspaces
 set $ws1 "1"
@@ -32,18 +38,18 @@ set $ws5 "5"
 set $ws6 "6"
 
 # Screens
-set $screen1 "DVI-I-1"
-set $screen2 "HDMI-0"
+set $screen1 "eDP-1"
+set $screen2 "HDMI-2"
 
 workspace $ws1 output $screen1
-workspace $ws2 output $screen1
-workspace $ws3 output $screen1
-workspace $ws6 output $screen2
-
+workspace $ws2 output $screen2
+workspace $ws3 output $screen2
+workspace $ws5 output $screen1
+workspace $ws6 output $screen1
 
 # Key Bindings
 # i3
-# Restart (preserves layout/session, can be used when upgrading i3)
+# Restart (preserves layout/session, can be used when updating i3 config)
 bindsym $mod+Ctrl+r restart
 
 # Lock screen
@@ -64,21 +70,36 @@ bindsym Shift+XF86AudioRaiseVolume exec amixer -D pulse set Capture 9%+
 bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
 bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
-# Print screen: full | select window or rectangle
-bindsym --release $mod+s exec rm -f ~/tmp/screenshot.png &&\
- scrot -s ~/tmp/screenshot.png &&\
- xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
-bindsym --release $mod+Shift+s exec rm -f ~/tmp/screenshot.png &&\
- scrot ~/tmp/screenshot.png &&\
- xclip -selection clipboard -t image/png -i ~/tmp/screenshot.png
 
 # Screen
-# Change screen layout
-bindsym $mod+Ctrl+v exec ~/.screenlayout/one.sh
-bindsym $mod+Ctrl+m exec ~/.screenlayout/two-vertical.sh
+# Print screen: full | select window or rectangle
+# TODO -- figure out screencasting and an alternative to scrot that doesn't
+# leave those ugly white marks on screenshots.
+bindsym --release Print exec rm -f $screenshot &&\
+  scrot -s $screenshot &&\
+  xclip -selection clipboard -t image/png -i $screenshot
+bindsym --release Shift+Print exec rm -f $screenshot &&\
+  scrot $screenshot &&\
+  xclip -selection clipboard -t image/png -i $screenshot
+
+# Choose screen layout
+bindsym XF86Search exec ls $screen_layouts |\
+  $rofi_input "screen layout" 5 |\
+  xargs -I{} sh $screen_layouts/{}
+
+# Save and restore workspace layouts
+bindsym XF86Explorer exec $rofi_input 'profile name' |\
+  xargs -I{} i3-resurrect save --directory $workspace_layouts --profile {}
+bindsym XF86Calculator exec ls $workspace_layouts/profiles |\
+  grep _layout.json | \
+  sed 's/_layout.json//' | \
+  uniq | \
+  $rofi_input 'choose profile' 5 | \
+  xargs -I{} i3-resurrect restore --directory $workspace_layouts --profile {}
 
 # Move workspace between screens
-bindsym $mod+Ctrl+g move workspace to output up
+bindsym XF86HomePage move workspace to output left
+
 
 # Workspace
 # Go to workspace
@@ -101,14 +122,14 @@ bindsym $mod+Shift+p move container to workspace $ws6
 bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth yes
 
-# Change container layout to tabbed | toggle split
+# Change container layout to tabbed | toggle split | floating | fullscreen
 bindsym $mod+Ctrl+t layout tabbed
 bindsym $mod+Ctrl+y layout toggle split
 bindsym $mod+Shift+y floating toggle
+bindsym $mod+Ctrl+d fullscreen
 
 # Mouse + $mod to drag floating windows
 floating_modifier $mod
-
 
 # Window
 # Move focus
@@ -121,32 +142,8 @@ bindsym $mod+Shift+l move right
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+j move left
 
-# Toggle fullscreen for focused container
-bindsym $mod+Ctrl+d fullscreen
-
-# Open terminal | browser | editor | slack
-bindsym $mod+Return exec $terminal
-bindsym $mod+t exec $terminal
-bindsym $mod+g exec $editor
-bindsym $mod+b exec $browser
-
 # Kill focused window
 bindsym $mod+Ctrl+f kill
-
-# save-real-estate mode
-bindsym $mod+Shift+comma exec i3 gaps inner all set 0 &&\
-  i3 gaps outer all set 0 &&\
-  pkill polybar &&\
-  ~/.config/polybar/launch.sh low_profile &&\
-  pkill picom
-
-# free-real-estate mode
-# http://i0.kym-cdn.com/entries/icons/original/000/021/311/free.jpg
-bindsym $mod+Shift+period exec i3 gaps inner all set 20 &&\
-  i3 gaps outer all set 20 &&\
-  pkill polybar &&\
-  ~/.config/polybar/launch.sh default &&\
-  picom -cb
 
 # System font
 font pango:fira 8
@@ -159,13 +156,12 @@ client.urgent           $black  $black $urgent $gray $urgent
 
 # Remove titlebar and hide window edges
 for_window [class="^.*"] border pixel $border_width
-# hide_edge_borders both
+
+# Open terminal
+bindsym $mod+Return exec $terminal
 
 # Rofi (_rofi)
-bindsym $mod+f exec rofi -show run -location 2 -width 450 -lines 5
-bindsym XF86Search exec rofi -show drun -location 2 -width 450 -lines 5
-#bindsym XF86Search exec rofi -dmenu -lines 0 -p 'song' -location 2 -width 450 | sed 's/ /%20/g' | sed 's/^/url http:\/localhost:8888\/change?url=/' | curl -K-
-
+bindsym $mod+f exec rofi -show drun -location 2 -width 450 -lines 5
 
 # Music
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -186,16 +182,13 @@ bindsym $mod+z exec feh $HOME/.config/i3/i3.png
 
 # Assign programs to workspaces
 assign [class="Chromium"] $ws1
-assign [class="code"] $ws2
 assign [class="Code"] $ws2
 assign [class="Termite"] $ws3
 assign [class="obs"] $ws6
 assign [class="chatty-Chatty"] $ws6
 
-# Prepare background and start browser
-# exec_always hsetroot -solid '#222222'
+# Prepare background and start default programs
 exec_always feh --bg-scale $HOME/.config/i3/bg.jpg
-
 exec_always --no-startup-id ~/.config/polybar/launch.sh default
 exec_always picom -bc
 
