@@ -11,7 +11,7 @@ line-size = 1
 line-color = #f000
 
 border-size = 0
-border-color #0000
+border-color = #0000
 
 padding-left = 0
 padding-right = 3

@@ -3,22 +3,16 @@ type = internal/i3
 ws-icon-0 = 1;▸
 ws-icon-1 = 2;▸▸
 ws-icon-2 = 3;▸▸▸
-ws-icon-3 = 4;◂◂◂	
-ws-icon-4 = 5;◂◂	
+ws-icon-3 = 4;◂◂◂
+ws-icon-4 = 5;◂◂
 ws-icon-5 = 6;◂
 ws-icon-default = -
 
 index-sort = true
-wrapping-scroll = false
+wrapping-scroll = true
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
-
-; focused = Active workspace on focused monitor
-label-focused = %icon%
-label-focused-background = ${colors.black}
-label-focused-underline = ${colors.accent}
-label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
@@ -26,12 +20,15 @@ label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %icon%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
+label-visible-padding = 2
+label-visible-underline = ${colors.accent}
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-padding = 2
+label-focused-underline = ${colors.accent}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
-label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 2
-
+label-urgent-foreground = ${colors.alert}

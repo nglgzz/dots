@@ -1,17 +1,18 @@
 #!/usr/bin/env sh
-# Environment variables
-SCREEN_WIDTH=$(xrandr | grep -w connected | awk '{print $4}' | sed 's/x.*//' | head -n1)
 
-## Bar settings
-export MONITOR=$(xrandr | grep -w connected | awk '{print $1}' | head -n1)
-export POLYBAR_WIDTH=$(expr $SCREEN_WIDTH - 80 || expr 1366 - 80)
-export NETWORK_IFACE=$(ip link show up | grep -i 'state up' | awk '{print $2}' | sed 's/:$//')
+# Terminate existing processes and wait for them to exit.
+pkill polybar -9
+while pgrep -x polybar >/dev/null; do sleep .25; done
 
-# Terminate already running bar instances
-killall -q polybar
+# Spawn an instance of polybar for each screen.
+polybar --list-monitors | while read screen; do
+  SCREEN_WIDTH=$(echo $screen | cut -d":" -f2 | sed 's/x.*//')
 
-# Wait until the processes have been shut down
-while pgrep -x polybar >/dev/null; do sleep 1; done
+  export SCREEN_NAME=$(echo $screen | cut -d":" -f1)
+  export POLYBAR_WIDTH=$(expr $SCREEN_WIDTH - 80 || expr 1920 - 80)
 
-# Launch polybar
-polybar $1 &
+  # TODO -- Update this to generate a network component per interface.
+  export NETWORK_IFACE=$(ip link show | grep -iP 'state up' | grep -oP '^\d+: \K(\w+)')
+
+  polybar --reload $1 &
+done

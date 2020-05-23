@@ -1,14 +1,9 @@
 [colors]
   include-file = ~/.config/polybar/colors
 
-[bar/low_profile]
-  include-file = ~/.config/polybar/bar
-  monitor = ${env:MONITOR:HDMI-0}
-  width = 100%
-
 [bar/default]
   include-file = ~/.config/polybar/bar
-  monitor = ${env:MONITOR:HDMI-0}
+  monitor = ${env:SCREEN_NAME:HDMI-0}
   width = ${env:POLYBAR_WIDTH:100%}
   override-redirect = true
   offset-x = 40
@@ -26,10 +21,13 @@
   interface = ${env:NETWORK_IFACE:wlp3s0}
   interval = 3.0
 
-  format-connected = %{A3:chromium 'speedtest.net':} <label-connected> %{A}
-  label-connected = %essid% %local_ip%
-  label-disconnected = %ifname% disconnected
+  ; Left click opens speedtest.net if device is up
+  format-connected = %{A1:chromium 'speedtest.net':} <label-connected> %{A}
+  label-connected = %local_ip%
 
+  ; Left click opens wicd if device is down
+  format-disconnected = %{A1:wicd-gtk:} <label-disconnected> %{A}
+  label-disconnected = %ifname% disconnected
   label-disconnected-foreground = ${colors.alert}
 
 [module/date]
@@ -40,14 +38,13 @@
   time = %H:%M%
 
   label = %date% %time%
-  format = %{A3:chromium 'calendar.google.com':} <label> %{A}
-
+  format = %{A1:chromium 'calendar.google.com':} <label> %{A}
 
 [module/pulseaudio]
   type = internal/pulseaudio
   use-ui-max = true
 
-  format-volume = %{A3:pavucontrol:} <bar-volume> %{A}
+  format-volume = %{A1:pavucontrol:} <bar-volume> %{A}
   format-muted-foreground = ${colors.gray}
   label-muted = sound muted
 
