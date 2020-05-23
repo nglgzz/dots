@@ -1,51 +1,55 @@
 {
-  "typescript.updateImportsOnFileMove.enabled": "never",
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "javascript.validate.enable": false,
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-  },
+  // Window
+  "window.menuBarVisibility": "hidden",
+
+  // Workbench
+  "workbench.colorTheme": "Pitch Black",
+  "workbench.editor.scrollToSwitchTabs": true,
+
+  // Editor
   "editor.formatOnSave": true,
   "editor.fontFamily": "'Hack', 'Material Icons'",
   "editor.detectIndentation": true,
-  "editor.rulers": [
-    80,
-    100
-  ],
+  "editor.rulers": [80, 100],
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "alt",
-  "files.trimTrailingWhitespace": true,
-  "files.exclude": {
-    "**/.git": true,
-    "node_modules": true,
-    "dist": true
+  "editor.wordSeparators": " ()[]{}',\"`─_-",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
   },
-  "workbench.colorTheme": "Pitch Black",
-  "window.menuBarVisibility": "toggle",
-  "todo.timekeeping.elapsed.format": "long",
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+
+  // Files
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.git/**": true,
+    "**/node_modules/**": true,
+    "**/dist/**": true
+  },
+
+  // Vim
   "vim.useCtrlKeys": false,
   "vim.handleKeys": {
     "<C-d>": false
   },
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "cSpell.language": "en",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+
+  // Emmet
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
   },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[c]": {
-    "editor.defaultFormatter": "xaver.clang-format"
-  },
-  "arduino.path": "/usr/share/arduino",
-  "window.zoomLevel": 0
+
+  // Sort Imports
+  "typescript.extension.sortImports.pathSortOrder": [
+    "package",
+    "relativeUpLevel",
+    "relativeDownLevel"
+  ],
+  "typescript.extension.sortImports.sortMethod": "path",
+  "typescript.extension.sortImports.sortOnSave": false,
+  "typescript.extension.sortImports.bracketWhitespace": false
 }

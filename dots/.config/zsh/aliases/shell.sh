@@ -11,7 +11,7 @@ declare -A shell=(
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
   [ale]='cd $ZDOTDIR/aliases && nvim $(fzf) && source $ZDOTDIR/.zshrc && cd -'
   [zource]='source $ZDOTDIR/.zshrc'
-  [i3edit]='nvim $XDG_CONFIG_HOME/i3/config && i3-msg restart'
+  [i3edit]='nvim $XDG_CONFIG_HOME/i3/config'
   [codex]='code --list-extensions'
   # Navigation
   [b]='cd -'
