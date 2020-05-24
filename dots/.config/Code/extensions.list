@@ -1,12 +1,14 @@
+bungcip.better-toml
 eamodio.gitlens
 esbenp.prettier-vscode
 fabiospampinato.vscode-todo-plus
 foxundermoon.shell-format
-ms-vscode.cpptools
+GitHub.vscode-pull-request-github
+mike-co.import-sorter
+ms-azuretools.vscode-docker
 ms-vsliveshare.vsliveshare
-pflannery.vscode-versionlens
+rust-lang.rust
 streetsidesoftware.code-spell-checker
 viktorqvarfordt.vscode-pitch-black-theme
-vsciot-vscode.vscode-arduino
 vscodevim.vim
 xaver.clang-format
