@@ -14,11 +14,11 @@ set $browser chromium
 set $editor code
 
 # Colors
-set $black     #000000
-set $dark_gray #222222
-set $gray      #585756
-set $accent    #4ef4ca
-set $urgent    #DF6418
+set_from_resource $black     background #000000
+set_from_resource $dark_gray color0     #222222
+set_from_resource $gray      color8     #585756
+set_from_resource $accent    color11    #4ef4ca
+set_from_resource $urgent    color9     #DF6418
 
 # Layout
 set $border_width 0

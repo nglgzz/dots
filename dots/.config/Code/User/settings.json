@@ -51,7 +51,7 @@
   },
 
   // Sort Imports
-  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  // "importSorter.generalConfiguration.sortOnBeforeSave": true,
   "importSorter.importStringConfiguration.spacingPerImportExpression.afterStartingBracket": 0,
   "importSorter.importStringConfiguration.spacingPerImportExpression.beforeEndingBracket": 0,
   "importSorter.importStringConfiguration.trailingComma": "multiLine",
@@ -61,15 +61,15 @@
   "importSorter.sortConfiguration.customOrderingRules.rules": [
     // Default orderLevel: 20 (named external imports)
     {
-      // Relative paths
-      "regex": "^[.]",
-      "orderLevel": 40
-    },
-    {
       // Unnamed imports
       "type": "importMember",
       "regex": "^$",
-      "orderLevel": 50
+      "orderLevel": 10
+    },
+    {
+      // Relative paths
+      "regex": "^[.]",
+      "orderLevel": 30
     }
   ]
 }

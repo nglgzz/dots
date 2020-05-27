@@ -16,7 +16,6 @@ function docker-volume() {
   docker run --rm -it \
     -v $(pwd):$(pwd) \
     --workdir $(pwd) \
-    --user $(id -u):$(id -g) \
     ${1:-node} \
     /bin/sleep 86400
 }

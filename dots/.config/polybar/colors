@@ -1,4 +1,4 @@
-black = "#000"
-gray = "#222"
-accent = "#4ef4ca"
-alert = "#a54242"
+black =  ${xrdb:background:#000}
+gray = ${xrdb:color0:#222}
+accent = ${xrdb:color3:#4ef4ca}
+alert = ${xrdb:color9:#a54242}

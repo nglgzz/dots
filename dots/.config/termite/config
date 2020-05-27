@@ -4,9 +4,9 @@ font = Hack 14
 [colors]
 
 # special
-foreground      = #4ef4ca
-foreground_bold = #4ef4ca
-cursor          = #4ef4ca
+foreground      = #e5e5e5
+foreground_bold = #e5e5e5
+cursor          = #e5e5e5
 background      = #000000
 
 # black
@@ -14,29 +14,29 @@ color0  = #282c34
 color8  = #5c6370
 
 # red
-color1  = #ed5454
-color9  = #be5046
+color1  = #fb0120
+color9  = #db2d20
 
 # green
-color2  = #5edf2d
-color10 = #7a9f60
+color2  = #01a252
+color10 = #01a252
 
 # yellow
-color3  = #e0df27
-color11 = #d19a66
+color3  = #fded02
+color11 = #fded02
 
 # blue
-color4  = #61afef
-color12 = #3b84c0
+color4  = #01a0e4
+color12 = #01a0e4
 
 # magenta
-color5  = #c678dd
-color13 = #9a52af
+color5  = #a16a94
+color13 = #a16a94
 
 # cyan
-color6  = #56b6c2
-color14 = #3c909b
+color6  = #0f9aad
+color14 = #11a8cd
 
 # white
-color7  = #4ef4ca
-color15 = #828997
+color7  = #e5e5e5
+color15 = #606060

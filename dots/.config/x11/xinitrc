@@ -1,2 +1,3 @@
 setxkbmap us
+xrdb ~/.config/x11/xresources
 exec i3
