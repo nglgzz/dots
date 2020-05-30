@@ -1,0 +1,27 @@
+#!/bin/bash
+
+case $1 in
+start)
+    boundary=$(slop --quiet --format="-video_size %wx%h -i $DISPLAY.0+%x,%y" || echo "cancelled")
+
+    if [[ "$boundary" == "cancelled" ]]; then
+        exit 1
+    fi
+
+    rm -f $HOME/tmp/screencast.mp4
+    ffmpeg -f x11grab \
+        -framerate 25 \
+        $boundary \
+        -c:v libx264 \
+        -preset ultrafast \
+        $HOME/tmp/screencast.mp4 &>/dev/null &
+    ;;
+stop)
+    kill -INT $(pgrep ffmpeg)
+    echo "$HOME/tmp/screencast.mp4" | xclip -selection clipboard
+    ;;
+*)
+    echo "Available options: start, stop"
+    exit 1
+    ;;
+esac

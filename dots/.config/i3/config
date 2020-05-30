@@ -4,12 +4,13 @@ set $mod Mod4
 
 # Paths
 set $config_dir ${XDG_CONFIG_HOME:-$HOME/.config}
-set $screen_layouts $config_dir/i3/screens
-set $rofi_input $HOME/.bin/rofi-input
-set $i3_resurrect_all $HOME/.bin/i3-resurrect-all
+set $screen_layouts ${XDG_CONFIG_HOME:-$HOME/.config}/i3/screens
 set $screenshot $HOME/tmp/screenshot.png
 
-# Programs
+# Executables
+set $i3_resurrect_all $HOME/.bin/i3-resurrect-all
+set $rofi_input $HOME/.bin/rofi-input
+set $screengrab $HOME/.bin/screengrab
 set $terminal termite
 
 # Colors
@@ -74,12 +75,15 @@ bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 # Print screen: full | select window or rectangle
 # TODO -- figure out screencasting and an alternative to scrot that doesn't
 # leave those ugly white marks on screenshots.
-bindsym --release $mod+s exec rm -f $screenshot &&\
-  scrot -s $screenshot &&\
+bindsym --release $mod+s exec maim -s ~/tmp/screenshot.png &&\
   xclip -selection clipboard -t image/png -i $screenshot
-bindsym --release $mod+Shift+s exec rm -f $screenshot &&\
-  scrot $screenshot &&\
+bindsym --release $mod+Shift+s exec maim ~/tmp/screenshot.png &&\
   xclip -selection clipboard -t image/png -i $screenshot
+
+bindsym --release Print exec $screengrab start && i3-msg mode "recording"
+mode "recording" {
+  bindsym --release Print exec $screengrab stop && i3-msg mode "default"
+}
 
 # Choose screen layout
 bindsym XF86Search exec ls $screen_layouts |\
