@@ -1,6 +1,6 @@
-# This file depends on the .bin/find_project script.
+# This file depends on the .bin/project-find script.
 declare -A projects=(
-  [pfind]=find_project
+  [pfind]=project-find
   [pstart]=project_npm_start
   [pbuild]=project_npm_run_build
   [ptest]=project_npm_test
@@ -12,7 +12,7 @@ function pcd() {
     return
   fi
 
-  local project_path=$(find_project $1)
+  local project_path=$(project-find $1)
   if [[ -d "$project_path" ]]; then
     source <(echo "cd $project_path")
   else

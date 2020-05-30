@@ -3,15 +3,13 @@
 set $mod Mod4
 
 # Paths
-set $screen_layouts ~/.config/i3/screens
-set $workspace_layouts ~/.config/i3/workspaces
-set $rofi_input ~/.config/i3/rofi_input.sh
-set $screenshot ~/tmp/screenshot.png
+set $screen_layouts $HOME/.config/i3/screens
+set $rofi_input $HOME/.bin/rofi-input
+set $i3_resurrect_all $HOME/.bin/i3-resurrect-all
+set $screenshot $HOME/tmp/screenshot.png
 
 # Programs
 set $terminal termite
-set $browser chromium
-set $editor code
 
 # Colors
 set_from_resource $black     background #000000
@@ -75,10 +73,10 @@ bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 # Print screen: full | select window or rectangle
 # TODO -- figure out screencasting and an alternative to scrot that doesn't
 # leave those ugly white marks on screenshots.
-bindsym --release Print exec rm -f $screenshot &&\
+bindsym --release $mod+s exec rm -f $screenshot &&\
   scrot -s $screenshot &&\
   xclip -selection clipboard -t image/png -i $screenshot
-bindsym --release Shift+Print exec rm -f $screenshot &&\
+bindsym --release $mod+Shift+s exec rm -f $screenshot &&\
   scrot $screenshot &&\
   xclip -selection clipboard -t image/png -i $screenshot
 
@@ -88,14 +86,8 @@ bindsym XF86Search exec ls $screen_layouts |\
   xargs -I{} sh $screen_layouts/{}
 
 # Save and restore workspace layouts
-bindsym XF86Explorer exec $rofi_input 'profile name' |\
-  xargs -I{} i3-resurrect save --directory $workspace_layouts --profile {}
-bindsym XF86Calculator exec ls $workspace_layouts/profiles |\
-  grep _layout.json | \
-  sed 's/_layout.json//' | \
-  uniq | \
-  $rofi_input 'choose profile' 5 | \
-  xargs -I{} i3-resurrect restore --directory $workspace_layouts --profile {}
+bindsym XF86Explorer exec $i3_resurrect_all save
+bindsym XF86Calculator exec $i3_resurrect_all restore
 
 # Move workspace between screens
 bindsym XF86HomePage move workspace to output left
@@ -180,16 +172,10 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym $mod+a exec feh $HOME/.config/i3/42.png
 bindsym $mod+z exec feh $HOME/.config/i3/i3.png
 
-# Assign programs to workspaces
-assign [class="Chromium"] $ws1
 assign [class="Code"] $ws2
 assign [class="Termite"] $ws3
-assign [class="obs"] $ws6
-assign [class="chatty-Chatty"] $ws6
 
 # Prepare background and start default programs
 exec_always feh --bg-scale $HOME/.config/i3/bg.jpg
-exec_always --no-startup-id ~/.config/polybar/launch.sh default
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh default
 exec_always picom -bc
-
-exec $browser

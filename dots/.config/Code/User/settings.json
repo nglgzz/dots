@@ -29,6 +29,10 @@
     "editor.defaultFormatter": "rust-lang.rust"
   },
 
+  // Zen mode
+  "zenMode.hideTabs": false,
+  "gitlens.mode.active": "zen",
+
   // Files
   "files.trimTrailingWhitespace": true,
   "files.eol": "\n",
@@ -71,5 +75,8 @@
       "regex": "^[.]",
       "orderLevel": 30
     }
-  ]
+  ],
+
+  // Show number of selected lines
+  "selectline.displayFormat": "Selected %d Lines"
 }
