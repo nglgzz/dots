@@ -1,9 +1,9 @@
 source $ZDOTDIR/theme.sh
 source $ZDOTDIR/aliases.sh
-export PATH=$PATH:$HOME/.bin
 
-## CD if a path is not an executable
-setopt AUTO_CD
+export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/.bin/extra"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 ############################
 # MISC
@@ -12,8 +12,6 @@ setopt AUTO_CD
 eval "$(ssh-agent -s)" >>/dev/null
 
 # relate autocomplete
-RELATE_AC_ZSH_SETUP_PATH=$XDG_CACHE_HOME/@relate/cli/autocomplete/zsh_setup &&
-  test -f $RELATE_AC_ZSH_SETUP_PATH &&
-  source $RELATE_AC_ZSH_SETUP_PATH
-
-export PATH="$HOME/.cargo/bin:$PATH"
+RELATE_AUTOCOMPLETE=$XDG_CACHE_HOME/@relate/cli/autocomplete/zsh_setup &&
+  test -f $RELATE_AUTOCOMPLETE &&
+  source $RELATE_AUTOCOMPLETE

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-profiles_dir="$HOME/.config/i3/profiles"
+config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+profiles_dir="$config_dir/i3/profiles"
+
 case $1 in
 save)
     command="i3-resurrect save"

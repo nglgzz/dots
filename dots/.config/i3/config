@@ -3,7 +3,8 @@
 set $mod Mod4
 
 # Paths
-set $screen_layouts $HOME/.config/i3/screens
+set $config_dir ${XDG_CONFIG_HOME:-$HOME/.config}
+set $screen_layouts $config_dir/i3/screens
 set $rofi_input $HOME/.bin/rofi-input
 set $i3_resurrect_all $HOME/.bin/i3-resurrect-all
 set $screenshot $HOME/tmp/screenshot.png
@@ -169,13 +170,13 @@ bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
 # Random
-bindsym $mod+a exec feh $HOME/.config/i3/42.png
-bindsym $mod+z exec feh $HOME/.config/i3/i3.png
+bindsym $mod+a exec feh $config_dir/i3/42.png
+bindsym $mod+z exec feh $config_dir/i3/i3.png
 
 assign [class="Code"] $ws2
 assign [class="Termite"] $ws3
 
 # Prepare background and start default programs
-exec_always feh --bg-scale $HOME/.config/i3/bg.jpg
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh default
+exec_always feh --bg-scale $config_dir/i3/bg.jpg
+exec_always --no-startup-id $config_dir/polybar/launch.sh default
 exec_always picom -bc

@@ -53,12 +53,14 @@ function chpwd() {
   local window_title="[$(whoami)]  "$(pwd | sed "s|$HOME|~|")
   echo -ne "\033]0;$window_title\007"
 }
-local window_title="[$(whoami)]  "$(pwd | sed "s|$HOME|~|")
-echo -ne "\033]0;$window_title\007"
+chpwd
 
 ############################
 # COMPLETION
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}'
+
+## CD if a path is not an executable
+setopt AUTO_CD
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh

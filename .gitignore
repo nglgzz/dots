@@ -2,4 +2,4 @@
 .zcompdump*
 zsh-autosuggestions
 dots/.config/i3/workspaces
-dots/.bin
+dots/.bin/extra
