@@ -55,7 +55,7 @@ sed -i -r 's/#(Color|TotalDownload)/\1/g' /etc/pacman.conf
 
 # Set zsh as default shell.
 chsh -s /usr/bin/zsh
-sudo -u nglgzz chsh -s /usr/bin/zsh
+sudo -u $username chsh -s /usr/bin/zsh
 
 # Check for updates
 pacman -Syu --noconfirm
