@@ -85,6 +85,8 @@ setopt incappendhistory # Immediately append to the history file, not just when 
 
 ############################
 # BINDINGS
+export WORDCHARS=${WORDCHARS/\/}
+
 bindkey -e
 bindkey "^H" backward-kill-word
 bindkey "\e[3;5~" kill-word

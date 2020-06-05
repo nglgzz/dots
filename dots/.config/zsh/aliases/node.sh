@@ -5,6 +5,7 @@ declare -A npm=(
   [nt]='npm test'
   [nr]='npm run'
   [nb]='npm run build'
+  [ncirculars]="dpdm --warning false --circular -T --exclude 'node_modules/.*' src"
 )
 
 declare -A yarn=(

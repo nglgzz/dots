@@ -7,6 +7,7 @@ declare -A shell=(
   [q]='exit'
   [l]='ls -ah --color=tty'
   [ll]='ls -lha --color=tty'
+  [watch]='watch --color -n1'
   # Configs
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
   [ale]='cd $ZDOTDIR/aliases && nvim $(fzf) && source $ZDOTDIR/.zshrc && cd -'

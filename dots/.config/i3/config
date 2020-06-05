@@ -88,7 +88,8 @@ mode "recording" {
 # Choose screen layout
 bindsym XF86Search exec ls $screen_layouts |\
   $rofi_input "screen layout" 5 |\
-  xargs -I{} sh $screen_layouts/{}
+  xargs -I{} sh $screen_layouts/{} &&\
+  i3-msg restart
 
 # Save and restore workspace layouts
 bindsym XF86Explorer exec $i3_resurrect_all save
@@ -183,4 +184,5 @@ assign [class="Termite"] $ws3
 # Prepare background and start default programs
 exec_always feh --bg-scale $config_dir/i3/bg.jpg
 exec_always --no-startup-id $config_dir/polybar/launch.sh default
-exec_always picom -bc
+exec_always --no-startup-id picom -bc
+exec_always --no-startup-id dunst
