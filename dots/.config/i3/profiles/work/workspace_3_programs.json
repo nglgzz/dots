@@ -8,23 +8,7 @@
     "working_directory": "/home/nglgzz/projects/neo4j/relate"
   },
   {
-    "command": [
-      "/usr/bin/termite",
-      "-e",
-      "watch -n1 tree -L 2 ~/.cache/neo4j-relate"
-    ],
-    "working_directory": "/home/nglgzz/projects/neo4j/relate"
-  },
-  {
-    "command": [
-      "/usr/bin/termite",
-      "-e",
-      "watch -n1 tree -L 2 ~/.local/share/neo4j-relate"
-    ],
-    "working_directory": "/home/nglgzz/projects/neo4j/relate"
-  },
-  {
-    "command": ["/usr/bin/termite", "-e", "relate watch dbmss"],
+    "command": ["/usr/bin/termite"],
     "working_directory": "/home/nglgzz/projects/neo4j/relate"
   }
 ]

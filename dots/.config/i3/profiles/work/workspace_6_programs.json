@@ -1,10 +1,15 @@
 [
   {
-    "command": ["/usr/lib/slack/slack", "-s"],
+    "command": [
+      "/usr/lib/slack/slack",
+      "-s"
+    ],
     "working_directory": "/home/nglgzz"
   },
   {
-    "command": ["/opt/spotify/spotify"],
+    "command": [
+      "/opt/spotify/spotify"
+    ],
     "working_directory": "/home/nglgzz"
   }
 ]

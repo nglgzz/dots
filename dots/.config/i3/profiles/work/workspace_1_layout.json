@@ -12,7 +12,7 @@
   "layout": "splith",
   "name": "1",
   "orientation": "horizontal",
-  "percent": 0.3333333333333333,
+  "percent": null,
   "scratchpad_state": "none",
   "sticky": false,
   "type": "workspace",
@@ -32,7 +32,7 @@
       "layout": "tabbed",
       "name": null,
       "orientation": "horizontal",
-      "percent": 1.0,
+      "percent": null,
       "scratchpad_state": "none",
       "sticky": false,
       "type": "con",
@@ -58,8 +58,8 @@
           "workspace_layout": "default",
           "swallows": [
             {
-              "class": "^Chromium$",
-              "instance": "^chromium$"
+              "class": "^Chromium\\-browser$",
+              "instance": "^chromium\\-browser$"
             }
           ]
         }

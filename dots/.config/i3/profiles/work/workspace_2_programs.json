@@ -1,6 +1,10 @@
 [
   {
-    "command": ["/opt/visual-studio-code/code", "--no-sandbox", "."],
+    "command": [
+      "/opt/visual-studio-code/code",
+      "--no-sandbox",
+      "."
+    ],
     "working_directory": "/home/nglgzz/projects/neo4j/relate"
   }
 ]
