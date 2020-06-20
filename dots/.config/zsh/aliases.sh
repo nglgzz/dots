@@ -3,11 +3,11 @@
 # Accepts the name of an associative array with names as keys and commands
 # as values.
 #
-# declare -A npm=([ns]=start [nt]=test)
+# declare -A npm=([ns]='npm start' [nt]='npm test')
 # set_aliases "npm"
 #
-# ns: aliased to npm
-# nt: aliased to npm
+# ns: aliased to npm start
+# nt: aliased to npm test
 function set_aliases() {
   local arr=$(declare -p "$1")
 

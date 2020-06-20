@@ -13,13 +13,16 @@ declare -A git=(
   [gf]='git fetch'
   [gl]='git ls'
   [gls]='git log --show-signature'
+  [gcf]='git-commit-fixup'
   [gcff]='git rebase --interactive --autosquash HEAD~10'
   [gca]='git commit --amend'
   [gcaa]='git commit --amend --no-edit'
   [gu]='git fetch upstream && git rebase upstream/master'
+  [grls]='git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- [%Cblue%h%Creset] %s"'
+  [grls-nochore]='grls | grep -vwi "chore"'
 )
 
-function gcf() {
+function git-commit-fixup() {
   commit=$(git ls | head -n10 | fzf | grep -oP '\[\K\w{7}(?=])')
   git commit --fixup $commit
 }

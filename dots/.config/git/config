@@ -12,5 +12,7 @@
 	gpgsign = true
 [push]
   default = current
+[pull]
+  ff = only
 [includeIf "gitdir:~/projects/neo4j/"]
   path = ~/.config/git/config-forks
