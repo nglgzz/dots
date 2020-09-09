@@ -1,3 +1,5 @@
+tray-position = right
+
 height = 25
 radius = 0
 fixed-center = true
@@ -14,7 +16,7 @@ border-size = 0
 border-color = #0000
 
 padding-left = 0
-padding-right = 3
+padding-right = 1
 module-margin = 1
 
 font-0 = Hack:pixelsize=10;2

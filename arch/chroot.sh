@@ -92,7 +92,7 @@ packages=$(cat ~/aur.list | sed 's/#.*//')
 as_user EDITOR=vim pacaur -S --noconfirm --noedit $packages
 
 ## Enable services
-systemctl enable wicd
+systemctl enable NetworkManager
 systemctl enable bluetooth
 
 ## Link dots and project utils

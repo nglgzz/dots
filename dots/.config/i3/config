@@ -104,7 +104,7 @@ bindsym XF86HomePage move workspace to output left
 bindsym $mod+q workspace $ws1
 bindsym $mod+w workspace $ws2
 bindsym $mod+e workspace $ws3
-bindsym $mod+i workspace $ws4
+bindsym $mod+u workspace $ws4
 bindsym $mod+o workspace $ws5
 bindsym $mod+p workspace $ws6
 
@@ -112,7 +112,7 @@ bindsym $mod+p workspace $ws6
 bindsym $mod+Shift+q move container to workspace $ws1
 bindsym $mod+Shift+w move container to workspace $ws2
 bindsym $mod+Shift+e move container to workspace $ws3
-bindsym $mod+Shift+i move container to workspace $ws4
+bindsym $mod+Shift+u move container to workspace $ws4
 bindsym $mod+Shift+o move container to workspace $ws5
 bindsym $mod+Shift+p move container to workspace $ws6
 
@@ -133,11 +133,13 @@ floating_modifier $mod
 # Move focus
 bindsym $mod+l focus right
 bindsym $mod+k focus down
+bindsym $mod+i focus up
 bindsym $mod+j focus left
 
 # Move focused window
 bindsym $mod+Shift+l move right
 bindsym $mod+Shift+k move down
+bindsym $mod+Shift+i move up
 bindsym $mod+Shift+j move left
 
 # Kill focused window
@@ -186,3 +188,5 @@ exec_always feh --bg-scale $config_dir/i3/bg.jpg
 exec_always --no-startup-id $config_dir/polybar/launch.sh default
 exec_always --no-startup-id picom -bc
 exec_always --no-startup-id dunst
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id blueman-applet
