@@ -6,6 +6,7 @@
   // Workbench
   "workbench.colorTheme": "Pitch Black",
   "workbench.editor.scrollToSwitchTabs": true,
+  "workbench.editor.pinnedTabSizing": "compact",
 
   // Editor
   "editor.formatOnSave": true,

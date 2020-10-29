@@ -8,6 +8,7 @@ declare -A docker=(
   [dfind]='docker ps | tail -n +2 | fzf | awk '\''{print $1}'\'''
   [dvol]='docker-volume'
   [dvolx]='docker-volume-x11'
+  [drun]='docker run --rm -it'
 )
 
 # Runs a bash shell from the specified image (node if none is specified)
@@ -64,3 +65,4 @@ function docker-volume-x11-non-root() {
     ${1:-ubuntu} \
     /bin/sh -c "$command" # eval $(dbus-launch --sh-syntax)
 }
+
