@@ -186,7 +186,13 @@ assign [class="Termite"] $ws3
 # Prepare background and start default programs
 exec_always feh --bg-scale $config_dir/i3/bg.jpg
 exec_always --no-startup-id $config_dir/polybar/launch.sh default
+
 exec_always --no-startup-id picom -bc
 exec_always --no-startup-id dunst
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
+
+# Set keyboard layout and binding to toggle layouts
+exec_always --no-startup-id setxkbmap -layout us,it
+exec_always --no-startup-id setxkbmap -option grp:alt_shift_toggle
+
