@@ -2,17 +2,45 @@
 	name = Angelo Gazzola
 	email = angelo@nglgzz.com
 	signingkey = 8214022A58C37D01
+
 [alias]
 	ls = log --pretty=format:\"[%h]%d%Cblue%an%Creset:~$ %s %C(bold green)(%ar)%Creset\" --graph
 	sign-all = rebase --exec 'git commit --amend --no-edit -n -S' -i --root
+
 [core]
   editor = nvim
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
+
+[delta]
+  syntax-theme = Monokai Extended
+  # features = side-by-side unobtrusive-line-numbers decorations
+  features = unobtrusive-line-numbers decorations
+
+[delta "unobtrusive-line-numbers"]
+    line-numbers = true
+    line-numbers-minus-style = "#444444"
+    line-numbers-zero-style = "#444444"
+    line-numbers-plus-style = "#444444"
+    line-numbers-left-format = "{nm:>3} "
+    line-numbers-right-format = "" # "{np:>3} "
+
+[delta "decorations"]
+    file-style = bold yellow ul
+    file-decoration-style = ul "#444444"
+    hunk-header-decoration-style = none
+
+[interactive]
+  diffFilter = delta --color-only
+
 [commit]
 	gpgsign = true
+
 [push]
   default = current
+
 [pull]
   ff = only
+
 [includeIf "gitdir:~/projects/neo4j/"]
   path = ~/.config/git/config-forks
+
