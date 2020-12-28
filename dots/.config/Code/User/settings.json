@@ -12,7 +12,7 @@
   "editor.formatOnSave": true,
   "editor.fontFamily": "'Hack', 'Material Icons'",
   "editor.detectIndentation": true,
-  "editor.rulers": [80, 100],
+  "editor.rulers": [80, 100, 120],
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "alt",
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
@@ -28,6 +28,10 @@
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "off",
+    "editor.wordWrapColumn": 80
   },
 
   // Zen mode
@@ -79,5 +83,6 @@
   ],
 
   // Show number of selected lines
-  "selectline.displayFormat": "Selected %d Lines"
+  "selectline.displayFormat": "Selected %d Lines",
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
