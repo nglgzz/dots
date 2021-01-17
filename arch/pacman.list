@@ -21,6 +21,7 @@ networkmanager
 nm-connection-editor
 network-manager-applet
 blueman
+nss-mdns
 
 ## Utilities
 zsh

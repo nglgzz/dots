@@ -53,6 +53,9 @@
     "<C-d>": false
   },
 
+  // Rewrap
+  "rewrap.wrappingColumn": 80,
+
   // Emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {

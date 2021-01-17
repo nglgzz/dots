@@ -37,6 +37,9 @@ hwclock --systohc --utc
 # Network configuration.
 echo $hostname >/etc/hostname
 
+# Enable mDNS local hostname resolution
+sed -i -r 's/myhostname/myhostname mdns_minimal [NOTFOUND=return]/' /etc/nsswitch.conf
+
 # Power on bletooth module on startup.
 sed -i 's/#AutoEnable=.*$/AutoEnable=true/' /etc/bluetooth/main.conf
 

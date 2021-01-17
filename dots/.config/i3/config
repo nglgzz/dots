@@ -73,8 +73,6 @@ bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
 # Screen
 # Print screen: full | select window or rectangle
-# TODO -- figure out screencasting and an alternative to scrot that doesn't
-# leave those ugly white marks on screenshots.
 bindsym --release $mod+s exec maim -s ~/tmp/screenshot.png &&\
   xclip -selection clipboard -t image/png -i $screenshot
 bindsym --release $mod+Shift+s exec maim ~/tmp/screenshot.png &&\
