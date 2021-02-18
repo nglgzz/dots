@@ -14,5 +14,6 @@ polybar --list-monitors | while read screen; do
   # TODO -- Update this to generate a network component per interface.
   export NETWORK_IFACE=$(ip link show | grep -iP 'state up' | grep -oP '^\d+: \K(\w+)')
 
-  polybar --reload $1 &
+  polybar --reload left &
+  polybar --reload right &
 done

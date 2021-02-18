@@ -1,13 +1,11 @@
 [colors]
   include-file = ~/.config/polybar/colors
 
-[bar/default]
-  include-file = ~/.config/polybar/bar
-  monitor = ${env:SCREEN_NAME:HDMI-0}
-  width = ${env:POLYBAR_WIDTH:100%}
-  override-redirect = true
-  offset-x = 40
-  offset-y = 0
+[bars]
+  include-file = ~/.config/polybar/bars
+
+[module/i3]
+  include-file = ~/.config/polybar/i3
 
 [module/song]
   type = custom/script
@@ -19,9 +17,6 @@
   ; List of indicators to ignore
   blacklist-0 = num lock
   blacklist-1 = scroll lock
-
-[module/i3]
-  include-file = ~/.config/polybar/i3
 
 [module/network]
   type = internal/network
@@ -51,24 +46,27 @@
   type = internal/pulseaudio
   use-ui-max = true
 
-  format-volume = %{A1:pavucontrol:} <bar-volume> %{A}
-  format-muted-foreground = ${colors.gray}
+  click-right =
+  click-middle = pavucontrol
+
+  format-volume = <bar-volume>
+  format-muted-foreground = ${colors.black}
   label-muted = sound muted
 
-  bar-volume-width = 15
-  bar-volume-foreground-0 = ${colors.accent}
-  bar-volume-foreground-1 = ${colors.accent}
-  bar-volume-foreground-2 = ${colors.accent}
-  bar-volume-foreground-3 = ${colors.accent}
-  bar-volume-foreground-4 = ${colors.accent}
-  bar-volume-foreground-5 = ${colors.accent}
-  bar-volume-foreground-6 = ${colors.alert}
+  bar-volume-width = 20
   bar-volume-gradient = false
-  bar-volume-indicator = ━
-  bar-volume-fill = ━
-  bar-volume-empty = ━
-  bar-volume-empty-foreground = ${colors.gray}
 
+  bar-volume-fill = ━
+  bar-volume-fill-font = 0
+  bar-volume-fill-foreground = ${colors.black}
+
+  bar-volume-indicator = ━
+  bar-volume-indicator-font = 0
+  bar-volume-indicator-foreground = ${colors.light-gray}
+
+  bar-volume-empty = ━
+  bar-volume-empty-font = 0
+  bar-volume-empty-foreground = ${colors.light-gray}
 
 [module/battery]
   type = internal/battery

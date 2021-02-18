@@ -1,0 +1,53 @@
+[bar/common]
+  monitor = ${env:SCREEN_NAME:HDMI-0}
+
+  font-0 = Hack:pixelsize=10;2
+  font-1 = MaterialIcons:pixelsize=14;3
+
+  height = 25
+  border-size = 0
+
+  background = ${colors.transparent}
+	foreground = ${colors.transparent}
+  border-color = ${colors.transparent}
+
+	override-redirect = true
+  wm-restack = i3
+
+[bar/right]
+  inherit = bar/common
+
+  border-right-size = 40
+  border-top-size = 10
+
+  radius = 0
+  tray-position = right
+
+  foreground = ${colors.black}
+
+  line-size = 1
+  line-color = #f000
+
+  fixed-center = true
+
+  padding-left = 0
+  padding-right = 1
+  module-margin = 1
+
+  modules-center = song
+  modules-right = pulseaudio network battery date xkeyboard
+
+  cursor-click = pointer
+  cursor-scroll = ns-resize
+
+  monitor = ${env:SCREEN_NAME:HDMI-0}
+  override-redirect = true
+
+[bar/left]
+  inherit = bar/common
+  width = 30%
+
+  border-left-size = 40
+  border-top-size = 8
+
+  modules-left = i3

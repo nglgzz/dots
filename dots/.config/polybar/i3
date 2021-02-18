@@ -14,21 +14,29 @@ wrapping-scroll = true
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
+label-mode-foreground = ${colors.accent}
+label-mode-background = ${colors.black}
+
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
 label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.accent}
+label-unfocused-background = ${colors.black}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %icon%
 label-visible-padding = 2
-label-visible-underline = ${colors.accent}
+label-visible-foreground = ${colors.black}
+label-visible-background = ${colors.accent}
 
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
 label-focused-padding = 2
-label-focused-underline = ${colors.accent}
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.accent}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
 label-urgent-padding = 2
-label-urgent-foreground = ${colors.alert}
+label-urgent-foreground = ${colors.black}
+label-urgent-background = ${colors.alert}

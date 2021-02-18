@@ -186,7 +186,7 @@ assign [class="Neo4j Desktop Canary"] $ws5
 exec_always feh --bg-scale $config_dir/i3/bg.jpg
 exec_always --no-startup-id $config_dir/polybar/launch.sh default
 
-exec_always --no-startup-id picom -bc
+exec_always --no-startup-id picom -b
 exec_always --no-startup-id dunst
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
