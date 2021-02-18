@@ -15,7 +15,7 @@ declare -A shell=(
   [i3edit]='nvim $XDG_CONFIG_HOME/i3/config'
   [codex]='code --list-extensions'
   # Navigation
-  [b]='cd -'
+  [b]='popd'
   [tmp]='cd ~/tmp'
   [dots]='cd ~/dots'
   [..]='cd ..'

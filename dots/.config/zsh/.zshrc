@@ -2,6 +2,7 @@ source $ZDOTDIR/theme.sh
 source $ZDOTDIR/aliases.sh
 
 export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.bin/extra"
 export PATH="$PATH:$HOME/.cargo/bin"
 

@@ -84,6 +84,13 @@ setopt sharehistory     # Share history across terminals
 setopt incappendhistory # Immediately append to the history file, not just when a term is killed
 
 ############################
+# NAVIGATION
+# Make cd automatically call pushd, cd -n will go back to the n position
+# in the directories stack, and =n will substitute the path from n
+# position in the directories stack.
+setopt autopushd pushdminus pushdsilent pushdtohome
+
+############################
 # BINDINGS
 export WORDCHARS=${WORDCHARS/\/}
 
