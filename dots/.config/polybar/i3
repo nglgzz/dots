@@ -1,8 +1,8 @@
 type = internal/i3
 
-ws-icon-0 = 1;o
-ws-icon-1 = 2;oo
-ws-icon-2 = 3;ooo
+ws-icon-0 = 1;I
+ws-icon-1 = 2;II
+ws-icon-2 = 3;III
 ws-icon-3 = 4;###
 ws-icon-4 = 5;##
 ws-icon-5 = 6;#

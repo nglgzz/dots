@@ -14,16 +14,22 @@ set $screengrab $HOME/.bin/screengrab
 set $terminal termite
 
 # Colors
-set_from_resource $black     background #000000
-set_from_resource $dark_gray color0     #222222
 set_from_resource $gray      color8     #585756
-set_from_resource $accent    color11    #4ef4ca
 set_from_resource $urgent    color9     #DF6418
+set $trns      #00000000
+set $black     #000000
+set $dark_gray #0B2027
+set $accent    #ced2df
 
 # Layout
-set $border_width 0
+set $border_width 2
 gaps inner 20
 gaps outer 20
+
+# Smart borders will draw borders on windows only if there is more than one
+# window in a workspace.
+smart_borders on
+
 # Only enable gaps on a workspace when there is at least one container. Looks
 # nice but need to find a way to show polybar when there's only one window
 # inside a container.
@@ -146,11 +152,11 @@ bindsym $mod+Ctrl+f kill
 # System font
 font pango:fira 8
 
-# Window colors
-client.focused          $black  $black $accent $gray $accent
-client.focused_inactive $black  $black $gray   $gray $dark_gray
-client.unfocused        $black  $black $gray   $gray $dark_gray
-client.urgent           $black  $black $urgent $gray $urgent
+# Window colors         border  backgr.    text       indicator child_border
+client.focused          $trns   $dark_gray $accent    $gray     $accent
+client.focused_inactive $trns   $accent    $dark_gray $gray     $dark_gray
+client.unfocused        $trns   $accent    $dark_gray $gray     $dark_gray
+client.urgent           $trns   $accent    $urgent    $gray     $urgent
 
 # Remove titlebar and hide window edges
 for_window [class="^.*"] border pixel $border_width
