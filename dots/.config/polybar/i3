@@ -31,4 +31,4 @@ label-focused-underline = ${colors.foreground}
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
 label-urgent-padding = 2
-label-urgent-overline = ${colors.foreground}
+label-urgent-underline = ${colors.foreground-light}

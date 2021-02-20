@@ -152,11 +152,11 @@ bindsym $mod+Ctrl+f kill
 # System font
 font pango:fira 8
 
-# Window colors         border  backgr.    text       indicator child_border
-client.focused          $trns   $dark_gray $accent    $gray     $accent
-client.focused_inactive $trns   $accent    $dark_gray $gray     $dark_gray
-client.unfocused        $trns   $accent    $dark_gray $gray     $dark_gray
-client.urgent           $trns   $accent    $urgent    $gray     $urgent
+# Window colors         border     backgr.    text       indicator child_border
+client.focused          $accent    $accent    $dark_gray $gray     $accent
+client.focused_inactive $dark_gray $dark_gray $accent    $gray     $dark_gray
+client.unfocused        $dark_gray $dark_gray $accent    $gray     $dark_gray
+client.urgent           $dark_gray $dark_gray $urgent    $gray     $urgent
 
 # Remove titlebar and hide window edges
 for_window [class="^.*"] border pixel $border_width

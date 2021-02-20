@@ -4,10 +4,10 @@ font = Hack 14
 [colors]
 
 # special
-foreground      = #e5e5e5
-foreground_bold = #e5e5e5
-cursor          = #e5e5e5
-background      = #000000
+foreground      = #ced2df
+foreground_bold = #ced2df
+cursor          = #ced2df
+background      = #0b2027
 
 # black
 color0  = #282c34

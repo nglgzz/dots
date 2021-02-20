@@ -1,5 +1,4 @@
 configuration {
-    /* font: "Blackout Midnight 15"; */
     modi: "window,run,ssh";
     width: 500;
     lines: 5;
