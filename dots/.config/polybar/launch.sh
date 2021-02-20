@@ -16,4 +16,5 @@ polybar --list-monitors | while read screen; do
 
   polybar --reload left &
   polybar --reload right &
+  polybar --reload bottom &
 done

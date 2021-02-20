@@ -1,11 +1,11 @@
 type = internal/i3
 
-ws-icon-0 = 1;▸
-ws-icon-1 = 2;▸▸
-ws-icon-2 = 3;▸▸▸
-ws-icon-3 = 4;◂◂◂
-ws-icon-4 = 5;◂◂
-ws-icon-5 = 6;◂
+ws-icon-0 = 1;o
+ws-icon-1 = 2;oo
+ws-icon-2 = 3;ooo
+ws-icon-3 = 4;###
+ws-icon-4 = 5;##
+ws-icon-5 = 6;#
 ws-icon-default = -
 
 index-sort = true
@@ -14,29 +14,21 @@ wrapping-scroll = true
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-label-mode-foreground = ${colors.accent}
-label-mode-background = ${colors.black}
-
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
 label-unfocused-padding = 2
-label-unfocused-foreground = ${colors.accent}
-label-unfocused-background = ${colors.black}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %icon%
 label-visible-padding = 2
-label-visible-foreground = ${colors.black}
-label-visible-background = ${colors.accent}
+label-visible-underline = ${colors.foreground}
 
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
 label-focused-padding = 2
-label-focused-foreground = ${colors.black}
-label-focused-background = ${colors.accent}
+label-focused-underline = ${colors.foreground}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
 label-urgent-padding = 2
-label-urgent-foreground = ${colors.black}
-label-urgent-background = ${colors.alert}
+label-urgent-overline = ${colors.foreground}

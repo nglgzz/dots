@@ -1,6 +1,6 @@
 transparent = #000f0f0f
-black = #000000
-gray = #384243
-light-gray = #C7D0D1
-accent = #F4D6CC
-alert = #F4B860
+
+background = #ffffff
+
+foreground = #0B2027
+foreground-light = #ced2df

@@ -7,6 +7,10 @@
 [module/i3]
   include-file = ~/.config/polybar/i3
 
+[module/filler]
+type = custom/text
+content = " "
+
 [module/song]
   type = custom/script
   exec = /usr/bin/curl -s localhost:8888/getInfo | /usr/bin/grep -v youtube | sed 's/\t/  /'
@@ -30,7 +34,6 @@
   ; Left click opens wicd if device is down
   format-disconnected = %{A1:wicd-gtk:} <label-disconnected> %{A}
   label-disconnected = %ifname% disconnected
-  label-disconnected-foreground = ${colors.alert}
 
 [module/date]
   type = internal/date
@@ -50,23 +53,21 @@
   click-middle = pavucontrol
 
   format-volume = <bar-volume>
-  format-muted-foreground = ${colors.black}
   label-muted = sound muted
 
   bar-volume-width = 20
   bar-volume-gradient = false
 
-  bar-volume-fill = ━
-  bar-volume-fill-font = 0
-  bar-volume-fill-foreground = ${colors.black}
+  bar-volume-fill = ▓
+  bar-volume-fill-font = 1
 
-  bar-volume-indicator = ━
-  bar-volume-indicator-font = 0
-  bar-volume-indicator-foreground = ${colors.light-gray}
+  bar-volume-indicator = ▓
+  bar-volume-indicator-font = 1
+  bar-volume-indicator-foreground = ${colors.foreground-light}
 
-  bar-volume-empty = ━
-  bar-volume-empty-font = 0
-  bar-volume-empty-foreground = ${colors.light-gray}
+  bar-volume-empty = ▓
+  bar-volume-empty-font = 1
+  bar-volume-empty-foreground = ${colors.foreground-light}
 
 [module/battery]
   type = internal/battery
