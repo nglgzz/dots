@@ -47,20 +47,18 @@
 [bar/bottom]
   inherit = bar/common
   bottom = true
-  offset-x = 50%:-70
-  width = 140
-  height = 25
+  offset-x = 100%:-130
+  width = 120
+  height = 24
 
-  padding-left = 3
-  tray-offset-x = -12
+  radius = 10
   tray-detached = true
-  tray-position = right
+  tray-position = center
 
-  font-0 = Blackout Midnight:pixelsize=12:antialias=true;2
+  font-0 = Hack:pixelsize=10;2
   background = ${colors.background}
-  radius-top = 10
 
   border-top-size = 8
-  border-bottom-size = 0
+  border-bottom-size = 10
 
-  modules-left = xkeyboard
+  modules-left = filler

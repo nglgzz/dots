@@ -9,7 +9,6 @@ input=$(
   rofi \
     -dmenu \
     -i -p "${1:-input}" \
-    -location 2 -width 450 \
     -lines ${2:-0} \
     ${@:2} <&0
 )

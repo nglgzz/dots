@@ -159,7 +159,7 @@ for_window [class="^.*"] border pixel $border_width
 bindsym $mod+Return exec $terminal
 
 # Rofi (_rofi)
-bindsym $mod+f exec rofi -show drun -location 2 -width 450 -lines 5
+bindsym $mod+f exec rofi -show drun
 
 # Music
 bindsym XF86AudioPlay exec playerctl play-pause

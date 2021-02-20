@@ -1,10 +1,18 @@
+configuration {
+    /* font: "Blackout Midnight 15"; */
+    modi: "window,run,ssh";
+    width: 500;
+    lines: 5;
+    location: 0;
+}
+
 * {
-    foreground:                  rgba ( 229, 229, 229, 100 % );
+    foreground:                  #0B2027;
     normal-foreground:           @foreground;
     alternate-normal-foreground: @foreground;
     selected-normal-foreground:  @background;
 
-    background:                  rgba ( 0, 0, 0, 100 % );
+    background:                  #CED2DF;
     normal-background:           @background;
     alternate-normal-background: @background;
     background-color:            @background;
@@ -24,7 +32,7 @@
 #window {
     background-color: @background;
     border:           0;
-    padding:          0;
+    padding:          5;
 }
 #mainbox {
     border:  0;
@@ -46,7 +54,7 @@
 }
 #element {
     border:  0;
-    padding: 1px ;
+    padding: 10px ;
 }
 #element.normal.normal {
     background-color: @normal-background;
@@ -90,7 +98,7 @@
 #inputbar {
     spacing:    0;
     text-color: @normal-foreground;
-    padding:    1px ;
+    padding:    8px ;
 }
 #case-indicator {
     spacing:    0;
