@@ -28,18 +28,16 @@ Here you can find most configuration files for my Arch environment.
 
 **Clean**
 
-![Screenfetch](https://i.imgur.com/zSE9tTU.png)
+![Clean](https://i.imgur.com/1JZ0CTK.png)
 
-**Dirty**
+**Rofi**
 
-![VS Code + Termite](https://i.imgur.com/OmDdP2X.png)
+![Rofi](https://i.imgur.com/7dxS8Xq.png)
 
-## Notes
+**Screenfetch**
 
-- Workspaces 2 and 3 are bound to my primary screen, while 1, 5 6 are bound
-  to my secondary screen (if connected).
+![Screenfetch](https://i.imgur.com/SQCw0Yl.png)
 
-**Workspace bindings**
+**Terminal + VS Code**
 
-- **workspace 2**: VS Code
-- **workspace 3**: Termite
+![Terminal + VS Code](https://i.imgur.com/I6LkSPl.png)

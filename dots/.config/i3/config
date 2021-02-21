@@ -79,9 +79,9 @@ bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
 # Screen
 # Print screen: full | select window or rectangle
-bindsym --release $mod+s exec maim -s ~/tmp/screenshot.png &&\
+bindsym --release $mod+s exec maim --hidecursor -s ~/tmp/screenshot.png &&\
   xclip -selection clipboard -t image/png -i $screenshot
-bindsym --release $mod+Shift+s exec maim ~/tmp/screenshot.png &&\
+bindsym --release $mod+Shift+s exec maim --hidecursor ~/tmp/screenshot.png &&\
   xclip -selection clipboard -t image/png -i $screenshot
 
 bindsym --release Print exec $screengrab start && i3-msg mode "recording"
