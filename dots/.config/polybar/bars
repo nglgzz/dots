@@ -22,6 +22,8 @@
 
 [bar/right]
   inherit = bar/common
+  width = 70%
+  offset-x = 30%
 
   border-right-size = 10
   border-top-size = 10
