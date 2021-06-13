@@ -5,6 +5,7 @@
 
   // Workbench
   "workbench.colorTheme": "Pitch Black",
+  "workbench.editor.decorations.colors": false,
   "workbench.editor.scrollToSwitchTabs": true,
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.colorCustomizations": {
@@ -67,7 +68,11 @@
   "files.exclude": {
     "**/.git/**": true,
     "**/node_modules/**": true,
-    "**/dist/**": true
+    "**/dist/**": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
   },
 
   // Vim
@@ -110,5 +115,7 @@
 
   // Show number of selected lines
   "selectline.displayFormat": "Selected %d Lines",
-  "typescript.updateImportsOnFileMove.enabled": "always"
+
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.suggestSelection": "first"
 }

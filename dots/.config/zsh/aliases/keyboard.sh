@@ -31,7 +31,7 @@ function disable_laptop_keyboard() {
 # If for some reason I'm not using my keyboard, this makes the most important
 # bindings available to the standard keyboard using xmodmap.
 function en() {
-  setxkbmap us,it
+  setxkbmap us,it,se
   xmodmap ~/.config/xmodmap/xmodmaprc
 
   pkill xcape

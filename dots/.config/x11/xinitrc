@@ -1,4 +1,4 @@
-setxkbmap -layout us,it
+setxkbmap -layout us,it,se
 setxkbmap -option grp:alt_shift_toggle
 
 xrdb ~/.config/x11/xresources

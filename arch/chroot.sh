@@ -97,6 +97,7 @@ as_user EDITOR=vim pacaur -S --noconfirm --noedit $packages
 ## Enable services
 systemctl enable NetworkManager
 systemctl enable bluetooth
+systemctl enable cron.target
 
 ## Link dots and project utils
 as_user git clone --recursive https://github.com/nglgzz/dots $user_home/dots

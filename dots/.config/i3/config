@@ -198,6 +198,6 @@ exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
 
 # Set keyboard layout and binding to toggle layouts
-exec_always --no-startup-id setxkbmap -layout us,it
+exec_always --no-startup-id setxkbmap -layout us,it,se
 exec_always --no-startup-id setxkbmap -option grp:alt_shift_toggle
 

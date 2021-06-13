@@ -20,13 +20,13 @@
 	override-redirect = true
   wm-restack = i3
 
-[bar/right]
+[bar/top]
   inherit = bar/common
-  width = 70%
-  offset-x = 30%
+  width = 100%
 
   border-right-size = 10
   border-top-size = 10
+  border-left-size = 10
 
   fixed-center = true
 
@@ -34,17 +34,9 @@
   padding-right = 1
   module-margin = 2
 
+  modules-left = i3
   modules-center = song
   modules-right = pulseaudio network battery date
-
-[bar/left]
-  inherit = bar/common
-  width = 30%
-
-  border-left-size = 10
-  border-top-size = 8
-
-  modules-left = i3
 
 [bar/bottom]
   inherit = bar/common
