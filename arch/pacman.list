@@ -36,6 +36,7 @@ usbutils
 xorg-server
 xorg-xinit
 xorg-xsetroot
+autorandr
 
 ## Keyboard
 avr-gcc
