@@ -23,7 +23,7 @@ chatty
 nvm
 slack-desktop
 visual-studio-code-bin
-git-delta-bin
+git-delta
 
 ## Keyboard
 gcc-arm-none-eabi-bin-83

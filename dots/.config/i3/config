@@ -11,7 +11,7 @@ set $screenshot $HOME/tmp/screenshot.png
 set $i3_resurrect_all $HOME/.bin/i3-resurrect-all
 set $rofi_input $HOME/.bin/rofi-input
 set $screengrab $HOME/.bin/screengrab
-set $terminal termite
+set $terminal alacritty
 
 # Colors
 set_from_resource $gray      color8     #585756
