@@ -166,6 +166,7 @@ bindsym $mod+Return exec $terminal
 
 # Rofi (_rofi)
 bindsym $mod+f exec rofi -show drun
+bindsym $mod+g exec rofi -show emoji
 
 # Music
 bindsym XF86AudioPlay exec playerctl play-pause

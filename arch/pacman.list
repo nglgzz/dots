@@ -68,6 +68,11 @@ i3lock
 picom
 xorg-xrandr
 rofi
+rofi-emoji
+
+## GTK
+arc-gtk-theme
+papirus-icon-theme
 
 ## i3 bindings
 htop
@@ -79,7 +84,6 @@ xclip
 ## Shell
 alacritty
 bat
-
 
 ## AUR
 pacman-contrib
