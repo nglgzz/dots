@@ -1,6 +1,0 @@
-[
-  {
-    "command": ["/opt/visual-studio-code/code", "--no-sandbox", "."],
-    "working_directory": "/home/nglgzz/projects/nglgzz/open-keeb"
-  }
-]
