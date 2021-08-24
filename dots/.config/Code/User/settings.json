@@ -41,6 +41,9 @@
   "editor.multiCursorModifier": "alt",
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.autoClosingBrackets": "languageDefined"
+  },
   "[c]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
@@ -117,5 +120,12 @@
   "selectline.displayFormat": "Selected %d Lines",
 
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.suggestSelection": "first"
+  "editor.suggestSelection": "first",
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": false,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true
+  }
 }
