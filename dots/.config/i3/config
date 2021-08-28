@@ -186,7 +186,7 @@ bindsym $mod+a exec feh $config_dir/i3/42.png
 bindsym $mod+z exec feh $config_dir/i3/i3.png
 
 assign [class="Code"] $ws2
-assign [class="Termite"] $ws3
+assign [class="Alacritty"] $ws3
 
 # Prepare background and start default programs
 exec_always feh --bg-scale $config_dir/i3/bg.jpg
