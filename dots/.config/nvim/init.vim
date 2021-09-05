@@ -3,10 +3,11 @@
 call plug#begin("~/.cache/nvim/")
   " Plugin Section
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x' }
+  Plug 'sbdchd/neoformat'
   Plug 'jiangmiao/auto-pairs'
   Plug 'mattn/emmet-vim'
   Plug 'junegunn/fzf.vim'
+  Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'npm install'}
 call plug#end()
 
 
@@ -45,10 +46,10 @@ let g:user_emmet_expandabbr_key = '<C-E>'
 
 
 """""""""""""""""""""""""""""""""""
-" prettier/vim-prettier
+" sbdchd/neoformat
 " Autoformat using Prettier
 filetype plugin indent on
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.html Prettier
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.html Neoformat prettier
 
 
 """""""""""""""""""""""""""""""""""
