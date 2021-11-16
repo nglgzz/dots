@@ -63,6 +63,9 @@
 
   // Zen mode
   "zenMode.hideTabs": false,
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.fullScreen": false,
   "gitlens.mode.active": "zen",
 
   // Files
@@ -127,5 +130,6 @@
     "yaml": false,
     "plaintext": false,
     "markdown": true
-  }
+  },
+  "explorer.confirmDelete": false
 }

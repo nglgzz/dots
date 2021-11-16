@@ -4,6 +4,10 @@
     "command": "editor.action.clipboardCopyAction"
   },
   {
+    "key": "ctrl+shift+c",
+    "command": "gitlens.copyRemoteFileUrlToClipboard"
+  },
+  {
     "key": "ctrl+x",
     "command": "editor.action.clipboardCutAction"
   },
