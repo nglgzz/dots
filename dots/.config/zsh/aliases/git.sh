@@ -27,8 +27,11 @@ function git-commit-fixup-autosquash() {
 }
 
 function git-commit-fixup() {
-  commit=$(git ls | head -n10 | fzf | grep -oP '\[\K\w{7}(?=])')
+  commit=$(git log --oneline | fzf | awk '{print $1}')
   git commit --fixup $commit
+
+  parent_commit=$(git log --pretty=%p -1 $commit)
+  git rebase --interactive --autosquash $parent_commit
 }
 
 function gc() {

@@ -1,20 +1,29 @@
 declare -A npm=(
-  [n]='npm'
-  [ni]='npm install'
-  [ns]='npm start'
-  [nt]='npm test'
-  [nr]='npm run'
-  [nb]='npm run build'
-  [ncirculars]="dpdm --warning false --circular -T --exclude 'node_modules/.*' src"
+  [n]='corepack npm'
+  [ni]='corepack npm install'
+  [ns]='corepack npm start'
+  [nt]='corepack npm test'
+  [nr]='corepack npm run'
+  [nb]='corepack npm run build'
+  [ncirculars]="npx dpdm --warning false --circular -T --exclude 'node_modules/.*' src"
+)
+
+declare -A pnpm=(
+  [p]='corepack pnpm'
+  [pi]='corepack pnpm install'
+  [ps]='corepack pnpm start'
+  [pt]='corepack pnpm test'
+  [pr]='corepack pnpm run'
+  [pb]='corepack pnpm run build'
 )
 
 declare -A yarn=(
-  [y]='yarn'
-  [ys]='yarn start'
-  [yd]='yarn dev'
-  [yt]='yarn test'
-  [ya]='yarn add'
-  [yb]='yarn build'
+  [y]='corepack yarn'
+  [ys]='corepack yarn start'
+  [yd]='corepack yarn dev'
+  [yt]='corepack yarn test'
+  [ya]='corepack yarn add'
+  [yb]='corepack yarn build'
   [yaf]='yarn-audit-fix'
 )
 

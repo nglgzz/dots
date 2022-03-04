@@ -6,6 +6,7 @@
 [alias]
 	ls = log --pretty=format:\"[%h]%d%Cblue%an%Creset:~$ %s %C(bold green)(%ar)%Creset\" --graph
 	sign-all = rebase --exec 'git commit --amend --no-edit -n -S' -i --root
+	sign-last = commit --amend --no-edit -n -S
 
 [core]
   editor = nvim

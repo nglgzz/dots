@@ -8,6 +8,8 @@ declare -A shell=(
   [l]='ls -ah --color=tty'
   [ll]='ls -lha --color=tty'
   [watch]='watch --color -n1'
+  [tree]='tree -C'
+  [treed]='tree -C -d -L 3'
   # Configs
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
   [ale]='cd $ZDOTDIR/aliases && nvim $(fzf) && source $ZDOTDIR/.zshrc && cd -'

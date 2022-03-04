@@ -42,6 +42,7 @@ for file in $ZDOTDIR/aliases/*; do
 done
 
 set_aliases "npm"
+set_aliases "pnpm"
 set_aliases "yarn"
 set_aliases "git"
 set_aliases "docker"
