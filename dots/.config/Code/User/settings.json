@@ -34,6 +34,11 @@
 
   // Editor
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.suggestSelection": "first",
+  "editor.inlineSuggest.enabled": true,
   "editor.fontFamily": "'Hack', 'Material Icons'",
   "editor.detectIndentation": true,
   "editor.rulers": [80, 100, 120],
@@ -41,6 +46,11 @@
   "editor.multiCursorModifier": "alt",
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  // Languages
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "[typescript]": {
     "editor.autoClosingBrackets": "languageDefined"
   },
@@ -60,13 +70,16 @@
     "editor.wordWrap": "off",
     "editor.wordWrapColumn": 80
   },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
 
-  // Zen mode
-  "zenMode.hideTabs": false,
-  "zenMode.centerLayout": false,
-  "zenMode.hideLineNumbers": false,
-  "zenMode.fullScreen": false,
-  "gitlens.mode.active": "zen",
+  // Explorer
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
 
   // Files
   "files.trimTrailingWhitespace": true,
@@ -78,8 +91,18 @@
     "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
-    "**/.factorypath": true
+    "**/.factorypath": true,
+    "**/.turbo": true,
+    "**/.pnpm-debug.log": true,
+    "**/tsconfig.tsbuildinfo": true
   },
+
+  // Zen mode
+  "zenMode.hideTabs": false,
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.fullScreen": false,
+  "gitlens.mode.active": "zen",
 
   // Vim
   "vim.useCtrlKeys": false,
@@ -96,40 +119,6 @@
     "javascript": "javascriptreact"
   },
 
-  // Sort Imports
-  // "importSorter.generalConfiguration.sortOnBeforeSave": true,
-  "importSorter.importStringConfiguration.spacingPerImportExpression.afterStartingBracket": 0,
-  "importSorter.importStringConfiguration.spacingPerImportExpression.beforeEndingBracket": 0,
-  "importSorter.importStringConfiguration.trailingComma": "multiLine",
-  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
-  "importSorter.sortConfiguration.removeUnusedImports": true,
-  "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
-  "importSorter.sortConfiguration.customOrderingRules.rules": [
-    // Default orderLevel: 20 (named external imports)
-    {
-      // Unnamed imports
-      "type": "importMember",
-      "regex": "^$",
-      "orderLevel": 10
-    },
-    {
-      // Relative paths
-      "regex": "^[.]",
-      "orderLevel": 30
-    }
-  ],
-
   // Show number of selected lines
-  "selectline.displayFormat": "Selected %d Lines",
-
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.suggestSelection": "first",
-  "editor.inlineSuggest.enabled": true,
-  "github.copilot.enable": {
-    "*": false,
-    "yaml": false,
-    "plaintext": false,
-    "markdown": true
-  },
-  "explorer.confirmDelete": false
+  "selectline.displayFormat": "Selected %d Lines"
 }
