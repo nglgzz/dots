@@ -2,6 +2,7 @@ declare -A bluetoothctl=(
   ['bt']='bluetoothctl'
   ['bt-connect']='bluetoothctl connect $(bluetoothctl devices | fzf | awk '\''{print $2}'\'')'
   ['bt-disconnect']='bluetoothctl disconnect $(bluetoothctl devices | fzf | awk '\''{print $2}'\'')'
+  ['bt-restart']='sudo rmmod btusb && sudo modprobe btusb'
 )
 
 # Connect to device sharing an internet connection via bluetooth

@@ -15,10 +15,6 @@ noto-fonts-emoji
 fzf
 systemd-cron
 
-## Twitch
-obs-studio
-chatty
-
 ## Development
 nvm
 slack-desktop

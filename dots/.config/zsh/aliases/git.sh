@@ -5,6 +5,7 @@ declare -A git=(
   [gd]='git diff'
   [gdd]='git diff --staged'
   [gddd]='git diff HEAD^1 HEAD'
+  [gsn]='git show --name-only'
   [gp]='git pull'
   [gg]='git push origin $(git_current_branch)'
   [ggwp]='git push --force-with-lease origin $(git_current_branch)'
@@ -17,7 +18,7 @@ declare -A git=(
   [gcff]='git-commit-fixup-autosquash'
   [gca]='git commit --amend'
   [gcaa]='git commit --amend --no-edit'
-  [gu]='git fetch upstream && git rebase upstream/master'
+  [gu]='git fetch upstream && git rebase upstream'
   [grls]='git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- [%Cblue%h%Creset] %s"'
   [grls-nochore]='grls | grep -vwi "chore"'
 )

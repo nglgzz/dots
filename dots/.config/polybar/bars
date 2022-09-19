@@ -43,7 +43,7 @@
   bottom = true
   offset-x = 100%:-130
   width = 120
-  height = 24
+  height = 26
 
   radius = 10
   tray-detached = true

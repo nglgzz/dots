@@ -1,7 +1,6 @@
 {
   // Window
   "window.menuBarVisibility": "toggle",
-  "window.zoomLevel": 2,
 
   // Workbench
   "workbench.colorTheme": "Pitch Black",

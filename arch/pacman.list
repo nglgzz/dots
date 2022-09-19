@@ -46,10 +46,9 @@ xorg-xev
 xcape
 
 ## Dev Tools
-nodejs
 chromium
 python
-hub
+github-cli
 
 ## Audio
 pavucontrol
