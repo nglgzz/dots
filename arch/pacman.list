@@ -61,6 +61,13 @@ pulseaudio-bluetooth
 bluez
 bluez-utils
 
+## Sway
+sway
+swaybg
+swaylock
+waybar
+xorg-xwayland
+
 ## i3
 i3-gaps
 i3lock

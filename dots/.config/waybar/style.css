@@ -1,0 +1,32 @@
+* {
+  border: none;
+  border-radius: 0;
+
+  font-size: 20px;
+  font-family: "Blackout Midnight", "Hack", "MaterialIcons";
+}
+
+window#waybar {
+  background: rgba(0, 0, 0, 0);
+}
+
+window#waybar button:hover {
+  background: inherit;
+}
+
+#workspaces button {
+  padding: 0px 8px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+#workspaces button.focused {
+  border-bottom: 2px solid black;
+}
+
+#workspaces button.urgent {
+  border-bottom: 2px solid gray;
+}
+
+#tray > .passive {
+  color: black;
+}

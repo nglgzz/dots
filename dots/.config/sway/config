@@ -1,0 +1,211 @@
+# Variables
+# Mod Keys
+set $mod Mod4
+
+# Paths
+set $config_dir ${XDG_CONFIG_HOME:-$HOME/.config}
+set $screen_layouts ${XDG_CONFIG_HOME:-$HOME/.config}/i3/screens
+set $screenshot $HOME/tmp/screenshot.png
+
+# Executables
+set $i3_resurrect_all $HOME/.bin/i3-resurrect-all
+set $rofi_input $HOME/.bin/rofi-input
+set $screengrab $HOME/.bin/screengrab
+set $terminal alacritty
+
+# Colors
+set $gray      #585756
+set $urgent    #DF6418
+set $trns      #00000000
+set $black     #000000
+set $dark_gray #0B2027
+set $accent    #ced2df
+
+# Layout
+set $border_width 2
+gaps inner 20
+gaps outer 20
+
+# Smart borders will draw borders on windows only if there is more than one
+# window in a workspace.
+smart_borders on
+
+# Only enable gaps on a workspace when there is at least one container. Looks
+# nice but need to find a way to show polybar when there's only one window
+# inside a container.
+# smart_gaps on
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+
+# Screens
+set $screen1 "eDP-1"
+set $screen2 "HDMI-2"
+
+workspace $ws1 output $screen1
+workspace $ws2 output $screen2
+workspace $ws3 output $screen2
+workspace $ws5 output $screen1
+workspace $ws6 output $screen1
+
+# Key Bindings
+# Sway
+# Restart (preserves layout/session, can be used when updating sway config)
+bindsym $mod+Ctrl+r reload
+
+# Lock screen
+bindsym $mod+Ctrl+x exec swaylock --color '000000'
+
+# Exit (logs out of your X session)
+bindsym $mod+Ctrl+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'swaymsg exit'
+
+
+# System
+# Audio control
+bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%-
+bindsym XF86AudioMute exec amixer -D pulse set Master toggle
+
+# Mic control
+bindsym Shift+XF86AudioRaiseVolume exec amixer -D pulse set Capture 9%+
+bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
+bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
+
+
+# Screen
+# Print screen: full | select window or rectangle
+bindsym --release $mod+s exec maim --hidecursor -s ~/tmp/screenshot.png &&\
+  xclip -selection clipboard -t image/png -i $screenshot
+bindsym --release $mod+Shift+s exec maim --hidecursor ~/tmp/screenshot.png &&\
+  xclip -selection clipboard -t image/png -i $screenshot
+
+bindsym --release Print exec $screengrab start && i3-msg mode "recording"
+mode "recording" {
+  bindsym --release Print exec $screengrab stop && i3-msg mode "default"
+}
+
+# Choose screen layout
+bindsym XF86Search exec ls $screen_layouts |\
+  $rofi_input "screen layout" 5 |\
+  xargs -I{} sh $screen_layouts/{} &&\
+  swaymsg reload
+
+# Save and restore workspace layouts
+bindsym XF86Explorer exec $i3_resurrect_all save
+bindsym XF86Calculator exec $i3_resurrect_all restore
+
+# Move workspace between screens
+bindsym XF86HomePage move workspace to output left
+
+
+# Workspace
+# Go to workspace
+bindsym $mod+q workspace $ws1
+bindsym $mod+w workspace $ws2
+bindsym $mod+e workspace $ws3
+bindsym $mod+u workspace $ws4
+bindsym $mod+o workspace $ws5
+bindsym $mod+p workspace $ws6
+
+# Move focused container to workspace
+bindsym $mod+Shift+q move container to workspace $ws1
+bindsym $mod+Shift+w move container to workspace $ws2
+bindsym $mod+Shift+e move container to workspace $ws3
+bindsym $mod+Shift+u move container to workspace $ws4
+bindsym $mod+Shift+o move container to workspace $ws5
+bindsym $mod+Shift+p move container to workspace $ws6
+
+# Back and forth between last two workspaces
+bindsym $mod+Tab workspace back_and_forth
+workspace_auto_back_and_forth yes
+
+# Change container layout to tabbed | toggle split | floating | fullscreen
+bindsym $mod+Ctrl+t layout tabbed
+bindsym $mod+Ctrl+y layout toggle split
+bindsym $mod+Shift+y floating toggle
+bindsym $mod+Ctrl+d fullscreen
+
+# Mouse + $mod to drag floating windows
+floating_modifier $mod
+
+# Window
+# Move focus
+bindsym $mod+l focus right
+bindsym $mod+k focus down
+bindsym $mod+i focus up
+bindsym $mod+j focus left
+
+# Move focused window
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+j move left
+
+# Kill focused window
+bindsym $mod+Ctrl+f kill
+
+# System font
+font pango:fira 8
+
+# Window colors         border     backgr.    text       indicator child_border
+client.focused          $accent    $accent    $dark_gray $gray     $accent
+client.focused_inactive $dark_gray $dark_gray $accent    $gray     $dark_gray
+client.unfocused        $dark_gray $dark_gray $accent    $gray     $dark_gray
+client.urgent           $dark_gray $dark_gray $urgent    $gray     $urgent
+
+# Remove titlebar and hide window edges
+default_border pixel
+default_floating_border pixel
+
+for_window [class="^.*"] border pixel $border_width
+
+# Open terminal
+bindsym $mod+Return exec $terminal
+
+# Rofi (_rofi)
+bindsym $mod+f exec rofi -show drun
+bindsym $mod+g exec rofi -show emoji
+
+for_window [app_id="^launcher$"] floating enable, border none, resize set width 25 ppt height 20 ppt, move position 0 px 0 px
+
+
+# Music
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl shuffle
+bindsym XF86Reload exec playerctl loop
+bindsym Shift+XF86AudioNext exec playerctl position +5
+bindsym Shift+XF86AudioPrev exec playerctl position -5
+
+# Screen brightness
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+# Random
+bindsym $mod+a exec feh $config_dir/i3/42.png
+bindsym $mod+z exec feh $config_dir/i3/i3.png
+
+assign [app_id="Code"] $ws2
+assign [app_id="code-url-handler"] $ws2
+assign [app_id="Alacritty"] $ws3
+
+# Prepare background and start default programs
+output "*" bg /home/nglgzz/.config/i3/bg.jpg fill
+# exec_always --no-startup-id waybar
+
+# exec_always --no-startup-id dunst
+exec_always --no-startup-id nm-applet --indicator
+# exec_always --no-startup-id blueman-applet
+
+# Set keyboard layout and binding to toggle layouts
+input * {
+  xkb_layout us,it,se
+  xkb_options grp:alt_shift_toggle
+  # xkb_options grp:alt_shift_toggle,ctrl:nocaps
+}

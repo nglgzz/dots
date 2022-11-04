@@ -1,0 +1,108 @@
+{
+  "layer": "top",
+  "height": 40,
+
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "sway/scratchpad",
+    "custom/media"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "sway/language",
+    "battery",
+    "clock",
+    "tray"
+  ],
+
+  // Modules configuration
+  "sway/workspaces": {
+    "all-outputs": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "I",
+      "2": "II",
+      "3": "III",
+      "4": "###",
+      "5": "##",
+      "6": "#",
+      "focused": "O",
+      "urgent": "U"
+    },
+
+    "disable-scroll": false,
+    "disable-scroll-wraparound": true
+  },
+
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
+  },
+
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+
+  "pulseaudio": {
+    "scroll-step": 2,
+    "format": "{icon} {volume}",
+    "format-muted": "sound muted",
+
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "network": {
+    "format": "{ipaddr}",
+    "format-disconnected": "disconnected",
+    "tooltip": false,
+    "on-click": "firefox 'speedtest.net'"
+  },
+
+  "sway/language": {
+    "format": "{short}",
+    "tooltip": false,
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+  },
+
+  "battery": {
+    "format": " {capacity}",
+    "format-alt": " {time}",
+    "format-charging": " {capacity}",
+    "format-full": " full"
+  },
+
+  "clock": {
+    "format": "{:%e %b %H:%M}",
+    "on-click": "firefox 'calendar.google.com'"
+  },
+
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+  }
+}

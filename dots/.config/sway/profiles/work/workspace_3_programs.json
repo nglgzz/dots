@@ -1,0 +1,14 @@
+[
+  {
+    "command": [
+      "/usr/bin/alacritty"
+    ],
+    "working_directory": "/home/nglgzz/projects/neo4j/nx"
+  },
+  {
+    "command": [
+      "/usr/bin/alacritty"
+    ],
+    "working_directory": "/home/nglgzz/projects/neo4j/nx"
+  }
+]

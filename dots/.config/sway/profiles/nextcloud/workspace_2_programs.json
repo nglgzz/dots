@@ -1,0 +1,10 @@
+[
+  {
+    "command": [
+      "/opt/visual-studio-code/code",
+      "--unity-launch",
+      "--enable-crashpad"
+    ],
+    "working_directory": "/home/nglgzz"
+  }
+]

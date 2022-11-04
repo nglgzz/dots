@@ -1,0 +1,10 @@
+[
+  {
+    "command": ["/usr/bin/termite"],
+    "working_directory": "/home/nglgzz/dots"
+  },
+  {
+    "command": ["/usr/bin/termite"],
+    "working_directory": "/home/nglgzz/dots"
+  }
+]
