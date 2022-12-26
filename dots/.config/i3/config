@@ -23,17 +23,12 @@ set $accent    #ced2df
 
 # Layout
 set $border_width 2
-gaps inner 20
+gaps inner 15
 gaps outer 20
 
 # Smart borders will draw borders on windows only if there is more than one
 # window in a workspace.
 smart_borders on
-
-# Only enable gaps on a workspace when there is at least one container. Looks
-# nice but need to find a way to show polybar when there's only one window
-# inside a container.
-# smart_gaps on
 
 # Workspaces
 set $ws1 "1"
@@ -72,8 +67,6 @@ bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%-
 bindsym XF86AudioMute exec amixer -D pulse set Master toggle
 
 # Mic control
-bindsym Shift+XF86AudioRaiseVolume exec amixer -D pulse set Capture 9%+
-bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Capture 9%-
 bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
 
@@ -174,16 +167,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl shuffle
 bindsym XF86Reload exec playerctl loop
-bindsym Shift+XF86AudioNext exec playerctl position +5
-bindsym Shift+XF86AudioPrev exec playerctl position -5
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
-
-# Random
-bindsym $mod+a exec feh $config_dir/i3/42.png
-bindsym $mod+z exec feh $config_dir/i3/i3.png
 
 assign [class="Code"] $ws2
 assign [class="Alacritty"] $ws3

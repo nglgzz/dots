@@ -31,12 +31,20 @@ unzip
 jq
 usbutils
 
+### Screen settings control
+# sudo modprobe i2c-dev
+# sudo usermod -aG i2c nglgzz
+ddcutil
+
 # --------------------------
 ## Xorg
 xorg-server
 xorg-xinit
 xorg-xsetroot
 autorandr
+
+## Wayland
+dunst
 
 ## Keyboard
 avr-gcc
