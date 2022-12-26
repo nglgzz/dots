@@ -53,7 +53,14 @@
   "[typescript]": {
     "editor.autoClosingBrackets": "languageDefined"
   },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.wordWrapColumn": 80
+  },
+  "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
   "[dockerfile]": {
@@ -86,6 +93,8 @@
   "files.exclude": {
     "**/.git/**": true,
     "**/node_modules/**": true,
+    "**/coverage/**": true,
+    "**/test-results/**": true,
     "**/dist/**": true,
     "**/.classpath": true,
     "**/.project": true,
@@ -113,14 +122,11 @@
   "rewrap.wrappingColumn": 80,
 
   // Emmet
-  "emmet.triggerExpansionOnTab": false,
+  "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
 
   // Show number of selected lines
-  "selectline.displayFormat": "Selected %d Lines",
-  "[javascript]": {
-    "editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
-  }
+  "selectline.displayFormat": "Selected %d Lines"
 }

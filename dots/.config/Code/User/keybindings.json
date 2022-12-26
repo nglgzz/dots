@@ -34,5 +34,20 @@
   {
     "key": "ctrl+k ctrl+n",
     "command": "editor.action.goToDeclaration"
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "editor.action.goToImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "references-view.findReferences",
+    "when": "editorHasReferenceProvider"
   }
 ]
