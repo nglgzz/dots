@@ -1,6 +1,3 @@
-## Sway
-## rofi-lbonn-wayland-only-git
-
 ## i3
 polybar
 i3-resurrect
@@ -17,6 +14,7 @@ noto-fonts-emoji
 ## Shell
 fzf
 systemd-cron
+shellcheck-bin
 
 ## Development
 nvm
