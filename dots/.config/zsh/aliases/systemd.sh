@@ -5,6 +5,5 @@ declare -A systemctl=(
   [srestart]='systemctl restart'
   [sstatus]='systemctl status'
   [sreload]='systemctl daemon-reload'
+  [slog]='journalctl -f -u'
 )
-
-alias slog='journalctl -f -u'

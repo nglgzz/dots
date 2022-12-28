@@ -12,15 +12,15 @@ declare -A keyboard=(
 )
 
 function get_xinput_id() {
-  xinput list | grep $1 | grep -oP '(?<=id=)\d+'
+  xinput list | grep "$1" | grep -oP '(?<=id=)\d+'
 }
 
 function enable_laptop_keyboard() {
   local keyboard_id=$(get_xinput_id 'Virtual core keyboard')
-  xinput reattach $(get_xinput_id 'AT Translated Set 2 keyboard') $keyboard_id
+  xinput reattach $(get_xinput_id 'AT Translated Set 2 keyboard') "$keyboard_id"
 
   local mouse_id=$(get_xinput_id 'Virtual core pointer')
-  xinput reattach $(get_xinput_id TrackPoint) $mouse_id
+  xinput reattach $(get_xinput_id TrackPoint) "$mouse_id"
 }
 
 function disable_laptop_keyboard() {

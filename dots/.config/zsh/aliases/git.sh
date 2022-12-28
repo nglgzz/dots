@@ -29,10 +29,10 @@ function git-commit-fixup-autosquash() {
 
 function git-commit-fixup() {
   commit=$(git log --oneline | fzf | awk '{print $1}')
-  git commit --fixup $commit
+  git commit --fixup "$commit"
 
-  parent_commit=$(git log --pretty=%p -1 $commit)
-  git rebase --interactive --autosquash $parent_commit
+  parent_commit=$(git log --pretty=%p -1 "$commit")
+  git rebase --interactive --autosquash "$parent_commit"
 }
 
 function gc() {
@@ -48,5 +48,5 @@ git_current_branch() {
     [[ $ret == 128 ]] && return
     ref=$(command git rev-parse --short HEAD 2>/dev/null) || return
   fi
-  echo ${ref#refs/heads/}
+  echo "${ref#refs/heads/}"
 }

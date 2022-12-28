@@ -128,5 +128,8 @@
   },
 
   // Show number of selected lines
-  "selectline.displayFormat": "Selected %d Lines"
+  "selectline.displayFormat": "Selected %d Lines",
+
+  "shellcheck.customArgs": ["--external-sources"],
+  "window.zoomLevel": 1
 }

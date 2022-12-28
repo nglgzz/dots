@@ -9,12 +9,12 @@ input=$(
   rofi \
     -dmenu \
     -i -p "${1:-input}" \
-    -lines ${2:-0} \
-    ${@:2} <&0
+    -lines "${2:-0}" \
+    "${@:2}" <&0
 )
 
 if [[ -z "$input" ]]; then
   exit 1
 else
-  echo $input
+  echo "$input"
 fi

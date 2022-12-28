@@ -1,17 +1,28 @@
+#!/bin/bash
+# Variables set here are meant to be used by other scripts sourcing this file.
+# shellcheck disable=SC2034
+
+# Requires no variables.
+# Sets the following variables.
+declare swap_size # path to selected device
+declare device    # twice the RAM size in GB
+declare hostname  # user provided hostname
+declare username  # user provided username
+
 ## Formatting
 bold=$(tput bold)
 normal=$(tput sgr0)
 
 ## RAM size in GB
 ram=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-ram=$(expr $ram / 1000 / 1000)
-swap_size=$(expr $ram \* 2)G
+ram=$(("$ram" / 1000 / 1000))
+swap_size=$(("$ram" * 2))G
 
 ## Helpers
 function read_confirm() {
   while true; do
-    read -p "${bold}Enter $1:${normal} " value
-    read -p "Entered ${bold}${value}${normal}, continue?[y/N] " -r
+    read -rp "${bold}Enter $1:${normal} " value
+    read -rp "Entered ${bold}${value}${normal}, continue?[y/N] "
     echo -e "\n"
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -20,7 +31,7 @@ function read_confirm() {
   done
 
   local __resultvar=$1
-  eval $__resultvar="'${value}'"
+  eval "$__resultvar"="'${value}'"
 }
 
 ## Device
@@ -28,7 +39,7 @@ while true; do
   clear
   fdisk -l
   echo -e "\n"
-  read -p "${bold}Choose a device to install the system on (eg. sdb):${normal} " device
+  read -rp "${bold}Choose a device to install the system on (eg. sdb):${normal} " device
 
   # Check if device exists, show details of the
   # selected device, and ask for confirmation.
@@ -36,7 +47,7 @@ while true; do
 
   if [[ -b $device ]]; then
     clear
-    fdisk -l $device
+    fdisk -l "$device"
     echo -e "\n${bold}Are you sure you want to overwrite this device?${normal}"
 
     select choice in "Yes" "No"; do
@@ -56,3 +67,6 @@ done
 
 read_confirm hostname
 read_confirm username
+
+# Cleanup private variables
+unset bold normal ram choice

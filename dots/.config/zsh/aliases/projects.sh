@@ -12,7 +12,7 @@ function pcd() {
     return
   fi
 
-  local project_path=$(project-find $1)
+  local project_path=$(project-find "$1")
   if [[ -d "$project_path" ]]; then
     source <(echo "cd $project_path")
   else
@@ -22,13 +22,13 @@ function pcd() {
 
 function project_npm_start() {
   local prev_wd=$(pwd)
-  pcd $1
+  pcd "$1"
   npm start
 }
 
 function project_npm_test() {
   local prev_wd=$(pwd)
-  pcd $1
+  pcd "$1"
   npm test
   source <(echo "cd $prev_wd")
 }
@@ -37,7 +37,7 @@ function project_npm_run_build() {
   local prev_wd=$(pwd)
 
   for project in "$@"; do
-    pcd $project
+    pcd "$project"
     npm run build
   done
 

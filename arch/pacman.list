@@ -32,8 +32,6 @@ jq
 usbutils
 
 ### Screen settings control
-# sudo modprobe i2c-dev
-# sudo usermod -aG i2c nglgzz
 ddcutil
 
 # --------------------------

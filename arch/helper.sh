@@ -14,6 +14,6 @@ wget -q https://raw.githubusercontent.com/nglgzz/dots/master/arch/variables.sh
 wget -q https://raw.githubusercontent.com/nglgzz/dots/master/arch/pacman.list
 wget -q https://raw.githubusercontent.com/nglgzz/dots/master/arch/aur.list
 
-chmod +x *.sh
+chmod +x -- *.sh
 
 ./install.sh

@@ -8,13 +8,13 @@ start)
         exit 1
     fi
 
-    rm -f $HOME/tmp/screencast.mp4
+    rm -f "$HOME/tmp/screencast.mp4"
     ffmpeg -f x11grab \
         -framerate 25 \
-        $boundary \
+        "$boundary" \
         -c:v libx264 \
         -preset ultrafast \
-        $HOME/tmp/screencast.mp4 &>/dev/null &
+        "$HOME/tmp/screencast.mp4" &>/dev/null &
     ;;
 stop)
     kill -INT $(pgrep ffmpeg)

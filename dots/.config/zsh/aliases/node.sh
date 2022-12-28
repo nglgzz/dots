@@ -28,7 +28,7 @@ declare -A yarn=(
 )
 
 function pj() {
-  cat package.json | jq .$1
+  jq ."$1" package.json
 }
 
 # https://dev.to/antongolub/yarn-audit-fix-workaround-i2a

@@ -14,22 +14,22 @@ function set_aliases() {
   # Arrays declared in functions are local by default
   # https://stackoverflow.com/questions/10806357/associative-arrays-are-local-by-default
   declare -A aliases
-  eval "aliases="${arr#*=}
+  eval "aliases=${arr#*=}"
 
   if [[ -z "$aliases" ]]; then
     return
   fi
 
   for k in "${(@k)aliases}"; do
-    unalias $k 2>/dev/null
-    alias $k="${aliases[$k]}"
+    unalias "$k" 2>/dev/null
+    alias "$k"="${aliases[$k]}"
   done
 }
 function aliases() {
   local arr=$(declare -p "$1")
 
   declare -A aliases
-  eval "aliases="${arr#*=}
+  eval "aliases=${arr#*=}"
 
   for k in "${(@k)aliases}"; do
     echo "$(tput bold)$k$(tput sgr0) \t= $(tput dim)${aliases[$k]}$(tput sgr0)"

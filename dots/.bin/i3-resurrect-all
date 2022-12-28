@@ -11,7 +11,7 @@ restore)
     command="i3-resurrect restore"
     ;;
 ls)
-    ls $profiles_dir
+    ls "$profiles_dir"
     exit 0
     ;;
 *)
@@ -20,7 +20,7 @@ ls)
     ;;
 esac
 
-profile=$(ls $profiles_dir | $HOME/.bin/rofi-input "$1 profile" 5)
+profile=$(ls "$profiles_dir" | "$HOME/.bin/rofi-input" "$1 profile" 5)
 if [[ -z "$profile" ]]; then
     echo "no profile was specified"
     exit 1

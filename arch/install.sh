@@ -5,8 +5,7 @@ set -eu
 
 ### CHECK REQUIREMENTS
 ## Internet connection
-wget -q --tries=10 --timeout=20 --spider http://google.com
-if [[ !$? -eq 0 ]]; then
+if ! wget -q --tries=10 --timeout=20 --spider http://google.com; then
   echo "ERROR: no internet connection."
   echo "Check that the cable is connected or run wifi-menu to connect to the WiFi."
   exit 1
@@ -29,7 +28,7 @@ if [[ $(grep -c "/dev/" /proc/swaps) != 0 ]]; then
   swap_device=$(grep "/dev/" /proc/swaps | awk '{print $1}')
   echo "ERROR: swap partition mounted"
   echo "Unmounting $swap_device"
-  swapoff $swap_device
+  swapoff "$swap_device"
 fi
 if [[ $(mount | grep -c "/mnt") != 0 ]]; then
   echo "ERROR: root partition mounted"
@@ -51,16 +50,16 @@ source ./variables.sh
 
 ### INSTALL
 ## Partition the disk
-parted $device -s mklabel gpt
+parted "$device" -s mklabel gpt
 # Boot partition (EFI)
-parted $device -s mkpart ESP fat32 1MiB 513MiB
-parted $device set 1 boot on
+parted "$device" -s mkpart ESP fat32 1MiB 513MiB
+parted "$device" set 1 boot on
 # System partition (encrypted - will contain swap + root)
-parted $device -s mkpart primary ext4 514MiB 100%
+parted "$device" -s mkpart primary ext4 514MiB 100%
 
 # Create and open LUKS encrypted container
-cryptsetup -y -q -v luksFormat $device"p2"
-cryptsetup open $device"p2" cryptlvm
+cryptsetup -y -q -v luksFormat "${device}p2"
+cryptsetup open "${device}p2" cryptlvm
 
 ## Prepare logical volumes
 # Create a physical volume on the opened LUKS container.
@@ -68,7 +67,7 @@ pvcreate /dev/mapper/cryptlvm
 # Create a volume group adding the previously created physical volume.
 vgcreate SystemVolGroup /dev/mapper/cryptlvm
 # Create all logical volumes on the volume group.
-lvcreate -L $swap_size SystemVolGroup -n swap
+lvcreate -L "$swap_size" SystemVolGroup -n swap
 lvcreate -l 100%FREE SystemVolGroup -n root
 
 ## Format and mount each logical volume
@@ -79,27 +78,29 @@ swapon /dev/SystemVolGroup/swap
 mount /dev/SystemVolGroup/root /mnt
 
 ## Format and mount boot partition
-mkfs.fat -F32 $device"p1"
+mkfs.fat -F32 "${device}p1"
 
 mkdir /mnt/boot
-mount $device"p1" /mnt/boot
+mount "${device}p1" /mnt/boot
 
 ## Install base packages
+# shellcheck disable=SC2046 # wordsplitting here is intentional
 pacstrap /mnt $(sed 's/#.*//' pacman.list)
 genfstab -U /mnt >>/mnt/etc/fstab
 
 ## Get UUID of system partition (used for grub.cfg)
-UUID=$(blkid -s UUID -o value $device"p2")
+UUID=$(blkid -s UUID -o value "${device}p2")
 
 ## Chroot
 cp chroot.sh aur.list /mnt/root/
 chmod +x /mnt/root/*.sh
+
 arch-chroot /mnt env \
-  hostname=$hostname \
-  username=$username \
-  UUID=$UUID \
+  hostname="$hostname" \
+  username="$username" \
+  UUID="$UUID" \
   /root/chroot.sh
 
 # FINISH
-read -p "${bold}Installation almost completed, press enter to reboot.${normal}"
+read -rp "${bold}Installation almost completed, press enter to reboot.${normal}"
 reboot

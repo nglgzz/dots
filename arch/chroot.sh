@@ -3,6 +3,11 @@
 # Any error or undefined variable will make the script exit immediately.
 set -eu
 
+# Requires the following variables
+#   $hostname - hostname for local mDNS
+#   $username - user name
+#   $UUID - UUID of system partition
+
 # Add new hooks and rebuild linux image.
 sed -i -r 's/^(HOOKS=).*$/\1"base udev keyboard autodetect modconf block encrypt lvm2 filesystems fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
@@ -35,7 +40,8 @@ ln -s /usr/share/zoneinfo/Europe/Rome /etc/localtime
 hwclock --systohc --utc
 
 # Network configuration.
-echo $hostname >/etc/hostname
+# shellcheck disable=SC2154 # `hostname` is defined in another file
+echo "$hostname" >/etc/hostname
 
 # Enable mDNS local hostname resolution
 sed -i -r 's/myhostname/myhostname mdns_minimal [NOTFOUND=return]/' /etc/nsswitch.conf
@@ -43,22 +49,23 @@ sed -i -r 's/myhostname/myhostname mdns_minimal [NOTFOUND=return]/' /etc/nsswitc
 # Power on bletooth module on startup.
 sed -i 's/#AutoEnable=.*$/AutoEnable=true/' /etc/bluetooth/main.conf
 
-# Install sudo, create new user and add it to sudoers.
-useradd -m -G wheel $username
+# Install sudo, create new user and add it to sudoers and screen controll group.
+# shellcheck disable=SC2154 # `username` is defined in another file
+useradd -m -G wheel,i2c "$username"
 echo "%wheel ALL=(ALL) ALL" >>/etc/sudoers
 
 # Set passwords for root and user.
 echo "Set root password."
 passwd
 echo "Set ${username} password."
-passwd $username
+passwd "$username"
 
 # Customize pacman
 sed -i -r 's/#(Color|TotalDownload)/\1/g' /etc/pacman.conf
 
 # Set zsh as default shell.
 chsh -s /usr/bin/zsh
-sudo -u $username chsh -s /usr/bin/zsh
+sudo -u "$username" chsh -s /usr/bin/zsh
 
 # Check for updates
 pacman -Syu --noconfirm
@@ -66,33 +73,33 @@ pacman -Syu --noconfirm
 # Install pacaur and default packages.
 ## Create tmp folder to download packages.
 function as_user() {
-  sudo -u $username $*
+  sudo -u "$username" "$@"
 }
 user_home="/home/$username"
 
-as_user mkdir -p $user_home/tmp/pacaur_install
-as_user mkdir $user_home/projects
-cd $user_home/tmp/pacaur_install
+as_user mkdir -p "$user_home/tmp/pacaur_install"
+as_user mkdir "$user_home/projects"
+cd "$user_home/tmp/pacaur_install"
 
 ## Install "auracle-git" from AUR.
-if [ ! -n "$(pacman -Qs auracle-git)" ]; then
+if [ -z "$(pacman -Qs auracle-git)" ]; then
   curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=auracle-git
   as_user makepkg PKGBUILD --skippgpcheck --install --needed --noconfirm
 fi
 
 ## Install "pacaur" from AUR.
-if [ ! -n "$(pacman -Qs pacaur)" ]; then
+if [ -z "$(pacman -Qs pacaur)" ]; then
   curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur
   as_user makepkg PKGBUILD --install --needed --noconfirm
 fi
 
 ## Clean up.
-cd $user_home/tmp
-rm -r $user_home/tmp/pacaur_install
+cd "$user_home/tmp"
+rm -r "$user_home/tmp/pacaur_install"
 
 ## Install packages
-packages=$(cat ~/aur.list | sed 's/#.*//')
-as_user EDITOR=vim pacaur -S --noconfirm --noedit $packages
+packages=$(sed 's/#.*//' ~/aur.list)
+as_user EDITOR=vim pacaur -S --noconfirm --noedit "$packages"
 
 ## Enable services
 systemctl enable NetworkManager
@@ -100,5 +107,5 @@ systemctl enable bluetooth
 systemctl enable cron.target
 
 ## Link dots and project utils
-as_user git clone --recursive https://github.com/nglgzz/dots $user_home/dots
-as_user make -C $user_home/dots
+as_user git clone --recursive https://github.com/nglgzz/dots "$user_home/dots"
+as_user make -C "$user_home/dots"

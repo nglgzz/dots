@@ -10,12 +10,14 @@ declare -A shell=(
   [watch]='watch --color -n1'
   [tree]='tree -C'
   [treed]='tree -C -d -L 3'
+  
   # Configs
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
   [ale]='cd $ZDOTDIR/aliases && nvim $(fzf) && source $ZDOTDIR/.zshrc && cd -'
   [zource]='source $ZDOTDIR/.zshrc'
   [i3edit]='nvim $XDG_CONFIG_HOME/i3/config'
   [codex]='code --list-extensions'
+  
   # Navigation
   [b]='popd'
   [tmp]='cd ~/tmp'
@@ -24,6 +26,7 @@ declare -A shell=(
   [...]='cd ../..'
   [....]='cd ../../..'
   [.....]='cd ../../../..'
+  
   # Utils
   [copy]='xclip -selection clipboard'
   [paste]='xclip -out -selection clipboard'
@@ -33,12 +36,12 @@ declare -A shell=(
 )
 
 function free_port() {
-  local pid=$(netstat -ltnp | grep ':'$1 | awk '{print $7}' | sed 's|/.*||')
-  kill $pid 2>/dev/null || true
+  local pid=$(netstat -ltnp | grep ':'"$1" | awk '{print $7}' | sed 's|/.*||')
+  kill "$pid" 2>/dev/null || true
 }
 
 function tousb() {
-  sudo dd bs=4M if=$1 of=$2 status=progress
+  sudo dd bs=4M if="$1" of="$2" status=progress
 }
 
 function cheat() {
@@ -48,11 +51,11 @@ function cheat() {
 # Mount LUKS encrypted device
 function emount() {
   sudo cryptsetup open "/dev/$1" "crypt_$1"
-  sudo mount "/dev/mapper/crypt_$1" $2
+  sudo mount "/dev/mapper/crypt_$1" "$2"
 }
 
 # Unmount LUKS encrypted device
 function eumount() {
-  sudo umount $2
+  sudo umount "$2"
   sudo cryptsetup close "crypt_$1"
 }

@@ -17,9 +17,9 @@ declare -A docker=(
 function docker-volume() {
   docker run --rm -it \
     --volume "$(pwd):$(pwd)" \
-    --workdir $(pwd) \
+    --workdir "$(pwd)" \
     --net host \
-    ${1:-node} \
+    "${1:-node}" \
     /bin/bash
 
 }
@@ -33,12 +33,12 @@ function docker-volume-x11() {
 
   docker run --rm -it \
     --volume "$(pwd):$(pwd)" \
-    --volume $HOME/.Xauthority:/.Xauthority \
+    --volume "$HOME/.Xauthority:/.Xauthority" \
     --env "XAUTHORITY=/.Xauthority" \
     --env "DISPLAY" \
     --net host \
-    --workdir $(pwd) \
-    ${1:-ubuntu} \
+    --workdir "$(pwd)" \
+    "${1:-ubuntu}" \
     /bin/bash # eval $(dbus-launch --sh-syntax)
 
   xhost -si:localuser:root
@@ -58,11 +58,10 @@ function docker-volume-x11-non-root() {
 
   docker run --rm -it \
     --volume "$(pwd):$(pwd)" \
-    --volume $HOME/.Xauthority:/home/dev/.Xauthority \
+    --volume "$HOME/.Xauthority:/home/dev/.Xauthority" \
     --env "DISPLAY" \
     --net host \
-    --workdir $(pwd) \
-    ${1:-ubuntu} \
+    --workdir "$(pwd)" \
+    "${1:-ubuntu}" \
     /bin/sh -c "$command" # eval $(dbus-launch --sh-syntax)
 }
-
