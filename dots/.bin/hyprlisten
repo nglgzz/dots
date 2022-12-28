@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# Log events from hyprland.
+# Dependends on socat and jq.
+#
+#   Usage: hyprlisten [FILTER]
+#
+
+filter=${1}
+
+function handle {
+    # Remove everything including and after >>
+    local event="${1/%>>*/}"
+
+    # Remove everything including and before >>
+    local value="${1/#*>>/}"
+
+    # Show the event name if a filter was  not specified.
+    if [[ -z "$filter" ]]; then
+        stdbuf -o0 jq --null-input -cM \
+            --arg event "$event" \
+            --arg value "$value" \
+            '{"event": $event, "value": $value}'
+    fi
+
+    # Do not return the name of the event if a filter was specified.
+    if [[ "$event" == "$filter" ]]; then
+        stdbuf -o0 echo "$value"
+    fi
+}
+
+# while true; do
+socat -u "UNIX-CONNECT:/tmp/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock" - |
+    # socat - "UNIX-CONNECT:/tmp/hypr/a0b603da78bb63290d0992cd82f0b388cb9d9cf7_1672175729/.socket2.sock" |
+    while read line; do
+        handle "$line"
+    done
+# done

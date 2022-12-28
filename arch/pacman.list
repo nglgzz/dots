@@ -52,6 +52,7 @@ avr-libc
 avrdude
 xorg-xev
 xcape
+socat
 
 ## Dev Tools
 chromium
