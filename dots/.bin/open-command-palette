@@ -1,0 +1,44 @@
+#!/bin/bash -e
+
+current_script_filepath="$(readlink -f "$0")"
+current_script_dirpath="$(dirname -- "$current_script_filepath")"
+command_palette_dirpath="${current_script_dirpath}/command-palette"
+
+readarray -d '' commands < <(find "$command_palette_dirpath" -mindepth 1 -type f -print0)
+
+# Map command files to their human readable name
+declare -A mapped_commands
+for cmd in "${commands[@]}"; do
+    name="${cmd/#$command_palette_dirpath\//}"
+    name="${name//\//: }"
+
+    mapped_commands["$name"]="$cmd"
+done
+
+# Let the user choose a command
+selected_cmd_name=$(printf '%s\n' "${!mapped_commands[@]}" | "$current_script_dirpath/rofi-input" "Command palette" 8)
+selected_cmd="${mapped_commands[$selected_cmd_name]}"
+
+# Debug util
+log_file="$current_script_filepath.log"
+function log() {
+    printf "$@" >>"$log_file" 2>&1
+}
+
+# When running in debug mode log the mapped scripts and the output of the
+# command ran to open-command-palette.log.
+if [[ "$1" == "debug" || "$1" == "--debug" || "$1" == "-d" ]]; then
+    log "\n## Mapped commands\n"
+    for k in "${!mapped_commands[@]}"; do
+        log "%s  =  %s\n" "$k" "${mapped_commands[$k]}"
+    done
+
+    log "\n## Running\n"
+    log "$selected_cmd\n\n"
+
+    log "\n## Output\n"
+    "$selected_cmd" >>"$log_file" 2>&1
+    exit 0
+fi
+
+"$selected_cmd"

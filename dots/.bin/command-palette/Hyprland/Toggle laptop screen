@@ -1,0 +1,11 @@
+#!/bin/bash -eu
+
+laptop_name="eDP-1"
+monitors="$(hyprctl monitors -j | jq -r '.[].name')"
+
+# Check if the laptop screen is disabled
+if [[ "$monitors" == "${monitors/$laptop_name/}" ]]; then
+    hyprctl keyword monitor "$laptop_name, preferred, auto, 1"
+else
+    hyprctl keyword monitor "$laptop_name, disabled"
+fi
