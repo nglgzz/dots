@@ -17,7 +17,7 @@ function handle {
 
     # Show the event name if a filter was  not specified.
     if [[ -z "$filter" ]]; then
-        # The event and value variables are not expanded intentionally.
+        # The event and value variables are intentionally not expanded.
         # shellcheck disable=SC2016
         stdbuf -o0 jq --null-input -cM \
             --arg event "$event" \
@@ -28,6 +28,16 @@ function handle {
     # Do not return the name of the event if a filter was specified.
     if [[ "$event" == "$filter" ]]; then
         stdbuf -o0 echo "$value"
+    fi
+
+    # Allow partial matching if the filter starts with *
+    if [[ "${filter:0:1}" == "*" && "${event//${filter:1}/}" != "$event" ]]; then
+        # The event and value variables are intentionally not expanded.
+        # shellcheck disable=SC2016
+        stdbuf -o0 jq --null-input -cM \
+            --arg event "$event" \
+            --arg value "$value" \
+            '{"event": $event, "value": $value}'
     fi
 }
 

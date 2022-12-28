@@ -43,6 +43,13 @@ autorandr
 
 ## Wayland
 dunst
+grim
+slurp
+wl-clipboard
+xdg-desktop-portal-wlr
+pipewire
+wireplumber
+swaylock
 
 ## Keyboard
 avr-gcc
