@@ -16,7 +16,7 @@ for cmd in "${commands[@]}"; do
 done
 
 # Let the user choose a command
-selected_cmd_name=$(printf '%s\n' "${!mapped_commands[@]}" | "$current_script_dirpath/rofi-input" "Command palette" 8)
+selected_cmd_name=$(printf '%s\n' "${!mapped_commands[@]}" | "$current_script_dirpath/rofi-input" ">_" 5)
 selected_cmd="${mapped_commands[$selected_cmd_name]}"
 
 # Debug util

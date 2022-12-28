@@ -1,8 +1,13 @@
 configuration {
-    modi: "window,run,ssh";
-    width: 500;
+    modi: "window,run,emoji";
+    font: "Montserrat Alternates Normal 15";
+
+    width: 350;
     lines: 5;
     location: 0;
+
+    // Looks good, but the window moves around while typing.
+    // fixed-num-lines: false;
 }
 
 * {
@@ -51,6 +56,7 @@ configuration {
     scrollbar:    false;
     padding:      2px 0px 0px ;
 }
+
 #element {
     border:  0;
     padding: 10px ;
@@ -94,16 +100,19 @@ configuration {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
 }
+
 #inputbar {
     spacing:    0;
     text-color: @normal-foreground;
-    padding:    8px ;
+    padding:    10px ;
+    children:   [ entry,case-indicator ];
 }
 #case-indicator {
     spacing:    0;
     text-color: @normal-foreground;
 }
 #entry {
+    placeholder: "Search";
     spacing:    0;
     text-color: @normal-foreground;
 }
@@ -111,12 +120,7 @@ configuration {
     spacing:    0;
     text-color: @normal-foreground;
 }
+
 #inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-}
-#textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @normal-foreground;
+    children:   [ entry,case-indicator ];
 }
