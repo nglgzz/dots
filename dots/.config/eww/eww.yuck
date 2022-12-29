@@ -1,0 +1,79 @@
+(include "./workspaces.yuck")
+
+;; Volume
+(defpoll volume_raw :interval "1s"
+                    :initial "0% [on]"
+                `amixer -D pulse sget Master | grep "Left:"`)
+
+(defwidget volume []
+    (scale :class 'volume ${matches(volume_raw, "\\[on\\]") ? "volume-enabled" : "volume-muted"}'
+           :orientation "v"
+           :flipped true
+           :height 200
+           :min 0
+           :max 100
+           :onchange "amixer -D pulse sset Master {}%"
+           :value '${captures(volume_raw, "(\\d+)%")[0][1]}'))
+
+;; Battery
+(defwidget battery [battery charging labels_progress label_charging]
+    (box :class `battery ${battery < 25 ? "battery-critical" : battery > 80 ? "battery-full" : ""} ${charging ? "battery-charging" : "battery-discharging"}`
+        (label :class "battery-icon"
+               :angle "${charging ? 0 : 90}"
+               :text `${charging ? label_charging : labels_progress[round((battery + 10) / 20, 0) - 1]}`)))
+
+
+;; Time
+(defpoll time :interval "5s"
+              :initial '{"hour": "", "mins": "", "date": ""}'
+    `date +'{"hour": "%H", "mins": "%M", "date": "%e %b"}'`)
+
+(defwidget time []
+    (box :class "time"
+         :space-evenly false
+         :orientation "v"
+        "${time.hour}"
+        "${time.mins}"))
+
+
+;; Bar
+(defwidget bar []
+    (box :class "eww_bar"
+         :orientation "v"
+         :vexpand false
+         :hexpand false
+
+        (box :orientation "v"
+            :valign "start"
+            (workspaces :all_ids "[1, 2, 3, 4, 5, 6]"
+                        :label_focused "●"
+                        :label_active "○"
+                        :label_inactive "◌"))
+
+        (box :orientation "v"
+            :space-evenly  false
+            :valign "end"
+
+            (volume)
+
+            (battery
+                :battery "${EWW_BATTERY.BAT0.capacity}"
+                :charging '${EWW_BATTERY.BAT0.status != "Not charging"}'
+                :labels_progress '["", "", "", "", "", ""]'
+                :label_charging "")
+
+            (time))))
+
+
+;; Window
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :x "0"
+                        :y "0"
+                        :height "100%"
+                        :width "2%"
+                        :anchor "top left")
+    :exclusive false
+    :focusable false
+    :stacking "fg"
+(bar))
