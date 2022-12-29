@@ -1,6 +1,6 @@
 #!/bin/bash
 # Link path from dots home to user home
-# ./link.sh relative_path
+# ./link.sh target_relative_path [dest_relative_path]
 
 # Any error or undefined variable will make the script exit immediately.
 set -eu
@@ -10,11 +10,11 @@ HOME_DST="$HOME"
 IGNORE=(.config 'Code')
 
 src_file="$HOME_SRC/$1"
-dst_file="$HOME_DST/$1"
-dst_parent_dir=$(dirname "$HOME_DST/$1")
+dst_file="$HOME_DST/${2:-$1}"
+dst_parent_dir=$(dirname "$HOME_DST/${2:-$1}")
 basename=$(basename "$HOME_SRC/$1")
 
-if [[ "${IGNORE[@]}" =~ "${basename}" ]]; then
+if [[ "${IGNORE[*]}" =~ "${basename}" ]]; then
   exit
 fi
 

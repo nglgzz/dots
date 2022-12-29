@@ -13,9 +13,13 @@ CODE_FILES=$(shell find ${HOME_SRC}/${CODE_PATH} -mindepth 1 -maxdepth 1)
 
 all: links zsh-setup vscode-setup vim-setup
 
-links: links-HOME links-CONFIG links-CODE
+links: links-HOME links-CONFIG links-CODE link-FONTS
 
 install-deps: install-pacman-deps install-aur-deps
+
+link-FONTS:
+	@echo -e "\n$$(tput bold)FONT files linked$$(tput sgr0)"
+	@./link.sh "fonts" ".local/share/fonts"
 
 links-HOME links-CONFIG links-CODE: links-%:
 	@echo -e "\n$$(tput bold)$* files linked$$(tput sgr0)"
