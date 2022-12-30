@@ -1,5 +1,9 @@
 (include "./workspaces.yuck")
 
+(defpoll package_updates :interval "2h"
+    `pacaur -Qu`)
+
+
 ;; Volume
 (defpoll volume_raw :interval "1s"
                     :initial "0% [on]"
@@ -58,7 +62,7 @@
 
             (battery
                 :battery "${EWW_BATTERY.BAT0.capacity}"
-                :charging '${EWW_BATTERY.BAT0.status != "Not charging"}'
+                :charging '${EWW_BATTERY.BAT0.status != "Discharging"}'
                 :labels_progress '["", "", "", "", "", ""]'
                 :label_charging "")
 
@@ -73,7 +77,12 @@
                         :height "100%"
                         :width "2%"
                         :anchor "top left")
+    ;; Wayland specific
     :exclusive false
     :focusable false
-    :stacking "fg"
+    ;; X11 specific
+    :stacking "bg"
+    :windowtype "dock"
+    :reserve (struts :distance "5%" :side "left")
+    :wm-ignore true
 (bar))

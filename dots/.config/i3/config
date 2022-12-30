@@ -11,6 +11,7 @@ set $screenshot $HOME/tmp/screenshot.png
 set $i3_resurrect_all $HOME/.bin/i3-resurrect-all
 set $rofi_input $HOME/.bin/rofi-input
 set $screengrab $HOME/.bin/screengrab
+set $open_command_palette $HOME/.bin/open-command-palette
 set $terminal alacritty
 
 # Colors
@@ -23,7 +24,7 @@ set $accent    #ced2df
 
 # Layout
 set $border_width 2
-gaps inner 15
+gaps inner 20
 gaps outer 20
 
 # Smart borders will draw borders on windows only if there is more than one
@@ -71,22 +72,13 @@ bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 
 
 # Screen
-# Print screen: full | select window or rectangle
+# Print screen and screengrab
 bindsym --release $mod+s exec maim --hidecursor -s ~/tmp/screenshot.png &&\
   xclip -selection clipboard -t image/png -i $screenshot
-bindsym --release $mod+Shift+s exec maim --hidecursor ~/tmp/screenshot.png &&\
-  xclip -selection clipboard -t image/png -i $screenshot
-
-bindsym --release Print exec $screengrab start && i3-msg mode "recording"
+bindsym --release $mod+Shift+s exec $screengrab start && i3-msg mode "recording"
 mode "recording" {
-  bindsym --release Print exec $screengrab stop && i3-msg mode "default"
+  bindsym --release $mod+Shift+s $screengrab stop && i3-msg mode "default"
 }
-
-# Choose screen layout
-bindsym XF86Search exec ls $screen_layouts |\
-  $rofi_input "screen layout" 5 |\
-  xargs -I{} sh $screen_layouts/{} &&\
-  i3-msg restart
 
 # Save and restore workspace layouts
 bindsym XF86Explorer exec $i3_resurrect_all save
@@ -160,24 +152,33 @@ bindsym $mod+Return exec $terminal
 # Rofi (_rofi)
 bindsym $mod+f exec rofi -show drun
 bindsym $mod+g exec rofi -show emoji
+bindsym XF86Search exec $open_command_palette
 
 # Music
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioStop exec playerctl shuffle
-bindsym XF86Reload exec playerctl loop
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
+bindsym ctrl+XF86MonBrightnessUp exec ddcutil setvcp 10 + 10
+bindsym ctrl+XF86MonBrightnessDown exec ddcutil setvcp 10 - 10
+# bindsym Print exec ddcutil setvcp 60 11
+
 assign [class="Code"] $ws2
-assign [class="Alacritty"] $ws3
 
 # Prepare background and start default programs
 exec_always feh --bg-scale $config_dir/i3/bg.jpg
 exec_always --no-startup-id $config_dir/polybar/launch.sh default
+
+# i3 doesn't support vertical bars:
+#   https://github.com/i3/i3/issues/1129
+# exec_always --no-startup-id eww open bar
+
+# Load monitor configuration matching the connected devices
+exec_always --no-startup-id autorandr -c
 
 exec_always --no-startup-id picom -b
 exec_always --no-startup-id dunst
@@ -187,4 +188,3 @@ exec_always --no-startup-id blueman-applet
 # Set keyboard layout and binding to toggle layouts
 exec_always --no-startup-id setxkbmap -layout us,it,se
 exec_always --no-startup-id setxkbmap -option grp:alt_shift_toggle
-
