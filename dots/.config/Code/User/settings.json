@@ -1,4 +1,6 @@
 {
+  "telemetry.telemetryLevel": "off",
+
   // Window
   "window.menuBarVisibility": "toggle",
 
@@ -82,6 +84,16 @@
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
+  "[json5]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnType": true
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
 
   // Explorer
   "explorer.confirmDelete": false,
@@ -92,7 +104,9 @@
   "files.eol": "\n",
   "files.exclude": {
     "**/.git/**": true,
+    "**/out/**": true,
     "**/node_modules/**": true,
+    "**/explore/**/*.svg": true,
     "**/coverage/**": true,
     "**/test-results/**": true,
     "**/dist/**": true,
