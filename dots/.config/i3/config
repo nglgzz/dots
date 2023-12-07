@@ -75,9 +75,11 @@ bindsym XF86AudioMicMute exec amixer -D pulse set Capture toggle
 # Print screen and screengrab
 bindsym --release $mod+s exec maim --hidecursor -s ~/tmp/screenshot.png &&\
   xclip -selection clipboard -t image/png -i $screenshot
+bindsym --release $mod+Ctrl+s exec maim -i root ~/tmp/screenshot.png &&\
+  xclip -selection clipboard -t image/png -i $screenshot
 bindsym --release $mod+Shift+s exec $screengrab start && i3-msg mode "recording"
 mode "recording" {
-  bindsym --release $mod+Shift+s $screengrab stop && i3-msg mode "default"
+  bindsym --release $mod+Shift+s exec $screengrab stop && i3-msg mode "default"
 }
 
 # Save and restore workspace layouts
@@ -85,7 +87,7 @@ bindsym XF86Explorer exec $i3_resurrect_all save
 bindsym XF86Calculator exec $i3_resurrect_all restore
 
 # Move workspace between screens
-bindsym XF86HomePage move workspace to output left
+bindsym $mod+shift+h move workspace to output up
 
 
 # Workspace

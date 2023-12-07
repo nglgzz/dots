@@ -59,6 +59,9 @@ chpwd
 # COMPLETION
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}'
 
+# Needed to load zsh's completion system
+autoload -Uz compinit && compinit
+
 ## CD if a path is not an executable
 setopt AUTO_CD
 
