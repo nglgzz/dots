@@ -1,0 +1,13 @@
+#!/bin/bash
+
+rofi_input="$HOME/.bin/rofi-input"
+
+device=$(bluetoothctl devices | awk '{printf "%s %s\n", $3,$2}' | $rofi_input "Select device" 4)
+device_name=$(echo "$device" | awk '{print $1}')
+device_id=$(echo "$device" | awk '{print $2}')
+
+if [[ "$device" != "" ]]; then
+    if ! bluetoothctl connect "$device_id"; then
+        notify-send "Bluetoothctl" "Failed to connect to $device_name"
+    fi
+fi

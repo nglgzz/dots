@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import broadlink
+
+for device in broadlink.xdiscover():
+    device.auth()
+
+    if device.mac == b'$\xdf\xa7\x99\xf6\xcd':
+        # Small lamp
+        device.set_state(pwr=0)
+    else:
+        # Big lamp
+        device.set_state(pwr=0)
