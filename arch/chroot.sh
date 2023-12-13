@@ -78,12 +78,15 @@ function as_user() {
 user_home="/home/$username"
 
 as_user mkdir -p "$user_home/tmp/pacaur_install"
-as_user mkdir "$user_home/projects"
+as_user mkdir -p "$user_home/projects"
 cd "$user_home/tmp/pacaur_install"
 
 ## Install "auracle-git" from AUR.
 if [ -z "$(pacman -Qs auracle-git)" ]; then
   curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=auracle-git
+  curl -o "0001-Force-fmt-dependency-to-static.patch" https://aur.archlinux.org/cgit/aur.git/plain/0001-Force-fmt-dependency-to-static.patch?h=auracle-git
+  curl -o "0002-Update-abseil-cpp-to-LTS-20220623.0.patch" https://aur.archlinux.org/cgit/aur.git/plain/0002-Update-abseil-cpp-to-LTS-20220623.0.patch?h=auracle-git
+  curl -o "0003-Use-non-deprecated-meson-command.patch" https://aur.archlinux.org/cgit/aur.git/plain/0003-Use-non-deprecated-meson-command.patch?h=auracle-git
   as_user makepkg PKGBUILD --skippgpcheck --install --needed --noconfirm
 fi
 
@@ -99,7 +102,7 @@ rm -r "$user_home/tmp/pacaur_install"
 
 ## Install packages
 packages=$(sed 's/#.*//' ~/aur.list)
-as_user EDITOR=vim pacaur -S --noconfirm --noedit "$packages"
+as_user EDITOR=nvim pacaur -S --noconfirm --noedit "$packages"
 
 ## Enable services
 systemctl enable NetworkManager

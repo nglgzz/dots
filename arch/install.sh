@@ -5,7 +5,7 @@ set -eu
 
 ### CHECK REQUIREMENTS
 ## Internet connection
-if ! wget -q --tries=10 --timeout=20 --spider http://google.com; then
+if ! curl -I http://aur.archlinux.org; then
   echo "ERROR: no internet connection."
   echo "Check that the cable is connected or run wifi-menu to connect to the WiFi."
   exit 1

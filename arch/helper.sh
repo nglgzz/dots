@@ -8,11 +8,11 @@ rm -f \
   pacman.list \
   aur.list
 
-wget -q https://raw.githubusercontent.com/nglgzz/dots/master/arch/install.sh
-wget -q https://raw.githubusercontent.com/nglgzz/dots/master/arch/chroot.sh
-wget -q https://raw.githubusercontent.com/nglgzz/dots/master/arch/variables.sh
-wget -q https://raw.githubusercontent.com/nglgzz/dots/master/arch/pacman.list
-wget -q https://raw.githubusercontent.com/nglgzz/dots/master/arch/aur.list
+curl -o install.sh https://raw.githubusercontent.com/nglgzz/dots/master/arch/install.sh
+curl -o chroot.sh https://raw.githubusercontent.com/nglgzz/dots/master/arch/chroot.sh
+curl -o variables.sh https://raw.githubusercontent.com/nglgzz/dots/master/arch/variables.sh
+curl -o pacman.list https://raw.githubusercontent.com/nglgzz/dots/master/arch/pacman.list
+curl -o aur.list https://raw.githubusercontent.com/nglgzz/dots/master/arch/aur.list
 
 chmod +x -- *.sh
 

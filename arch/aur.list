@@ -1,9 +1,3 @@
-## Wayland
-hyprland
-hyprpaper-git
-eww-wayland
-wev
-
 ## i3
 polybar
 i3-resurrect
@@ -30,4 +24,4 @@ visual-studio-code-bin
 git-delta
 
 ## Keyboard
-gcc-arm-none-eabi-bin-83
+gcc-arm-none-eabi-bin

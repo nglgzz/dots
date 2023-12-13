@@ -13,6 +13,7 @@ gtest
 expac
 yajl
 git
+fakechroot
 
 ## Networking
 wget
@@ -40,16 +41,6 @@ xorg-server
 xorg-xinit
 xorg-xsetroot
 autorandr
-
-## Wayland
-dunst
-grim
-slurp
-wl-clipboard
-xdg-desktop-portal-wlr
-pipewire
-wireplumber
-swaylock
 
 ## Keyboard
 avr-gcc
@@ -82,6 +73,7 @@ picom
 xorg-xrandr
 rofi
 rofi-emoji
+dunst
 
 ## GTK
 arc-gtk-theme
