@@ -108,6 +108,7 @@ as_user EDITOR=nvim pacaur -S --noconfirm --noedit "$packages"
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable cron.target
+systemctl enable lightdm.service
 
 ## Set dark theme preference
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark

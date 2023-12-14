@@ -24,3 +24,7 @@ git-delta
 
 ## Keyboard
 gcc-arm-none-eabi-bin
+fprint
+
+## Audio
+sof-firmware
