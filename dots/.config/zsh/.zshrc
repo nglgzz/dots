@@ -12,5 +12,9 @@ export FORCE_COLOR=1
 ############################
 # MISC
 # Keychain for ssh keys
-[[ ! -f ~/.ssh/config ]] && echo "AddKeysToAgent yes" >>$HOME/.ssh/config
+[[ ! -d ~/.ssh ]] && mkdir "$HOME/.ssh"
+[[ ! -f ~/.ssh/config ]] && echo "AddKeysToAgent yes" >>"$HOME/.ssh/config"
 eval "$(ssh-agent -s)" >>/dev/null
+
+# Used when unlocking GPG keys
+export GPG_TTY=$(tty)

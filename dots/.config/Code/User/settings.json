@@ -36,7 +36,7 @@
   // Editor
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "editor.suggestSelection": "first",
   "editor.inlineSuggest.enabled": true,
@@ -120,7 +120,6 @@
   },
 
   // Zen mode
-  "zenMode.hideTabs": false,
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.fullScreen": false,

@@ -1,7 +1,7 @@
 [user]
 	name = Angelo Gazzola
 	email = angelo@nglgzz.com
-	signingkey = 8214022A58C37D01
+	signingkey = 0FA40E5F03BB40B8
 
 [alias]
 	ls = log --pretty=format:\"[%h]%d%Cblue%an%Creset:~$ %s %C(bold green)(%ar)%Creset\" --graph

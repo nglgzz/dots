@@ -32,6 +32,11 @@ unzip
 jq
 usbutils
 
+## Fonts
+ttf-montserrat
+ttf-opensans
+ttf-dejavu
+
 ### Screen settings control
 ddcutil
 
@@ -54,6 +59,7 @@ socat
 chromium
 python
 github-cli
+telegram-desktop
 
 ## Audio
 pavucontrol
