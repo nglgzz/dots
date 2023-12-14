@@ -109,6 +109,9 @@ systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable cron.target
 
+## Set dark theme preference
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
 ## Link dots and project utils
 as_user git clone --recursive https://github.com/nglgzz/dots "$user_home/dots"
 as_user make -C "$user_home/dots"
