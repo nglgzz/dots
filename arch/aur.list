@@ -2,6 +2,7 @@
 polybar
 i3-resurrect
 maim
+python-broadlink
 
 ## Fonts
 ttf-material-icons-git

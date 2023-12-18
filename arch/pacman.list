@@ -68,14 +68,16 @@ alsa-utils
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
+playerctl
 
 ## Bluetooth
 bluez
 bluez-utils
 
-## Display manager
-lightdm
-lightdm-gtk-greeter
+## Boot / Login
+gdm
+plymouth
+gnome-keyring
 
 ## i3
 i3-gaps
@@ -96,6 +98,7 @@ feh
 slop
 ffmpeg
 xclip
+python-pip
 
 ## Shell
 alacritty

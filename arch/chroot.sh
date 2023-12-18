@@ -9,7 +9,7 @@ set -eu
 #   $UUID - UUID of system partition
 
 # Add new hooks and rebuild linux image.
-sed -i -r 's/^(HOOKS=).*$/\1"base udev keyboard autodetect modconf block encrypt lvm2 filesystems fsck"/' /etc/mkinitcpio.conf
+sed -i -r 's/^(HOOKS=).*$/\1"base plymouth udev keyboard autodetect modconf block encrypt lvm2 filesystems fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
 # Install bootloader.
@@ -108,7 +108,7 @@ as_user EDITOR=nvim pacaur -S --noconfirm --noedit "$packages"
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable cron.target
-systemctl enable lightdm.service
+systemctl enable gdm.service
 
 ## Set dark theme preference
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark

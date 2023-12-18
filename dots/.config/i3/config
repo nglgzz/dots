@@ -55,7 +55,7 @@ workspace $ws6 output $screen1
 bindsym $mod+Ctrl+r restart
 
 # Lock screen
-bindsym $mod+Ctrl+x exec dm-tool lock
+bindsym $mod+Ctrl+x exec i3lock --color '000000'
 
 # Exit (logs out of your X session)
 bindsym $mod+Ctrl+q exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
