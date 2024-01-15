@@ -11,6 +11,7 @@
 [core]
   editor = nvim
   pager = delta
+  excludesfile = ~/.config/git/gitignore_global
 
 [delta]
   syntax-theme = Monokai Extended
