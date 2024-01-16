@@ -24,7 +24,7 @@ if [[ $cpu_vendor == "GenuineIntel" ]]; then
 fi
 
 # Add kernel parameter for unlocking the encrypted system partition during boot.
-sed -i -r 's|^(GRUB_CMDLINE_LINUX_DEFAULT=).*$|\1"quiet cryptdevice=UUID='"$UUID"':cryptlvm root=/dev/SystemVolGroup/root"|' /etc/default/grub
+sed -i -r 's|^(GRUB_CMDLINE_LINUX_DEFAULT=).*$|\1"quiet splash cryptdevice=UUID='"$UUID"':cryptlvm root=/dev/SystemVolGroup/root"|' /etc/default/grub
 sed -i -r 's|^(GRUB_CMDLINE_LINUX=).*$|\1"cryptdevice=UUID='"$UUID"':cryptlvm root=/dev/SystemVolGroup/root"|' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 

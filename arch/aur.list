@@ -4,6 +4,9 @@ i3-resurrect
 maim
 python-broadlink
 
+## Gnome
+gnome-shell-extension-paperwm-git
+
 ## Fonts
 ttf-material-icons-git
 ttf-hack
