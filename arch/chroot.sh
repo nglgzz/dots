@@ -110,9 +110,22 @@ systemctl enable bluetooth
 systemctl enable cron.target
 systemctl enable gdm.service
 
-## Set dark theme preference
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+## Fingerprint reader configuration
+echo -e "\nDo you want to configure a fingerprint reader?"
+
+select choice in "Yes" "No"; do
+  case $choice in
+  Yes) break ;;
+  No) break ;;
+  esac
+done
+
+if [[ $choice == "Yes" ]]; then
+    fprintd-delete "$username"
+    for finger in {left,right}-{thumb,{index,middle,ring,little}-finger}; do fprintd-enroll -f "$finger" "$username"; done
+fi
 
 ## Link dots and project utils
 as_user git clone --recursive https://github.com/nglgzz/dots "$user_home/dots"
 as_user make -C "$user_home/dots"
+

@@ -9,6 +9,9 @@ declare device    # twice the RAM size in GB
 declare hostname  # user provided hostname
 declare username  # user provided username
 
+declare bold   # bold output formatting
+declare normal # normal output formatting
+
 ## Formatting
 bold=$(tput bold)
 normal=$(tput sgr0)
@@ -69,4 +72,4 @@ read_confirm hostname
 read_confirm username
 
 # Cleanup private variables
-unset bold normal ram choice
+unset ram choice
