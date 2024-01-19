@@ -9,7 +9,7 @@ set -eu
 #   $UUID - UUID of system partition
 
 # Add new hooks and rebuild linux image.
-sed -i -r 's/^(HOOKS=).*$/\1"base plymouth udev keyboard autodetect modconf block encrypt lvm2 filesystems fsck"/' /etc/mkinitcpio.conf
+sed -i -r 's/^(HOOKS=).*$/\1\(base plymouth udev keyboard autodetect modconf block encrypt lvm2 filesystems fsck\)/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
 # Install bootloader.
@@ -17,10 +17,16 @@ pacman -S --noconfirm grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot \
   --bootloader-id=grub --removable
 
-# If you have Intel CPU, install intel-ucode.
+# If you have an Intel CPU, install intel-ucode.
 cpu_vendor=$(grep vendor /proc/cpuinfo | uniq | awk '{print $3}')
 if [[ $cpu_vendor == "GenuineIntel" ]]; then
   pacman -S --noconfirm intel-ucode
+fi
+
+# If you have a NVIDIA GPU, install nvidia drivers.
+gpu_info="$(lspci -k | grep -A 2 -E '(VGA|3D)')"
+if [[ $gpu_info == *"NVIDIA"* ]]; then
+  pacman -S --noconfirm nvidia
 fi
 
 # Add kernel parameter for unlocking the encrypted system partition during boot.
@@ -46,10 +52,10 @@ echo "$hostname" >/etc/hostname
 # Enable mDNS local hostname resolution
 sed -i -r 's/myhostname/myhostname mdns_minimal [NOTFOUND=return]/' /etc/nsswitch.conf
 
-# Power on bletooth module on startup.
+# Power on bluetooth module on startup.
 sed -i 's/#AutoEnable=.*$/AutoEnable=true/' /etc/bluetooth/main.conf
 
-# Install sudo, create new user and add it to sudoers and screen controll group.
+# Install sudo, create new user and add it to sudoers and screen control group.
 # shellcheck disable=SC2154 # `username` is defined in another file
 useradd -m -G wheel,i2c "$username"
 echo "%wheel ALL=(ALL) ALL" >>/etc/sudoers
@@ -61,7 +67,7 @@ echo "Set ${username} password."
 passwd "$username"
 
 # Customize pacman
-sed -i -r 's/#(Color|TotalDownload)/\1/g' /etc/pacman.conf
+sed -i -r 's/#(Color|ParallelDownloads)/\1/g' /etc/pacman.conf
 
 # Set zsh as default shell.
 chsh -s /usr/bin/zsh
@@ -121,11 +127,11 @@ select choice in "Yes" "No"; do
 done
 
 if [[ $choice == "Yes" ]]; then
-    fprintd-delete "$username"
-    for finger in {left,right}-{thumb,{index,middle,ring,little}-finger}; do fprintd-enroll -f "$finger" "$username"; done
+  pacman -S --noconfirm fprintd
+  fprintd-delete "$username"
+  for finger in {left,right}-{thumb,{index,middle,ring,little}-finger}; do fprintd-enroll -f "$finger" "$username"; done
 fi
 
 ## Link dots and project utils
 as_user git clone --recursive https://github.com/nglgzz/dots "$user_home/dots"
 as_user make -C "$user_home/dots"
-

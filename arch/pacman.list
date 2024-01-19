@@ -93,7 +93,6 @@ light
 ## Gnome
 gnome
 gnome-tweaks
-fprintd
 
 ## GTK
 arc-gtk-theme
