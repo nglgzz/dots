@@ -10,15 +10,12 @@
 
 [core]
   editor = nvim
-  pager = delta
+  pager=LESS=-R delta "$(case "$(gsettings get org.gnome.desktop.interface color-scheme)" in *"prefer-dark"*) echo "--dark" ;; *) echo "--light" ;; esac)"
   excludesfile = ~/.config/git/gitignore_global
 
 [delta]
-  syntax-theme = Monokai Extended
-  # features = side-by-side unobtrusive-line-numbers decorations
+  navigate = true
   features = unobtrusive-line-numbers decorations
-  minus-style = syntax "#490009"
-  plus-style = syntax "#003d1f"
 
 [delta "unobtrusive-line-numbers"]
     line-numbers = true
@@ -40,6 +37,7 @@
 	gpgsign = true
 
 [push]
+  autoSetupRemote = true
   default = current
 
 [pull]

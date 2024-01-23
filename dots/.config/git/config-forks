@@ -3,3 +3,13 @@
   pushRemote = origin
   merge = master
 
+[branch "trunk"]
+  remote = upstream
+  pushRemote = origin
+  merge = trunk
+
+[branch "main"]
+  remote = upstream
+  pushRemote = origin
+  merge = main
+
