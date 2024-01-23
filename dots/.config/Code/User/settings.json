@@ -1,37 +1,44 @@
 {
   "telemetry.telemetryLevel": "off",
 
-  // Window
-  "window.menuBarVisibility": "toggle",
-
-  // Workbench
+  // Color Theme
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "Pitch Black",
+  "workbench.preferredLightColorTheme": "Material Theme Lighter",
   "workbench.colorTheme": "Pitch Black",
+
+  "workbench.colorCustomizations": {
+    "[Pitch Black]": {
+      "activityBar.background": "#202124",
+      "activityBarBadge.background": "#202124",
+      "editor.background": "#202124",
+      "editor.selectionForeground": "#202124",
+      "editorGroup.border": "#202124",
+      "editorGroup.dropBackground": "#202124",
+      "editorGroup.emptyBackground": "#202124",
+      "editorGroupHeader.noTabsBackground": "#202124",
+      "editorGroupHeader.tabsBackground": "#202124",
+      "editorGroupHeader.tabsBorder": "#202124",
+      "sideBar.background": "#202124",
+      "statusBar.background": "#202124",
+      "tab.activeBackground": "#202124",
+      "tab.activeBorder": "#202124",
+      "tab.border": "#202124",
+      "tab.inactiveBackground": "#202124",
+      "tab.unfocusedActiveBorder": "#202124",
+      "titleBar.activeBackground": "#202124",
+      "titleBar.border": "#202124",
+      "titleBar.inactiveBackground": "#202124",
+      "scrollbar.shadow": "#00000000"
+    }
+  },
+
+  // Window
+  "window.zoomLevel": 1,
+  "window.menuBarVisibility": "toggle",
   "workbench.editor.decorations.colors": false,
   "workbench.editor.scrollToSwitchTabs": true,
   "workbench.editor.pinnedTabSizing": "compact",
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#25232b",
-    "activityBarBadge.background": "#25232b",
-    "editor.background": "#25232b",
-    "editor.selectionForeground": "#25232b",
-    "editorGroup.border": "#25232b",
-    "editorGroup.dropBackground": "#25232b",
-    "editorGroup.emptyBackground": "#25232b",
-    "editorGroupHeader.noTabsBackground": "#25232b",
-    "editorGroupHeader.tabsBackground": "#25232b",
-    "editorGroupHeader.tabsBorder": "#25232b",
-    "sideBar.background": "#25232b",
-    "statusBar.background": "#25232b",
-    "tab.activeBackground": "#25232b",
-    "tab.activeBorder": "#25232b",
-    "tab.border": "#25232b",
-    "tab.inactiveBackground": "#25232b",
-    "tab.unfocusedActiveBorder": "#25232b",
-    "titleBar.activeBackground": "#25232b",
-    "titleBar.border": "#25232b",
-    "titleBar.inactiveBackground": "#25232b",
-    "scrollbar.shadow": "#00000000"
-  },
 
   // Editor
   "editor.formatOnSave": true,
@@ -95,6 +102,15 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
 
+  // Emmet
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+
+  // Rewrap
+  "rewrap.wrappingColumn": 80,
+
   // Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -131,18 +147,6 @@
     "<C-d>": false
   },
 
-  // Rewrap
-  "rewrap.wrappingColumn": 80,
-
-  // Emmet
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
-
   // Show number of selected lines
-  "selectline.displayFormat": "Selected %d Lines",
-
-  "shellcheck.customArgs": ["--external-sources"],
-  "window.zoomLevel": 1
+  "selectline.displayFormat": "Selected %d Lines"
 }
