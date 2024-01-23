@@ -1,7 +1,4 @@
-## i3
-polybar
-i3-resurrect
-maim
+# Command palette
 python-broadlink
 
 ## Gnome
@@ -12,7 +9,6 @@ ttf-material-icons-git
 ttf-hack
 ttf-fira-sans
 ttf-ubraille
-ttf-blackout
 noto-fonts-emoji
 
 ## Shell
@@ -28,7 +24,6 @@ git-delta
 
 ## Keyboard
 gcc-arm-none-eabi-bin
-fprint
 
 ## Audio
 sof-firmware

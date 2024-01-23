@@ -37,16 +37,13 @@ ttf-montserrat
 ttf-opensans
 ttf-dejavu
 
-### Screen settings control
-ddcutil
-
 # --------------------------
 ## Xorg
-xorg-server
-xorg-xinit
-xorg-xsetroot
 autorandr
-arandr
+
+## Gnome
+gnome
+gnome-tweaks
 
 ## Keyboard
 avr-gcc
@@ -64,50 +61,17 @@ telegram-desktop
 direnv
 
 ## Audio
-pavucontrol
-alsa-utils
-pulseaudio
-pulseaudio-alsa
-pulseaudio-bluetooth
 playerctl
 
-## Bluetooth
-bluez
-bluez-utils
-
-## Boot / Login
-gdm
+## Boot
 plymouth
-gnome-keyring
-
-## i3
-i3-gaps
-i3lock
-picom
-xorg-xrandr
-rofi
-rofi-emoji
-dunst
-light
-
-## Gnome
-gnome
-gnome-tweaks
-
-## GTK
-arc-gtk-theme
-papirus-icon-theme
 
 ## i3 bindings
 htop
 feh
-slop
-ffmpeg
-xclip
 python-pip
 
 ## Shell
-alacritty
 bat
 
 ## AUR

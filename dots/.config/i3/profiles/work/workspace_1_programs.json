@@ -1,8 +1,0 @@
-[
-  {
-    "command": [
-      "/usr/lib/chromium/chromium"
-    ],
-    "working_directory": "/home/nglgzz"
-  }
-]
