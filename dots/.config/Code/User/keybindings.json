@@ -1,20 +1,57 @@
 [
   {
-    "key": "ctrl+c",
-    "command": "editor.action.clipboardCopyAction"
-  },
-  {
     "key": "ctrl+shift+c",
-    "command": "gitlens.copyRemoteFileUrlToClipboard"
+    "command": "gitlens.copyRemoteFileUrlToClipboard",
+    "when": "editorTextFocus"
+  },
+  // Text transform
+  {
+    "key": "ctrl+k ctrl+u",
+    "command": "editor.action.transformToUppercase",
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+x",
-    "command": "editor.action.clipboardCutAction"
+    "key": "ctrl+k ctrl+l",
+    "command": "editor.action.transformToLowercase",
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+v",
-    "command": "editor.action.clipboardPasteAction"
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
   },
+  {
+    "key": "ctrl+i",
+    "command": "deleteInsideWord",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // Navigation
+  {
+    "key": "ctrl+g",
+    "command": "cursorTop",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "cursorBottom",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+g",
+    "command": "workbench.action.gotoLine",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+n",
+    "command": "editor.action.goToDeclaration",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "editor.action.goToImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  // Workbench tabs
   {
     "key": "ctrl+shift+o",
     "command": "workbench.action.files.openFolder"
@@ -24,32 +61,11 @@
     "command": "workbench.action.toggleSidebarVisibility"
   },
   {
-    "key": "ctrl+k ctrl+u",
-    "command": "editor.action.transformToUppercase"
-  },
-  {
-    "key": "ctrl+k ctrl+l",
-    "command": "editor.action.transformToLowercase"
-  },
-  {
-    "key": "ctrl+k ctrl+n",
-    "command": "editor.action.goToDeclaration"
-  },
-  {
-    "key": "ctrl+shift+/",
-    "command": "editor.action.blockComment",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+r",
-    "command": "editor.action.goToImplementation",
-    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
-  },
-  {
     "key": "ctrl+shift+r",
     "command": "references-view.findReferences",
     "when": "editorHasReferenceProvider"
   },
+  // Focus
   {
     "key": "ctrl+t",
     "command": "workbench.action.terminal.focus"
@@ -58,5 +74,9 @@
     "key": "ctrl+t",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.terminal.toggleTerminal"
   }
 ]

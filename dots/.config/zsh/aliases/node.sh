@@ -15,6 +15,8 @@ declare -A pnpm=(
   [pt]='corepack pnpm test'
   [pr]='corepack pnpm run'
   [pb]='corepack pnpm run build'
+  [pe]='pnpm-run'
+  [px]='pnpm-run'
 )
 
 declare -A yarn=(
@@ -38,6 +40,17 @@ function yarn-audit-fix {
   rm yarn.lock
   yarn import
   rm package-lock.json
+}
+
+function pnpm-run {
+  pnpm_script=$(jq -r '.scripts | to_entries[] | "\(input_filename){}\(.key){} \(.value)"' **/package.json | column -ts {} | fzf)
+
+  script_package_json=$(awk '{ print $1 }' <<<$pnpm_script)
+  script_dir=$(dirname $script_package_json)
+  script_name=$(awk '{ print $2 }' <<<$pnpm_script)
+
+  echo "Running [$script_name] from [$script_dir]"
+  corepack pnpm run --dir $script_dir $script_name
 }
 
 source /usr/share/nvm/init-nvm.sh

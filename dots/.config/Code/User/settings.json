@@ -2,6 +2,7 @@
   "telemetry.telemetryLevel": "off",
 
   // Color Theme
+  "window.commandCenter": false,
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "Pitch Black",
   "workbench.preferredLightColorTheme": "Material Theme Lighter",
@@ -34,7 +35,7 @@
   },
 
   // Window
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 2,
   "window.menuBarVisibility": "toggle",
   "workbench.editor.decorations.colors": false,
   "workbench.editor.scrollToSwitchTabs": true,
@@ -54,13 +55,13 @@
   "editor.multiCursorModifier": "alt",
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "diffEditor.ignoreTrimWhitespace": false,
 
   // Languages
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "[typescript]": {
-    "editor.autoClosingBrackets": "languageDefined"
+    "editor.autoClosingBrackets": "languageDefined",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -95,8 +96,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
-    "editor.formatOnType": true
+    "editor.defaultFormatter": "ms-python.autopep8"
   },
   "[dotenv]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
@@ -132,7 +132,8 @@
     "**/.factorypath": true,
     "**/.turbo": true,
     "**/.pnpm-debug.log": true,
-    "**/tsconfig.tsbuildinfo": true
+    "**/tsconfig.tsbuildinfo": true,
+    "**/__pycache__": true
   },
 
   // Zen mode

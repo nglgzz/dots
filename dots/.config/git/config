@@ -46,3 +46,7 @@
 [includeIf "gitdir:~/projects/neo4j/"]
   path = ~/.config/git/config-forks
 
+[rerere]
+	enabled = true
+[branch]
+	sort = -committerdate
