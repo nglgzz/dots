@@ -44,6 +44,7 @@ done
 set_aliases "npm"
 set_aliases "pnpm"
 set_aliases "yarn"
+set_aliases "deno"
 set_aliases "git"
 set_aliases "docker"
 set_aliases "systemctl"

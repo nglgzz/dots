@@ -1,6 +1,8 @@
 .netrwhist
+autorandr
 .zcompdump*
 zsh-autosuggestions
+dots/.config/gtk-3.0/bookmarks
 dots/.config/i3/profiles
 dots/.bin/extra
 *.private

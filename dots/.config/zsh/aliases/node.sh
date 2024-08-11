@@ -29,6 +29,13 @@ declare -A yarn=(
   [yaf]='yarn-audit-fix'
 )
 
+declare -A deno=(
+  [d]='deno'
+  [ds]='deno task start'
+  [db]='deno task build'
+  [dl]='deno lint'
+)
+
 function pj() {
   jq ."$1" package.json
 }
