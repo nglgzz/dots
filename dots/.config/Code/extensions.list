@@ -1,10 +1,11 @@
 stkb.rewrap
-tamasfe.even-better-toml
-fabiospampinato.vscode-todo-plus
 foxundermoon.shell-format
 timonwong.shellcheck
 streetsidesoftware.code-spell-checker
 tomoki1207.selectline-statusbar
+
+wayou.vscode-todo-highlight
+fabiospampinato.vscode-todo-plus
 
 viktorqvarfordt.vscode-pitch-black-theme
 Equinusocio.vsc-material-theme
@@ -12,15 +13,17 @@ Equinusocio.vsc-material-theme
 dbaeumer.vscode-eslint
 bradlc.vscode-tailwindcss
 esbenp.prettier-vscode
-mrmlnc.vscode-json5
 ms-playwright.playwright
 pflannery.vscode-versionlens
 
-redhat.vscode-yaml
-GitHub.codespaces
-jasonnutter.vscode-codeowners
-GitHub.vscode-pull-request-github
-me-dutour-mathieu.vscode-github-actions
-waderyan.gitblame
 eamodio.gitlens
-ms-vsliveshare.vsliveshare
+redhat.vscode-yaml
+mrmlnc.vscode-json5
+jasonnutter.vscode-codeowners
+
+github.vscode-pull-request-github
+github.vscode-github-actions
+
+denoland.vscode-deno
+svelte.svelte-vscode
+
