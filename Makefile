@@ -11,15 +11,9 @@ HOME_FILES=$(shell find ${HOME_SRC} -mindepth 1 -maxdepth 1)
 CONFIG_FILES=$(shell find ${HOME_SRC}/${CONFIG_PATH} -mindepth 1 -maxdepth 1)
 CODE_FILES=$(shell find ${HOME_SRC}/${CODE_PATH} -mindepth 1 -maxdepth 1)
 
-all: links zsh-setup vscode-setup load-gnome-settings install-node vim-setup
+all: links zsh-setup vscode-setup install-gnome-extensions load-gnome-settings install-node vim-setup
 
-links: links-HOME links-CONFIG links-CODE link-FONTS
-
-install-deps: install-pacman-deps install-aur-deps
-
-link-FONTS:
-	@echo -e "\n$$(tput bold)FONT files linked$$(tput sgr0)"
-	@./link.sh "fonts" ".local/share/fonts"
+links: links-HOME links-CONFIG links-CODE
 
 links-HOME links-CONFIG links-CODE: links-%:
 	@echo -e "\n$$(tput bold)$* files linked$$(tput sgr0)"
@@ -46,16 +40,6 @@ vscode-setup:
 
 vim-setup:
 	nvim +PlugInstall +qall
-
-install-aur-deps:
-	# The --needed flag will make pacaur skip reinstalling existing packages.
-	yay -S --noconfirm --needed \
-		$(shell cat "$$HOME/dots/arch/aur.list" | sed 's/#.*//')
-
-install-pacman-deps:
-	# The --needed flag will make pacman skip reinstalling existing packages.
-	sudo pacman -S --noconfirm --needed \
-		$(shell cat "$$HOME/dots/arch/pacman.list" | sed 's/#.*//')
 
 install-gnome-extensions:
 	./gnome-extensions-install.sh

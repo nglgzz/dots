@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 
 array=( https://extensions.gnome.org/extension/6099/paperwm/ )
 
