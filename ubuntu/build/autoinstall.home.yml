@@ -1,36 +1,27 @@
 # https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html
-
 autoinstall:
   version: 1
-
   interactive-sections:
     - identity
     - storage
-
   locale: en_US.UTF-8
   keyboard:
     layout: "us,it,se"
     variant: ",,"
     toggle: alt_shift_toggle
   timezone: Europe/Rome
-
   storage:
     layout:
       name: lvm
       sizing-policy: all
-
   source:
     id: ubuntu-desktop-minimal
-
   refresh-installer:
     update: true
-
   codecs:
     install: true
-
   drivers:
     install: true
-
   packages:
     - neovim
     - zsh
@@ -46,14 +37,21 @@ autoinstall:
     - nautilus-share
     - fonts-hack
     - qmk
-
   late-commands:
     - curtin in-target -- chsh -s /usr/bin/zsh
     - curtin in-target -- sudo -u \#1000 chsh -s /usr/bin/zsh
     - curtin in-target -- sudo -u \#1000 git clone https://github.com/nglgzz/dots/ ~/dots
     - curtin in-target -- sudo -u \#1000 make -C ~/dots
-
   # Updates to installed packages before rebooting.
   updates: all
-
   shutdown: reboot
+  snaps:
+    - name: chromium
+    - name: firefox
+    - name: telegram-desktop
+    - name: code
+      classic: true
+    - name: yq
+    - name: discord
+    - name: steam
+    - name: obsidian

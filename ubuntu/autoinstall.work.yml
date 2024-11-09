@@ -1,0 +1,8 @@
+autoinstall:
+  snaps:
+    - name: chromium
+    - name: firefox
+    - name: code
+      classic: true
+    - name: yq
+    - name: slack
