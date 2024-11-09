@@ -11,7 +11,7 @@ HOME_FILES=$(shell find ${HOME_SRC} -mindepth 1 -maxdepth 1)
 CONFIG_FILES=$(shell find ${HOME_SRC}/${CONFIG_PATH} -mindepth 1 -maxdepth 1)
 CODE_FILES=$(shell find ${HOME_SRC}/${CODE_PATH} -mindepth 1 -maxdepth 1)
 
-all: links zsh-setup vscode-setup vim-setup load-gnome-settings
+all: links zsh-setup vscode-setup load-gnome-settings install-node vim-setup
 
 links: links-HOME links-CONFIG links-CODE link-FONTS
 
@@ -49,10 +49,16 @@ vim-setup:
 
 install-aur-deps:
 	# The --needed flag will make pacaur skip reinstalling existing packages.
-	pacaur -S --noconfirm --needed --noedit \
+	yay -S --noconfirm --needed \
 		$(shell cat "$$HOME/dots/arch/aur.list" | sed 's/#.*//')
 
 install-pacman-deps:
 	# The --needed flag will make pacman skip reinstalling existing packages.
 	sudo pacman -S --noconfirm --needed \
 		$(shell cat "$$HOME/dots/arch/pacman.list" | sed 's/#.*//')
+
+install-gnome-extensions:
+	./gnome-extensions-install.sh
+
+install-node:
+	nvm install --lts

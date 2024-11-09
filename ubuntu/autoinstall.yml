@@ -1,0 +1,72 @@
+# https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html
+
+autoinstall:
+  version: 1
+
+  interactive-sections:
+    # - network
+    - identity
+    - storage
+
+  locale: en_US.UTF-8
+  keyboard:
+    layout: 'us,it,se'
+    variant: ',,'
+    toggle: alt_shift_toggle
+  timezone: Europe/Rome
+
+  storage:
+    layout:
+      name: lvm
+      sizing-policy: all
+
+  source:
+    id: ubuntu-desktop-minimal
+
+  refresh-installer:
+    update: true
+
+  codecs:
+    install: true
+
+  drivers:
+    install: true
+
+  packages:
+    - neovim
+    - zsh
+    - fzf
+    - git
+    - git-delta
+    - shellcheck
+    - curl
+    - btop
+    - htop
+    - bat
+    - gnome-tweaks
+    - nautilus-share
+    - fonts-hack
+    - qmk
+
+  snaps:
+    - name: chromium
+    - name: brave
+    - name: firefox
+    - name: telegram-desktop
+    - name: code
+      classic: true
+    # work only
+    # - name: slack
+    # private only
+    - name: discord
+    - name: steam
+    - name: obsidian
+
+  late-commands:
+    - curtin in-target -- git clone https://github.com/nglgzz/dots/ ~/dots
+
+  # Updates to installed packages before rebooting.
+  updates: all
+
+  shutdown: reboot
+
