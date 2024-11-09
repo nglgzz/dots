@@ -1,7 +1,7 @@
 declare -A shell=(
   # Commands
   [vim]=nvim
-  [cat]=bat
+  [cat]=batcat
   [_cat]='command cat'
   [e]='code .'
   [q]='exit'
@@ -10,14 +10,14 @@ declare -A shell=(
   [watch]='watch --color -n1'
   [tree]='tree -C'
   [treed]='tree -C -d -L 3'
-  
+
   # Configs
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
   [ale]='cd $ZDOTDIR/aliases && nvim $(fzf) && source $ZDOTDIR/.zshrc && cd -'
   [zource]='source $ZDOTDIR/.zshrc'
   [i3edit]='nvim $XDG_CONFIG_HOME/i3/config'
   [codex]='code --list-extensions'
-  
+
   # Navigation
   [b]='popd'
   [tmp]='cd ~/tmp'
@@ -26,7 +26,7 @@ declare -A shell=(
   [...]='cd ../..'
   [....]='cd ../../..'
   [.....]='cd ../../../..'
-  
+
   # Utils
   [copy]='xclip -selection clipboard'
   [paste]='xclip -out -selection clipboard'
