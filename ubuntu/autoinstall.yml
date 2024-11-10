@@ -46,6 +46,14 @@ autoinstall:
     - nautilus-share
     - fonts-hack
     - qmk
+    - vlc
+
+  snaps:
+    - name: chromium
+    - name: firefox
+    - name: code
+      classic: true
+    - name: yq
 
   late-commands:
     - curtin in-target -- chsh -s /usr/bin/zsh

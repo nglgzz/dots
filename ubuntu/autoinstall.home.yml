@@ -1,11 +1,10 @@
 autoinstall:
   snaps:
-    - name: chromium
-    - name: firefox
     - name: telegram-desktop
-    - name: code
-      classic: true
-    - name: yq
     - name: discord
     - name: steam
     - name: obsidian
+    - name: amberol
+
+  packages:
+    - picard

@@ -5,9 +5,7 @@ call plug#begin("~/.cache/nvim/")
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'sbdchd/neoformat'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'mattn/emmet-vim'
   Plug 'junegunn/fzf.vim'
-  Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'npm install'}
 call plug#end()
 
 

@@ -37,6 +37,14 @@ autoinstall:
     - nautilus-share
     - fonts-hack
     - qmk
+    - vlc
+  snaps:
+    - name: chromium
+    - name: firefox
+    - name: code
+      classic: true
+    - name: yq
+    - name: slack
   late-commands:
     - curtin in-target -- chsh -s /usr/bin/zsh
     - curtin in-target -- sudo -u \#1000 chsh -s /usr/bin/zsh
@@ -45,10 +53,3 @@ autoinstall:
   # Updates to installed packages before rebooting.
   updates: all
   shutdown: reboot
-  snaps:
-    - name: chromium
-    - name: firefox
-    - name: code
-      classic: true
-    - name: yq
-    - name: slack

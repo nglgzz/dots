@@ -4,3 +4,9 @@ git remote set-url origin git@github.com:nglgzz/dots.git
 # Transfer SSH keys
 # Transfer GPG keys
 # Setup fingerprint login in Settings > System > Users
+# Add keyboard layouts
+#
+# Additional installs:
+# gh CLI: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
+# nvm: https://github.com/nvm-sh/nvm?tab=readme-ov-file
+# mullvad-vpn: https://mullvad.net/en/download/vpn/linux

@@ -37,6 +37,19 @@ autoinstall:
     - nautilus-share
     - fonts-hack
     - qmk
+    - vlc
+    - picard
+  snaps:
+    - name: chromium
+    - name: firefox
+    - name: code
+      classic: true
+    - name: yq
+    - name: telegram-desktop
+    - name: discord
+    - name: steam
+    - name: obsidian
+    - name: amberol
   late-commands:
     - curtin in-target -- chsh -s /usr/bin/zsh
     - curtin in-target -- sudo -u \#1000 chsh -s /usr/bin/zsh
@@ -45,13 +58,3 @@ autoinstall:
   # Updates to installed packages before rebooting.
   updates: all
   shutdown: reboot
-  snaps:
-    - name: chromium
-    - name: firefox
-    - name: telegram-desktop
-    - name: code
-      classic: true
-    - name: yq
-    - name: discord
-    - name: steam
-    - name: obsidian

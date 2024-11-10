@@ -53,4 +53,6 @@ function pnpm-run {
   corepack pnpm run --dir $script_dir $script_name
 }
 
-source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
