@@ -10,3 +10,4 @@ git remote set-url origin git@github.com:nglgzz/dots.git
 # gh CLI: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
 # nvm: https://github.com/nvm-sh/nvm?tab=readme-ov-file
 # mullvad-vpn: https://mullvad.net/en/download/vpn/linux
+# synology-drive: https://www.synology.com/en-us/support/download/DS923+

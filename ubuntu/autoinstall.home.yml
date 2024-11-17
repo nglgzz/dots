@@ -4,7 +4,8 @@ autoinstall:
     - name: discord
     - name: steam
     - name: obsidian
-    - name: amberol
+      classic: true
 
   packages:
     - picard
+    - rhythmbox

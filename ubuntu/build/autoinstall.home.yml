@@ -39,6 +39,7 @@ autoinstall:
     - qmk
     - vlc
     - picard
+    - rhythmbox
   snaps:
     - name: chromium
     - name: firefox
@@ -49,7 +50,7 @@ autoinstall:
     - name: discord
     - name: steam
     - name: obsidian
-    - name: amberol
+      classic: true
   late-commands:
     - curtin in-target -- chsh -s /usr/bin/zsh
     - curtin in-target -- sudo -u \#1000 chsh -s /usr/bin/zsh
