@@ -1,15 +1,20 @@
 {
+  "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "off",
 
-  // Color Theme
+  // Title bar
+  "workbench.layoutControl.enabled": false,
+  "chat.commandCenter.enabled": false,
   "window.commandCenter": false,
+
+  // Color Theme
   "window.autoDetectColorScheme": true,
-  "workbench.preferredDarkColorTheme": "Pitch Black",
-  "workbench.preferredLightColorTheme": "Material Theme Lighter",
-  "workbench.colorTheme": "Pitch Black",
+  "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+  "workbench.preferredLightColorTheme": "Quiet Light",
 
   "workbench.colorCustomizations": {
-    "[Pitch Black]": {
+    "[Visual Studio Dark]": {
+      "editorRuler.foreground": "#203134",
       "activityBar.background": "#202124",
       "activityBarBadge.background": "#202124",
       "editor.background": "#202124",
@@ -34,6 +39,11 @@
     }
   },
 
+  // Zen mode
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.fullScreen": false,
+
   // Window
   "window.zoomLevel": 2,
   "window.menuBarVisibility": "toggle",
@@ -54,7 +64,6 @@
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "alt",
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
 
   // Languages
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -67,11 +76,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[c]": {
-    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.wordWrapColumn": 80
   },
   "[cpp]": {
-    "editor.defaultFormatter": "xaver.clang-format"
+    "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
@@ -95,9 +104,6 @@
   "[json5]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
-  },
   "[dotenv]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
@@ -120,6 +126,9 @@
   "files.eol": "\n",
   "files.exclude": {
     "**/.git/**": true,
+    "**/static/**": true,
+    "**/.svelte-kit/**": true,
+    "**/.firebase/**": true,
     "**/out/**": true,
     "**/node_modules/**": true,
     "**/explore/**/*.svg": true,
@@ -136,18 +145,11 @@
     "**/__pycache__": true
   },
 
-  // Zen mode
-  "zenMode.centerLayout": false,
-  "zenMode.hideLineNumbers": false,
-  "zenMode.fullScreen": false,
-  "gitlens.mode.active": "zen",
-
-  // Vim
-  "vim.useCtrlKeys": false,
-  "vim.handleKeys": {
-    "<C-d>": false
-  },
-
   // Show number of selected lines
-  "selectline.displayFormat": "Selected %d Lines"
+  "selectline.displayFormat": "Selected %d Lines",
+
+  // Other
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+
+  "C_Cpp.clang_format_style": "Google"
 }

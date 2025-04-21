@@ -10,7 +10,7 @@
 
 [core]
   editor = nvim
-  pager=LESS=-R delta "$(case "$(gsettings get org.gnome.desktop.interface color-scheme)" in *"prefer-dark"*) echo "--dark" ;; *) echo "--light" ;; esac)"
+  pager=LESS=-R delta "$(case "$(gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null)" in *"default"*) echo "--light" ;; *) echo "--dark" ;; esac)"
   excludesfile = ~/.config/git/gitignore_global
 
 [delta]
@@ -50,3 +50,5 @@
 	enabled = true
 [branch]
 	sort = -committerdate
+[init]
+	defaultBranch = main
