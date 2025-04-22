@@ -1,7 +1,7 @@
 [user]
 	name = Angelo Gazzola
 	email = angelo@nglgzz.com
-	signingkey = 0FA40E5F03BB40B8
+  signingkey = ~/.ssh/git_signing
 
 [alias]
 	ls = log --pretty=format:\"[%h]%d%Cblue%an%Creset:~$ %s %C(bold green)(%ar)%Creset\" --graph
@@ -35,6 +35,9 @@
 
 [commit]
 	gpgsign = true
+
+[gpg]
+  format = ssh
 
 [push]
   autoSetupRemote = true
