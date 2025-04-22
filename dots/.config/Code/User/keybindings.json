@@ -1,5 +1,9 @@
 [
   {
+    "key": "ctrl+k ctrl+p",
+    "command": "workbench.profiles.actions.switchProfile"
+  },
+  {
     "key": "ctrl+shift+c",
     "command": "gitlens.copyRemoteFileUrlToClipboard",
     "when": "editorTextFocus"
@@ -20,26 +24,15 @@
     "command": "editor.action.blockComment",
     "when": "editorTextFocus && !editorReadonly"
   },
-  {
-    // WIP: not working properly
-    "key": "ctrl+i",
-    "command": "deleteInsideWord",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  // Navigation
+  // Code Navigation
   {
     "key": "ctrl+g",
-    "command": "cursorTop",
+    "command": "cursorPageUp",
     "when": "editorTextFocus"
   },
   {
     "key": "ctrl+shift+g",
-    "command": "cursorBottom",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+k ctrl+g",
-    "command": "workbench.action.gotoLine",
+    "command": "cursorPageDown",
     "when": "editorTextFocus"
   },
   {

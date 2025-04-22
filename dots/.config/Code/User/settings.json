@@ -7,34 +7,53 @@
   "chat.commandCenter.enabled": false,
   "window.commandCenter": false,
 
+  // Layout
+  "workbench.activityBar.location": "top",
+  "window.customTitleBarVisibility": "auto",
+  "breadcrumbs.symbolPath": "off",
+
   // Color Theme
   "window.autoDetectColorScheme": true,
-  "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+  "workbench.preferredDarkColorTheme": "Default Dark Modern",
   "workbench.preferredLightColorTheme": "Quiet Light",
 
   "workbench.colorCustomizations": {
-    "[Visual Studio Dark]": {
-      "editorRuler.foreground": "#203134",
-      "activityBar.background": "#202124",
-      "activityBarBadge.background": "#202124",
-      "editor.background": "#202124",
-      "editor.selectionForeground": "#202124",
-      "editorGroup.border": "#202124",
-      "editorGroup.dropBackground": "#202124",
-      "editorGroup.emptyBackground": "#202124",
-      "editorGroupHeader.noTabsBackground": "#202124",
-      "editorGroupHeader.tabsBackground": "#202124",
-      "editorGroupHeader.tabsBorder": "#202124",
-      "sideBar.background": "#202124",
-      "statusBar.background": "#202124",
+    "[Default Dark Modern]": {
+      "titleBar.activeBackground": "#202124",
+      "titleBar.border": "#202124",
+      "titleBar.inactiveBackground": "#202124",
+
       "tab.activeBackground": "#202124",
       "tab.activeBorder": "#202124",
       "tab.border": "#202124",
       "tab.inactiveBackground": "#202124",
       "tab.unfocusedActiveBorder": "#202124",
-      "titleBar.activeBackground": "#202124",
-      "titleBar.border": "#202124",
-      "titleBar.inactiveBackground": "#202124",
+
+      "activityBar.background": "#202124",
+      "activityBar.activeBorder": "#202124",
+      "activityBar.border": "#202124",
+      "activityBarTop.dropBorder": "#202124",
+      "activityBarBadge.background": "#202124",
+
+      "sideBarSectionHeader.border": "#202124",
+      "sideBar.background": "#202124",
+      "sideBar.border": "#20292D",
+
+      "editor.background": "#202124",
+      "editor.selectionForeground": "#202124",
+
+      "editorGroup.border": "#20292D",
+      "editorGroup.dropBackground": "#202124",
+      "editorGroup.emptyBackground": "#202124",
+      "editorGroupHeader.noTabsBackground": "#202124",
+      "editorGroupHeader.tabsBackground": "#202124",
+      "editorGroupHeader.tabsBorder": "#202124",
+
+      "statusBar.background": "#202124",
+      "statusBar.border": "#202124",
+
+      "panel.background": "#202124",
+      "editorRuler.foreground": "#20292D",
       "scrollbar.shadow": "#00000000"
     }
   },
@@ -43,8 +62,6 @@
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.fullScreen": false,
-
-  // Window
   "window.zoomLevel": 2,
   "window.menuBarVisibility": "toggle",
   "workbench.editor.decorations.colors": false,
@@ -60,7 +77,6 @@
   "editor.inlineSuggest.enabled": true,
   "editor.fontFamily": "'Hack', 'Font Awesome 6 Free Solid'",
   "editor.detectIndentation": true,
-  "editor.rulers": [80, 100, 120],
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "alt",
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
@@ -68,44 +84,35 @@
   // Languages
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "[typescript]": {
-    "editor.autoClosingBrackets": "languageDefined",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools",
-    "editor.wordWrapColumn": 80
-  },
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
+
+  "[typescript][javascript][json][jsonc][json5]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [80, 100, 120]
   },
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [80, 100]
   },
   "[markdown]": {
     "editor.wordWrap": "off",
-    "editor.wordWrapColumn": 80
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [80, 100]
   },
-  "[properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+  "[c][cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [80]
   },
-  "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+  "[shellscript][ignore][dotenv][properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [80, 100]
   },
-  "[json5]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[dotenv]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [80]
   },
 
   // Emmet
@@ -125,6 +132,8 @@
   "files.trimTrailingWhitespace": true,
   "files.eol": "\n",
   "files.exclude": {
+    "**/offline/**": true,
+    "**/build/**": true,
     "**/.git/**": true,
     "**/static/**": true,
     "**/.svelte-kit/**": true,
@@ -145,11 +154,17 @@
     "**/__pycache__": true
   },
 
+  "files.associations": {
+    ".env*": "toml"
+  },
+
   // Show number of selected lines
   "selectline.displayFormat": "Selected %d Lines",
 
   // Other
   "terminal.integrated.enableMultiLinePasteWarning": "never",
 
-  "C_Cpp.clang_format_style": "Google"
+  // Zen mode
+  "gitlens.mode.active": "zen",
+  "githubPullRequests.fileListLayout": "flat"
 }
