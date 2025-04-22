@@ -101,6 +101,12 @@
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[json5]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -125,6 +131,8 @@
   "files.trimTrailingWhitespace": true,
   "files.eol": "\n",
   "files.exclude": {
+    "**/offline/**": true,
+    "**/build/**": true,
     "**/.git/**": true,
     "**/static/**": true,
     "**/.svelte-kit/**": true,
@@ -145,11 +153,17 @@
     "**/__pycache__": true
   },
 
+  "files.associations": {
+    ".env*": "toml"
+  },
+
   // Show number of selected lines
   "selectline.displayFormat": "Selected %d Lines",
 
   // Other
   "terminal.integrated.enableMultiLinePasteWarning": "never",
 
-  "C_Cpp.clang_format_style": "Google"
+  // Zen mode
+  "gitlens.mode.active": "zen",
+  "githubPullRequests.fileListLayout": "flat"
 }

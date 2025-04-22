@@ -123,4 +123,5 @@ configuration {
 
 #inputbar {
     children:   [ entry,case-indicator ];
-}
+}@theme "/usr/share/rofi/themes/paper-float.rasi"
+@theme "/usr/share/rofi/themes/sidebar.rasi"
