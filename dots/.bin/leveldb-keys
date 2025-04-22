@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+const path = require('node:path');
+const {styleText} = require('node:util');
+const {Level} = require('level');
+
+async function main(source) {
+  console.log(styleText(['green', 'bold'], `## Reading keys from ${source}`));
+  const db = new Level(source);
+
+  for await (const [key, value] of db.iterator()) {
+    console.log(styleText(['dim'], `- ${key}`));
+  }
+}
+
+main(path.resolve(process.cwd(), process.argv[2]));
