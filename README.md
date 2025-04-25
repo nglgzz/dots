@@ -7,6 +7,9 @@ Here you can find most configuration files for my Arch environment.
 - [Arch](./arch/README.md) – Scripts to install this setup from scratch (also
   contains a list of dependencies needed for this setup).
 
+- [Ubuntu](./ubuntu/README.md) – Autoinstall configuration and scripts to
+  install the ubuntu setup.
+
 - [Dots](./dots/README.md) – Configuration, themes, and scripts that are part of
   my environment.
 
