@@ -12,6 +12,8 @@ for i in "${array[@]}"; do
     VERSION_TAG=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=$EXTENSION_ID" | jq '.extensions[0] | .shell_version_map | map(.pk) | max')
     wget -O "${EXTENSION_ID}".zip "https://extensions.gnome.org/download-extension/${EXTENSION_ID}.shell-extension.zip?version_tag=$VERSION_TAG"
     gnome-extensions install --force "${EXTENSION_ID}".zip
+    # Seems like the busctl command fails if it's called too soon after installing the extension
+    sleep 5
     if ! gnome-extensions list | grep --quiet "${EXTENSION_ID}"; then
         busctl --user call org.gnome.Shell.Extensions /org/gnome/Shell/Extensions org.gnome.Shell.Extensions InstallRemoteExtension s "${EXTENSION_ID}"
     fi

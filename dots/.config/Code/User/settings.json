@@ -158,8 +158,10 @@
     ".env*": "toml"
   },
 
-  // Show number of selected lines
-  "selectline.displayFormat": "Selected %d Lines",
+  // Status bar
+  "todo.statistics.statusbar.enabled": false,
+  "git.enableStatusBarSync": false,
+  "debug.showInStatusBar": "never",
 
   // Other
   "terminal.integrated.enableMultiLinePasteWarning": "never",
