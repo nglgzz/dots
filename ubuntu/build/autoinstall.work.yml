@@ -36,7 +36,6 @@ autoinstall:
     - gnome-tweaks
     - nautilus-share
     - fonts-hack
-    - qmk
     - vlc
   snaps:
     - name: chromium
