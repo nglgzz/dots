@@ -1,7 +1,7 @@
 [user]
 	name = Angelo Gazzola
 	email = angelo@nglgzz.com
-  signingkey = ~/.ssh/git_signing
+  signingkey = ~/.ssh/github
 
 [alias]
 	ls = log --pretty=format:\"[%h]%d%Cblue%an%Creset:~$ %s %C(bold green)(%ar)%Creset\" --graph

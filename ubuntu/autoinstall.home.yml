@@ -8,4 +8,3 @@ autoinstall:
 
   packages:
     - picard
-    - rhythmbox

@@ -39,13 +39,13 @@ autoinstall:
     - git-delta
     - shellcheck
     - curl
+    - make
     - btop
     - htop
     - bat
     - gnome-tweaks
     - nautilus-share
     - fonts-hack
-    - qmk
     - vlc
 
   snaps:
@@ -54,12 +54,6 @@ autoinstall:
     - name: code
       classic: true
     - name: yq
-
-  late-commands:
-    - curtin in-target -- chsh -s /usr/bin/zsh
-    - curtin in-target -- sudo -u \#1000 chsh -s /usr/bin/zsh
-    - curtin in-target -- sudo -u \#1000 git clone https://github.com/nglgzz/dots/ ~/dots
-    - curtin in-target -- sudo -u \#1000 make -C ~/dots
 
   # Updates to installed packages before rebooting.
   updates: all

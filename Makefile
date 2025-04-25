@@ -11,7 +11,7 @@ HOME_FILES=$(shell find ${HOME_SRC} -mindepth 1 -maxdepth 1)
 CONFIG_FILES=$(shell find ${HOME_SRC}/${CONFIG_PATH} -mindepth 1 -maxdepth 1)
 CODE_FILES=$(shell find ${HOME_SRC}/${CODE_PATH} -mindepth 1 -maxdepth 1)
 
-all: links zsh-setup vscode-setup install-gnome-extensions load-gnome-settings install-node vim-setup
+all: links zsh-setup vscode-setup install-gnome-extensions load-gnome-settings vim-setup
 
 links: links-HOME links-CONFIG links-CODE
 
@@ -44,5 +44,3 @@ vim-setup:
 install-gnome-extensions:
 	./gnome-extensions-install.sh
 
-install-node:
-	nvm install --lts

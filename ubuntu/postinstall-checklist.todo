@@ -1,8 +1,3 @@
-cd ~/dots && make
-git remote set-url origin git@github.com:nglgzz/dots.git
-
-# Transfer SSH keys
-# Transfer GPG keys
 # Setup fingerprint login in Settings > System > Users
 # Add keyboard layouts
 #

@@ -2,6 +2,11 @@
 
 array=(https://extensions.gnome.org/extension/6099/paperwm/)
 
+# Disable conflicting and unnecessary extensions
+gnome-extensions disable ubuntu-dock@ubuntu.com
+gnome-extensions disable tiling-assistant@ubuntu.com
+gnome-extensions disable ding@rastersoft.com
+
 for i in "${array[@]}"; do
     EXTENSION_ID=$(curl -s "$i" | grep -oP 'data-uuid="\K[^"]+')
     VERSION_TAG=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=$EXTENSION_ID" | jq '.extensions[0] | .shell_version_map | map(.pk) | max')
@@ -13,8 +18,3 @@ for i in "${array[@]}"; do
     gnome-extensions enable "${EXTENSION_ID}"
     rm "${EXTENSION_ID}".zip
 done
-
-# Disable conflicting and unnecessary extensions
-gnome-extensions disable ubuntu-dock@ubuntu.com
-gnome-extensions disable tiling-assistant@ubuntu.com
-gnome-extensions disable ding@rastersoft.com
