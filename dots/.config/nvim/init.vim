@@ -5,6 +5,7 @@ call plug#begin("~/.cache/nvim/")
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'sbdchd/neoformat'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 call plug#end()
 
@@ -35,12 +36,6 @@ map <C-S> :w<CR>
 """""""""""""""""""""""""""""""""""
 " neoclide/coc.nvim
 source ~/.config/nvim/coc.vim
-
-
-"""""""""""""""""""""""""""""""""""
-" mattn/emmet-vim
-let g:user_emmet_mode='a'
-let g:user_emmet_expandabbr_key = '<C-E>'
 
 
 """""""""""""""""""""""""""""""""""

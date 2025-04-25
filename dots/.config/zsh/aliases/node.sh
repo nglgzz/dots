@@ -45,14 +45,14 @@ function yarn-audit-fix {
 function pnpm-run {
   pnpm_script=$(jq -r '.scripts | to_entries[] | "\(input_filename){}\(.key){} \(.value)"' **/package.json | column -ts {} | fzf)
 
-  script_package_json=$(awk '{ print $1 }' <<<$pnpm_script)
-  script_dir=$(dirname $script_package_json)
-  script_name=$(awk '{ print $2 }' <<<$pnpm_script)
+  script_package_json=$(awk '{ print $1 }' <<<"$pnpm_script")
+  script_dir=$(dirname "$script_package_json")
+  script_name=$(awk '{ print $2 }' <<<"$pnpm_script")
 
   echo "Running [$script_name] from [$script_dir]"
-  corepack pnpm run --dir $script_dir $script_name
+  corepack pnpm run --dir "$script_dir" "$script_name"
 }
 
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion

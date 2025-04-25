@@ -38,3 +38,16 @@ fi
 
 cd ~/dots
 make
+
+## Install NVM
+if [[ ! $(command -v nvm) ]]; then
+    latest_nvm_release=$(curl -Ls \
+        -H "Accept: application/vnd.github+json" \
+        https://api.github.com/repos/nvm-sh/nvm/releases/latest | jq -r '.tag_name')
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/"${latest_nvm_release}"/install.sh | bash
+    # shellcheck source=/dev/null
+    source "$HOME/.config/nvm/nvm.sh"
+fi
+
+# Install Node.js LTS
+nvm install --lts
