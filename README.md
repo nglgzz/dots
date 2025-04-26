@@ -1,11 +1,8 @@
 # Dots
 
-Here you can find most configuration files for my Arch environment.
+Here you can find most configuration files for my Ubuntu environment.
 
 ## Project Structure
-
-- [Arch](./arch/README.md) – Scripts to install this setup from scratch (also
-  contains a list of dependencies needed for this setup).
 
 - [Ubuntu](./ubuntu/README.md) – Autoinstall configuration and scripts to
   install the ubuntu setup.
@@ -18,9 +15,9 @@ Here you can find most configuration files for my Arch environment.
 - `make links` – Create symlinks for all configs. Where possible links
   are created from a directory rather than a file (eg. ~/.config/i3 instead of
   ~/.config/i3/config). **This command will overwrite existing configs**.
-- `make install-deps` – Install all dependencies found on
-  [pacman.list](./arch/pacman.list) and [aur.list](./arch/aur.list). Works on
-  Arch only and assumes pacaur is installed.
+- `make load-gnome-settings` – Load gnome configuration from [dconf.ini](./dots/dconf.ini).
+- `make save-gnome-settings` – Save current gnome configuration into [dconf.ini](./dots/dconf.ini).
+- `make zsh-setup` - Install zsh extensions.
 - `make vscode-setup` – Install all vscode extensions listed in
   [extensions.list](./dots/.config/Code/extensions.list)
 - `make vim-setup` – Install nvim extensions listed in
