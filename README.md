@@ -5,7 +5,11 @@ Here you can find most configuration files for my Ubuntu environment.
 ## Project Structure
 
 - [Ubuntu](./ubuntu/README.md) – Autoinstall configuration and scripts to
-  install the ubuntu setup.
+  install my Ubuntu setup.
+
+- [Arch](./arch/README.md) – Scripts to install the older setup based on Arch.
+  I'm not using these anymore, but keeping them around for posterity / future
+  reference.
 
 - [Dots](./dots/README.md) – Configuration, themes, and scripts that are part of
   my environment.
