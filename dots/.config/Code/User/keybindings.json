@@ -45,6 +45,11 @@
     "command": "editor.action.goToImplementation",
     "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
   },
+  {
+    "key": "ctrl+enter",
+    "command": "editor.action.insertLineAfter",
+    "when": "editorTextFocus && !editorReadonly"
+  },
   // Workbench tabs
   {
     "key": "ctrl+shift+o",

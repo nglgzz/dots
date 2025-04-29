@@ -4,7 +4,6 @@
 
   // Title bar
   "workbench.layoutControl.enabled": false,
-  "chat.commandCenter.enabled": false,
   "window.commandCenter": false,
 
   // Layout
