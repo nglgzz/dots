@@ -20,7 +20,7 @@ declare -A shell=(
 
   # Navigation
   [b]='popd'
-  [tmp]='cd ~/tmp'
+  [tmp]='cd ~/Downloads'
   [dots]='cd ~/dots'
   [..]='cd ..'
   [...]='cd ../..'

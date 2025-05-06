@@ -35,6 +35,7 @@ autoinstall:
     - htop
     - bat
     - gnome-tweaks
+    - gnome-shell-extensions
     - nautilus-share
     - fonts-hack
     - vlc
