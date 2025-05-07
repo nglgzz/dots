@@ -132,7 +132,6 @@
   "files.eol": "\n",
   "files.exclude": {
     "**/offline/**": true,
-    "**/build/**": true,
     "**/.git/**": true,
     "**/static/**": true,
     "**/.svelte-kit/**": true,
@@ -157,15 +156,33 @@
     ".env*": "toml"
   },
 
+  // Tasks & Debug
+  "task.autoDetect": "off",
+  "task.quickOpen.showAll": false,
+  "task.quickOpen.history": 0,
+
+  // Terminal
+  "terminal.integrated.shellIntegration.enabled": false,
+
   // Status bar
   "todo.statistics.statusbar.enabled": false,
   "git.enableStatusBarSync": false,
   "debug.showInStatusBar": "never",
 
-  // Other
-  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  // Copilot
+  "inlineChat.lineNaturalLanguageHint": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "chat.commandCenter.enabled": false,
 
   // Zen mode
   "gitlens.mode.active": "zen",
-  "githubPullRequests.fileListLayout": "flat"
+  "githubPullRequests.fileListLayout": "flat",
+
+  // Other
+  "terminal.integrated.enableMultiLinePasteWarning": "never"
 }

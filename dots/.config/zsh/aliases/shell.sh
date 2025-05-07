@@ -30,7 +30,7 @@ declare -A shell=(
   # Utils
   [copy]='xclip -selection clipboard'
   [paste]='xclip -out -selection clipboard'
-  [serve]='python -m http.server'
+  [serve]='python3 -m http.server'
   [free-port]=free_port
   [random-word]='sort -R /usr/share/dict/cracklib-small | head -1'
 )

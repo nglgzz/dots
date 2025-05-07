@@ -1,5 +1,6 @@
 declare -A git=(
   [g]='git'
+  [gno]='git restore --staged'
   [gs]='git status'
   [ga]='git add'
   [gd]='git diff'
