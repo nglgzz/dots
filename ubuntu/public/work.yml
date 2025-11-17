@@ -39,8 +39,9 @@ autoinstall:
     - nautilus-share
     - fonts-hack
     - vlc
+    - flatpak
   snaps:
-    - name: chromium
+    - name: brave
     - name: firefox
     - name: code
       classic: true
