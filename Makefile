@@ -30,10 +30,18 @@ zsh-setup:
 	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
 
 load-gnome-settings:
-	cat "${HOME_SRC}/dconf.ini" | dconf load /
+	cat "${HOME_SRC}/gnome.extensions.ini" | dconf load /org/gnome/shell/extensions/
+	cat "${HOME_SRC}/gnome.desktop.ini" | dconf load /org/gnome/desktop/
+	cat "${HOME_SRC}/gnome.plugins.ini" | dconf load /org/gnome/settings-daemon/plugins/
+	cat "${HOME_SRC}/gnome.ini" | dconf load /org/gnome/
+
 
 save-gnome-settings:
-	dconf dump / > "${HOME_SRC}/dconf.ini"
+	dconf dump /org/gnome/shell/extensions/ > "${HOME_SRC}/gnome.extensions.ini"
+	dconf dump /org/gnome/desktop/ > "${HOME_SRC}/gnome.desktop.ini"
+	dconf dump /org/gnome/settings-daemon/plugins/ > "${HOME_SRC}/gnome.plugins.ini"
+	dconf dump /org/gnome/ > "${HOME_SRC}/gnome.ini"
+
 
 vscode-setup:
 	@cat "${HOME_SRC}/${CODE_PATH}../extensions.list" | \

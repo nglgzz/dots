@@ -1,7 +1,7 @@
 declare -A shell=(
   # Commands
   [vim]=nvim
-  [cat]=batcat
+  [cat]=bat
   [_cat]='command cat'
   [e]='code .'
   [q]='exit'
