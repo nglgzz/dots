@@ -8,7 +8,9 @@
   {
     "context": "Editor",
     "bindings": {
-      "ctrl-enter": "editor::NewlineBelow"
+      "ctrl-enter": "editor::NewlineBelow",
+      "ctrl-k ctrl-u": "editor::ConvertToUpperCase",
+      "ctrl-k ctrl-l": "editor::ConvertToLowerCase"
     }
   }
 ]

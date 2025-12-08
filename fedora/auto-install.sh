@@ -33,14 +33,6 @@ if [[ ! -d "$HOME/dots" ]]; then
     gh repo clone nglgzz/dots
 fi
 
-# Install PaperWM
-if ! gnome-extensions list | grep paperwm.github.com; then
-    # https://extensions.gnome.org/extension/6099/paperwm/
-    echo "Install PaperWM"
-else
-    echo "Do not install PaperWM"
-fi
-
 # Install zed editor
 if ! which zed &>/dev/null; then
     curl -f https://zed.dev/install.sh | sh
