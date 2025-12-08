@@ -1,17 +1,54 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 
-# Packages installed from the Flathub remote.
-flatpak install \
-    com.brave.Browser \
-    com.synology.SynologyDrive \
-    io.podman_desktop.PodmanDesktop \
-    org.onlyoffice.desktopeditors
+# Install packages
+sudo dnf --assumeyes --quiet install \
+	make zsh neovim bat fzf yq btop \
+	gh git-delta \
+	gnome-tweaks gnome-extensions-app
+	# steam bottles source-foundry-hack-fonts
 
-# Packages installed from the Fedora remote.
-flatpak install fedora \
-    org.gnome.Extensions
+flatpak install --assumeyes \
+	com.usebottles.bottles \
+	com.brave.Browser \
+	org.telegram.desktop \
+	com.valvesoftware.Steam \
+	org.onlyoffice.desktopeditors \
+	com.synology.SynologyDrive \
+	org.videolan.VLC \
+    com.discordapp.Discord
 
-sudo dnf install \
-    zsh neovim bat btop fzf git-delta gh \
-    yq source-foundry-hack-fonts \
-    bottles steam gnome-tweaks podman \
+# Change default shell
+if [[ "$SHELL" != "/usr/bin/zsh" ]]; then
+    chsh -s /usr/bin/zsh
+    echo "Changed default shell to zsh"
+fi
+
+# Log into GitHub
+if ! gh auth status; then
+    gh auth login
+fi
+
+# Clone dots folder
+if [[ ! -d "$HOME/dots" ]]; then
+    gh repo clone nglgzz/dots
+fi
+
+# Install PaperWM
+if ! gnome-extensions list | grep paperwm.github.com; then
+    # https://extensions.gnome.org/extension/6099/paperwm/
+    echo "Install PaperWM"
+else
+    echo "Do not install PaperWM"
+fi
+
+# Install zed editor
+if ! which zed &>/dev/null; then
+    curl -f https://zed.dev/install.sh | sh
+fi
+
+make -C $HOME/dots \
+    links \
+    zsh-setup \
+    vim-setup \
+    load-gnome-settings \
+    install-gnome-extensions

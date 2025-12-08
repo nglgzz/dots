@@ -1,0 +1,21 @@
+{
+  "vim_mode": false,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light Soft",
+    "dark": "Tokyo Night"
+  },
+
+  "minimap": { "show": "never" },
+  "project_panel": { "hide_root": true },
+  "collaboration_panel": { "button": false },
+  "outline_panel": { "expand_outlines_with_depth": 1 },
+
+  "base_keymap": "VSCode",
+  "multi_cursor_modifier": "alt"
+}

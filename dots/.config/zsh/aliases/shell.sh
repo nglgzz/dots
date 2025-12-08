@@ -4,6 +4,7 @@ declare -A shell=(
   [cat]=bat
   [_cat]='command cat'
   [e]='code .'
+  [z]='zed .'
   [q]='exit'
   [l]='ls -ah --color=tty'
   [ll]='ls -lha --color=tty'

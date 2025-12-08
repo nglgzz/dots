@@ -6,6 +6,7 @@ HOME_PATH=
 
 CONFIG_PATH=.config/
 CODE_PATH=${CONFIG_PATH}Code/User/
+GNOME_PATH="$$HOME/dots/gnome"
 
 HOME_FILES=$(shell find ${HOME_SRC} -mindepth 1 -maxdepth 1)
 CONFIG_FILES=$(shell find ${HOME_SRC}/${CONFIG_PATH} -mindepth 1 -maxdepth 1)
@@ -30,17 +31,17 @@ zsh-setup:
 	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
 
 load-gnome-settings:
-	cat "${HOME_SRC}/gnome.extensions.ini" | dconf load /org/gnome/shell/extensions/
-	cat "${HOME_SRC}/gnome.desktop.ini" | dconf load /org/gnome/desktop/
-	cat "${HOME_SRC}/gnome.plugins.ini" | dconf load /org/gnome/settings-daemon/plugins/
-	cat "${HOME_SRC}/gnome.ini" | dconf load /org/gnome/
+	cat "${GNOME_PATH}/gnome.extensions.ini" | dconf load /org/gnome/shell/extensions/
+	cat "${GNOME_PATH}/gnome.desktop.ini" | dconf load /org/gnome/desktop/
+	cat "${GNOME_PATH}/gnome.plugins.ini" | dconf load /org/gnome/settings-daemon/plugins/
+	cat "${GNOME_PATH}/gnome.ini" | dconf load /org/gnome/
 
 
 save-gnome-settings:
-	dconf dump /org/gnome/shell/extensions/ > "${HOME_SRC}/gnome.extensions.ini"
-	dconf dump /org/gnome/desktop/ > "${HOME_SRC}/gnome.desktop.ini"
-	dconf dump /org/gnome/settings-daemon/plugins/ > "${HOME_SRC}/gnome.plugins.ini"
-	dconf dump /org/gnome/ > "${HOME_SRC}/gnome.ini"
+	dconf dump /org/gnome/shell/extensions/ > "${GNOME_PATH}/gnome.extensions.ini"
+	dconf dump /org/gnome/desktop/ > "${GNOME_PATH}/gnome.desktop.ini"
+	dconf dump /org/gnome/settings-daemon/plugins/ > "${GNOME_PATH}/gnome.plugins.ini"
+	dconf dump /org/gnome/ > "${GNOME_PATH}/gnome.ini"
 
 
 vscode-setup:
@@ -51,5 +52,4 @@ vim-setup:
 	nvim +PlugInstall +qall
 
 install-gnome-extensions:
-	./gnome-extensions-install.sh
-
+	${GNOME_PATH}/gnome-extensions-install.sh
