@@ -22,6 +22,7 @@ declare -A shell=(
   # Navigation
   [b]='popd'
   [tmp]='cd ~/Downloads'
+  [syn]='cd ~/Synced'
   [dots]='cd ~/dots'
   [..]='cd ..'
   [...]='cd ../..'

@@ -2,20 +2,28 @@
 
 # Install packages
 sudo dnf --assumeyes --quiet install \
-	make zsh neovim bat fzf yq btop \
-	gh git-delta \
-	gnome-tweaks gnome-extensions-app
-	# steam bottles source-foundry-hack-fonts
+    make zsh neovim bat fzf yq btop \
+    gh git-delta \
+    source-foundry-hack-fonts \
+    gnome-tweaks gnome-extensions-app \
+    kicad firefox \
+    podman-docker podman-compose
 
 flatpak install --assumeyes \
-	com.usebottles.bottles \
-	com.brave.Browser \
-	org.telegram.desktop \
-	com.valvesoftware.Steam \
-	org.onlyoffice.desktopeditors \
-	com.synology.SynologyDrive \
-	org.videolan.VLC \
-    com.discordapp.Discord
+    com.usebottles.bottles \
+    com.github.tchx84.Flatseal \
+    com.brave.Browser \
+    org.telegram.desktop \
+    com.valvesoftware.Steam \
+    org.onlyoffice.desktopeditors \
+    com.synology.SynologyDrive \
+    org.videolan.VLC \
+    com.discordapp.Discord \
+    md.obsidian.Obsidian \
+    org.telegram.desktop \
+    md.obsidian.Obsidian \
+    io.podman_desktop.PodmanDesktop \
+    com.prusa3d.PrusaSlicer
 
 # Change default shell
 if [[ "$SHELL" != "/usr/bin/zsh" ]]; then

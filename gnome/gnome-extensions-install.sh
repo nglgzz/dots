@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-array=(paperwm@paperwm.github.com)
+array=(paperwm@paperwm.github.com appindicatorsupport@rgcjonas.gmail.com)
 
 for extension_id in "${array[@]}"; do
     # Skip installing if the extension is already installed
