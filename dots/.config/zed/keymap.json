@@ -1,16 +1,17 @@
 [
   {
-    "context": "Workspace",
     "bindings": {
-      "ctrl-t": "workspace::ToggleBottomDock"
-    }
+      "ctrl-b": "workspace::ToggleLeftDock",
+      "ctrl-g": "workspace::ToggleBottomDock",
+      "ctrl-j": "workspace::ToggleRightDock",
+    },
   },
   {
     "context": "Editor",
     "bindings": {
       "ctrl-enter": "editor::NewlineBelow",
       "ctrl-k ctrl-u": "editor::ConvertToUpperCase",
-      "ctrl-k ctrl-l": "editor::ConvertToLowerCase"
-    }
-  }
+      "ctrl-k ctrl-l": "editor::ConvertToLowerCase",
+    },
+  },
 ]
