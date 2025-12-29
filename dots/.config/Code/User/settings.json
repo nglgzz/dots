@@ -96,7 +96,8 @@
   "[markdown]": {
     "editor.wordWrap": "off",
     "editor.wordWrapColumn": 80,
-    "editor.rulers": [80, 100]
+    "editor.rulers": [80, 100],
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[c][cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools",
@@ -112,6 +113,9 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.wordWrapColumn": 80,
     "editor.rulers": [80]
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // Emmet
@@ -158,12 +162,18 @@
     "markdown": false,
     "scminput": false
   },
-  "chat.commandCenter.enabled": false,
+  "workbench.editor.empty.hint": "hidden",
 
   // Zen mode
   "gitlens.mode.active": "zen",
   "githubPullRequests.fileListLayout": "flat",
 
   // Other
-  "terminal.integrated.enableMultiLinePasteWarning": "never"
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "debug.onTaskErrors": "abort",
+  "playwright.reuseBrowser": true,
+  "git.blame.editorDecoration.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "gitlens.plusFeatures.enabled": false
 }

@@ -8,3 +8,4 @@ autoinstall:
 
   packages:
     - picard
+    - flatpak
