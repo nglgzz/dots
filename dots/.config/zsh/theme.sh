@@ -68,6 +68,9 @@ setopt AUTO_CD
 # https://github.com/zsh-users/zsh-autosuggestions
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Enable search of command history with fzf
+eval "$(fzf --zsh)"
+
 ############################
 # HISTORY
 export HISTFILE=$ZSH_CACHE_DIR/zsh_history # Where to save history to disk

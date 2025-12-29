@@ -130,27 +130,8 @@
   // Files
   "files.trimTrailingWhitespace": true,
   "files.eol": "\n",
-  "files.exclude": {
-    "**/offline/**": true,
-    "**/.git/**": true,
-    "**/static/**": true,
-    "**/.svelte-kit/**": true,
-    "**/.firebase/**": true,
-    "**/out/**": true,
-    "**/node_modules/**": true,
-    "**/explore/**/*.svg": true,
-    "**/coverage/**": true,
-    "**/test-results/**": true,
-    "**/dist/**": true,
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true,
-    "**/.turbo": true,
-    "**/.pnpm-debug.log": true,
-    "**/tsconfig.tsbuildinfo": true,
-    "**/__pycache__": true
-  },
+
+  "explorer.excludeGitIgnore": true,
 
   "files.associations": {
     ".env*": "toml"
