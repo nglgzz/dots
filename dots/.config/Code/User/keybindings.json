@@ -77,5 +77,41 @@
     "key": "ctrl+enter",
     "command": "-github.copilot.generate",
     "when": "editorTextFocus && github.copilot.activated && !commentEditorFocused"
+  },
+  // Embedded (nRF)
+  {
+    "key": "f8",
+    "command": "workbench.action.tasks.runTask",
+    "args": "test"
+  },
+  {
+    "key": "f12",
+    "command": "workbench.action.tasks.runTask",
+    "args": "flash1"
+  },
+  {
+    "key": "f11",
+    "command": "workbench.action.tasks.runTask",
+    "args": "flash2"
+  },
+  {
+    "key": "f10",
+    "command": "workbench.action.tasks.runTask",
+    "args": "all"
+  },
+  {
+    "key": "f1",
+    "command": "workbench.action.tasks.runTask",
+    "args": "recover1"
+  },
+  {
+    "key": "f2",
+    "command": "workbench.action.tasks.runTask",
+    "args": "recover2"
+  },
+  {
+    "key": "f3",
+    "command": "workbench.action.tasks.runTask",
+    "args": "recover"
   }
 ]

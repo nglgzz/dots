@@ -14,7 +14,7 @@
   // Color Theme
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "Default Dark Modern",
-  "workbench.preferredLightColorTheme": "Quiet Light",
+  "workbench.preferredLightColorTheme": "Alt Catppuccin Latte",
 
   "workbench.colorCustomizations": {
     "[Default Dark Modern]": {
@@ -53,8 +53,8 @@
 
       "panel.background": "#202124",
       "editorRuler.foreground": "#20292D",
-      "scrollbar.shadow": "#00000000"
-    }
+      "scrollbar.shadow": "#00000000",
+    },
   },
 
   // Zen mode
@@ -70,7 +70,7 @@
   // Editor
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
   },
   "editor.suggestSelection": "first",
   "editor.inlineSuggest.enabled": true,
@@ -86,42 +86,42 @@
 
   "[typescript][javascript][json][jsonc][json5]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [80, 100, 120]
+    "editor.rulers": [80, 100, 120],
   },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker",
     "editor.wordWrapColumn": 80,
-    "editor.rulers": [80, 100]
+    "editor.rulers": [80, 100],
   },
   "[markdown]": {
     "editor.wordWrap": "off",
     "editor.wordWrapColumn": 80,
     "editor.rulers": [80, 100],
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[c][cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.wordWrapColumn": 80,
-    "editor.rulers": [80]
+    "editor.rulers": [80],
   },
   "[shellscript][ignore][dotenv][properties]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
     "editor.wordWrapColumn": 80,
-    "editor.rulers": [80, 100]
+    "editor.rulers": [80, 100],
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.wordWrapColumn": 80,
-    "editor.rulers": [80]
+    "editor.rulers": [80],
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // Emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
   },
 
   // Rewrap
@@ -138,7 +138,7 @@
   "explorer.excludeGitIgnore": true,
 
   "files.associations": {
-    ".env*": "toml"
+    ".env*": "toml",
   },
 
   // Tasks & Debug
@@ -160,7 +160,7 @@
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
   },
   "workbench.editor.empty.hint": "hidden",
 
@@ -175,5 +175,5 @@
   "playwright.reuseBrowser": true,
   "git.blame.editorDecoration.enabled": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "gitlens.plusFeatures.enabled": false
+  "gitlens.plusFeatures.enabled": false,
 }
