@@ -1,6 +1,6 @@
+source $ZDOTDIR/.private
 source $ZDOTDIR/theme.sh
 source $ZDOTDIR/aliases.sh
-source $ZDOTDIR/.private
 
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.local/bin"

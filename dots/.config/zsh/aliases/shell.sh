@@ -30,11 +30,11 @@ declare -A shell=(
   [.....]='cd ../../../..'
 
   # Utils
-  [copy]='xclip -selection clipboard'
-  [paste]='xclip -out -selection clipboard'
+  [copy]='wl-copy'
+  [paste]='wl-paste'
   [serve]='python3 -m http.server'
   [freeport]=free_port
-  [randomword]='sort -R /usr/share/dict/cracklib-small | head -1'
+  [randomword]='sort -R /usr/share/dict/words | head -1'
 )
 
 function free_port() {

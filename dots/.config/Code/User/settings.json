@@ -84,14 +84,9 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
 
-  "[typescript][javascript][json][jsonc][json5]": {
+  "[typescript][javascript][json][jsonc][json5][html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.rulers": [80, 100, 120],
-  },
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
-    "editor.wordWrapColumn": 80,
-    "editor.rulers": [80, 100],
   },
   "[markdown]": {
     "editor.wordWrap": "off",
@@ -99,23 +94,25 @@
     "editor.rulers": [80, 100],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [80, 100],
+  },
+  "[shellscript][ignore][dotenv][properties]": {
+    "editor.defaultFormatter": "mkhl.shfmt",
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [80, 100],
+  },
   "[c][cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.wordWrapColumn": 80,
     "editor.rulers": [80],
   },
-  "[shellscript][ignore][dotenv][properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format",
-    "editor.wordWrapColumn": 80,
-    "editor.rulers": [80, 100],
-  },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.wordWrapColumn": 80,
     "editor.rulers": [80],
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // Emmet
@@ -130,13 +127,11 @@
   // Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.excludeGitIgnore": true,
 
   // Files
   "files.trimTrailingWhitespace": true,
   "files.eol": "\n",
-
-  "explorer.excludeGitIgnore": true,
-
   "files.associations": {
     ".env*": "toml",
   },
@@ -164,16 +159,17 @@
   },
   "workbench.editor.empty.hint": "hidden",
 
-  // Zen mode
-  "gitlens.mode.active": "zen",
-  "githubPullRequests.fileListLayout": "flat",
-
   // Other
   "terminal.integrated.enableMultiLinePasteWarning": "never",
-  "cmake.showConfigureWithDebuggerNotification": false,
   "debug.onTaskErrors": "abort",
-  "playwright.reuseBrowser": true,
   "git.blame.editorDecoration.enabled": false,
   "diffEditor.ignoreTrimWhitespace": false,
+  "window.newWindowProfile": "Default",
+
+  // Extensions
+  "gitlens.mode.active": "zen",
+  "githubPullRequests.fileListLayout": "flat",
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "playwright.reuseBrowser": true,
   "gitlens.plusFeatures.enabled": false,
 }

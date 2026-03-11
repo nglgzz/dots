@@ -1,0 +1,10 @@
+# sudo rpmkeys --import http://labs.picotech.com/repomd.xml.key
+
+[picoscope]
+name=Picoscope
+baseurl=https://labs.picotech.com/picoscope7/rpm/
+enabled=1
+autorefresh=1
+type=rpm-md
+gpgcheck=1
+gpgkey=gpgkey=https://labs.picotech.com/picoscope7/rpm/repodata/repomd.xml.asc
