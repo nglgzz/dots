@@ -1,4 +1,4 @@
-# sudo rpmkeys --import https://packages.microsoft.com/keys/microsoft.asc
+# /etc/yum.repos.d/
 
 [code]
 name=Visual Studio Code

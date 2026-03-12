@@ -1,4 +1,4 @@
-# sudo rpmkeys --import http://labs.picotech.com/repomd.xml.key
+# /etc/yum.repos.d/
 
 [picoscope]
 name=Picoscope
