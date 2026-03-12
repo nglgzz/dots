@@ -114,6 +114,9 @@
     "editor.wordWrapColumn": 80,
     "editor.rulers": [80],
   },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss",
+  },
 
   // Emmet
   "emmet.triggerExpansionOnTab": true,
@@ -145,7 +148,6 @@
   "terminal.integrated.shellIntegration.enabled": false,
 
   // Status bar
-  "todo.statistics.statusbar.enabled": false,
   "git.enableStatusBarSync": false,
   "debug.showInStatusBar": "never",
 
@@ -158,6 +160,8 @@
     "scminput": false,
   },
   "workbench.editor.empty.hint": "hidden",
+  "chat.commandCenter.enabled": false,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
 
   // Other
   "terminal.integrated.enableMultiLinePasteWarning": "never",
@@ -172,4 +176,6 @@
   "cmake.showConfigureWithDebuggerNotification": false,
   "playwright.reuseBrowser": true,
   "gitlens.plusFeatures.enabled": false,
+  "todo.statistics.statusbar.enabled": false,
+  "svelte.enable-ts-plugin": true,
 }

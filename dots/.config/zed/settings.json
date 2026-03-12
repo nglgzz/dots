@@ -1,23 +1,27 @@
 {
+  "buffer_font_fallbacks": ["Font Awesome 6 Free Solid"],
+  "buffer_font_family": "Hack",
+  "file_types": { "toml": [".env*"] },
+  "icon_theme": "Zed (Default)",
+
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
 
   // Theme
   "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark",
+    "mode": "dark",
+    "light": "Gruvbox Light Soft",
+    "dark": "One Dark"
   },
-  "buffer_font_family": "Hack",
 
   // Panels
   "minimap": { "show": "never" },
+  "project_panel": { "hide_gitignore": true, "hide_root": true },
   "collaboration_panel": { "button": false },
   "search": { "button": false },
   "outline_panel": { "expand_outlines_with_depth": 1 },
-  "project_panel": { "hide_gitignore": true, "hide_root": true },
 
   // Editor
   "git": { "inline_blame": { "enabled": false } },
@@ -27,4 +31,13 @@
   "vim_mode": false,
   "base_keymap": "VSCode",
   "multi_cursor_modifier": "alt",
+
+  // Agent
+  "agent": {
+    "default_model": {
+      "provider": "ollama",
+      "model": "qwen3-coder:30b"
+    },
+    "model_parameters": []
+  }
 }
