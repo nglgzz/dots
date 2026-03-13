@@ -53,3 +53,6 @@ vim-setup:
 
 install-gnome-extensions:
 	${GNOME_PATH}/gnome-extensions-install.sh
+
+config:
+	@$$HOME/dots/fedora/config.sh

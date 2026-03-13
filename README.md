@@ -18,6 +18,8 @@ future reference.
 
 ## Commands
 
+- `make config` - Runs the Fedora configuration script, runs the other targets
+  below depending on the choices made in the dialog.
 - `make links` – Create symlinks for all configs. Where possible links
   are created from a directory rather than a file (eg. ~/.config/i3 instead of
   ~/.config/i3/config). **This command will overwrite existing configs**.
