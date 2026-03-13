@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/bin/bash -e
 
 # shellcheck source=/dev/null
 source "$(dirname "$0")/install_packages.sh"
