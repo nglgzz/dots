@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eux
 
 current_dir=$(dirname "$0")
 

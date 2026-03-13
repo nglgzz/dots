@@ -1,0 +1,56 @@
+groups:
+  home:
+    description: "Social, gaming, home, bottles"
+    dnf: []
+    flatpak:
+      - com.valvesoftware.Steam
+      - org.telegram.desktop
+      - com.synology.SynologyDrive
+      - com.discordapp.Discord
+      - md.obsidian.Obsidian
+      - com.usebottles.bottles
+
+  devtools:
+    description: "Docker, Golang, nvm, VSCode"
+    dnf:
+      - golang
+      - docker-cli
+      - docker-compose
+    flatpak:
+      - io.podman_desktop.PodmanDesktop
+    extras:
+      - vscode
+      - zed
+      - nvm
+
+  embedded:
+    description: "Embedded development tools"
+    dnf:
+      - kicad
+      - arm-none-eabi-gcc-cs
+      - arm-none-eabi-newlib
+      - cmake
+      - clang20
+      - clang-tools-extra
+      - gdb
+      - openocd
+      - wireshark
+    flatpak:
+      - com.prusa3d.PrusaSlicer
+    extras:
+      - picoscope
+
+  cockpit:
+    description: "Cockpit web UI addons"
+    dnf:
+      - cockpit-packagekit
+      - cockpit-files
+    flatpak: []
+
+  _distrobox:
+    description: "Distrobox container management"
+    dnf:
+      - distrobox
+    flatpak:
+      # Frontend for distrobox
+      - com.ranfdev.DistroShelf
