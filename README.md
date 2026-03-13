@@ -1,47 +1,31 @@
 # Dots
 
-Here you can find most configuration files for my Ubuntu environment.
+Here you can find most configuration files for my Linux environment.
 
 ## Project Structure
 
-- [Ubuntu](./ubuntu/README.md) – Autoinstall configuration and scripts to
-  install my Ubuntu setup.
-
-- [Arch](./arch/README.md) – Scripts to install the older setup based on Arch.
-  I'm not using these anymore, but keeping them around for posterity / future
-  reference.
-
-- [Dots](./dots/README.md) – Configuration, themes, and scripts that are part of
+- [Fedora](./fedora/README.md) - Scripts to setup my configuration on a fresh
+  install of Fedora.
+- [Dots](./dots/README.md) – Configuration, scripts and aliases that are part of
   my environment.
+
+The folders below are no longer in use, but I'm keeping them around for
+future reference.
+
+- [Ubuntu](./ubuntu/README.md) – Auto-install configuration and scripts to
+  configure a fresh install of ubuntu.
+- [Arch](./arch/README.md) – Scripts to install and configure Arch.
 
 ## Commands
 
 - `make links` – Create symlinks for all configs. Where possible links
   are created from a directory rather than a file (eg. ~/.config/i3 instead of
   ~/.config/i3/config). **This command will overwrite existing configs**.
-- `make load-gnome-settings` – Load gnome configuration from [dconf.ini](./dots/dconf.ini).
-- `make save-gnome-settings` – Save current gnome configuration into [dconf.ini](./dots/dconf.ini).
+- `make load-gnome-settings` – Load gnome configuration from the [gnome](./gnome) directory.
+- `make save-gnome-settings` – Save current gnome configuration into the [gnome](./gnome) directory.
 - `make zsh-setup` - Install zsh extensions.
 - `make vscode-setup` – Install all vscode extensions listed in
   [extensions.list](./dots/.config/Code/extensions.list)
 - `make vim-setup` – Install nvim extensions listed in
   [init.vim](./dots/.config/nvim/init.vim)
 - `make` – All of the above.
-
-## Pics
-
-**Clean**
-
-![Clean](https://i.imgur.com/1JZ0CTK.png)
-
-**Rofi**
-
-![Rofi](https://i.imgur.com/7dxS8Xq.png)
-
-**Screenfetch**
-
-![Screenfetch](https://i.imgur.com/SQCw0Yl.png)
-
-**Terminal + VS Code**
-
-![Terminal + VS Code](https://i.imgur.com/I6LkSPl.png)
