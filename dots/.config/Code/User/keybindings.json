@@ -1,117 +1,130 @@
 [
   {
     "key": "ctrl+k ctrl+p",
-    "command": "workbench.profiles.actions.switchProfile"
+    "command": "workbench.profiles.actions.switchProfile",
   },
   {
     "key": "ctrl+shift+c",
     "command": "gitlens.copyRemoteFileUrlToClipboard",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus",
   },
   // Text transform
   {
     "key": "ctrl+k ctrl+u",
     "command": "editor.action.transformToUppercase",
-    "when": "editorTextFocus && !editorReadonly"
+    "when": "editorTextFocus && !editorReadonly",
   },
   {
     "key": "ctrl+k ctrl+l",
     "command": "editor.action.transformToLowercase",
-    "when": "editorTextFocus && !editorReadonly"
+    "when": "editorTextFocus && !editorReadonly",
   },
   {
     "key": "ctrl+shift+/",
     "command": "editor.action.blockComment",
-    "when": "editorTextFocus && !editorReadonly"
+    "when": "editorTextFocus && !editorReadonly",
   },
   // Code Navigation
   {
     "key": "ctrl+g",
     "command": "cursorPageUp",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus",
   },
   {
     "key": "ctrl+shift+g",
     "command": "cursorPageDown",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus",
   },
   {
     "key": "ctrl+k ctrl+n",
     "command": "editor.action.goToDeclaration",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus",
   },
   {
     "key": "ctrl+r",
     "command": "editor.action.goToImplementation",
-    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor",
   },
   // Workbench tabs
   {
     "key": "ctrl+shift+o",
-    "command": "workbench.action.files.openFolder"
+    "command": "workbench.action.files.openFolder",
   },
   {
     "key": "ctrl+k ctrl+b",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
   },
   {
     "key": "ctrl+shift+r",
     "command": "references-view.findReferences",
-    "when": "editorHasReferenceProvider"
+    "when": "editorHasReferenceProvider",
   },
   // Focus
   {
     "key": "ctrl+t",
-    "command": "workbench.action.terminal.focus"
+    "command": "workbench.action.terminal.focus",
   },
   {
     "key": "ctrl+t",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "terminalFocus"
+    "when": "terminalFocus",
   },
   {
     "key": "ctrl+r",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "command": "workbench.action.terminal.toggleTerminal",
   },
   {
     "key": "ctrl+enter",
     "command": "-github.copilot.generate",
-    "when": "editorTextFocus && github.copilot.activated && !commentEditorFocused"
+    "when": "editorTextFocus && github.copilot.activated && !commentEditorFocused",
   },
   // Embedded (nRF)
   {
     "key": "f8",
     "command": "workbench.action.tasks.runTask",
-    "args": "test"
+    "args": "test",
   },
   {
     "key": "f12",
     "command": "workbench.action.tasks.runTask",
-    "args": "flash1"
+    "args": "flash1",
   },
   {
     "key": "f11",
     "command": "workbench.action.tasks.runTask",
-    "args": "flash2"
+    "args": "flash2",
   },
   {
     "key": "f10",
     "command": "workbench.action.tasks.runTask",
-    "args": "all"
+    "args": "all",
   },
   {
     "key": "f1",
     "command": "workbench.action.tasks.runTask",
-    "args": "recover1"
+    "args": "recover1",
   },
   {
     "key": "f2",
     "command": "workbench.action.tasks.runTask",
-    "args": "recover2"
+    "args": "recover2",
   },
   {
     "key": "f3",
     "command": "workbench.action.tasks.runTask",
-    "args": "recover"
-  }
+    "args": "recover",
+  },
+  // OTHER
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.toggleAuxiliaryBar",
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "-workbench.action.toggleAuxiliaryBar",
+  },
+  {
+    "key": "ctrl+g",
+    "command": "workbench.action.gotoSymbol",
+  },
 ]
