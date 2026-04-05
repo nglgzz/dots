@@ -198,8 +198,8 @@ function mon-log() {
         end
       end
     '
-    # To find out more error codes:
-    #   cat /usr/include/asm-generic/errno.h
+  # To find out more error codes:
+  #   cat /usr/include/asm-generic/errno.h
 }
 
 # Usage:
@@ -216,4 +216,19 @@ mon-dev() {
 
 dmesg-usb() {
   sudo dmesg --notime -wd | grep --color=always usb
+}
+
+# Projects navigation
+function pcd() {
+  if [[ -z "$1" ]]; then
+    source <(echo "cd $PROJECTS_HOME")
+    return
+  fi
+
+  local project_path=$(project-find "$1")
+  if [[ -d "$project_path" ]]; then
+    source <(echo "cd $project_path")
+  else
+    echo "project not found: $1"
+  fi
 }
