@@ -4,6 +4,7 @@ declare -A docker=(
   [dlog]='docker logs $(dfind)'
   [dkill]='docker kill $(dfind)'
   [dsh]='docker exec -it $(dfind) /bin/bash'
+  [dshz]='docker exec -it $(dfind) /bin/zsh'
   [drmi]='docker rmi $(paste | awk '\''{print $3}'\'')'
   [dfind]='docker ps | tail -n +2 | fzf | awk '\''{print $1}'\'''
   [dvol]='docker-volume'

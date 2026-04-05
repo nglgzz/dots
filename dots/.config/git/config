@@ -13,10 +13,10 @@
   pager=LESS=-R delta "$(case "$(gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null)" in *"default"*) echo "--light" ;; *) echo "--dark" ;; esac)"
   excludesfile = ~/.config/git/gitignore_global
 
+# git-delta styling
 [delta]
   navigate = true
   features = unobtrusive-line-numbers decorations
-
 [delta "unobtrusive-line-numbers"]
     line-numbers = true
     line-numbers-minus-style = "#555555"
@@ -24,36 +24,35 @@
     line-numbers-plus-style = "#555555"
     line-numbers-left-format = "{nm:>3} "
     line-numbers-right-format = "" # "{np:>3} "
-
 [delta "decorations"]
     file-style = bold yellow ul
     file-decoration-style = ul "#555555"
     hunk-header-decoration-style = none
-
 [interactive]
   diffFilter = delta --color-only
 
+# commit signing
 [commit]
 	gpgsign = true
-
 [gpg]
   format = ssh
 
+# Push / pull / rebase strategy
 [push]
   autoSetupRemote = true
   default = current
-
 [pull]
   ff = only
-
-[includeIf "gitdir:~/projects/neo4j/"]
-  path = ~/.config/git/config-forks
-
 [rerere]
 	enabled = true
+
+# enforce SSH auth for projects and dots
+[includeIf "gitdir:~/projects/"]
+  path = ~/.config/git/config-ssh
+[includeIf "gitdir:~/dots/.git"]
+  path = ~/.config/git/config-ssh
+
 [branch]
 	sort = -committerdate
 [init]
 	defaultBranch = main
-[url "git@github.com:"]
-	insteadOf = https://github.com/

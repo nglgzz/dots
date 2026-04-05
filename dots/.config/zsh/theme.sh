@@ -3,7 +3,7 @@
 # Set up the prompt (with git branch name)
 autoload -U colors && colors
 setopt PROMPT_SUBST
-PROMPT='%2~ $(git_prompt)»%b '
+PROMPT='%B%F{#00A000}[%n]%b%f %2~ $(git_prompt)»%b '
 
 function git_prompt() {
   local ref
