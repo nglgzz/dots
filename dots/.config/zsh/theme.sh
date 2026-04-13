@@ -4,6 +4,7 @@
 autoload -U colors && colors
 setopt PROMPT_SUBST
 PROMPT='%B%F{#00A000}[%n]%b%f %2~ $(git_prompt)»%b '
+RPROMPT='%F{#666}[exit $?]%f'
 
 function git_prompt() {
   local ref

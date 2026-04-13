@@ -10,6 +10,10 @@ declare -A docker=(
   [dvol]='docker-volume'
   [dvolx]='docker-volume-x11'
   [drun]='docker run --rm -it'
+
+  [pfind]='podman ps --noheading | fzf | awk '\''{print $1} '\'''
+  [psh]='podman exec -it $(pfind) /bin/bash'
+  [px]='podman-exec'
 )
 
 # Runs a bash shell from the specified image (node if none is specified)
@@ -65,4 +69,8 @@ function docker-volume-x11-non-root() {
     --workdir "$(pwd)" \
     "${1:-ubuntu}" \
     /bin/sh -c "$command" # eval $(dbus-launch --sh-syntax)
+}
+
+function podman-exec() {
+  podman exec -it $(pfind) ${1:-/bin/zsh}
 }
