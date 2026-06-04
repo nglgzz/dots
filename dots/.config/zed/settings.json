@@ -1,19 +1,30 @@
 {
+  "language_models": {
+    "lmstudio": {
+      "api_url": "http://localhost:1234/api/v1",
+    },
+  },
+  "agent_servers": {
+    "opencode": {
+      "type": "registry",
+    },
+  },
+
   "buffer_font_fallbacks": ["Font Awesome 6 Free Solid"],
   "buffer_font_family": "Hack",
-  "file_types": { "toml": [".env*"] },
+  "file_types": { "toml": [".env*", ".env*"] },
   "icon_theme": "Zed (Default)",
 
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
 
   // Theme
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light Soft",
-    "dark": "One Dark"
+    "dark": "Ayu Dark",
   },
 
   // Panels
@@ -36,8 +47,8 @@
   "agent": {
     "default_model": {
       "provider": "ollama",
-      "model": "qwen3-coder:30b"
+      "model": "qwen3-coder:30b",
     },
-    "model_parameters": []
-  }
+    "model_parameters": [],
+  },
 }

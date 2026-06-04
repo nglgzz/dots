@@ -1,8 +1,9 @@
 [
   {
     "bindings": {
+      "ctrl-shift-b": "task::Spawn",
       "ctrl-b": "workspace::ToggleLeftDock",
-      "ctrl-g": "workspace::ToggleBottomDock",
+      "ctrl-r": "workspace::ToggleBottomDock",
       "ctrl-j": "workspace::ToggleRightDock",
     },
   },
@@ -12,6 +13,13 @@
       "ctrl-enter": "editor::NewlineBelow",
       "ctrl-k ctrl-u": "editor::ConvertToUpperCase",
       "ctrl-k ctrl-l": "editor::ConvertToLowerCase",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-shift-b": "outline_panel::ToggleFocus",
+      "alt-shift-t": "task::Spawn",
     },
   },
 ]

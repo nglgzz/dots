@@ -8,6 +8,11 @@
     "command": "gitlens.copyRemoteFileUrlToClipboard",
     "when": "editorTextFocus",
   },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.tasks.build",
+    "when": "taskCommandsRegistered",
+  },
   // Text transform
   {
     "key": "ctrl+k ctrl+u",
@@ -20,21 +25,17 @@
     "when": "editorTextFocus && !editorReadonly",
   },
   {
+    "key": "ctrl+/",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly",
+  },
+
+  {
     "key": "ctrl+shift+/",
     "command": "editor.action.blockComment",
     "when": "editorTextFocus && !editorReadonly",
   },
   // Code Navigation
-  {
-    "key": "ctrl+g",
-    "command": "cursorPageUp",
-    "when": "editorTextFocus",
-  },
-  {
-    "key": "ctrl+shift+g",
-    "command": "cursorPageDown",
-    "when": "editorTextFocus",
-  },
   {
     "key": "ctrl+k ctrl+n",
     "command": "editor.action.goToDeclaration",
@@ -60,15 +61,6 @@
     "when": "editorHasReferenceProvider",
   },
   // Focus
-  {
-    "key": "ctrl+t",
-    "command": "workbench.action.terminal.focus",
-  },
-  {
-    "key": "ctrl+t",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "terminalFocus",
-  },
   {
     "key": "ctrl+r",
     "command": "workbench.action.terminal.toggleTerminal",

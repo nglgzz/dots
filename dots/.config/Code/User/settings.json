@@ -117,6 +117,10 @@
   "[tailwindcss]": {
     "editor.defaultFormatter": "bradlc.vscode-tailwindcss",
   },
+  "[caddyfile]": {
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": false,
+  },
 
   // Emmet
   "emmet.triggerExpansionOnTab": true,
@@ -130,7 +134,7 @@
   // Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "explorer.excludeGitIgnore": true,
+  // "explorer.excludeGitIgnore": true,
 
   // Files
   "files.trimTrailingWhitespace": true,
@@ -163,19 +167,34 @@
   "chat.commandCenter.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
 
+  // Rust
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "files.readonlyInclude": {
+    "**/.cargo/registry/src/**/*.rs": true,
+    "**/.cargo/git/checkouts/**/*.rs": true,
+    "**/lib/rustlib/src/rust/library/**/*.rs": true,
+  },
+
+  // Ansible
+  "ansible.lightspeed.enabled": false,
+  "ansible.lightspeed.suggestions.enabled": false,
+  "[ansible]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+  },
+
+  // Extensions
+  "gitlens.mode.active": "zen",
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "playwright.reuseBrowser": true,
+  "gitlens.plusFeatures.enabled": false,
+  "todo.statistics.statusbar.enabled": false,
+  "extensions.ignoreRecommendations": true,
+
   // Other
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "debug.onTaskErrors": "abort",
   "git.blame.editorDecoration.enabled": false,
   "diffEditor.ignoreTrimWhitespace": false,
   "window.newWindowProfile": "Default",
-
-  // Extensions
-  "gitlens.mode.active": "zen",
-  "githubPullRequests.fileListLayout": "flat",
-  "cmake.showConfigureWithDebuggerNotification": false,
-  "playwright.reuseBrowser": true,
-  "gitlens.plusFeatures.enabled": false,
-  "todo.statistics.statusbar.enabled": false,
-  "svelte.enable-ts-plugin": true,
 }
