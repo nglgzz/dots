@@ -11,6 +11,7 @@ declare -A shell=(
   [watch]='watch --color -n1'
   [tree]='tree -C'
   [treed]='tree -C -d -L 3'
+  [open]='xdg-open'
 
   # Configs
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
