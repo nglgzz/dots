@@ -4,7 +4,7 @@
 autoload -U colors && colors
 setopt PROMPT_SUBST
 PROMPT='%B%F{#00A000}[%n]%b%f %2~ $(git_prompt)»%b '
-RPROMPT='%F{#666}[exit $?]%f'
+RPROMPT='$(parse_git_origin_sync)%F{#666}[exit $?]%f'
 
 function git_prompt() {
   local ref
@@ -34,12 +34,34 @@ function parse_git_dirty() {
       FLAGS+="--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}"
       ;;
     esac
-    STATUS=$(command git status ${FLAGS} 2>/dev/null | tail -n1)
+    STATUS=$(command git status "${FLAGS}" 2>/dev/null | tail -n1)
   fi
   if [[ -n $STATUS ]]; then
     echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
   else
     echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
+  fi
+}
+
+function parse_git_origin_sync() {
+  local branch
+  branch=$(command git symbolic-ref --short HEAD 2>/dev/null) || return 0
+  local upstream="origin/$branch"
+  command git rev-parse "$upstream" >/dev/null 2>&1 || return 0
+  local count
+  count=$(command git rev-list --left-right --count "HEAD...$upstream" 2>/dev/null) || return 0
+
+  local ahead behind
+  read -r ahead behind <<<"$count"
+
+  if [[ "$ahead" -gt 0 && "$behind" -gt 0 ]]; then
+    echo "%{$fg[yellow]%}[● origin]%{$reset_color%}"
+  elif [[ "$ahead" -gt 0 ]]; then
+    echo "%{$fg[yellow]%}[⇉ origin]%{$reset_color%}"
+  elif [[ "$behind" -gt 0 ]]; then
+    echo "%{$fg[red]%}[⇇ origin]%{$reset_color%}"
+  else
+    echo "%{$fg[green]%}[✔ origin]%{$reset_color%}"
   fi
 }
 
@@ -67,7 +89,7 @@ autoload -Uz compinit && compinit
 setopt AUTO_CD
 
 # https://github.com/zsh-users/zsh-autosuggestions
-source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$ZDOTDIR"/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Enable search of command history with fzf
 eval "$(fzf --zsh)"
@@ -99,7 +121,7 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 
 ############################
 # BINDINGS
-export WORDCHARS=${WORDCHARS/\/}
+export WORDCHARS=${WORDCHARS/\//}
 
 bindkey -e
 bindkey "^H" backward-kill-word
