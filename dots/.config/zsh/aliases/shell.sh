@@ -8,6 +8,7 @@ declare -A shell=(
   [q]='exit'
   [l]='ls -ah --color=tty'
   [ll]='ls -lha --color=tty'
+  [llz]='ls -lhaZ --color=tty'
   [watch]='watch --color -n1'
   [tree]='tree -C'
   [treed]='tree -C -d -L 3'
@@ -15,9 +16,7 @@ declare -A shell=(
 
   # Configs
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
-  [ale]='cd $ZDOTDIR/aliases && nvim $(fzf) && source $ZDOTDIR/.zshrc && cd -'
   [zource]='source $ZDOTDIR/.zshrc'
-  [i3edit]='nvim $XDG_CONFIG_HOME/i3/config'
   [codex]='code --list-extensions'
 
   # Navigation
@@ -226,7 +225,7 @@ function pcd() {
     return
   fi
 
-  local project_path=$(project-find "$1")
+  local project_path=$(bfs "$PROJECTS_HOME" -type d | rg "$1" | head -n1)
   if [[ -d "$project_path" ]]; then
     source <(echo "cd $project_path")
   else

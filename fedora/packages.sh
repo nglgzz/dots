@@ -3,8 +3,10 @@
 packages_yml="$(dirname "$0")/packages.yml"
 
 function install_base_packages() {
+  # bfs (breadth first search version of find)
+  # is used for projects search.
 	sudo dnf --assumeyes install \
-		make zsh neovim bat fzf yq btop \
+		make zsh neovim bat fzf yq btop bfs \
 		dialog shfmt \
 		gh git-delta \
 		source-foundry-hack-fonts \
