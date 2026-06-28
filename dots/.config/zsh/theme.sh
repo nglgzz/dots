@@ -8,11 +8,9 @@ RPROMPT='$(parse_git_origin_sync)%F{#666}[exit $?]%f'
 
 function git_prompt() {
   local ref
-  if [[ "$(command git config --get zsh.hide-status 2>/dev/null)" != "1" ]]; then
-    ref=$(command git symbolic-ref HEAD 2>/dev/null) ||
-      ref=$(command git rev-parse --short HEAD 2>/dev/null) || return 0
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-  fi
+  ref=$(command git symbolic-ref HEAD 2>/dev/null) ||
+    ref=$(command git rev-parse --short HEAD 2>/dev/null) || return 0
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 # Checks if working tree is dirty
@@ -20,22 +18,20 @@ function parse_git_dirty() {
   local STATUS
   local -a FLAGS
   FLAGS=('--porcelain')
-  if [[ "$(command git config --get zsh.hide-dirty)" != "1" ]]; then
-    if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
-      FLAGS+='--untracked-files=no'
-    fi
-    case "$GIT_STATUS_IGNORE_SUBMODULES" in
-    git)
-      # let git decide (this respects per-repo config in .gitmodules)
-      ;;
-    *)
-      # if unset: ignore dirty submodules
-      # other values are passed to --ignore-submodules
-      FLAGS+="--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}"
-      ;;
-    esac
-    STATUS=$(command git status "${FLAGS}" 2>/dev/null | tail -n1)
+  if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
+    FLAGS+='--untracked-files=no'
   fi
+  case "$GIT_STATUS_IGNORE_SUBMODULES" in
+  git)
+    # let git decide (this respects per-repo config in .gitmodules)
+    ;;
+  *)
+    # if unset: ignore dirty submodules
+    # other values are passed to --ignore-submodules
+    FLAGS+="--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}"
+    ;;
+  esac
+  STATUS=$(command git status ${FLAGS} 2>/dev/null | tail -n1)
   if [[ -n $STATUS ]]; then
     echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
   else
@@ -59,7 +55,7 @@ function parse_git_origin_sync() {
   elif [[ "$ahead" -gt 0 ]]; then
     echo "%{$fg[yellow]%}[⇉ origin]%{$reset_color%}"
   elif [[ "$behind" -gt 0 ]]; then
-    echo "%{$fg[red]%}[⇇ origin]%{$reset_color%}"
+    echo "%{$fg_bold[red]%}[⇇ origin]%{$reset_color%}"
   else
     echo "%{$fg[green]%}[✔ origin]%{$reset_color%}"
   fi
