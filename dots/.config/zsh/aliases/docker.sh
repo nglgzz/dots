@@ -1,19 +1,19 @@
 declare -A docker=(
-  [d]='docker'
-  [db]='docker build . -t'
-  [dlog]='docker logs $(dfind)'
-  [dkill]='docker kill $(dfind)'
-  [dsh]='docker exec -it $(dfind) /bin/bash'
-  [dshz]='docker exec -it $(dfind) /bin/zsh'
-  [drmi]='docker rmi $(paste | awk '\''{print $3}'\'')'
-  [dfind]='docker ps | tail -n +2 | fzf | awk '\''{print $1}'\'''
-  [dvol]='docker-volume'
-  [dvolx]='docker-volume-x11'
-  [drun]='docker run --rm -it'
+  [d]='podman'
+  [dc]='podman-compose'
 
-  [pfind]='podman ps --noheading | fzf | awk '\''{print $1} '\'''
-  [psh]='podman exec -it $(pfind) /bin/bash'
-  [px]='podman-exec'
+  # Keep aliases the same, but switch between docker and podman.
+  [d-docker]='alias d=docker && alias dc='\''docker compose'\'''
+  [d-podman]='alias d=podman && alias dc=podman-compose'
+
+  [drun]='d run --rm -it'
+  [dvol]='docker-volume'
+
+  [dfind]='d ps | tail -n +2 | fzf | awk '\''{print $1}'\'''
+  [dsh]='d exec -it $(dfind) /bin/bash'
+  [dzh]='d exec -it $(dfind) /bin/zsh'
+  [dlog]='d logs $(dfind)'
+  [dkill]='d kill $(dfind)'
 )
 
 # Runs a bash shell from the specified image (node if none is specified)
@@ -21,56 +21,9 @@ declare -A docker=(
 # The container will stop automatically after you exit the shell.
 function docker-volume() {
   docker run --rm -it \
-    --volume "$(pwd):$(pwd)" \
+    --volume "$(pwd):$(pwd):rw,Z" \
     --workdir "$(pwd)" \
     --net host \
     "${1:-node}" \
     /bin/bash
-
-}
-
-# Similar to docker-volume, but the default image is ubuntu and it will use the
-# host's X server to render GUI applications. For the forwarding to work
-# properly you need to run the following command once inside the container:
-#    eval $(dbus-launch --sh-syntax)
-function docker-volume-x11() {
-  xhost +si:localuser:root
-
-  docker run --rm -it \
-    --volume "$(pwd):$(pwd)" \
-    --volume "$HOME/.Xauthority:/.Xauthority" \
-    --env "XAUTHORITY=/.Xauthority" \
-    --env "DISPLAY" \
-    --net host \
-    --workdir "$(pwd)" \
-    "${1:-ubuntu}" \
-    /bin/bash # eval $(dbus-launch --sh-syntax)
-
-  xhost -si:localuser:root
-}
-
-# Similar to docker-volume-x11, but the forwarding is done through an
-# unprivileged user instead of root.
-function docker-volume-x11-non-root() {
-  local uid=$(id --user)
-  local gid=$(id --group)
-  local command="
-    mkdir -p /home/dev &&
-    useradd dev --uid $uid --home /home/dev --shell /bin/bash &&
-    chown $uid:$gid -R /home/dev;
-    /bin/bash
-  "
-
-  docker run --rm -it \
-    --volume "$(pwd):$(pwd)" \
-    --volume "$HOME/.Xauthority:/home/dev/.Xauthority" \
-    --env "DISPLAY" \
-    --net host \
-    --workdir "$(pwd)" \
-    "${1:-ubuntu}" \
-    /bin/sh -c "$command" # eval $(dbus-launch --sh-syntax)
-}
-
-function podman-exec() {
-  podman exec -it $(pfind) ${1:-/bin/zsh}
 }
