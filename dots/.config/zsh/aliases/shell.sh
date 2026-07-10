@@ -13,6 +13,8 @@ declare -A shell=(
   [tree]='tree -C'
   [treed]='tree -C -d -L 3'
   [open]='xdg-open'
+  [less]='less -R'
+  [fzf]='fzf --ansi'
 
   # Configs
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'

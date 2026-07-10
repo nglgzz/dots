@@ -1,45 +1,46 @@
 declare -A git=(
   [g]='git'
-  [gno]='git restore --staged'
   [gs]='git status'
   [ga]='git add'
   [gaa]='git add -A'
   [gd]='git diff'
   [gdd]='git diff --staged'
   [gddd]='git diff HEAD^1 HEAD'
-  [gsn]='git show --name-only'
+
+  [gf]='git fetch'
   [gp]='git pull'
+  [gu]='git fetch origin && git rebase origin'
   [gg]='git push origin $(git_current_branch)'
   [ggwp]='git push --force-with-lease origin $(git_current_branch)'
+
+  [gno]='git restore --staged'
   [gco]='git checkout'
   [gb]='git branch'
-  [gf]='git fetch'
+
   [gl]='git ls'
   [gls]='git log --show-signature'
+  [gfind]='git log --oneline | fzf | awk '\''{print $1}'\'''
+  [gsn]='git show --name-only'
+  [gsh]='git show $(gfind)'
+  [gshq]='git show --name-only $(gfind)'
+
   [gctmp]='git commit -m tmp --no-verify'
-  [gcf]='git-commit-fixup'
-  [gcff]='git-commit-fixup-autosquash'
   [gca]='git commit --amend'
   [gcaa]='git commit --amend --no-edit'
-  [gu]='git fetch upstream && git rebase upstream'
-  [grls]='git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- [%Cblue%h%Creset] %s"'
-  [grls-nochore]='grls | grep -vwi "chore"'
+  [gcf]='git-commit-fixup'
+  [gcff]='git-commit-fixup-autosquash'
+
   [ghpr]="github-pr-open"
   [gha]="github-pr-assigned"
   [ghco]="github-pr-checkout"
 )
-
 
 function git-commit-fixup-autosquash() {
   git rebase --interactive --autosquash "HEAD~${1:-3}"
 }
 
 function git-commit-fixup() {
-  commit=$(git log --oneline | fzf | awk '{print $1}')
-  git commit --fixup "$commit"
-
-  parent_commit=$(git log --pretty=%p -1 "$commit")
-  git rebase --interactive --autosquash "$parent_commit"
+  git history fixup "$(gfind)"
 }
 
 function gc() {
