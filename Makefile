@@ -31,10 +31,10 @@ zsh-setup:
 	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
 
 load-gnome-settings:
-	cat "${GNOME_PATH}/gnome.extensions.ini" | dconf load /org/gnome/shell/extensions/
-	cat "${GNOME_PATH}/gnome.desktop.ini" | dconf load /org/gnome/desktop/
-	cat "${GNOME_PATH}/gnome.plugins.ini" | dconf load /org/gnome/settings-daemon/plugins/
-	cat "${GNOME_PATH}/gnome.ini" | dconf load /org/gnome/
+	cat "${GNOME_PATH}/gnome.extensions.ini" | dconf load -f /org/gnome/shell/extensions/
+	cat "${GNOME_PATH}/gnome.desktop.ini" | dconf load -f /org/gnome/desktop/
+	cat "${GNOME_PATH}/gnome.plugins.ini" | dconf load -f /org/gnome/settings-daemon/plugins/
+	cat "${GNOME_PATH}/gnome.ini" | dconf load -f /org/gnome/
 
 
 save-gnome-settings:
