@@ -15,8 +15,6 @@ declare -A pnpm=(
   [pt]='corepack pnpm test'
   [pr]='corepack pnpm run'
   [pb]='corepack pnpm run build'
-  [pe]='pnpm-run'
-  [px]='pnpm-run'
 )
 
 declare -A yarn=(

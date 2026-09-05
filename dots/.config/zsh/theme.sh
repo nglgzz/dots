@@ -88,6 +88,11 @@ setopt AUTO_CD
 # https://github.com/zsh-users/zsh-autosuggestions
 source "$ZDOTDIR"/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Add completions directory to search path
+if [[ ":$FPATH:" != *":$ZDOTDIR/completions:"* ]]; then
+  export FPATH="$ZDOTDIR/completions:$FPATH"
+fi
+
 # Enable search of command history with fzf
 eval "$(fzf --zsh)"
 
