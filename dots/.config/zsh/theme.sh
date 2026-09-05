@@ -4,7 +4,7 @@
 autoload -U colors && colors
 setopt PROMPT_SUBST
 PROMPT='%B%F{#00A000}[%n]%b%f %2~ $(git_prompt)»%b '
-RPROMPT='$(parse_git_origin_sync)%F{#666}[exit $?]%f'
+RPROMPT='$(parse_git_origin_sync)%F{#666}[exit %?]%f'
 
 function git_prompt() {
   local ref
@@ -19,7 +19,7 @@ function parse_git_dirty() {
   local -a FLAGS
   FLAGS=('--porcelain')
   if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
-    FLAGS+='--untracked-files=no'
+    FLAGS+=('--untracked-files=no')
   fi
   case "$GIT_STATUS_IGNORE_SUBMODULES" in
   git)
@@ -28,10 +28,10 @@ function parse_git_dirty() {
   *)
     # if unset: ignore dirty submodules
     # other values are passed to --ignore-submodules
-    FLAGS+="--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}"
+    FLAGS+=("--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}")
     ;;
   esac
-  STATUS=$(command git status ${FLAGS} 2>/dev/null | tail -n1)
+  STATUS=$(command git status "${FLAGS[@]}" 2>/dev/null | tail -n1)
   if [[ -n $STATUS ]]; then
     echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
   else
@@ -69,7 +69,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN="]%{$reset_color%} "
 ############################
 # TITLE BAR
 function chpwd() {
-  local window_title="[$(whoami)]  "$(pwd | sed "s|$HOME|~|")
+  local window_title
+  window_title="[$(whoami)]  "$(pwd | sed "s|$HOME|~|")
   echo -ne "\033]0;$window_title\007"
 }
 chpwd
