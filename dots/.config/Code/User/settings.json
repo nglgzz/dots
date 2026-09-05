@@ -2,130 +2,101 @@
   "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "off",
 
+  // Profile
+  "window.newWindowProfile": "Default",
+
   // Title bar
   "workbench.layoutControl.enabled": false,
   "window.commandCenter": false,
+  "window.menuBarVisibility": "toggle",
+
+  // Tabs bar
+  "workbench.editor.scrollToSwitchTabs": true,
+  "workbench.editor.pinnedTabSizing": "compact",
 
   // Layout
   "workbench.activityBar.location": "top",
-  "window.customTitleBarVisibility": "auto",
+  "window.customTitleBarVisibility": "never",
   "breadcrumbs.symbolPath": "off",
+  "window.zoomLevel": 2.5,
 
   // Color Theme
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "Dark Modern",
-  "workbench.preferredLightColorTheme": "Alt Catppuccin Latte",
+  "workbench.preferredLightColorTheme": "Light+",
 
   "workbench.colorCustomizations": {
-    "[Default Dark Modern]": {
-      "titleBar.activeBackground": "#202124",
-      "titleBar.border": "#202124",
-      "titleBar.inactiveBackground": "#202124",
-
-      "tab.activeBackground": "#202124",
-      "tab.activeBorder": "#202124",
-      "tab.border": "#202124",
-      "tab.inactiveBackground": "#202124",
-      "tab.unfocusedActiveBorder": "#202124",
-
-      "activityBar.background": "#202124",
-      "activityBar.activeBorder": "#202124",
-      "activityBar.border": "#202124",
-      "activityBarTop.dropBorder": "#202124",
-      "activityBarBadge.background": "#202124",
-
-      "sideBarSectionHeader.border": "#202124",
-      "sideBar.background": "#202124",
-      "sideBar.border": "#20292D",
-
-      "editor.background": "#202124",
-      "editor.selectionForeground": "#202124",
+    "[Dark Modern]": {
+      "editor.background": "#20201f",
+      "editor.selectionForeground": "#20201f",
 
       "editorGroup.border": "#20292D",
-      "editorGroup.dropBackground": "#202124",
-      "editorGroup.emptyBackground": "#202124",
-      "editorGroupHeader.noTabsBackground": "#202124",
-      "editorGroupHeader.tabsBackground": "#202124",
-      "editorGroupHeader.tabsBorder": "#202124",
+      "editorGroup.dropBackground": "#20201f",
+      "editorGroup.emptyBackground": "#20201f",
+      "editorGroupHeader.noTabsBackground": "#20201f",
+      "editorGroupHeader.tabsBorder": "#20201f",
 
-      "statusBar.background": "#202124",
-      "statusBar.border": "#202124",
-
-      "panel.background": "#202124",
+      "statusBar.background": "#20201f",
+      "statusBar.border": "#20201f",
+      "panel.background": "#20201f",
       "editorRuler.foreground": "#20292D",
-      "scrollbar.shadow": "#00000000",
-    },
+      "scrollbar.shadow": "#00000000"
+    }
   },
 
   // Zen mode
-  "zenMode.centerLayout": false,
-  "zenMode.hideLineNumbers": false,
+  "zenMode.centerLayout": true,
+  "zenMode.hideLineNumbers": true,
   "zenMode.fullScreen": false,
-  "window.zoomLevel": 2,
-  "window.menuBarVisibility": "toggle",
-  "workbench.editor.decorations.colors": false,
-  "workbench.editor.scrollToSwitchTabs": true,
-  "workbench.editor.pinnedTabSizing": "compact",
 
   // Editor
   "editor.formatOnSave": true,
+  "editor.detectIndentation": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
+    "source.fixAll": "explicit"
   },
   "editor.suggestSelection": "first",
   "editor.inlineSuggest.enabled": true,
   "editor.fontFamily": "'Hack', 'Font Awesome 6 Free Solid'",
-  "editor.detectIndentation": true,
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "alt",
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "git.blame.editorDecoration.enabled": false,
 
   // Languages
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "editor.defaultFormatter": "denoland.vscode-deno",
 
   "[typescript][javascript][json][jsonc][json5][html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [80, 100, 120],
+    "editor.rulers": [80, 100, 120]
   },
-  "[markdown]": {
-    "editor.wordWrap": "off",
+  "[markdown][dockerfile][shellscript][ignore][dotenv][properties][ansible]": {
     "editor.wordWrapColumn": 80,
-    "editor.rulers": [80, 100],
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
-    "editor.wordWrapColumn": 80,
-    "editor.rulers": [80, 100],
-  },
-  "[shellscript][ignore][dotenv][properties]": {
-    "editor.defaultFormatter": "mkhl.shfmt",
-    "editor.wordWrapColumn": 80,
-    "editor.rulers": [80, 100],
+    "editor.rulers": [80, 100]
   },
   "[c][cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.wordWrapColumn": 80,
-    "editor.rulers": [80],
+    "editor.rulers": [80]
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.wordWrapColumn": 80,
-    "editor.rulers": [80],
+    "editor.rulers": [80]
   },
   "[tailwindcss]": {
-    "editor.defaultFormatter": "bradlc.vscode-tailwindcss",
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss"
   },
   "[caddyfile]": {
     "editor.insertSpaces": true,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
 
   // Emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
+    "javascript": "javascriptreact"
   },
 
   // Rewrap
@@ -134,22 +105,33 @@
   // Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  // "explorer.excludeGitIgnore": true,
+  "explorer.excludeGitIgnore": true,
 
   // Files
   "files.trimTrailingWhitespace": true,
   "files.eol": "\n",
   "files.associations": {
-    ".env*": "toml",
+    ".env*": "toml"
+  },
+
+  // Git Changes
+  "git.untrackedChanges": "separate",
+  "git.showCommitInput": false,
+  "git.showActionButton": {
+    "commit": false,
+    "publish": false,
+    "sync": false
   },
 
   // Tasks & Debug
   "task.autoDetect": "off",
   "task.quickOpen.showAll": false,
   "task.quickOpen.history": 0,
+  "debug.onTaskErrors": "abort",
 
   // Terminal
   "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
 
   // Status bar
   "git.enableStatusBarSync": false,
@@ -161,7 +143,7 @@
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false,
+    "scminput": false
   },
   "workbench.editor.empty.hint": "hidden",
   "chat.commandCenter.enabled": false,
@@ -173,28 +155,32 @@
   "files.readonlyInclude": {
     "**/.cargo/registry/src/**/*.rs": true,
     "**/.cargo/git/checkouts/**/*.rs": true,
-    "**/lib/rustlib/src/rust/library/**/*.rs": true,
+    "**/lib/rustlib/src/rust/library/**/*.rs": true
   },
 
   // Ansible
   "ansible.lightspeed.enabled": false,
   "ansible.lightspeed.suggestions.enabled": false,
-  "[ansible]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml",
-  },
 
   // Extensions
-  "gitlens.mode.active": "zen",
-  "cmake.showConfigureWithDebuggerNotification": false,
-  "playwright.reuseBrowser": true,
-  "gitlens.plusFeatures.enabled": false,
-  "todo.statistics.statusbar.enabled": false,
   "extensions.ignoreRecommendations": true,
+  "gitlens.mode.active": "zen",
+  "gitlens.plusFeatures.enabled": false,
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "todo.statistics.statusbar.enabled": false,
 
   // Other
-  "terminal.integrated.enableMultiLinePasteWarning": "never",
-  "debug.onTaskErrors": "abort",
-  "git.blame.editorDecoration.enabled": false,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "window.newWindowProfile": "Default",
+  "cSpell.userWords": ["forgejo"],
+  "json.schemaDownload.trustedDomains": {
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://docs.renovatebot.com": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://models.dev/model-schema.json": true,
+    "https://opencode.ai/config.json": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true
+  }
 }

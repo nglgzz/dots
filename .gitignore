@@ -2,6 +2,7 @@
 .zcompdump*
 zsh-autosuggestions
 dots/.config/i3/profiles
+dots/.config/zsh/completions
 dots/.bin/extra
 *.private
 *.log
