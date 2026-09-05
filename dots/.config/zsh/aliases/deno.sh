@@ -9,5 +9,11 @@ declare -A deno=(
 )
 
 function pj() {
-  jq ."$1" deno.jsonc
+  if [[ -f "deno.jsonc" ]]; then
+    jq ."$1" deno.jsonc
+  elif [[ -f "deno.json" ]]; then
+    jq ."$1" deno.json
+  elif [[ -f "package.json" ]]; then
+    jq ."$1" package.json
+  fi
 }
