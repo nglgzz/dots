@@ -6,3 +6,4 @@ dots/.config/zsh/completions
 dots/.bin/extra
 *.private
 *.log
+.bin

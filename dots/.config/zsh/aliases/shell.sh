@@ -39,6 +39,10 @@ declare -A shell=(
   [randomword]='sort -R /usr/share/dict/words | head -1'
 )
 
+function r() {
+  rg --hidden --json -C 2 $* | delta
+}
+
 function free_port() {
   local pid=$(netstat -ltnp | grep ':'"$1" | awk '{print $7}' | sed 's|/.*||')
   kill "$pid" 2>/dev/null || true

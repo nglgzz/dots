@@ -55,15 +55,15 @@ function parse_git_origin_sync() {
   elif [[ "$ahead" -gt 0 ]]; then
     echo "%{$fg[yellow]%}[⇉ origin]%{$reset_color%}"
   elif [[ "$behind" -gt 0 ]]; then
-    echo "%{$fg_bold[red]%}[⇇ origin]%{$reset_color%}"
+    echo "%{$fg_bold[magenta]%}[⇇ origin]%{$reset_color%}"
   else
-    echo "%{$fg[green]%}[✔ origin]%{$reset_color%}"
+    echo "%{$fg[blue]%}[✔ origin]%{$reset_color%}"
   fi
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{$fg[white]%}["
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ●%{$fg[white]%}]%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%} ●%{$fg[white]%}]%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_CLEAN="]%{$reset_color%} "
 
 ############################

@@ -3,7 +3,6 @@
 call plug#begin("~/.cache/nvim/")
   " Plugin Section
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'sbdchd/neoformat'
   Plug 'jiangmiao/auto-pairs'
   Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -39,10 +38,21 @@ source ~/.config/nvim/coc.vim
 
 
 """""""""""""""""""""""""""""""""""
-" sbdchd/neoformat
-" Autoformat using Prettier
-filetype plugin indent on
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.html Neoformat prettier
+" Autoformat using deno fmt
+function! DenoFmt()
+  let l:extension_map = {'todo': 'md'}
+  let l:ext = get(l:extension_map, expand('%:e'), expand('%:e'))
+
+  let saved_view = winsaveview()
+  execute 'silent %!deno fmt --ext ' . l:ext . ' -'
+  if v:shell_error > 0
+    silent undo
+  endif
+  call winrestview(saved_view)
+endfunction
+
+command! DenoFmt call DenoFmt()
+autocmd BufWritePre * call DenoFmt()
 
 
 """""""""""""""""""""""""""""""""""
