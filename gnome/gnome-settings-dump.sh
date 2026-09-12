@@ -5,17 +5,17 @@
 
 
 declare -A settings_pick_keys=(
-  [/org/gnome/settings-daemon/plugins/]='color media-keys media-keys/custom-keybindings/custom0'
+  [/org/gnome/desktop/]='background input-sources interface notifications peripherals/mouse peripherals/touchpad privacy screensaver wm/keybindings wm/preferences'
   [/org/gnome/shell/extensions/]='appindicator paperwm paperwm/keybindings'
-  [/org/gnome/desktop/]='background input-sources interface peripherals/mouse peripherals/touchpad privacy screensaver wm/keybindings wm/preferences'
-  [/org/gnome/]='mutter shell system/location'
+  [/org/gnome/]='mutter shell system/location Ptyxis Ptyxis/Profiles/7e291c73d97ff93a7cbd1c9869c00e2c tweaks'
+  [/org/gnome/settings-daemon/plugins/]='color media-keys media-keys/custom-keybindings/custom0'
 )
 
 declare -A settings_omit_nested_keys=(
-  [/org/gnome/settings-daemon/plugins/]=''
+  [/org/gnome/desktop/]='application-children'
   [/org/gnome/shell/extensions/]=''
-  [/org/gnome/desktop/]=''
-  [/org/gnome/]='app-picker-layout favorite-apps remember-mount-password'
+  [/org/gnome/]='app-picker-layout favorite-apps remember-mount-password window-size'
+  [/org/gnome/settings-daemon/plugins/]=''
 )
 
 function save-settings() {
@@ -67,7 +67,7 @@ function save-settings() {
     echo -e "$settings_path\t$output_path"
 }
 
-save-settings /org/gnome/shell/extensions/ gnome.extensions.ini
 save-settings /org/gnome/desktop/ gnome.desktop.ini
-save-settings /org/gnome/settings-daemon/plugins/ gnome.plugins.ini
+save-settings /org/gnome/shell/extensions/ gnome.extensions.ini
 save-settings /org/gnome/ gnome.ini
+save-settings /org/gnome/settings-daemon/plugins/ gnome.plugins.ini
