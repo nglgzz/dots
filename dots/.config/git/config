@@ -33,23 +33,28 @@
 [branch]
 	sort = -committerdate
 [pull]
-  ff = only
+  rebase = true
+  autoStash = true
 [push]
   autoSetupRemote = true
   default = current
+[rebase]
+  autoStash = true
 [rerere]
 	enabled = true
 [merge]
   conflictStyle = zdiff3
 
 
-# "git status" and "git branch" colors
+# "git status" and "git branch" styling
+[status]
+  showStash = true
 [color "status"]
-branch = blue
-added = blue
-changed = yellow
-untracked = yellow
-unmerged = yellow
+  branch = blue
+  added = blue
+  changed = yellow
+  untracked = yellow
+  unmerged = yellow
 
 
 [include]
