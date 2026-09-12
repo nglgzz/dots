@@ -54,17 +54,17 @@
       "statusBar.border": "#00000000",
 
       // Colorblind diffs
-      "diffEditor.insertedLineBackground": "#1f6feb26",
-      "diffEditor.insertedTextBackground": "#58a6ff4d",
-      "diffEditor.removedLineBackground": "#b7610026",
-      "diffEditor.removedTextBackground": "#ec8e2c4d",
+      "diffEditor.removedLineBackground": "#614911aa",
+      "diffEditor.removedTextBackground": "#a4662366",
+      "diffEditor.insertedLineBackground": "#1a49a166",
+      "diffEditor.insertedTextBackground": "#2756af66",
 
-      "editorGutter.addedBackground": "#388bfd66",
-      "editorGutter.deletedBackground": "#ec8e2c4d",
-      "editorGutter.modifiedBackground": "#bb800966",
+      "editorGutter.addedBackground": "#388bfddd",
+      "editorGutter.deletedBackground": "#ec8e2cdd",
+      "editorGutter.modifiedBackground": "#666666aa",
 
       "gitDecoration.addedResourceForeground": "#58a6ff",
-      "gitDecoration.conflictingResourceForeground": "#d47616",
+      "gitDecoration.conflictingResourceForeground": "#d416b4",
       "gitDecoration.deletedResourceForeground": "#d47616",
       "gitDecoration.ignoredResourceForeground": "#6e7681",
       "gitDecoration.modifiedResourceForeground": "#d29922",
@@ -218,8 +218,16 @@
   "cmake.showConfigureWithDebuggerNotification": false,
   "todo.statistics.statusbar.enabled": false,
 
-  // Other
+  // Spellchecker
+  "cSpell.checkOnlyEnabledFileTypes": true,
+  "cSpell.enabledFileTypes": {
+    "*": true,
+    "markdown": true,
+    "shellscript": false
+  },
   "cSpell.userWords": ["forgejo"],
+
+  // Other
   "security.promptForLocalFileProtocolHandling": false,
   "json.schemaDownload.trustedDomains": {
     "https://developer.microsoft.com/json-schemas/": true,

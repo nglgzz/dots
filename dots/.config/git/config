@@ -39,6 +39,8 @@
   default = current
 [rerere]
 	enabled = true
+[merge]
+  conflictStyle = zdiff3
 
 
 # "git status" and "git branch" colors
