@@ -5,18 +5,20 @@ HOME_SRC="$$HOME/dots/dots"
 HOME_PATH=
 
 CONFIG_PATH=.config/
+SHARE_PATH=.local/share/
 CODE_PATH=${CONFIG_PATH}Code/User/
 GNOME_PATH="$$HOME/dots/gnome"
 
-HOME_FILES=$(shell find ${HOME_SRC} -mindepth 1 -maxdepth 1)
+HOME_FILES=$(shell find ${HOME_SRC} -mindepth 1 -maxdepth 1 -not -name README.md)
 CONFIG_FILES=$(shell find ${HOME_SRC}/${CONFIG_PATH} -mindepth 1 -maxdepth 1)
+SHARE_FILES=$(shell find ${HOME_SRC}/${SHARE_PATH} -mindepth 1 -maxdepth 1)
 CODE_FILES=$(shell find ${HOME_SRC}/${CODE_PATH} -mindepth 1 -maxdepth 1)
 
 all: links zsh-setup vscode-setup install-gnome-extensions load-gnome-settings vim-setup
 
-links: links-HOME links-CONFIG links-CODE
+links: links-HOME links-CONFIG links-SHARE links-CODE
 
-links-HOME links-CONFIG links-CODE: links-%:
+links-HOME links-CONFIG links-SHARE links-CODE: links-%:
 	@echo -e "\n$$(tput bold)$* files linked$$(tput sgr0)"
 	@$(foreach file, \
 		$($*_FILES), \
