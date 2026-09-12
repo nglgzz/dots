@@ -36,13 +36,8 @@ load-gnome-settings:
 	cat "${GNOME_PATH}/gnome.plugins.ini" | dconf load -f /org/gnome/settings-daemon/plugins/
 	cat "${GNOME_PATH}/gnome.ini" | dconf load -f /org/gnome/
 
-
-save-gnome-settings:
-	dconf dump /org/gnome/shell/extensions/ > "${GNOME_PATH}/gnome.extensions.ini"
-	dconf dump /org/gnome/desktop/ > "${GNOME_PATH}/gnome.desktop.ini"
-	dconf dump /org/gnome/settings-daemon/plugins/ > "${GNOME_PATH}/gnome.plugins.ini"
-	dconf dump /org/gnome/ > "${GNOME_PATH}/gnome.ini"
-
+dump-gnome-settings:
+	@${GNOME_PATH}/gnome-settings-dump.sh | column -t
 
 vscode-setup:
 	@cat "${HOME_SRC}/${CODE_PATH}../extensions.list" | \
@@ -52,7 +47,7 @@ vim-setup:
 	nvim +PlugInstall +qall
 
 install-gnome-extensions:
-	${GNOME_PATH}/gnome-extensions-install.sh
+	@${GNOME_PATH}/gnome-extensions-install.sh
 
 config:
-	@$$HOME/dots/fedora/config.sh
+	@${HOME}/dots/fedora/config.sh
