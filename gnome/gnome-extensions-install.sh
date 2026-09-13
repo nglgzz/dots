@@ -4,7 +4,11 @@ array=(https://extensions.gnome.org/extension/6099/paperwm/  https://extensions.
 
 for url in "${array[@]}"; do
     extension_id=$(curl -s "$url" | grep -oP 'data-uuid="\K[^"]+')
-    version_tag=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=$extension_id" | jq '.extensions[0] | .shell_version_map | map(.pk) | max')
+    extension_shell_version_map=$(curl -s "$url" | grep -oP 'data-svm="\K[^"]+' | sed 's/&quot;/"/g')
+    version_tag=$(echo "$extension_shell_version_map" | jq 'map(.pk) | max')
+
+    # Alternative approach, but it doesn't seem to always work.
+    # version_tag=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=$extension_id" | jq '.extensions[0] | .shell_version_map | map(.pk) | max')
 
     # Skip installing if the extension is already installed.
     if gnome-extensions list | grep --quiet "${extension_id}"; then
