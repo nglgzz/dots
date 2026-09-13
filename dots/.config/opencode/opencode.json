@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["opencode-models-discovery@latest"],
+  "autoupdate": "notify",
+
+  "enabled_providers": ["unsloth"],
+  "provider": {
+    "unsloth": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Unsloth (lan)",
+
+      "options": {
+        "baseURL": "https://ai.quack.foo/v1",
+        "modelsDiscovery": {
+          "enabled": true,
+          "smartModelName": true,
+          "modelInfoFormat": "models.dev",
+          "excludeBy": [{ "field": "id", "match": "^lmstudio-community" }]
+        }
+      }
+    }
+  },
+
+  "default_agent": "plan",
+  "model": "unsloth/unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
+
+  "compaction": {
+    "prune": true
+  },
+
+  "lsp": true,
+  "formatter": {
+    "deno-fmt": {
+      "command": ["deno", "fmt", "$FILE"],
+      "extensions": [
+        ".ts",
+        ".js",
+        ".json",
+        ".jsonc",
+        ".json5",
+        ".md",
+        ".css",
+        ".html"
+      ]
+    }
+  }
+}

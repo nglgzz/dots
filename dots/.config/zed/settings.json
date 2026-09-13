@@ -1,38 +1,34 @@
 {
-  "language_models": {
-    "lmstudio": {
-      "api_url": "http://localhost:1234/api/v1",
-    },
-  },
-  "agent_servers": {
-    "opencode": {
-      "type": "registry",
-    },
-  },
-
-  "buffer_font_fallbacks": ["Font Awesome 6 Free Solid"],
-  "buffer_font_family": "Hack",
-  "file_types": { "toml": [".env*", ".env*"] },
-  "icon_theme": "Zed (Default)",
+  "hide_mouse": "never",
 
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
 
   // Theme
+  "buffer_font_family": "Source Code Pro",
+  "buffer_font_fallbacks": ["Font Awesome 6 Free Solid"],
+  "icon_theme": "Zed (Default)",
   "theme": {
-    "mode": "dark",
+    "mode": "system",
     "light": "Gruvbox Light Soft",
-    "dark": "Ayu Dark",
+    "dark": "GitHub Dark Dimmed"
   },
 
   // Panels
   "minimap": { "show": "never" },
-  "project_panel": { "hide_gitignore": true, "hide_root": true },
+  "git_panel": {
+    "dock": "left"
+  },
+  "project_panel": {
+    "dock": "left",
+    "hide_gitignore": true,
+    "hide_root": true
+  },
   "collaboration_panel": { "button": false },
   "search": { "button": false },
-  "outline_panel": { "expand_outlines_with_depth": 1 },
+  "outline_panel": { "dock": "left", "expand_outlines_with_depth": 1 },
 
   // Editor
   "git": { "inline_blame": { "enabled": false } },
@@ -44,11 +40,20 @@
   "multi_cursor_modifier": "alt",
 
   // Agent
-  "agent": {
-    "default_model": {
-      "provider": "ollama",
-      "model": "qwen3-coder:30b",
-    },
-    "model_parameters": [],
+  "language_models": {
+    "lmstudio": {
+      "api_url": "https://ai.quack.foo/v1"
+    }
   },
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    }
+  },
+  "agent": {
+    "dock": "right"
+  },
+
+  // Languages
+  "file_types": { "toml": [".env*", ".env*"] }
 }

@@ -37,6 +37,9 @@ declare -A shell=(
   [serve]='python3 -m http.server'
   [freeport]=free_port
   [randomword]='sort -R /usr/share/dict/words | head -1'
+
+  # Python
+  [uva]='source .venv/bin/activate'
 )
 
 function r() {
