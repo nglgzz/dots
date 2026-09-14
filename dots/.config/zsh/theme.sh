@@ -1,9 +1,10 @@
+#!/usr/bin/zsh
 ############################
 # PROMPT
 # Set up the prompt (with git branch name)
 autoload -U colors && colors
 setopt PROMPT_SUBST
-PROMPT='%B%F{#00A000}[%n]%b%f %2~ $(git_prompt)»%b '
+PROMPT='%B%F{green}[%n]%f %2~ $(git_prompt)»%b '
 RPROMPT='$(parse_git_origin_sync)%F{#666}[exit %?]%f'
 
 function git_prompt() {
@@ -51,20 +52,20 @@ function parse_git_origin_sync() {
   read -r ahead behind <<<"$count"
 
   if [[ "$ahead" -gt 0 && "$behind" -gt 0 ]]; then
-    echo "%{$fg[yellow]%}[● origin]%{$reset_color%}"
+    echo "%F{yellow}[● origin]%f"
   elif [[ "$ahead" -gt 0 ]]; then
-    echo "%{$fg[yellow]%}[⇉ origin]%{$reset_color%}"
+    echo "%F{yellow}[⇉ origin]%f"
   elif [[ "$behind" -gt 0 ]]; then
-    echo "%{$fg_bold[magenta]%}[⇇ origin]%{$reset_color%}"
+    echo "%F{red}%B[⇇ origin]%b%f"
   else
-    echo "%{$fg[blue]%}[✔ origin]%{$reset_color%}"
+    echo "%F{blue}[✔ origin]%f"
   fi
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{$fg[white]%}["
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%} ●%{$fg[white]%}]%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_CLEAN="]%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_PREFIX="%B["
+ZSH_THEME_GIT_PROMPT_SUFFIX="%B]%b%f "
+ZSH_THEME_GIT_PROMPT_DIRTY="%F{red} ●%f%B"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 ############################
 # TITLE BAR
@@ -134,3 +135,44 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey "\e[1;5D" backward-word
 bindkey "\e[1;5C" forward-word
+
+# ctrl+o search and edit file
+fzf_vim() {
+  file=$(find "$(pwd)" -type f -not -path '**/.git/**' -not -path '**/node_modules/**' 2>/dev/null | fzf)
+  if [[ -f "$file" ]]; then
+    nvim "$file"
+  fi
+}
+zle -N fzf_vim
+bindkey "^O" fzf_vim
+
+# ctrl+p search and cat file
+fzf_cat() {
+  file=$(find "$(pwd)" -type f -not -path '**/.git/**' -not -path '**/node_modules/**' 2>/dev/null | fzf)
+  if [[ -f "$file" ]]; then
+    bat "$file"
+  fi
+}
+zle -N fzf_cat
+bindkey "^P" fzf_cat
+
+# ctrl+f search text in folder
+# find_in_folder() {
+#   search_term=$(echo "" | fzf --bind "enter:accept-or-print-query" --prompt "search: ")
+#   if [[ ! "$search_term" == "" ]]; then
+#     rg --max-depth 1 --hidden --json -C 2 "$search_term" | delta
+#   fi
+# }
+# zle -N find_in_folder
+# bindkey "^F" find_in_folder
+
+# ctrl+f search text recursively
+find_in_folder_rec() {
+  search_term=$(echo "" | fzf --bind "enter:accept-or-print-query" --prompt "search (recursive): ")
+  if [[ ! "$search_term" == "" ]]; then
+    rg --hidden --json -C 2 "$search_term" | delta
+  fi
+}
+zle -N find_in_folder_rec
+bindkey "^F" find_in_folder_rec
+
