@@ -3,6 +3,7 @@ declare -A shell=(
   [vim]=nvim
   [cat]=bat
   [_cat]='command cat'
+  [md]='glow -pw=120'
   [e]='code .'
   [z]='zed .'
   [q]='exit'

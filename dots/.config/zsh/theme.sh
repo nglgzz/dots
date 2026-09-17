@@ -4,7 +4,7 @@
 # Set up the prompt (with git branch name)
 autoload -U colors && colors
 setopt PROMPT_SUBST
-PROMPT='%B%F{green}[%n]%f %2~ $(git_prompt)»%b '
+PROMPT='%F{#00A000}%B[%n]%b%f %2~ $(git_prompt)» '
 RPROMPT='$(parse_git_origin_sync)%F{#666}[exit %?]%f'
 
 function git_prompt() {
@@ -62,9 +62,9 @@ function parse_git_origin_sync() {
   fi
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%B["
-ZSH_THEME_GIT_PROMPT_SUFFIX="%B]%b%f "
-ZSH_THEME_GIT_PROMPT_DIRTY="%F{red} ●%f%B"
+ZSH_THEME_GIT_PROMPT_PREFIX="["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]%f "
+ZSH_THEME_GIT_PROMPT_DIRTY="%F{red} ●%f"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 ############################
