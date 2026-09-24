@@ -23,9 +23,6 @@
 	gpgsign = true
 [gpg]
   format = ssh
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-
 
 # Branches / pull / push / rebase
 [init]
@@ -59,3 +56,8 @@
 
 [include]
   path = ~/.config/git/git-delta.config
+
+# Needed to be able to clone repos on the home directory
+# without using an ssh key.
+[includeIf "gitdir:~/projects/"]
+  path = ~/.config/git/github-ssh.config

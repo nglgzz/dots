@@ -10,5 +10,7 @@ fi
 
 mkdir -p "$HOME/.local/bin"
 ln -s "$DENO_INSTALL/bin/deno" "$HOME/.local/bin/deno"
-deno completions zsh > "$ZDOTDIR/completions/_deno.zsh"
 
+if [[ -d "$ZDOTDIR/completions" ]]; then
+  deno completions zsh > "$ZDOTDIR/completions/_deno.zsh"
+fi

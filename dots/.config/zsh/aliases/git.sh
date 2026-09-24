@@ -46,7 +46,7 @@ function git-commit-fixup() {
   # git history fixup "$(gfind)"
 
   commit=$(git log --oneline | fzf | awk '{print $1}')
-  git commit --fixup  "$commit"
+  git commit --fixup "$commit"
 
   parent_commit=$(git log --pretty=%p -1 "$commit")
   git rebase --interactive --autosquash "$parent_commit"

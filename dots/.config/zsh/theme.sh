@@ -151,6 +151,7 @@ fzf_cat() {
   file=$(find "$(pwd)" -type f -not -path '**/.git/**' -not -path '**/node_modules/**' 2>/dev/null | fzf)
   if [[ -f "$file" ]]; then
     bat "$file"
+    echo "$file" | copy
   fi
 }
 zle -N fzf_cat

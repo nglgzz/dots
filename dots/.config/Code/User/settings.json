@@ -140,6 +140,10 @@
     "editor.insertSpaces": true,
     "editor.formatOnSave": false
   },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.rulers": [80, 140]
+  },
 
   // Emmet
   "emmet.triggerExpansionOnTab": true,
@@ -238,6 +242,7 @@
     "https://opencode.ai": true,
     "https://raw.githubusercontent.com/devcontainers/spec/": true,
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schema.tauri.app": true,
     "https://schemastore.azurewebsites.net/": true,
     "https://www.schemastore.org/": true
   }
