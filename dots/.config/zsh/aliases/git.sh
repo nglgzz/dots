@@ -6,6 +6,7 @@ declare -A git=(
   [gd]='git diff'
   [gdd]='git diff --staged'
   [gddd]='git diff HEAD^1 HEAD'
+  [gclone]='git clone --depth 1'
 
   [gf]='git fetch'
   [gp]='git pull'
@@ -40,7 +41,15 @@ function git-commit-fixup-autosquash() {
 }
 
 function git-commit-fixup() {
-  git history fixup "$(gfind)"
+  # The history command mostly works, but it doesn't 
+  # sign the updated commits.
+  # git history fixup "$(gfind)"
+
+  commit=$(git log --oneline | fzf | awk '{print $1}')
+  git commit --fixup  "$commit"
+
+  parent_commit=$(git log --pretty=%p -1 "$commit")
+  git rebase --interactive --autosquash "$parent_commit"
 }
 
 function gc() {

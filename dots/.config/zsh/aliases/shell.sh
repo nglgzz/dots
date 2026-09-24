@@ -20,6 +20,7 @@ declare -A shell=(
   # Configs
   [zedit]='cd ~/dots && nvim $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc && cd -'
   [zource]='source $ZDOTDIR/.zshrc'
+  [oedit]='nvim $HOME/.config/opencode/opencode.json'
   [codex]='code --list-extensions'
 
   # Navigation

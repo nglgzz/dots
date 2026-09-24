@@ -20,7 +20,7 @@ declare -A docker=(
 # with a volume mounted at the current working directory.
 # The container will stop automatically after you exit the shell.
 function docker-volume() {
-  docker run --rm -it \
+  d run --rm -it \
     --volume "$(pwd):$(pwd):rw,Z" \
     --workdir "$(pwd)" \
     --net host \

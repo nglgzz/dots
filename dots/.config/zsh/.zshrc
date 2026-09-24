@@ -15,3 +15,4 @@ export FORCE_COLOR=1
 [[ ! -d ~/.ssh ]] && mkdir "$HOME/.ssh"
 [[ ! -f ~/.ssh/config ]] && echo "AddKeysToAgent yes" >>"$HOME/.ssh/config"
 eval "$(ssh-agent -s)" >>/dev/null
+

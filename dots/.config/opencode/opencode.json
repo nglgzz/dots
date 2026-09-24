@@ -28,7 +28,7 @@
     "prune": true
   },
 
-  "lsp": true,
+  "lsp": false,
   "formatter": {
     "deno-fmt": {
       "command": ["deno", "fmt", "$FILE"],
@@ -42,6 +42,19 @@
         ".css",
         ".html"
       ]
+    }
+  },
+
+  "permission": {
+    "external_directory": {
+      "~/resources/**": "allow"
+    },
+    "edit": {
+      "~/resources/**": "deny"
+    },
+    "bash": {
+      "git commit *": "deny",
+      "git push *": "deny"
     }
   }
 }
