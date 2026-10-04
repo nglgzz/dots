@@ -7,3 +7,4 @@ dots/.bin/extra
 *.private
 *.log
 .bin
+service.json

@@ -128,6 +128,9 @@
     "editor.wordWrapColumn": 80,
     "editor.rulers": [80]
   },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.wordWrapColumn": 80,
@@ -148,7 +151,8 @@
   // Emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "svelte": "html"
   },
 
   // Rewrap

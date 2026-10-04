@@ -22,3 +22,9 @@ eval "$(ssh-agent -s)" >>/dev/null
 ############################
 # Other
 #
+# Fedora has an annoying alias that makes which useless
+# when trying to show functions' source.
+if [[ "$(which which)" =~ 'alias' ]]; then
+  unalias which
+fi
+

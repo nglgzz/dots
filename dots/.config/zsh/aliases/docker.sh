@@ -20,10 +20,20 @@ declare -A docker=(
 # with a volume mounted at the current working directory.
 # The container will stop automatically after you exit the shell.
 function docker-volume() {
-  d run --rm -it \
+  podman run --rm -it \
     --volume "$(pwd):$(pwd):rw,Z" \
     --workdir "$(pwd)" \
     --net host \
     "${1:-node}" \
-    /bin/bash
+    "${2:-/bin/bash}"
+}
+
+function dbox() {
+  podman run --rm -it \
+    --volume "$(pwd):$(pwd):rw,Z" \
+    --workdir "$(pwd)" \
+    --net host \
+    --detach \
+    "${1:-devbox}" \
+    "${2:-/bin/zsh}"
 }
