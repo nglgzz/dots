@@ -16,7 +16,20 @@
       "models": {
         "qwen-3.6": {
           "name": "Qwen 3.6",
-          "modelID": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL"
+          "modelID": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL",
+          "variants": [
+            { "id": "think", "body": { "reasoning": true } },
+            { "id": "no-think", "body": { "reasoning": false } }
+          ]
+        },
+
+        "qwen-3.6-fast": {
+          "name": "Qwen 3.6 (fast)",
+          "modelID": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q2_K_XL",
+          "variants": [
+            { "id": "think", "body": { "reasoning": true } },
+            { "id": "no-think", "body": { "reasoning": false } }
+          ]
         }
       }
     }
@@ -30,12 +43,20 @@
       "effect": "allow"
     },
     { "action": "edit", "resource": "~/resources/**", "effect": "deny" },
-
     { "action": "shell", "resource": "git commit *", "effect": "deny" },
-    { "action": "shell", "resource": "git push *", "effect": "deny" },
+    { "action": "shell", "resource": "git push *", "effect": "deny" }
+  ],
 
+  "policies": [
     { "action": "provider.use", "resource": "*", "effect": "deny" },
-    { "action": "provider.use", "resource": "unsloth", "effect": "allow" }
+    { "action": "provider.use", "resource": "unsloth", "effect": "allow" },
+    {
+      "action": "tool.use",
+      "resource": "shell:git commit *",
+      "effect": "deny"
+    },
+    { "action": "tool.use", "resource": "shell:git push *", "effect": "deny" },
+    { "action": "tool.use", "resource": "edit:*.env", "effect": "deny" }
   ],
 
   "default_agent": "plan",
