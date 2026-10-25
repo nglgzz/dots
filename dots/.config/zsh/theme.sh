@@ -176,4 +176,3 @@ find_in_folder_rec() {
 }
 zle -N find_in_folder_rec
 bindkey "^F" find_in_folder_rec
-

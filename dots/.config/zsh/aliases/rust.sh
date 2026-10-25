@@ -6,4 +6,4 @@ declare -A rust=(
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
 
-[[ -d "$CARGO_HOME" ]] && source "$CARGO_HOME/env"
+#[[ -d "$CARGO_HOME" ]] && source "$CARGO_HOME/env"

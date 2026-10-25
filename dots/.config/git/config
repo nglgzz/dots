@@ -39,8 +39,6 @@
   autoStash = true
 [rerere]
 	enabled = true
-[merge]
-  conflictStyle = zdiff3
 
 
 # "git status" and "git branch" styling
