@@ -1,34 +1,51 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["opencode-models-discovery@latest"],
-  "autoupdate": "notify",
+  "update": "notify",
+  // "plugins": ["opencode-models-discovery@latest"],
 
-  "enabled_providers": ["unsloth"],
-  "provider": {
+  "providers": {
     "unsloth": {
-      "npm": "@ai-sdk/openai-compatible",
       "name": "Unsloth (lan)",
+      "package": "aisdk:@ai-sdk/openai-compatible",
 
-      "options": {
+      "settings": {
         "baseURL": "https://ai.quack.foo/v1",
-        "modelsDiscovery": {
-          "enabled": true,
-          "smartModelName": true,
-          "modelInfoFormat": "models.dev",
-          "excludeBy": [{ "field": "id", "match": "^lmstudio-community" }]
+        "apiKey": "{env:UNSLOTH_API_KEY}"
+      },
+
+      "models": {
+        "qwen-3.6": {
+          "name": "Qwen 3.6",
+          "modelID": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL"
         }
       }
     }
   },
 
+  "permissions": [
+    { "action": "external_directory", "resource": "*", "effect": "deny" },
+    {
+      "action": "external_directory",
+      "resource": "~/resources/**",
+      "effect": "allow"
+    },
+    { "action": "edit", "resource": "~/resources/**", "effect": "deny" },
+
+    { "action": "shell", "resource": "git commit *", "effect": "deny" },
+    { "action": "shell", "resource": "git push *", "effect": "deny" },
+
+    { "action": "provider.use", "resource": "*", "effect": "deny" },
+    { "action": "provider.use", "resource": "unsloth", "effect": "allow" }
+  ],
+
   "default_agent": "plan",
-  "model": "unsloth/unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
+  "model": "unsloth/qwen-3.6",
 
   "compaction": {
-    "prune": true
+    "keep": { "tokens": 8000 },
+    "buffer": 20000
   },
 
-  "lsp": false,
   "formatter": {
     "deno-fmt": {
       "command": ["deno", "fmt", "$FILE"],
@@ -42,19 +59,6 @@
         ".css",
         ".html"
       ]
-    }
-  },
-
-  "permission": {
-    "external_directory": {
-      "~/resources/**": "allow"
-    },
-    "edit": {
-      "~/resources/**": "deny"
-    },
-    "bash": {
-      "git commit *": "deny",
-      "git push *": "deny"
     }
   }
 }
